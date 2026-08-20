@@ -264,72 +264,34 @@ a{color:inherit;}
   display:flex;
   align-items:center;
   overflow:hidden;
-  background:linear-gradient(180deg,#16303B 0%,#1F4E5A 42%,#3E6B62 68%,#B9714B 100%);
+  background:var(--navy);
 }
-.terrace-sky{
+.terrace-photo{
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg,#16303B 0%,#1F4E5A 40%,#4C6E63 66%,#C97C4C 100%);
-  animation:duskShift 26s ease-in-out infinite alternate;
+  width:100%;height:100%;
+  object-fit:cover;
 }
-@keyframes duskShift{
-  0%{filter:hue-rotate(0deg) brightness(1);}
-  100%{filter:hue-rotate(-8deg) brightness(1.05);}
-}
-.sun{
+.terrace-veil{
   position:absolute;
-  left:50%;
-  top:30%;
-  width:150px;height:150px;
-  margin-left:-75px;
-  border-radius:50%;
-  background:radial-gradient(circle at 50% 50%, #FFE3B0 0%, var(--gold) 55%, rgba(240,169,78,0) 72%);
-  animation:sunDrift 26s ease-in-out infinite alternate;
-  opacity:.9;
-}
-@keyframes sunDrift{
-  0%{top:22%; opacity:.75;}
-  100%{top:52%; opacity:1;}
+  inset:0;
+  background:linear-gradient(100deg, rgba(20,43,51,.92) 0%, rgba(20,43,51,.72) 34%, rgba(20,43,51,.28) 62%, rgba(20,43,51,.15) 100%);
 }
 .terrace-content{
   position:relative;
   z-index:2;
-  padding:120px 0 220px;
+  padding:150px 0;
   max-width:640px;
 }
 .terrace-copy{
-  color:rgba(255,253,248,.88);
+  color:rgba(255,253,248,.9);
   font-size:16.5px;
   line-height:1.7;
   max-width:48ch;
   margin:0;
 }
-.terrace-scene{
-  position:absolute;
-  left:0;right:0;bottom:0;
-  width:100%;
-  height:42%;
-  z-index:1;
-}
-.terrace-grass{fill:#2F4A3B;}
-.terrace-grass-edge{stroke:#4C7A5C;stroke-width:2;}
-.swing-post,.swing-bar{stroke:#0F2027;stroke-width:5;stroke-linecap:round;}
-.swing-rope{stroke:rgba(20,20,20,.55);stroke-width:2;}
-.swing-seat{fill:#0F2027;}
-.swing-back{fill:#12262C;}
-.swing-rig{
-  transform-origin:600px 40px;
-  animation:swingSway 6s ease-in-out infinite;
-}
-@keyframes swingSway{
-  0%,100%{transform:rotate(-4deg);}
-  50%{transform:rotate(4deg);}
-}
 @media(prefers-reduced-motion:reduce){
-  .swing-rig, .sun, .terrace-sky, .scroll-hint span{animation:none;}
-}
-@media(min-width:720px){
-  .terrace-content{padding:150px 0 260px;}
+  .scroll-hint span{animation:none;}
 }
 
 /* ---------- amenities ---------- */
@@ -391,6 +353,96 @@ a{color:inherit;}
 }
 .loc-figure--tall img{aspect-ratio:4/5;}
 .loc-figure:hover img{transform:scale(1.04);}
+
+/* room photo grid */
+.room-photo-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2px;
+  background:var(--navy);
+  border:2px solid var(--navy);
+  margin-top:48px;
+}
+@media(min-width:720px){
+  .room-photo-grid{grid-template-columns:repeat(4, 1fr);}
+  .room-photo--wide{grid-column:span 2;}
+}
+.room-photo{
+  margin:0;
+  position:relative;
+  background:var(--white);
+  display:flex;
+  flex-direction:column;
+}
+.room-photo img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  transition:transform .6s ease;
+}
+.room-photo:hover img{transform:scale(1.03);}
+.room-photo figcaption{padding:22px 24px 26px;}
+.room-photo h3{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:19px;
+  margin:0 0 8px;
+}
+.room-photo p{
+  font-size:14px;
+  line-height:1.6;
+  color:#4B5A5F;
+  margin:0;
+}
+
+/* map + nearby */
+.map-block{
+  margin-top:70px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2px;
+  background:var(--navy);
+  border:2px solid var(--navy);
+}
+@media(min-width:800px){
+  .map-block{grid-template-columns:1.3fr 1fr;}
+}
+.map-frame{
+  background:var(--white);
+  min-height:360px;
+}
+.map-frame iframe{width:100%;height:100%;min-height:360px;display:block;}
+.nearby{
+  background:var(--white);
+  padding:36px 32px;
+}
+.nearby-title{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:22px;
+  margin:0 0 22px;
+}
+.nearby-list{
+  list-style:none;
+  margin:0;padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.nearby-list li{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  padding-bottom:14px;
+  border-bottom:1px solid #E4D9C4;
+}
+.nearby-time{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--coral);
+  white-space:nowrap;
+}
+.nearby-name{font-size:14.5px;color:var(--ink);}
 
 /* ---------- cta ---------- */
 .cta{
