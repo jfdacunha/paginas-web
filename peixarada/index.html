@@ -79,7 +79,7 @@
       border-bottom:1px solid var(--line);
       max-height:0;overflow:hidden;transition:max-height .25s ease;
     }
-    nav.links.open{max-height:320px;}
+    nav.links.open{max-height:420px;}
     nav.links a:not(.call-btn){width:100%;padding:14px 24px;border-bottom:1px solid var(--line);}
     nav.links .call-btn{width:calc(100% - 48px);margin:14px 24px;justify-content:center;}
     .menu-toggle{display:block;}
@@ -173,6 +173,7 @@
   .grelha-grid{
     display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
   }
+  .cozinha-grid{grid-template-columns:repeat(4,1fr);}
   .dish{
     background:var(--card);border-radius:2px;overflow:hidden;
     box-shadow:0 8px 24px rgba(11,31,48,0.08);
@@ -189,6 +190,11 @@
     .grelha-grid{grid-template-columns:repeat(2,1fr);}
     .grelha-grid .dish:last-child{grid-column:span 2;}
     .grelha-grid .dish:last-child .dish-photo{aspect-ratio:16/9;}
+    .cozinha-grid .dish:last-child{grid-column:span 1;}
+    .cozinha-grid .dish:last-child .dish-photo{aspect-ratio:3/4;}
+  }
+  @media(max-width:600px){
+    .cozinha-grid{grid-template-columns:repeat(2,1fr);}
   }
 
   /* ---------- Ambiente ---------- */
@@ -210,6 +216,15 @@
   @media(max-width:820px){
     .ambiente-grid{grid-template-columns:1fr;}
     .ambiente-text{grid-template-columns:1fr;gap:24px;}
+  }
+  .ambiente-night{
+    margin-top:36px;position:relative;border-radius:2px;overflow:hidden;
+  }
+  .ambiente-night img{width:100%;max-height:520px;object-fit:cover;object-position:center 30%;}
+  .ambiente-night p{
+    position:absolute;left:0;right:0;bottom:0;margin:0;
+    padding:22px 28px;color:#fff;font-size:1rem;max-width:52ch;
+    background:linear-gradient(0deg, rgba(11,31,48,0.88) 0%, rgba(11,31,48,0) 100%);
   }
 
   /* ---------- Sobremesas ---------- */
@@ -240,6 +255,7 @@
   .info-row .label{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;color:#9db6c9;min-width:88px;padding-top:2px;}
   .info-row a, .info-row span{color:#fff;text-decoration:none;font-weight:500;}
   .info-row a:hover{text-decoration:underline;}
+  .map-link{display:inline-block;margin-top:6px;font-size:0.85rem;color:#a9c3d3!important;text-decoration:underline!important;font-weight:500;}
   .reservas .btn-primary{margin-top:26px;width:100%;justify-content:center;}
   @media(max-width:820px){.reservas .wrap{grid-template-columns:1fr;}}
 
@@ -275,6 +291,7 @@
     <nav class="links" id="navLinks">
       <a href="#peixe">O Peixe</a>
       <a href="#grelha">Da Grelha</a>
+      <a href="#cozinha">Da Cozinha</a>
       <a href="#ambiente">O Espaço</a>
       <a href="#sobremesas">Sobremesas</a>
       <a href="#reservas">Reservas</a>
@@ -354,6 +371,36 @@
     </div>
   </section>
 
+  <svg class="wave" viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,20 C100,2 200,2 300,20 C400,38 500,38 600,20 C700,2 800,2 900,20 C1000,38 1100,38 1200,20"/></svg>
+
+  <section id="cozinha">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Também da cozinha</p>
+        <h2>Nem só de grelha vive a casa.</h2>
+        <p>Marisco, massas e pratos de tacho para quem procura outra coisa além do peixe na brasa.</p>
+      </div>
+      <div class="grelha-grid cozinha-grid">
+        <div class="dish">
+          <div class="dish-photo"><img src="images/peixarada-espaguete-negro-camarao.jpg" alt="Esparguete negro com camarão no Peixarada, Portimão" loading="lazy"></div>
+          <div class="dish-label"><h3>Esparguete negro com camarão</h3><p>Tinta de choco, camarão salteado e tomate cereja.</p></div>
+        </div>
+        <div class="dish">
+          <div class="dish-photo"><img src="images/peixarada-ameijoas-bulhao-pato.jpg" alt="Amêijoas à Bulhão Pato no Peixarada, Portimão" loading="lazy"></div>
+          <div class="dish-label"><h3>Amêijoas à Bulhão Pato</h3><p>Alho, coentros e um fio de azeite, à moda antiga.</p></div>
+        </div>
+        <div class="dish">
+          <div class="dish-photo"><img src="images/peixarada-gratinado-forno.jpg" alt="Prato gratinado no forno do Peixarada, Portimão" loading="lazy"></div>
+          <div class="dish-label"><h3>Gratinado da casa</h3><p>Dourado no forno, servido bem quente na caçoila de barro.</p></div>
+        </div>
+        <div class="dish">
+          <div class="dish-photo"><img src="images/peixarada-ninho-especial.jpg" alt="Especialidade da casa do Peixarada, Portimão" loading="lazy"></div>
+          <div class="dish-label"><h3>Especialidade da casa</h3><p>Uma sugestão diferente, para quem gosta de sair do óbvio.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="ambiente" class="ambiente">
     <div class="wrap">
       <div class="section-head">
@@ -374,6 +421,10 @@
             <p>Mesmo ao lado da marina de Portimão, fácil de encontrar e com bom estacionamento por perto.</p>
           </div>
         </div>
+      </div>
+      <div class="ambiente-night">
+        <img src="images/peixarada-ambiente-noite.jpg" alt="Sala do Peixarada à noite, cheia de gente, em Portimão" loading="lazy">
+        <p>Ao jantar a casa enche depressa. Se for em grupo ou num dia de verão, vale a pena reservar.</p>
       </div>
     </div>
   </section>
@@ -399,7 +450,8 @@
         <p>Ligue ou escreva-nos. Para grupos maiores, avise com alguma antecedência e tratamos de tudo.</p>
       </div>
       <div class="info-card">
-        <div class="info-row"><span class="label">MORADA</span><span>Largo da Barca<br>8500-527 Portimão</span></div>
+        <div class="info-row"><span class="label">MORADA</span><span>Largo da Barca<br>8500-527 Portimão<br><a href="https://www.google.com/maps/place/Restaurante+Peixarada/@37.1401902,-8.5327525,17z" target="_blank" rel="noopener" class="map-link">Ver no mapa</a></span></div>
+        <div class="info-row"><span class="label">HORÁRIO</span><span>Todos os dias<br>12h às 22h</span></div>
         <div class="info-row"><span class="label">RESERVAS</span><a href="tel:927609090">927 609 090</a></div>
         <div class="info-row"><span class="label">EMAIL</span><a href="mailto:restaurantepeixarada@sapo.pt">restaurantepeixarada@sapo.pt</a></div>
         <a href="tel:927609090" class="btn btn-primary">Ligar agora</a>
