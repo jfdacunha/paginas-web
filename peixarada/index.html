@@ -23,7 +23,7 @@
     --max:1180px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
   body{
     margin:0;
     background:var(--paper);
@@ -32,6 +32,8 @@
     font-size:16px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    max-width:100vw;
   }
   img{max-width:100%;display:block;}
   a{color:inherit;}
@@ -244,6 +246,7 @@
   .reservas .wrap{
     display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;
   }
+  .reservas .wrap > *{min-width:0;}
   .reservas h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:14ch;}
   .reservas > .wrap > div:first-child p{color:#d3ddea;max-width:48ch;margin-top:16px;font-size:1.05rem;}
   .info-card{
@@ -252,8 +255,8 @@
   }
   .info-row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.14);}
   .info-row:last-child{border-bottom:none;}
-  .info-row .label{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;color:#9db6c9;min-width:88px;padding-top:2px;}
-  .info-row a, .info-row span{color:#fff;text-decoration:none;font-weight:500;}
+  .info-row .label{font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;color:#9db6c9;min-width:88px;padding-top:2px;flex-shrink:0;}
+  .info-row a, .info-row span{color:#fff;text-decoration:none;font-weight:500;overflow-wrap:anywhere;min-width:0;}
   .info-row a:hover{text-decoration:underline;}
   .map-link{display:inline-block;margin-top:6px;font-size:0.85rem;color:#a9c3d3!important;text-decoration:underline!important;font-weight:500;}
   .reservas .btn-primary{margin-top:26px;width:100%;justify-content:center;}
