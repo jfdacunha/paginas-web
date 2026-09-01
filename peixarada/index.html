@@ -137,55 +137,58 @@
 
   /* ---------- Peixe do dia ---------- */
   .catch{
-    display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;
+    display:grid;grid-template-columns:1fr 0.85fr;gap:56px;align-items:center;
   }
-  .catch-photo{position:relative;}
-  .catch-photo img{border-radius:2px;}
-  .catch-tag{
-    position:absolute;top:-14px;left:-14px;background:#fff;
-    padding:10px 16px;font-family:'Big Shoulders Display',sans-serif;font-weight:700;
-    font-size:0.85rem;letter-spacing:0.04em;color:var(--navy-deep);
-    box-shadow:0 4px 14px rgba(11,31,48,0.18);transform:rotate(-3deg);
-    border:1px dashed var(--navy);
+  .catch-text h3{font-size:1.6rem;margin-bottom:14px;max-width:16ch;}
+  .catch-text p{color:#3c5266;margin-bottom:16px;max-width:48ch;}
+  .board{
+    background:var(--navy-deep);border-radius:3px;padding:34px 36px;
+    box-shadow:0 14px 34px rgba(11,31,48,0.18);
   }
-  .catch-text h3{font-size:1.5rem;margin-bottom:14px;}
-  .catch-text p{color:#3c5266;margin-bottom:16px;}
-  .species{
-    display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;
+  .board-title{
+    font-family:'Big Shoulders Display',sans-serif;font-weight:700;color:#e7c988;
+    font-size:0.85rem;letter-spacing:0.05em;margin-bottom:18px;
   }
-  .species span{
-    border:1px solid var(--navy);color:var(--navy);border-radius:20px;
-    padding:6px 14px;font-size:0.85rem;font-weight:500;
+  .board ul{list-style:none;margin:0;padding:0;}
+  .board li{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:11px 0;border-bottom:1px dashed rgba(255,255,255,0.22);
+    font-family:'Fraunces',serif;color:#fff;font-size:1.15rem;
+  }
+  .board li:last-child{border-bottom:none;}
+  .board li span{font-family:'Work Sans',sans-serif;font-size:0.8rem;color:#9db6c9;font-weight:500;}
+  @media(max-width:900px){
+    .catch{grid-template-columns:1fr;gap:36px;}
   }
 
   /* ---------- Grelha gallery ---------- */
+  .grelha-feature{
+    border-radius:2px;overflow:hidden;margin-bottom:22px;
+    box-shadow:0 8px 24px rgba(11,31,48,0.1);background:var(--card);
+  }
+  .grelha-feature .dish-photo{aspect-ratio:16/9;}
+  .grelha-feature .dish-label{border-top:2px solid var(--navy);padding:20px 24px 22px;}
+  .grelha-feature .dish-label h3{font-size:1.35rem;margin-bottom:6px;}
+  .grelha-feature .dish-label p{margin:0;color:#4a6070;font-size:0.98rem;max-width:60ch;}
   .grelha-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
   }
   .dish{
     background:var(--card);border-radius:2px;overflow:hidden;
     box-shadow:0 8px 24px rgba(11,31,48,0.08);
   }
-  .dish:nth-child(1){grid-column:span 2;grid-row:span 2;}
-  .dish:nth-child(2){grid-column:span 2;}
-  .dish:nth-child(3){grid-column:span 2;}
-  .dish:nth-child(4){grid-column:span 4;}
-  .dish-photo{aspect-ratio:4/3;overflow:hidden;}
-  .dish:nth-child(1) .dish-photo{aspect-ratio:1/1.15;}
-  .dish:nth-child(4) .dish-photo{aspect-ratio:16/8;}
+  .dish-photo{aspect-ratio:3/4;overflow:hidden;}
   .dish-photo img{width:100%;height:100%;object-fit:cover;}
   .dish-label{
     padding:16px 18px 18px;border-top:2px solid var(--navy);
   }
-  .dish-label h3{font-size:1.15rem;margin-bottom:6px;}
+  .dish-label h3{font-size:1.1rem;margin-bottom:6px;}
   .dish-label p{margin:0;color:#4a6070;font-size:0.92rem;}
 
   @media(max-width:900px){
     .grelha-grid{grid-template-columns:repeat(2,1fr);}
-    .dish:nth-child(1){grid-column:span 2;grid-row:span 1;}
-    .dish:nth-child(2),.dish:nth-child(3){grid-column:span 2;}
-    .dish:nth-child(4){grid-column:span 2;}
-    .catch{grid-template-columns:1fr;gap:40px;}
+    .grelha-grid .dish:last-child{grid-column:span 2;}
+    .grelha-grid .dish:last-child .dish-photo{aspect-ratio:16/9;}
   }
 
   /* ---------- Ambiente ---------- */
@@ -301,23 +304,22 @@
 
   <section id="peixe">
     <div class="wrap catch">
-      <div class="catch-photo">
-        <span class="catch-tag">Escolhido&nbsp;hoje</span>
-        <img src="images/peixarada-peixe-fresco-diario.jpg" alt="Peixe fresco do dia no balcão do Peixarada, Portimão" loading="lazy">
-      </div>
       <div class="catch-text">
         <p class="kicker">O peixe do dia</p>
         <h3>Antes de ir para a brasa, passa pelas nossas mãos.</h3>
-        <p>Compramos o peixe fresco e escolhemos, peça a peça, o que vai para a grelha. Dourada, robalo, salmão, choco e o peixe de sazão que a lota nos trouxer nesse dia.</p>
-        <p>Sem congelados a fingir de frescos. O que vê no balcão é o que come à mesa.</p>
-        <div class="species">
-          <span>Dourada</span>
-          <span>Robalo</span>
-          <span>Salmão</span>
-          <span>Choco</span>
-          <span>Sardinha</span>
-          <span>Polvo</span>
-        </div>
+        <p>Compramos o peixe fresco e escolhemos, peça a peça, o que vai para a grelha. Sem congelados a fingir de frescos. O que vê no balcão é o que come à mesa.</p>
+        <p>O que sai da lota nesse dia entra na ementa. A lista ao lado muda consoante a época.</p>
+      </div>
+      <div class="board">
+        <p class="board-title">Costuma haver</p>
+        <ul>
+          <li>Dourada <span>grelhada inteira</span></li>
+          <li>Robalo <span>grelhado inteiro</span></li>
+          <li>Salmão <span>em posta</span></li>
+          <li>Choco <span>grelhado</span></li>
+          <li>Sardinha <span>na brasa</span></li>
+          <li>Polvo <span>à grelha</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -331,14 +333,14 @@
         <h2>Carvão, sal grosso e pouco mais.</h2>
         <p>É assim que gostamos do peixe. A grelha fica acesa o dia todo e os pratos saem para a mesa mal saem do lume.</p>
       </div>
+      <div class="grelha-feature dish">
+        <div class="dish-photo"><img src="images/peixarada-polvo-grelhado.jpg" alt="Polvo grelhado com cebola roxa, brócolos e cenoura no Peixarada" loading="lazy"></div>
+        <div class="dish-label"><h3>Polvo à grelha</h3><p>Tenrinho por dentro, tostado por fora, com legumes salteados.</p></div>
+      </div>
       <div class="grelha-grid">
         <div class="dish">
           <div class="dish-photo"><img src="images/peixarada-grelhados-mistos-portimao.jpg" alt="Grelhados mistos do Peixarada, dourada, salmão e sardinhas na brasa" loading="lazy"></div>
           <div class="dish-label"><h3>Grelhados mistos</h3><p>Dourada, posta de salmão e sardinhas, tudo na mesma travessa.</p></div>
-        </div>
-        <div class="dish">
-          <div class="dish-photo"><img src="images/peixarada-polvo-grelhado.jpg" alt="Polvo grelhado com cebola roxa, brócolos e cenoura no Peixarada" loading="lazy"></div>
-          <div class="dish-label"><h3>Polvo à grelha</h3><p>Tenrinho por dentro, tostado por fora, com legumes salteados.</p></div>
         </div>
         <div class="dish">
           <div class="dish-photo"><img src="images/peixarada-sardinhas-assadas.jpg" alt="Sardinhas assadas com sal grosso no Peixarada, Portimão" loading="lazy"></div>
