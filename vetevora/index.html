@@ -119,23 +119,30 @@
   .menu-toggle span{display:block;width:24px;height:2px;background:var(--verde-escuro);margin:5px 0;}
 
   /* hero */
-  .hero{padding:56px 0 0;}
-  .hero-intro{max-width:700px;margin:0 auto;text-align:center;padding-bottom:44px;}
-  .hero h1{font-size:clamp(32px,4.4vw,54px);}
-  .hero h1 em{font-style:italic;color:var(--verde);}
-  .hero p.lead{font-size:18px;color:var(--tinta-suave);max-width:52ch;margin:20px auto 0;}
+  .hero{
+    position:relative;isolation:isolate;overflow:hidden;
+    min-height:640px;display:flex;align-items:center;
+    padding:120px 0 72px;color:var(--branco);
+  }
+  .hero-bg{position:absolute;inset:0;z-index:-2;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg, rgba(15,45,32,.35) 0%, rgba(15,45,32,.58) 45%, rgba(15,45,32,.88) 100%);
+  }
+  .hero-intro{max-width:700px;margin:0 auto;text-align:center;}
+  .hero .rotulo{color:var(--dourado);}
+  .hero .rotulo::before{color:var(--dourado);}
+  .hero h1{font-size:clamp(32px,4.4vw,54px);color:var(--branco);}
+  .hero h1 em{font-style:italic;color:var(--dourado);}
+  .hero p.lead{font-size:18px;color:rgba(255,253,248,.88);max-width:52ch;margin:20px auto 0;}
   .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;justify-content:center;}
   .hero-selo{
     display:inline-flex;align-items:center;gap:10px;
-    margin-top:32px;font-size:14px;color:var(--tinta-suave);
+    margin-top:32px;font-size:14px;color:rgba(255,253,248,.85);
     justify-content:center;width:100%;
   }
   .estrelas{color:var(--dourado);letter-spacing:2px;}
-  .hero-capa{
-    position:relative;width:100%;aspect-ratio:16/8;overflow:hidden;
-  }
-  .hero-capa img{width:100%;height:100%;object-fit:cover;object-position:center 42%;}
-  .hero-capa .foto-legenda{position:absolute;bottom:0;left:0;margin:0;border-radius:0 4px 0 0;z-index:2;}
 
   /* faixa de confianca */
   .faixa{
@@ -161,12 +168,9 @@
   .sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
   .sobre-texto p{color:var(--tinta-suave);margin-top:16px;}
   .sobre-colagem{
-    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;
   }
-  .sobre-colagem .foto:nth-child(1){grid-column:1/2;aspect-ratio:1/1;}
-  .sobre-colagem .foto:nth-child(2){grid-column:2/3;aspect-ratio:3/4;transform:translateY(28px);}
-  .sobre-colagem .foto:nth-child(3){grid-column:1/2;aspect-ratio:3/4;}
-  .sobre-colagem .foto:nth-child(4){grid-column:2/3;aspect-ratio:1/1;transform:translateY(28px);}
+  .sobre-colagem .foto{aspect-ratio:4/5;}
   .domicilio-nota{
     margin-top:36px;border:1.5px solid var(--verde);border-radius:3px;
     padding:20px 22px;display:flex;gap:16px;align-items:flex-start;
@@ -199,12 +203,9 @@
   /* galeria equipa */
   #momentos{background:var(--verde-suave);}
   .momentos-grid{
-    columns:4 220px;column-gap:16px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
   }
-  .momentos-grid .foto{margin-bottom:16px;break-inside:avoid;}
-  .momentos-grid .foto:nth-child(3n+1){aspect-ratio:3/4;}
-  .momentos-grid .foto:nth-child(3n+2){aspect-ratio:1/1;}
-  .momentos-grid .foto:nth-child(3n){aspect-ratio:4/5;}
+  .momentos-grid .foto{aspect-ratio:1/1;}
 
   /* avaliacoes */
   #avaliacoes{background:var(--verde-escuro);color:var(--branco);}
@@ -288,21 +289,16 @@
     .faixa-item:nth-child(3){border-left:none;padding-left:0;}
     .servico-linha{grid-template-columns:1fr;gap:16px;}
     .especies-grid{grid-template-columns:repeat(3,1fr);row-gap:24px;}
-    .momentos-grid{columns:2 220px;}
+    .momentos-grid{grid-template-columns:repeat(3,1fr);}
     .citacoes{grid-template-columns:1fr;}
     nav.links{display:none;}
     .menu-toggle{display:block;}
   }
-  @media (max-width:700px){
-    .sobre-colagem{grid-template-columns:1fr 1fr;}
-    .sobre-colagem .foto:nth-child(2),.sobre-colagem .foto:nth-child(4){transform:none;}
-    .hero-capa{aspect-ratio:4/3;}
-  }
   @media (max-width:560px){
     section{padding:56px 0;}
-    .hero{padding:44px 0 0;}
-    .hero-intro{padding-bottom:32px;}
+    .hero{min-height:560px;padding:100px 0 56px;}
     .especies-grid{grid-template-columns:repeat(2,1fr);}
+    .momentos-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
     .nav-cta .btn-fantasma{display:none;}
     .servico-linha .num-serv{font-size:14px;}
     .avaliacao-bloco{flex-direction:column;align-items:flex-start;gap:12px;}
@@ -336,22 +332,22 @@
 <main id="topo">
 
   <section class="hero">
+    <div class="hero-bg">
+      <img src="images/vetevora-carrinha-vamos-a-sua-casa.jpg" alt="Carrinha Vetévora com o mote Vamos a sua casa, serviço de consulta veterinária ao domicílio em Évora" loading="lazy">
+    </div>
+    <div class="hero-scrim"></div>
     <div class="wrap hero-intro">
       <p class="rotulo">Évora, desde há mais de 30 anos</p>
       <h1>Cuidamos do seu animal <em>como se fosse nosso</em>.</h1>
       <p class="lead">Consultas, cirurgia, diagnóstico por imagem e urgências no Parque Industrial de Évora. E quando não pode vir até nós, somos nós que vamos a sua casa.</p>
       <div class="hero-ctas">
         <a href="https://wa.me/351912505204?text=Ol%C3%A1%2C%20gostaria%20de%20marcar%20uma%20consulta%20na%20Vet%C3%A9vora" class="btn btn-primario" target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
-        <a href="#servicos" class="btn btn-fantasma">Ver serviços</a>
+        <a href="#servicos" class="btn btn-claro">Ver serviços</a>
       </div>
       <div class="hero-selo">
         <span class="estrelas">★★★★★</span>
         <span>4,4/5 em mais de 120 avaliações no Google</span>
       </div>
-    </div>
-    <div class="hero-capa">
-      <img src="images/vetevora-carrinha-vamos-a-sua-casa.jpg" alt="Carrinha Vetévora com o mote Vamos a sua casa, serviço de consulta veterinária ao domicílio em Évora" loading="lazy">
-      <div class="foto-legenda">A carrinha Vetévora<span>Serviço de consulta ao domicílio</span></div>
     </div>
   </section>
 
@@ -418,14 +414,7 @@
         <div class="servico-linha">
           <div><span class="num-serv">Imagiologia</span><h3>Radiografia digital e ecografia</h3></div>
           <p>Diagnóstico por imagem no local, incluindo radiografia digital, ecografia e electrocardiograma, para respostas mais rápidas e precisas.</p>
-          <div>
-            <div class="foto"><img src="images/vetevora-radiografia-digital.jpg" alt="Radiografia digital de gato realizada na Vetévora, Évora" loading="lazy"></div>
-            <div style="display:flex;gap:8px;margin-top:8px;">
-              <div class="foto" style="aspect-ratio:1/1;flex:1;"><img src="images/vetevora-radiografia-tartaruga.jpg" alt="Radiografia digital de tartaruga na Vetévora" loading="lazy"></div>
-              <div class="foto" style="aspect-ratio:1/1;flex:1;"><img src="images/vetevora-radiografia-ave.jpg" alt="Radiografia digital de ave na Vetévora" loading="lazy"></div>
-              <div class="foto" style="aspect-ratio:1/1;flex:1;"><img src="images/vetevora-radiografia-membro.jpg" alt="Radiografia digital de membro na Vetévora" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="foto"><img src="images/vetevora-radiografia-digital.jpg" alt="Radiografia digital de gato realizada na Vetévora, Évora" loading="lazy"></div>
         </div>
 
         <div class="servico-linha">
@@ -477,6 +466,9 @@
         <div class="foto"><img src="images/vetevora-terapia-laser-cao.jpg" alt="Sessão de laserterapia numa pata de cão na Vetévora" loading="lazy"></div>
         <div class="foto"><img src="images/vetevora-equipa-grupo-puppies.jpg" alt="Equipa Vetévora com cão de grande porte e cachorros" loading="lazy"></div>
         <div class="foto"><img src="images/vetevora-terrier-sala-espera.jpg" alt="Cão terrier na sala de espera da Vetévora, Évora" loading="lazy"></div>
+        <div class="foto"><img src="images/vetevora-radiografia-tartaruga.jpg" alt="Radiografia digital de tartaruga na Vetévora" loading="lazy"></div>
+        <div class="foto"><img src="images/vetevora-radiografia-ave.jpg" alt="Radiografia digital de ave na Vetévora" loading="lazy"></div>
+        <div class="foto"><img src="images/vetevora-radiografia-membro.jpg" alt="Radiografia digital de membro na Vetévora" loading="lazy"></div>
       </div>
     </div>
   </section>
