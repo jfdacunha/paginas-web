@@ -189,6 +189,7 @@
   .servico-linha h3{font-size:22px;margin-top:6px;}
   .servico-linha p{color:var(--tinta-suave);font-size:15px;}
   .servico-linha .foto{aspect-ratio:4/3;}
+  .servico-linha.sem-foto{grid-template-columns:1.1fr 1.9fr;}
 
   /* especies */
   #especies{background:var(--branco);}
@@ -288,6 +289,7 @@
     .faixa-grid{grid-template-columns:repeat(2,1fr);row-gap:20px;}
     .faixa-item:nth-child(3){border-left:none;padding-left:0;}
     .servico-linha{grid-template-columns:1fr;gap:16px;}
+    .servico-linha.sem-foto{grid-template-columns:1fr;}
     .especies-grid{grid-template-columns:repeat(3,1fr);row-gap:24px;}
     .momentos-grid{grid-template-columns:repeat(3,1fr);}
     .citacoes{grid-template-columns:1fr;}
@@ -417,16 +419,15 @@
           <div class="foto"><img src="images/vetevora-radiografia-digital.jpg" alt="Radiografia digital de gato realizada na Vetévora, Évora" loading="lazy"></div>
         </div>
 
-        <div class="servico-linha">
+        <div class="servico-linha sem-foto">
           <div><span class="num-serv">Endoscopia</span><h3>Endoscopia</h3></div>
           <p>Procedimentos minimamente invasivos para diagnóstico e remoção de corpos estranhos, reduzindo a necessidade de cirurgia aberta.</p>
-          <div class="foto"><!-- images/vetevora-endoscopia.jpg --></div>
         </div>
 
         <div class="servico-linha">
           <div><span class="num-serv">Bem-estar</span><h3>Tosquias, grooming e banhos</h3></div>
           <p>Cuidados de higiene e imagem, do banho simples à tosquia, mantendo o pelo e a pele do seu animal saudáveis.</p>
-          <div class="foto"><!-- images/vetevora-grooming-banho.jpg --></div>
+          <div class="foto" style="aspect-ratio:13/7;"><img src="images/vetevora-grooming-banho.jpg" alt="Cão antes e depois da tosquia na Vetévora, Évora" loading="lazy"></div>
         </div>
 
       </div>
@@ -469,6 +470,8 @@
         <div class="foto"><img src="images/vetevora-radiografia-tartaruga.jpg" alt="Radiografia digital de tartaruga na Vetévora" loading="lazy"></div>
         <div class="foto"><img src="images/vetevora-radiografia-ave.jpg" alt="Radiografia digital de ave na Vetévora" loading="lazy"></div>
         <div class="foto"><img src="images/vetevora-radiografia-membro.jpg" alt="Radiografia digital de membro na Vetévora" loading="lazy"></div>
+        <div class="foto"><img src="images/vetevora-recuperacao-pos-operatoria.jpg" alt="Cachorro em recuperação pós-operatória na Vetévora, Évora" loading="lazy"></div>
+        <div class="foto"><img src="images/vetevora-equipa-exame-detalhado.jpg" alt="Equipa Vetévora a realizar exame detalhado a um animal" loading="lazy"></div>
       </div>
     </div>
   </section>
