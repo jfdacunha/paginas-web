@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vetévora Centro Veterinário | Évora</title>
@@ -348,6 +349,8 @@
     section{padding:56px 0;}
     .hero{min-height:560px;padding:100px 0 56px;}
     .especies-grid{grid-template-columns:repeat(2,1fr);}
+    .especies-grid .especie:last-child:nth-child(odd){grid-column:1/-1;}
+    .especies-grid .especie:last-child:nth-child(odd) .foto{max-width:160px;margin:0 auto;}
     .momentos-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
     .nav-cta .btn-fantasma{display:none;}
     .servicos-grid{grid-template-columns:1fr;}
@@ -726,6 +729,11 @@
       });
     }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal').forEach(el=>revelador.observe(el));
+
+    // rede de seguranca: garante que nada fica escondido para sempre
+    setTimeout(()=>{
+      document.querySelectorAll('.reveal:not(.in-view)').forEach(el=>el.classList.add('in-view'));
+    }, 2500);
 
     const contador = new IntersectionObserver((entradas)=>{
       entradas.forEach(entrada=>{
