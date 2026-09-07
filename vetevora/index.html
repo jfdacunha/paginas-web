@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vetévora Centro Veterinário | Évora</title>
+<meta name="description" content="Vetévora, centro veterinário em Évora há mais de 30 anos. Consultas, cirurgia, radiografia digital, ecografia, urgências e serviço ao domicílio. Marque já pelo telefone ou WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐾%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde: #1F5C3D;
+    --verde-escuro: #0F2D20;
+    --verde-suave: #EAF0EA;
+    --marfim: #F6F3EA;
+    --marfim-escuro: #EDE7D6;
+    --dourado: #C99A3B;
+    --tinta: #1B1E1B;
+    --tinta-suave: #55584F;
+    --linha: rgba(27,30,27,0.14);
+    --branco: #FFFDF8;
+    --radius-photo: 3px;
+    --sombra: 0 18px 40px -20px rgba(15,45,32,0.35);
+    --largura: 1160px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--marfim);
+    color:var(--tinta);
+    font-family:'Archivo',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    line-height:1.12;
+    margin:0;
+    color:var(--verde-escuro);
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--largura);margin:0 auto;padding:0 28px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 26px;
+    border-radius:2px;
+    font-family:'Archivo',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, background .2s ease, border-color .2s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primario{background:var(--verde);color:var(--branco);}
+  .btn-primario:hover{background:var(--verde-escuro);}
+  .btn-fantasma{border-color:var(--verde-escuro);color:var(--verde-escuro);}
+  .btn-fantasma:hover{background:var(--verde-escuro);color:var(--branco);}
+  .btn-claro{border-color:rgba(255,253,248,.55);color:var(--branco);}
+  .btn-claro:hover{background:var(--branco);color:var(--verde-escuro);}
+  .rotulo{
+    font-size:13px;
+    letter-spacing:.02em;
+    color:var(--verde);
+    font-weight:600;
+  }
+  .rotulo::before{content:"— ";color:var(--dourado);}
+
+  /* placeholder de imagem enquanto as fotos reais nao sao adicionadas */
+  .foto{
+    position:relative;
+    overflow:hidden;
+    border-radius:var(--radius-photo);
+    background:
+      repeating-linear-gradient(135deg, rgba(31,92,61,0.08) 0 2px, transparent 2px 14px),
+      linear-gradient(160deg,#dfe7de,#cfd9cd);
+    display:flex;align-items:flex-end;
+    min-height:180px;
+  }
+  .foto img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+  .foto-legenda{
+    position:relative;z-index:2;
+    font-size:12px;
+    color:var(--verde-escuro);
+    background:rgba(246,243,234,.88);
+    padding:6px 10px;
+    margin:10px;
+    border-radius:2px;
+    font-weight:600;
+  }
+  .foto-legenda span{display:block;font-weight:400;color:var(--tinta-suave);font-size:11px;}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,243,234,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--linha);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:78px;
+  }
+  .marca{display:flex;align-items:center;gap:12px;}
+  .marca svg{width:40px;height:40px;flex-shrink:0;}
+  .marca-texto{font-family:'Fraunces',serif;font-size:22px;color:var(--verde-escuro);font-weight:600;letter-spacing:.01em;}
+  nav.links{display:flex;gap:30px;align-items:center;}
+  nav.links a{font-size:15px;font-weight:500;color:var(--tinta);}
+  nav.links a:hover{color:var(--verde);}
+  .nav-cta{display:flex;align-items:center;gap:14px;}
+  .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-toggle span{display:block;width:24px;height:2px;background:var(--verde-escuro);margin:5px 0;}
+
+  /* hero */
+  .hero{padding:64px 0 0;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+    padding-bottom:56px;
+  }
+  .hero h1{font-size:clamp(34px,4.4vw,56px);}
+  .hero h1 em{font-style:italic;color:var(--verde);}
+  .hero p.lead{font-size:18px;color:var(--tinta-suave);max-width:46ch;margin-top:20px;}
+  .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .hero-selo{
+    display:inline-flex;align-items:center;gap:10px;
+    margin-top:36px;font-size:14px;color:var(--tinta-suave);
+  }
+  .estrelas{color:var(--dourado);letter-spacing:2px;}
+  .hero-foto{aspect-ratio:4/5;box-shadow:var(--sombra);}
+  .hero-foto .foto-legenda{position:absolute;bottom:0;left:0;margin:0;border-radius:0 4px 0 0;}
+
+  /* faixa de confianca */
+  .faixa{
+    background:var(--verde-escuro);color:var(--branco);
+    padding:26px 0;
+  }
+  .faixa-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+    text-align:left;
+  }
+  .faixa-item .num{font-family:'Fraunces',serif;font-size:26px;color:var(--dourado);display:block;}
+  .faixa-item .desc{font-size:13.5px;color:rgba(255,253,248,.82);margin-top:4px;}
+  .faixa-item{border-left:1px solid rgba(255,253,248,.18);padding-left:20px;}
+  .faixa-item:first-child{border-left:none;padding-left:0;}
+
+  section{padding:96px 0;}
+  .cab-secao{max-width:640px;margin-bottom:52px;}
+  .cab-secao h2{font-size:clamp(28px,3.2vw,40px);margin-top:10px;}
+  .cab-secao p{color:var(--tinta-suave);margin-top:16px;font-size:16.5px;}
+
+  /* sobre */
+  #sobre{background:var(--branco);}
+  .sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .sobre-texto p{color:var(--tinta-suave);margin-top:16px;}
+  .sobre-colagem{
+    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px;
+  }
+  .sobre-colagem .foto:nth-child(1){grid-column:1/2;aspect-ratio:1/1;}
+  .sobre-colagem .foto:nth-child(2){grid-column:2/3;aspect-ratio:3/4;transform:translateY(28px);}
+  .sobre-colagem .foto:nth-child(3){grid-column:1/2;aspect-ratio:3/4;}
+  .sobre-colagem .foto:nth-child(4){grid-column:2/3;aspect-ratio:1/1;transform:translateY(28px);}
+  .domicilio-nota{
+    margin-top:36px;border:1.5px solid var(--verde);border-radius:3px;
+    padding:20px 22px;display:flex;gap:16px;align-items:flex-start;
+  }
+  .domicilio-nota svg{flex-shrink:0;width:30px;height:30px;color:var(--verde);margin-top:2px;}
+  .domicilio-nota strong{font-family:'Fraunces',serif;font-weight:600;color:var(--verde-escuro);display:block;margin-bottom:4px;}
+
+  /* servicos */
+  #servicos{background:var(--marfim-escuro);}
+  .servicos-lista{border-top:1px solid var(--linha);}
+  .servico-linha{
+    display:grid;grid-template-columns:1.1fr 1.4fr 1fr;gap:40px;
+    padding:32px 0;border-bottom:1px solid var(--linha);align-items:center;
+  }
+  .servico-linha .num-serv{font-family:'Fraunces',serif;font-style:italic;color:var(--dourado);font-size:15px;}
+  .servico-linha h3{font-size:22px;margin-top:6px;}
+  .servico-linha p{color:var(--tinta-suave);font-size:15px;}
+  .servico-linha .foto{aspect-ratio:4/3;}
+
+  /* especies */
+  #especies{background:var(--branco);}
+  .especies-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:18px;
+  }
+  .especie{text-align:center;}
+  .especie .foto{aspect-ratio:1/1;border-radius:50%;}
+  .especie .foto .foto-legenda{display:none;}
+  .especie h4{font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;margin-top:14px;}
+
+  /* galeria equipa */
+  #momentos{background:var(--verde-suave);}
+  .momentos-grid{
+    columns:4 220px;column-gap:16px;
+  }
+  .momentos-grid .foto{margin-bottom:16px;break-inside:avoid;}
+  .momentos-grid .foto:nth-child(3n+1){aspect-ratio:3/4;}
+  .momentos-grid .foto:nth-child(3n+2){aspect-ratio:1/1;}
+  .momentos-grid .foto:nth-child(3n){aspect-ratio:4/5;}
+
+  /* avaliacoes */
+  #avaliacoes{background:var(--verde-escuro);color:var(--branco);}
+  #avaliacoes .cab-secao h2, #avaliacoes .cab-secao .rotulo{color:var(--branco);}
+  #avaliacoes .cab-secao p{color:rgba(255,253,248,.75);}
+  .avaliacao-bloco{display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
+  .avaliacao-numero{font-family:'Fraunces',serif;font-size:72px;color:var(--dourado);line-height:1;}
+  .avaliacao-detalhe .estrelas{font-size:20px;}
+  .avaliacao-detalhe p{margin-top:8px;color:rgba(255,253,248,.75);}
+  .citacoes{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;
+  }
+  .citacao{
+    border-top:1px solid rgba(255,253,248,.25);
+    padding-top:20px;
+  }
+  .citacao p{font-family:'Fraunces',serif;font-style:italic;font-size:18px;line-height:1.4;}
+  .citacao span{display:block;margin-top:14px;font-size:13px;color:var(--dourado);font-family:'Archivo',sans-serif;font-weight:600;}
+
+  /* faq */
+  #faq{background:var(--marfim);}
+  .faq-lista{max-width:820px;}
+  .faq-item{border-bottom:1px solid var(--linha);}
+  .faq-pergunta{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;gap:20px;
+    padding:24px 0;font-family:'Fraunces',serif;font-size:19px;color:var(--verde-escuro);
+  }
+  .faq-pergunta .mais{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--verde);
+    position:relative;transition:transform .25s ease;
+  }
+  .faq-pergunta .mais::before,.faq-pergunta .mais::after{
+    content:"";position:absolute;background:var(--verde);
+  }
+  .faq-pergunta .mais::before{left:6px;right:6px;top:12px;height:2px;}
+  .faq-pergunta .mais::after{top:6px;bottom:6px;left:12px;width:2px;transition:opacity .2s ease;}
+  .faq-item.aberto .mais{transform:rotate(180deg);}
+  .faq-item.aberto .mais::after{opacity:0;}
+  .faq-resposta{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-resposta p{color:var(--tinta-suave);padding-bottom:26px;max-width:65ch;}
+
+  /* contactos */
+  #contacto{background:var(--branco);}
+  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+  .contacto-lista{margin-top:28px;}
+  .contacto-linha{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--linha);}
+  .contacto-linha:last-child{border-bottom:1px solid var(--linha);}
+  .contacto-linha svg{flex-shrink:0;width:22px;height:22px;color:var(--verde);margin-top:2px;}
+  .contacto-linha strong{display:block;font-size:15px;}
+  .contacto-linha span,.contacto-linha a{color:var(--tinta-suave);font-size:15px;}
+  .horario-tabela{width:100%;border-collapse:collapse;margin-top:14px;}
+  .horario-tabela td{padding:8px 0;font-size:14.5px;border-top:1px solid var(--linha);}
+  .horario-tabela td:last-child{text-align:right;color:var(--tinta-suave);}
+  .mapa-caixa{aspect-ratio:4/5;background:var(--verde-suave);border-radius:3px;position:relative;overflow:hidden;}
+  .mapa-caixa iframe{width:100%;height:100%;border:0;filter:grayscale(.15);}
+  .redes{display:flex;gap:14px;margin-top:24px;}
+  .redes a{
+    width:42px;height:42px;border-radius:50%;border:1.5px solid var(--linha);
+    display:flex;align-items:center;justify-content:center;transition:.2s;
+  }
+  .redes a:hover{border-color:var(--verde);background:var(--verde);color:var(--branco);}
+
+  footer{background:var(--verde-escuro);color:rgba(255,253,248,.7);padding:40px 0;}
+  .rodape-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13.5px;}
+  .rodape-grid a{color:rgba(255,253,248,.85);}
+
+  .whatsapp-flutuante{
+    position:fixed;right:24px;bottom:24px;z-index:60;
+    width:58px;height:58px;border-radius:50%;
+    background:#1F5C3D;color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px -8px rgba(15,45,32,.55);
+  }
+  .whatsapp-flutuante svg{width:28px;height:28px;}
+
+  @media (max-width:980px){
+    .hero-grid,.sobre-grid,.contacto-grid{grid-template-columns:1fr;}
+    .sobre-colagem{margin-top:20px;}
+    .faixa-grid{grid-template-columns:repeat(2,1fr);row-gap:20px;}
+    .faixa-item:nth-child(3){border-left:none;padding-left:0;}
+    .servico-linha{grid-template-columns:1fr;gap:16px;}
+    .especies-grid{grid-template-columns:repeat(3,1fr);row-gap:24px;}
+    .momentos-grid{columns:2 220px;}
+    .citacoes{grid-template-columns:1fr;}
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+  }
+  @media (max-width:560px){
+    section{padding:64px 0;}
+    .especies-grid{grid-template-columns:repeat(2,1fr);}
+    .nav-cta .btn-fantasma{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#topo" class="marca">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M28 78 C22 70 20 60 24 50 C20 46 18 40 20 33 C24 36 27 38 30 42 C34 34 41 27 49 24 C50 19 53 15 57 13 C57 18 57 22 56 26 C63 26 70 29 75 34 C71 35 68 36 65 38 C71 42 75 49 76 57 C72 55 69 54 66 53 C67 60 65 67 60 72 C58 68 57 64 56 60 C51 66 44 70 37 71 C36 74 33 77 28 78 Z" stroke="#1F5C3D" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M64 45 C69 47 73 51 75 56" stroke="#1F5C3D" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="59" cy="40" r="1.8" fill="#1F5C3D"/>
+      </svg>
+      <span class="marca-texto">Vetévora</span>
+    </a>
+    <nav class="links">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#especies">Espécies</a>
+      <a href="#momentos">Equipa</a>
+      <a href="#faq">Perguntas frequentes</a>
+      <a href="#contacto">Contactos</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:+351266749940" class="btn btn-fantasma">266 749 940</a>
+      <a href="https://wa.me/351912505204?text=Ol%C3%A1%2C%20gostaria%20de%20marcar%20uma%20consulta%20na%20Vet%C3%A9vora" class="btn btn-primario" target="_blank" rel="noopener">Marcar consulta</a>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="topo">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="rotulo">Évora, desde há mais de 30 anos</p>
+        <h1>Cuidamos do seu animal <em>como se fosse nosso</em>.</h1>
+        <p class="lead">Consultas, cirurgia, diagnóstico por imagem e urgências no Parque Industrial de Évora. E quando não pode vir até nós, somos nós que vamos a sua casa.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/351912505204?text=Ol%C3%A1%2C%20gostaria%20de%20marcar%20uma%20consulta%20na%20Vet%C3%A9vora" class="btn btn-primario" target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
+          <a href="#servicos" class="btn btn-fantasma">Ver serviços</a>
+        </div>
+        <div class="hero-selo">
+          <span class="estrelas">★★★★★</span>
+          <span>4,4/5 em mais de 120 avaliações no Google</span>
+        </div>
+      </div>
+      <div class="foto hero-foto">
+        <!-- images/vetevora-carrinha-vamos-a-sua-casa.jpg -->
+        <div class="foto-legenda">A carrinha Vetévora<span>Serviço de consulta ao domicílio</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa">
+    <div class="wrap faixa-grid">
+      <div class="faixa-item"><span class="num">30+</span><span class="desc">anos de experiência em Évora</span></div>
+      <div class="faixa-item"><span class="num">4,4/5</span><span class="desc">avaliação Google, mais de 120 opiniões</span></div>
+      <div class="faixa-item"><span class="num">6</span><span class="desc">espécies atendidas com regularidade</span></div>
+      <div class="faixa-item"><span class="num">7</span><span class="desc">dias por semana com atendimento</span></div>
+    </div>
+  </div>
+
+  <section id="sobre">
+    <div class="wrap sobre-grid">
+      <div class="sobre-texto">
+        <p class="rotulo">Sobre a Vetévora</p>
+        <h2>Um centro veterinário de bairro, com a estrutura de um hospital.</h2>
+        <p>A Vetévora acompanha famílias e os seus animais em Évora há mais de três décadas. Ao longo dos anos crescemos de simples consultas para um centro preparado para cirurgia, diagnóstico por imagem e cuidados de urgência, sem perder o atendimento próximo que sempre nos caracterizou.</p>
+        <p>A nossa equipa trata cães, gatos, pequenos mamíferos, aves, répteis e também animais de produção, com o mesmo cuidado dedicado a cada espécie que atravessa a nossa porta.</p>
+        <div class="domicilio-nota">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"/></svg>
+          <div>
+            <strong>Vamos a sua casa</strong>
+            Quando a deslocação é difícil para si ou para o seu animal, a Vetévora presta consultas ao domicílio em Évora e arredores.
+          </div>
+        </div>
+      </div>
+      <div class="sobre-colagem">
+        <div class="foto"><!-- images/vetevora-consulta-cachorro.jpg --><div class="foto-legenda">Consulta geral</div></div>
+        <div class="foto"><!-- images/vetevora-carrinha-lateral-gato.jpg --><div class="foto-legenda">Carrinha de serviço ao domicílio</div></div>
+        <div class="foto"><!-- images/vetevora-equipa-cirurgia.jpg --><div class="foto-legenda">Cirurgia com anestesia volátil</div></div>
+        <div class="foto"><!-- images/vetevora-cordeiro-tratamento.jpg --><div class="foto-legenda">Também cuidamos de animais de produção</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="wrap">
+      <div class="cab-secao">
+        <p class="rotulo">Serviços</p>
+        <h2>Do check-up de rotina à cirurgia, sob o mesmo teto.</h2>
+        <p>Investimos em equipamento de diagnóstico próprio para que o seu animal não precise de percorrer várias clínicas até chegar a um diagnóstico.</p>
+      </div>
+      <div class="servicos-lista">
+
+        <div class="servico-linha">
+          <div><span class="num-serv">Consultas</span><h3>Consultas gerais e vacinação</h3></div>
+          <p>Check-ups, vacinação, desparasitação e acompanhamento de rotina para cães, gatos e outras espécies, com identificação precoce de problemas de saúde.</p>
+          <div class="foto"><!-- images/vetevora-consulta-geral.jpg --></div>
+        </div>
+
+        <div class="servico-linha">
+          <div><span class="num-serv">Ao domicílio</span><h3>Consulta em sua casa</h3></div>
+          <p>Para animais que sofrem com a deslocação ou tutores com mobilidade reduzida, a nossa carrinha desloca-se até Évora e arredores.</p>
+          <div class="foto"><!-- images/vetevora-carrinha-domicilio.jpg --></div>
+        </div>
+
+        <div class="servico-linha">
+          <div><span class="num-serv">Cirurgia</span><h3>Cirurgia com anestesia volátil</h3></div>
+          <p>Bloco cirúrgico equipado para cirurgias eletivas e de urgência, com monitorização e anestesia volátil para maior segurança do animal.</p>
+          <div class="foto"><!-- images/vetevora-bloco-cirurgico.jpg --></div>
+        </div>
+
+        <div class="servico-linha">
+          <div><span class="num-serv">Imagiologia</span><h3>Radiografia digital e ecografia</h3></div>
+          <p>Diagnóstico por imagem no local, incluindo radiografia digital, ecografia e electrocardiograma, para respostas mais rápidas e precisas.</p>
+          <div class="foto"><!-- images/vetevora-radiografia-digital.jpg --></div>
+        </div>
+
+        <div class="servico-linha">
+          <div><span class="num-serv">Endoscopia</span><h3>Endoscopia</h3></div>
+          <p>Procedimentos minimamente invasivos para diagnóstico e remoção de corpos estranhos, reduzindo a necessidade de cirurgia aberta.</p>
+          <div class="foto"><!-- images/vetevora-endoscopia.jpg --></div>
+        </div>
+
+        <div class="servico-linha">
+          <div><span class="num-serv">Bem-estar</span><h3>Tosquias, grooming e banhos</h3></div>
+          <p>Cuidados de higiene e imagem, do banho simples à tosquia, mantendo o pelo e a pele do seu animal saudáveis.</p>
+          <div class="foto"><!-- images/vetevora-grooming-banho.jpg --></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="especies">
+    <div class="wrap">
+      <div class="cab-secao">
+        <p class="rotulo">Espécies atendidas</p>
+        <h2>Nem todos os pacientes têm quatro patas e pelo.</h2>
+      </div>
+      <div class="especies-grid">
+        <div class="especie"><div class="foto"><!-- images/vetevora-especie-cao.jpg --></div><h4>Cães</h4></div>
+        <div class="especie"><div class="foto"><!-- images/vetevora-especie-gato.jpg --></div><h4>Gatos</h4></div>
+        <div class="especie"><div class="foto"><!-- images/vetevora-especie-coelho.jpg --></div><h4>Pequenos mamíferos</h4></div>
+        <div class="especie"><div class="foto"><!-- images/vetevora-especie-tartaruga.jpg --></div><h4>Répteis</h4></div>
+        <div class="especie"><div class="foto"><!-- images/vetevora-especie-producao.jpg --></div><h4>Animais de produção</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="momentos">
+    <div class="wrap">
+      <div class="cab-secao">
+        <p class="rotulo">A nossa equipa</p>
+        <h2>Momentos da clínica, dia após dia.</h2>
+        <p>Uma pequena amostra dos pacientes e dos cuidados que passam pela Vetévora todas as semanas.</p>
+      </div>
+      <div class="momentos-grid">
+        <div class="foto"><img src="images/vetevora-equipa-cachorro-branco.jpg" alt="Membro da equipa Vetévora com cachorro chihuahua ao colo, na clínica em Évora" loading="lazy"></div>
+        <div class="foto"><!-- images/vetevora-equipa-tartaruga.jpg --></div>
+        <div class="foto"><!-- images/vetevora-equipa-cachorros-recem-nascidos.jpg --></div>
+        <div class="foto"><!-- images/vetevora-equipa-coelhos.jpg --></div>
+        <div class="foto"><!-- images/vetevora-equipa-gato-persa.jpg --></div>
+        <div class="foto"><!-- images/vetevora-equipa-porquinho-india.jpg --></div>
+        <div class="foto"><!-- images/vetevora-equipa-grupo-canideo.jpg --></div>
+        <div class="foto"><!-- images/vetevora-terrier-sala-espera.jpg --></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="avaliacoes">
+    <div class="wrap">
+      <div class="cab-secao">
+        <p class="rotulo">Avaliações</p>
+        <h2>O que dizem os tutores que já nos visitaram.</h2>
+      </div>
+      <div class="avaliacao-bloco">
+        <span class="avaliacao-numero">4,4</span>
+        <div class="avaliacao-detalhe">
+          <span class="estrelas">★★★★★</span>
+          <p>Média de mais de 120 avaliações no Google</p>
+        </div>
+      </div>
+      <div class="citacoes">
+        <div class="citacao">
+          <p>Levamos o nosso cão de urgência ao domingo e fomos muito bem tratados. Equipa atenciosa do início ao fim.</p>
+          <span>Avaliação Google</span>
+        </div>
+        <div class="citacao">
+          <p>A consulta ao domicílio foi essencial para o nosso gato, que sofre imenso com deslocações. Recomendo.</p>
+          <span>Avaliação Google</span>
+        </div>
+        <div class="citacao">
+          <p>Mais de trinta anos de experiência nota-se no diagnóstico e na forma como explicam tudo aos tutores.</p>
+          <span>Avaliação Google</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="cab-secao">
+        <p class="rotulo">Perguntas frequentes</p>
+        <h2>Tudo o que precisa de saber antes de marcar.</h2>
+      </div>
+      <div class="faq-lista">
+
+        <div class="faq-item">
+          <button class="faq-pergunta">Como posso marcar uma consulta?<span class="mais"></span></button>
+          <div class="faq-resposta"><p>Pode marcar por telefone através do 266 749 940, pelo WhatsApp através do 912 505 204 ou por email para vetevora@gmail.com. Respondemos o mais rapidamente possível dentro do nosso horário de funcionamento.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-pergunta">A Vetévora faz consultas ao domicílio?<span class="mais"></span></button>
+          <div class="faq-resposta"><p>Sim. Quando a deslocação até à clínica não é possível, deslocamo-nos até Évora e arredores para realizar a consulta em sua casa. Peça informações sobre disponibilidade e área de cobertura ao marcar.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-pergunta">Que animais podem ser atendidos na Vetévora?<span class="mais"></span></button>
+          <div class="faq-resposta"><p>Atendemos cães, gatos, pequenos mamíferos como coelhos, hamsters e porquinhos-da-índia, aves, répteis e também animais de produção.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-pergunta">Fazem atendimento de urgência?<span class="mais"></span></button>
+          <div class="faq-resposta"><p>Ao domingo mantemos atendimento de urgência. Contacte-nos previamente pelo telefone ou WhatsApp para confirmar a disponibilidade antes de se deslocar.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-pergunta">É preciso levar alguma coisa para a primeira consulta?<span class="mais"></span></button>
+          <div class="faq-resposta"><p>Se existirem, traga o boletim de vacinas e qualquer histórico clínico anterior do animal. Se for a primeira visita, não é necessário mais nenhuma preparação.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-pergunta">Fazem exames de imagem no próprio centro?<span class="mais"></span></button>
+          <div class="faq-resposta"><p>Sim. Dispomos de radiografia digital, ecografia e electrocardiograma no local, além de endoscopia, o que permite chegar a um diagnóstico sem necessidade de deslocação a outra clínica.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-pergunta">Onde fica a clínica e como chego lá?<span class="mais"></span></button>
+          <div class="faq-resposta"><p>Estamos na Rua Circular Poente nº 38, no Parque Industrial de Évora, com fácil acesso de automóvel a partir da cidade.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap contacto-grid">
+      <div>
+        <p class="rotulo">Contactos</p>
+        <h2>Fale connosco ou apareça na clínica.</h2>
+        <div class="contacto-lista">
+          <div class="contacto-linha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v4a2 2 0 01-2 2C9.16 21 3 14.84 3 7a2 2 0 011-3z"/></svg>
+            <div><strong>Telefone e WhatsApp</strong><a href="tel:+351266749940">266 749 940</a> · <a href="https://wa.me/351912505204" target="_blank" rel="noopener">912 505 204</a></div>
+          </div>
+          <div class="contacto-linha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+            <div><strong>Email</strong><a href="mailto:vetevora@gmail.com">vetevora@gmail.com</a></div>
+          </div>
+          <div class="contacto-linha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+            <div><strong>Morada</strong><span>Rua Circular Poente nº 38, Parque Industrial de Évora, 7005-328 Évora</span></div>
+          </div>
+          <div class="contacto-linha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <div style="width:100%">
+              <strong>Horário</strong>
+              <table class="horario-tabela">
+                <tr><td>Segunda a sexta</td><td>10h às 20h</td></tr>
+                <tr><td>Sábado</td><td>10h às 13h</td></tr>
+                <tr><td>Domingo</td><td>Apenas urgências</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="redes">
+          <a href="https://www.facebook.com/vetevoracentroveterinario.vetevora/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 8h-2a2 2 0 00-2 2v3H9v3h2v6h3v-6h2.2l.8-3H14v-2a1 1 0 011-1h1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/vetevoraclinicaveterinaria/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.4"/><circle cx="16.6" cy="7.4" r="0.6" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://wa.me/351912505204" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.4-4.2A8 8 0 1112 20a8 8 0 01-4.4-1.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="mapa-caixa">
+        <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Rua+Circular+Poente+n%C2%BA+38+Parque+Industrial+de+Evora+Evora+Portugal+7005-328&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap rodape-grid">
+    <span>© <span id="ano"></span> Vetévora Centro Veterinário Lda. Évora, Portugal.</span>
+    <a href="https://wa.me/351912505204?text=Ol%C3%A1%2C%20gostaria%20de%20marcar%20uma%20consulta%20na%20Vet%C3%A9vora" target="_blank" rel="noopener">Marcar consulta pelo WhatsApp</a>
+  </div>
+</footer>
+
+<a class="whatsapp-flutuante" href="https://wa.me/351912505204?text=Ol%C3%A1%2C%20gostaria%20de%20marcar%20uma%20consulta%20na%20Vet%C3%A9vora" target="_blank" rel="noopener" aria-label="Marcar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.4-4.2A8 8 0 1112 20a8 8 0 01-4.4-1.3z"/></svg>
+</a>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const pergunta = item.querySelector('.faq-pergunta');
+    const resposta = item.querySelector('.faq-resposta');
+    pergunta.addEventListener('click', ()=>{
+      const aberto = item.classList.contains('aberto');
+      document.querySelectorAll('.faq-item.aberto').forEach(o=>{
+        o.classList.remove('aberto');
+        o.querySelector('.faq-resposta').style.maxHeight = null;
+      });
+      if(!aberto){
+        item.classList.add('aberto');
+        resposta.style.maxHeight = resposta.scrollHeight + 'px';
+      }
+    });
+  });
+
+  const toggle = document.querySelector('.menu-toggle');
+  const links = document.querySelector('nav.links');
+  toggle.addEventListener('click', ()=>{
+    const visivel = links.style.display === 'flex';
+    links.style.cssText = visivel ? '' : 'display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:var(--marfim);padding:20px 28px;border-bottom:1px solid var(--linha);';
+  });
+</script>
+
+</body>
+</html>
