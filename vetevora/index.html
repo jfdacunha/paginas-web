@@ -86,7 +86,8 @@
     display:flex;align-items:flex-end;
     min-height:180px;
   }
-  .foto img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+  .foto img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .6s cubic-bezier(.25,.8,.25,1);}
+  .foto:hover img{transform:scale(1.06);}
   .foto-legenda{
     position:relative;z-index:2;
     font-size:12px;
@@ -114,7 +115,12 @@
   .marca svg{width:40px;height:40px;flex-shrink:0;}
   .marca-texto{font-family:'Fraunces',serif;font-size:22px;color:var(--verde-escuro);font-weight:600;letter-spacing:.01em;white-space:nowrap;}
   nav.links{display:flex;gap:30px;align-items:center;}
-  nav.links a{font-size:15px;font-weight:500;color:var(--tinta);}
+  nav.links a{font-size:15px;font-weight:500;color:var(--tinta);position:relative;padding-bottom:4px;}
+  nav.links a::after{
+    content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;
+    background:var(--verde);transition:right .3s ease;
+  }
+  nav.links a:hover::after{right:0;}
   nav.links a:hover{color:var(--verde);}
   .nav-cta{display:flex;align-items:center;gap:14px;flex-shrink:0;}
   .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;}
@@ -133,6 +139,12 @@
     background:linear-gradient(180deg, rgba(15,45,32,.35) 0%, rgba(15,45,32,.58) 45%, rgba(15,45,32,.88) 100%);
   }
   .hero-intro{max-width:700px;margin:0 auto;text-align:center;}
+  .hero-intro .rotulo{animation:heroFade .8s ease both;}
+  .hero-intro h1{animation:heroFade .9s .1s ease both;}
+  .hero-intro .lead{animation:heroFade .9s .2s ease both;}
+  .hero-intro .hero-ctas{animation:heroFade .9s .32s ease both;}
+  .hero-intro .hero-selo{animation:heroFade .9s .42s ease both;}
+  @keyframes heroFade{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
   .hero .rotulo{color:var(--dourado);}
   .hero .rotulo::before{color:var(--dourado);}
   .hero h1{font-size:clamp(32px,4.4vw,54px);color:var(--branco);}
@@ -182,16 +194,51 @@
 
   /* servicos */
   #servicos{background:var(--marfim-escuro);}
-  .servicos-lista{border-top:1px solid var(--linha);}
-  .servico-linha{
-    display:grid;grid-template-columns:1.1fr 1.4fr 1fr;gap:40px;
-    padding:32px 0;border-bottom:1px solid var(--linha);align-items:center;
+  .servicos-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
   }
-  .servico-linha .num-serv{font-family:'Fraunces',serif;font-style:italic;color:var(--dourado);font-size:15px;}
-  .servico-linha h3{font-size:22px;margin-top:6px;}
-  .servico-linha p{color:var(--tinta-suave);font-size:15px;}
-  .servico-linha .foto{aspect-ratio:4/3;}
-  .servico-linha.sem-foto{grid-template-columns:1.1fr 1.9fr;}
+  .servico-card{
+    background:var(--branco);border-radius:4px;overflow:hidden;
+    box-shadow:0 1px 0 var(--linha);
+    transition:transform .4s cubic-bezier(.25,.8,.25,1), box-shadow .4s ease;
+  }
+  .servico-card:hover{transform:translateY(-7px);box-shadow:0 24px 40px -20px rgba(15,45,32,.3);}
+  .servico-card .foto{aspect-ratio:4/3;border-radius:0;margin:0;}
+  .servico-card .icone{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--branco);border:1.5px solid var(--verde-suave);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;margin-top:-32px;margin-left:20px;z-index:3;
+    box-shadow:0 6px 14px -6px rgba(15,45,32,.35);
+  }
+  .servico-card .icone svg{width:20px;height:20px;color:var(--verde);}
+  .servico-card .corpo{padding:16px 22px 26px;position:relative;}
+  .servico-card .corpo::before{
+    content:"";position:absolute;top:0;left:22px;right:22px;height:2px;
+    background:var(--dourado);transform:scaleX(0);transform-origin:left;
+    transition:transform .5s ease;
+  }
+  .servico-card:hover .corpo::before{transform:scaleX(1);}
+  .servico-card .num-serv{font-family:'Fraunces',serif;font-style:italic;color:var(--dourado);font-size:14px;}
+  .servico-card h3{font-size:19px;margin-top:6px;line-height:1.2;}
+  .servico-card p{color:var(--tinta-suave);font-size:14.5px;margin-top:10px;}
+  .servico-card.destaque{
+    background:var(--verde-escuro);color:var(--branco);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:32px 26px;position:relative;overflow:hidden;
+  }
+  .servico-card.destaque::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(135deg, rgba(255,253,248,.05) 0 2px, transparent 2px 16px);
+  }
+  .servico-card.destaque .icone{
+    background:rgba(255,253,248,.1);border-color:rgba(255,253,248,.25);
+    margin-top:0;margin-left:0;margin-bottom:14px;position:relative;
+  }
+  .servico-card.destaque .icone svg{color:var(--dourado);}
+  .servico-card.destaque .num-serv{color:var(--dourado);position:relative;}
+  .servico-card.destaque h3{color:var(--branco);position:relative;}
+  .servico-card.destaque p{color:rgba(255,253,248,.78);position:relative;}
 
   /* especies */
   #especies{background:var(--branco);}
@@ -290,8 +337,7 @@
     .sobre-colagem{margin-top:20px;}
     .faixa-grid{grid-template-columns:repeat(2,1fr);row-gap:20px;}
     .faixa-item:nth-child(3){border-left:none;padding-left:0;}
-    .servico-linha{grid-template-columns:1fr;gap:16px;}
-    .servico-linha.sem-foto{grid-template-columns:1fr;}
+    .servicos-grid{grid-template-columns:1fr 1fr;}
     .especies-grid{grid-template-columns:repeat(3,1fr);row-gap:24px;}
     .momentos-grid{grid-template-columns:repeat(3,1fr);}
     .citacoes{grid-template-columns:1fr;}
@@ -304,7 +350,8 @@
     .especies-grid{grid-template-columns:repeat(2,1fr);}
     .momentos-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
     .nav-cta .btn-fantasma{display:none;}
-    .servico-linha .num-serv{font-size:14px;}
+    .servicos-grid{grid-template-columns:1fr;}
+    .servico-card .num-serv{font-size:13px;}
     .avaliacao-bloco{flex-direction:column;align-items:flex-start;gap:12px;}
     .wrap{padding:0 18px;}
     .marca-texto{font-size:18px;}
@@ -315,6 +362,21 @@
   }
   @media (max-width:400px){
     .marca-texto{display:none;}
+  }
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s cubic-bezier(.25,.8,.25,1);}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  .reveal:nth-child(2){transition-delay:.07s;}
+  .reveal:nth-child(3){transition-delay:.14s;}
+  .reveal:nth-child(4){transition-delay:.21s;}
+  .reveal:nth-child(5){transition-delay:.28s;}
+  .reveal:nth-child(6){transition-delay:.35s;}
+  .reveal:nth-child(n+7){transition-delay:.4s;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
+    .reveal{opacity:1;transform:none;}
   }
 </style>
 </head>
@@ -399,46 +461,68 @@
 
   <section id="servicos">
     <div class="wrap">
-      <div class="cab-secao">
+      <div class="cab-secao reveal">
         <p class="rotulo">Serviços</p>
         <h2>Do check-up de rotina à cirurgia, sob o mesmo teto.</h2>
         <p>Investimos em equipamento de diagnóstico próprio para que o seu animal não precise de percorrer várias clínicas até chegar a um diagnóstico.</p>
       </div>
-      <div class="servicos-lista">
+      <div class="servicos-grid">
 
-        <div class="servico-linha">
-          <div><span class="num-serv">Consultas</span><h3>Consultas gerais e vacinação</h3></div>
-          <p>Check-ups, vacinação, desparasitação e acompanhamento de rotina para cães, gatos e outras espécies, com identificação precoce de problemas de saúde.</p>
+        <div class="servico-card reveal">
           <div class="foto"><img src="images/vetevora-consulta-geral.jpg" alt="Equipa Vetévora a tratar de cão em consulta, Évora" loading="lazy"></div>
+          <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v6a4 4 0 008 0V3"/><path d="M9 15v2a5 5 0 0010 0v-3"/><circle cx="19" cy="10" r="2"/></svg></div>
+          <div class="corpo">
+            <span class="num-serv">Consultas</span>
+            <h3>Consultas gerais e vacinação</h3>
+            <p>Check-ups, vacinação, desparasitação e acompanhamento de rotina, com identificação precoce de problemas de saúde.</p>
+          </div>
         </div>
 
-        <div class="servico-linha">
-          <div><span class="num-serv">Ao domicílio</span><h3>Consulta em sua casa</h3></div>
-          <p>Para animais que sofrem com a deslocação ou tutores com mobilidade reduzida, a nossa carrinha desloca-se até Évora e arredores.</p>
+        <div class="servico-card reveal">
           <div class="foto"><img src="images/vetevora-carrinha-domicilio.jpg" alt="Carrinha Vetévora estacionada junto à clínica, serviço de consulta ao domicílio em Évora" loading="lazy"></div>
+          <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"/></svg></div>
+          <div class="corpo">
+            <span class="num-serv">Ao domicílio</span>
+            <h3>Consulta em sua casa</h3>
+            <p>Para animais que sofrem com a deslocação, a nossa carrinha desloca-se até Évora e arredores.</p>
+          </div>
         </div>
 
-        <div class="servico-linha">
-          <div><span class="num-serv">Cirurgia</span><h3>Cirurgia com anestesia volátil</h3></div>
-          <p>Bloco cirúrgico equipado para cirurgias eletivas e de urgência, com monitorização e anestesia volátil para maior segurança do animal.</p>
+        <div class="servico-card reveal">
           <div class="foto"><img src="images/vetevora-bloco-cirurgico.jpg" alt="Cirurgia com anestesia volátil no bloco cirúrgico da Vetévora, Évora" loading="lazy"></div>
+          <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v7"/><path d="M8.5 6.5L12 10l3.5-3.5"/><path d="M6 14c0 4 3 7 6 7s6-3 6-7"/></svg></div>
+          <div class="corpo">
+            <span class="num-serv">Cirurgia</span>
+            <h3>Cirurgia com anestesia volátil</h3>
+            <p>Bloco cirúrgico equipado para cirurgias eletivas e de urgência, com monitorização constante.</p>
+          </div>
         </div>
 
-        <div class="servico-linha">
-          <div><span class="num-serv">Imagiologia</span><h3>Radiografia digital e ecografia</h3></div>
-          <p>Diagnóstico por imagem no local, incluindo radiografia digital, ecografia e electrocardiograma, para respostas mais rápidas e precisas.</p>
+        <div class="servico-card reveal">
           <div class="foto"><img src="images/vetevora-radiografia-digital.jpg" alt="Radiografia digital de gato realizada na Vetévora, Évora" loading="lazy"></div>
+          <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M3 15l4.5-4.5a2 2 0 012.8 0L14 14"/><circle cx="15.5" cy="8.5" r="1.5"/></svg></div>
+          <div class="corpo">
+            <span class="num-serv">Imagiologia</span>
+            <h3>Radiografia digital e ecografia</h3>
+            <p>Diagnóstico por imagem no local, incluindo electrocardiograma, para respostas mais rápidas.</p>
+          </div>
         </div>
 
-        <div class="servico-linha sem-foto">
-          <div><span class="num-serv">Endoscopia</span><h3>Endoscopia</h3></div>
+        <div class="servico-card destaque reveal">
+          <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/></svg></div>
+          <span class="num-serv">Endoscopia</span>
+          <h3>Endoscopia</h3>
           <p>Procedimentos minimamente invasivos para diagnóstico e remoção de corpos estranhos, reduzindo a necessidade de cirurgia aberta.</p>
         </div>
 
-        <div class="servico-linha">
-          <div><span class="num-serv">Bem-estar</span><h3>Tosquias, grooming e banhos</h3></div>
-          <p>Cuidados de higiene e imagem, do banho simples à tosquia, mantendo o pelo e a pele do seu animal saudáveis.</p>
-          <div class="foto" style="aspect-ratio:13/7;"><img src="images/vetevora-grooming-banho.jpg" alt="Cão antes e depois da tosquia na Vetévora, Évora" loading="lazy"></div>
+        <div class="servico-card reveal">
+          <div class="foto" style="aspect-ratio:4/3;"><img src="images/vetevora-grooming-banho.jpg" alt="Cão antes e depois da tosquia na Vetévora, Évora" loading="lazy"></div>
+          <div class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8 8l11 11M19 5L8 16"/></svg></div>
+          <div class="corpo">
+            <span class="num-serv">Bem-estar</span>
+            <h3>Tosquias, grooming e banhos</h3>
+            <p>Cuidados de higiene e imagem, do banho simples à tosquia, mantendo o pelo e a pele saudáveis.</p>
+          </div>
         </div>
 
       </div>
@@ -447,49 +531,49 @@
 
   <section id="especies">
     <div class="wrap">
-      <div class="cab-secao">
+      <div class="cab-secao reveal">
         <p class="rotulo">Espécies atendidas</p>
         <h2>Nem todos os pacientes têm quatro patas e pelo.</h2>
       </div>
       <div class="especies-grid">
-        <div class="especie"><div class="foto"><img src="images/vetevora-consulta-cachorro.jpg" alt="Cão atendido na Vetévora, Évora" loading="lazy"></div><h4>Cães</h4></div>
-        <div class="especie"><div class="foto"><img src="images/vetevora-especie-gato.jpg" alt="Gato em tratamento a laser na Vetévora, Évora" loading="lazy"></div><h4>Gatos</h4></div>
-        <div class="especie"><div class="foto"><img src="images/vetevora-especie-pequenos-mamiferos.jpg" alt="Porquinho-da-índia atendido na Vetévora, Évora" loading="lazy"></div><h4>Pequenos mamíferos</h4></div>
-        <div class="especie"><div class="foto"><img src="images/vetevora-especie-tartaruga.jpg" alt="Tartaruga atendida na Vetévora, Évora" loading="lazy"></div><h4>Répteis</h4></div>
-        <div class="especie"><div class="foto"><img src="images/vetevora-especie-producao.jpg" alt="Cordeiro tratado na Vetévora, Évora" loading="lazy"></div><h4>Animais de produção</h4></div>
+        <div class="especie reveal"><div class="foto"><img src="images/vetevora-consulta-cachorro.jpg" alt="Cão atendido na Vetévora, Évora" loading="lazy"></div><h4>Cães</h4></div>
+        <div class="especie reveal"><div class="foto"><img src="images/vetevora-especie-gato.jpg" alt="Gato em tratamento a laser na Vetévora, Évora" loading="lazy"></div><h4>Gatos</h4></div>
+        <div class="especie reveal"><div class="foto"><img src="images/vetevora-especie-pequenos-mamiferos.jpg" alt="Porquinho-da-índia atendido na Vetévora, Évora" loading="lazy"></div><h4>Pequenos mamíferos</h4></div>
+        <div class="especie reveal"><div class="foto"><img src="images/vetevora-especie-tartaruga.jpg" alt="Tartaruga atendida na Vetévora, Évora" loading="lazy"></div><h4>Répteis</h4></div>
+        <div class="especie reveal"><div class="foto"><img src="images/vetevora-especie-producao.jpg" alt="Cordeiro tratado na Vetévora, Évora" loading="lazy"></div><h4>Animais de produção</h4></div>
       </div>
     </div>
   </section>
 
   <section id="momentos">
     <div class="wrap">
-      <div class="cab-secao">
+      <div class="cab-secao reveal">
         <p class="rotulo">A nossa equipa</p>
         <h2>Momentos da clínica, dia após dia.</h2>
         <p>Uma pequena amostra dos pacientes e dos cuidados que passam pela Vetévora todas as semanas.</p>
       </div>
       <div class="momentos-grid">
-        <div class="foto"><img src="images/vetevora-equipa-cachorro-branco.jpg" alt="Membro da equipa Vetévora com cachorro chihuahua ao colo, na clínica em Évora" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-equipa-resgate-mocho.jpg" alt="Equipa Vetévora com mocho resgatado e tratado na clínica" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-equipa-cachorros-recem-nascidos.jpg" alt="Equipa Vetévora a alimentar cachorros recém-nascidos" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-equipa-resgate-ave.jpg" alt="Equipa Vetévora com ave selvagem resgatada" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-especie-coelhos.jpg" alt="Coelhos bebés atendidos na Vetévora, Évora" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-terapia-laser-cocker.jpg" alt="Sessão de laserterapia em cão cocker spaniel na Vetévora" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-terapia-laser-cao.jpg" alt="Sessão de laserterapia numa pata de cão na Vetévora" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-equipa-grupo-puppies.jpg" alt="Equipa Vetévora com cão de grande porte e cachorros" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-terrier-sala-espera.jpg" alt="Cão terrier na sala de espera da Vetévora, Évora" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-radiografia-tartaruga.jpg" alt="Radiografia digital de tartaruga na Vetévora" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-radiografia-ave.jpg" alt="Radiografia digital de ave na Vetévora" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-radiografia-membro.jpg" alt="Radiografia digital de membro na Vetévora" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-recuperacao-pos-operatoria.jpg" alt="Cachorro em recuperação pós-operatória na Vetévora, Évora" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-equipa-exame-detalhado.jpg" alt="Equipa Vetévora a realizar exame detalhado a um animal" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-equipa-cachorro-branco.jpg" alt="Membro da equipa Vetévora com cachorro chihuahua ao colo, na clínica em Évora" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-equipa-resgate-mocho.jpg" alt="Equipa Vetévora com mocho resgatado e tratado na clínica" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-equipa-cachorros-recem-nascidos.jpg" alt="Equipa Vetévora a alimentar cachorros recém-nascidos" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-equipa-resgate-ave.jpg" alt="Equipa Vetévora com ave selvagem resgatada" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-especie-coelhos.jpg" alt="Coelhos bebés atendidos na Vetévora, Évora" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-terapia-laser-cocker.jpg" alt="Sessão de laserterapia em cão cocker spaniel na Vetévora" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-terapia-laser-cao.jpg" alt="Sessão de laserterapia numa pata de cão na Vetévora" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-equipa-grupo-puppies.jpg" alt="Equipa Vetévora com cão de grande porte e cachorros" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-terrier-sala-espera.jpg" alt="Cão terrier na sala de espera da Vetévora, Évora" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-radiografia-tartaruga.jpg" alt="Radiografia digital de tartaruga na Vetévora" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-radiografia-ave.jpg" alt="Radiografia digital de ave na Vetévora" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-radiografia-membro.jpg" alt="Radiografia digital de membro na Vetévora" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-recuperacao-pos-operatoria.jpg" alt="Cachorro em recuperação pós-operatória na Vetévora, Évora" loading="lazy"></div>
+        <div class="foto reveal"><img src="images/vetevora-equipa-exame-detalhado.jpg" alt="Equipa Vetévora a realizar exame detalhado a um animal" loading="lazy"></div>
       </div>
     </div>
   </section>
 
   <section id="avaliacoes">
     <div class="wrap">
-      <div class="cab-secao">
+      <div class="cab-secao reveal">
         <p class="rotulo">Avaliações</p>
         <h2>O que dizem os tutores que já nos visitaram.</h2>
       </div>
@@ -501,15 +585,15 @@
         </div>
       </div>
       <div class="citacoes">
-        <div class="citacao">
+        <div class="citacao reveal">
           <p>Levamos o nosso cão de urgência ao domingo e fomos muito bem tratados. Equipa atenciosa do início ao fim.</p>
           <span>Avaliação Google</span>
         </div>
-        <div class="citacao">
+        <div class="citacao reveal">
           <p>A consulta ao domicílio foi essencial para o nosso gato, que sofre imenso com deslocações. Recomendo.</p>
           <span>Avaliação Google</span>
         </div>
-        <div class="citacao">
+        <div class="citacao reveal">
           <p>Mais de trinta anos de experiência nota-se no diagnóstico e na forma como explicam tudo aos tutores.</p>
           <span>Avaliação Google</span>
         </div>
@@ -519,43 +603,43 @@
 
   <section id="faq">
     <div class="wrap">
-      <div class="cab-secao">
+      <div class="cab-secao reveal">
         <p class="rotulo">Perguntas frequentes</p>
         <h2>Tudo o que precisa de saber antes de marcar.</h2>
       </div>
       <div class="faq-lista">
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-pergunta">Como posso marcar uma consulta?<span class="mais"></span></button>
           <div class="faq-resposta"><p>Pode marcar por telefone através do 266 749 940, pelo WhatsApp através do 912 505 204 ou por email para vetevora@gmail.com. Respondemos o mais rapidamente possível dentro do nosso horário de funcionamento.</p></div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-pergunta">A Vetévora faz consultas ao domicílio?<span class="mais"></span></button>
           <div class="faq-resposta"><p>Sim. Quando a deslocação até à clínica não é possível, deslocamo-nos até Évora e arredores para realizar a consulta em sua casa. Peça informações sobre disponibilidade e área de cobertura ao marcar.</p></div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-pergunta">Que animais podem ser atendidos na Vetévora?<span class="mais"></span></button>
           <div class="faq-resposta"><p>Atendemos cães, gatos, pequenos mamíferos como coelhos, hamsters e porquinhos-da-índia, aves, répteis e também animais de produção.</p></div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-pergunta">Fazem atendimento de urgência?<span class="mais"></span></button>
           <div class="faq-resposta"><p>Ao domingo mantemos atendimento de urgência. Contacte-nos previamente pelo telefone ou WhatsApp para confirmar a disponibilidade antes de se deslocar.</p></div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-pergunta">É preciso levar alguma coisa para a primeira consulta?<span class="mais"></span></button>
           <div class="faq-resposta"><p>Se existirem, traga o boletim de vacinas e qualquer histórico clínico anterior do animal. Se for a primeira visita, não é necessário mais nenhuma preparação.</p></div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-pergunta">Fazem exames de imagem no próprio centro?<span class="mais"></span></button>
           <div class="faq-resposta"><p>Sim. Dispomos de radiografia digital, ecografia e electrocardiograma no local, além de endoscopia, o que permite chegar a um diagnóstico sem necessidade de deslocação a outra clínica.</p></div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-pergunta">Onde fica a clínica e como chego lá?<span class="mais"></span></button>
           <div class="faq-resposta"><p>Estamos na Rua Circular Poente nº 38, no Parque Industrial de Évora, com fácil acesso de automóvel a partir da cidade.</p></div>
         </div>
@@ -629,6 +713,50 @@
 
 <script>
   document.getElementById('ano').textContent = new Date().getFullYear();
+
+  const semAnimacao = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(!semAnimacao && 'IntersectionObserver' in window){
+    const revelador = new IntersectionObserver((entradas)=>{
+      entradas.forEach(entrada=>{
+        if(entrada.isIntersecting){
+          entrada.target.classList.add('in-view');
+          revelador.unobserve(entrada.target);
+        }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>revelador.observe(el));
+
+    const contador = new IntersectionObserver((entradas)=>{
+      entradas.forEach(entrada=>{
+        if(!entrada.isIntersecting) return;
+        entrada.target.querySelectorAll('.faixa-item .num').forEach(span=>{
+          const texto = span.textContent.trim();
+          const match = texto.match(/[\d,.]+/);
+          if(!match) return;
+          const alvoStr = match[0];
+          const alvo = parseFloat(alvoStr.replace(',', '.'));
+          const prefixo = texto.slice(0, match.index);
+          const sufixo = texto.slice(match.index + alvoStr.length);
+          const casasDecimais = alvoStr.includes(',') ? alvoStr.split(',')[1].length : 0;
+          const duracao = 1100;
+          const inicio = performance.now();
+          function passo(agora){
+            const p = Math.min((agora - inicio) / duracao, 1);
+            const valor = alvo * (1 - Math.pow(1 - p, 3));
+            span.textContent = prefixo + valor.toFixed(casasDecimais).replace('.', ',') + sufixo;
+            if(p < 1) requestAnimationFrame(passo);
+          }
+          requestAnimationFrame(passo);
+        });
+        contador.unobserve(entrada.target);
+      });
+    }, {threshold:.4});
+    const faixaEl = document.querySelector('.faixa');
+    if(faixaEl) contador.observe(faixaEl);
+  } else {
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in-view'));
+  }
 
   document.querySelectorAll('.faq-item').forEach(item=>{
     const pergunta = item.querySelector('.faq-pergunta');
