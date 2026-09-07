@@ -119,22 +119,23 @@
   .menu-toggle span{display:block;width:24px;height:2px;background:var(--verde-escuro);margin:5px 0;}
 
   /* hero */
-  .hero{padding:64px 0 0;}
-  .hero-grid{
-    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
-    padding-bottom:56px;
-  }
-  .hero h1{font-size:clamp(34px,4.4vw,56px);}
+  .hero{padding:56px 0 0;}
+  .hero-intro{max-width:700px;margin:0 auto;text-align:center;padding-bottom:44px;}
+  .hero h1{font-size:clamp(32px,4.4vw,54px);}
   .hero h1 em{font-style:italic;color:var(--verde);}
-  .hero p.lead{font-size:18px;color:var(--tinta-suave);max-width:46ch;margin-top:20px;}
-  .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .hero p.lead{font-size:18px;color:var(--tinta-suave);max-width:52ch;margin:20px auto 0;}
+  .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;justify-content:center;}
   .hero-selo{
     display:inline-flex;align-items:center;gap:10px;
-    margin-top:36px;font-size:14px;color:var(--tinta-suave);
+    margin-top:32px;font-size:14px;color:var(--tinta-suave);
+    justify-content:center;width:100%;
   }
   .estrelas{color:var(--dourado);letter-spacing:2px;}
-  .hero-foto{aspect-ratio:4/5;box-shadow:var(--sombra);}
-  .hero-foto .foto-legenda{position:absolute;bottom:0;left:0;margin:0;border-radius:0 4px 0 0;}
+  .hero-capa{
+    position:relative;width:100%;aspect-ratio:16/8;overflow:hidden;
+  }
+  .hero-capa img{width:100%;height:100%;object-fit:cover;object-position:center 42%;}
+  .hero-capa .foto-legenda{position:absolute;bottom:0;left:0;margin:0;border-radius:0 4px 0 0;z-index:2;}
 
   /* faixa de confianca */
   .faixa{
@@ -281,7 +282,7 @@
   .whatsapp-flutuante svg{width:28px;height:28px;}
 
   @media (max-width:980px){
-    .hero-grid,.sobre-grid,.contacto-grid{grid-template-columns:1fr;}
+    .sobre-grid,.contacto-grid{grid-template-columns:1fr;}
     .sobre-colagem{margin-top:20px;}
     .faixa-grid{grid-template-columns:repeat(2,1fr);row-gap:20px;}
     .faixa-item:nth-child(3){border-left:none;padding-left:0;}
@@ -292,10 +293,19 @@
     nav.links{display:none;}
     .menu-toggle{display:block;}
   }
+  @media (max-width:700px){
+    .sobre-colagem{grid-template-columns:1fr 1fr;}
+    .sobre-colagem .foto:nth-child(2),.sobre-colagem .foto:nth-child(4){transform:none;}
+    .hero-capa{aspect-ratio:4/3;}
+  }
   @media (max-width:560px){
-    section{padding:64px 0;}
+    section{padding:56px 0;}
+    .hero{padding:44px 0 0;}
+    .hero-intro{padding-bottom:32px;}
     .especies-grid{grid-template-columns:repeat(2,1fr);}
     .nav-cta .btn-fantasma{display:none;}
+    .servico-linha .num-serv{font-size:14px;}
+    .avaliacao-bloco{flex-direction:column;align-items:flex-start;gap:12px;}
   }
 </style>
 </head>
@@ -304,7 +314,7 @@
 <header>
   <div class="wrap nav">
     <a href="#topo" class="marca">
-      <img src="images/vetevora-logo-icon.jpg" alt="Logótipo Vetévora" style="width:46px;height:46px;object-fit:contain;background:#F6F3EA;">
+      <img src="images/vetevora-logo-icon.png" alt="Logótipo Vetévora" style="width:46px;height:46px;object-fit:contain;">
       <span class="marca-texto">Vetévora</span>
     </a>
     <nav class="links">
@@ -326,24 +336,22 @@
 <main id="topo">
 
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="rotulo">Évora, desde há mais de 30 anos</p>
-        <h1>Cuidamos do seu animal <em>como se fosse nosso</em>.</h1>
-        <p class="lead">Consultas, cirurgia, diagnóstico por imagem e urgências no Parque Industrial de Évora. E quando não pode vir até nós, somos nós que vamos a sua casa.</p>
-        <div class="hero-ctas">
-          <a href="https://wa.me/351912505204?text=Ol%C3%A1%2C%20gostaria%20de%20marcar%20uma%20consulta%20na%20Vet%C3%A9vora" class="btn btn-primario" target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
-          <a href="#servicos" class="btn btn-fantasma">Ver serviços</a>
-        </div>
-        <div class="hero-selo">
-          <span class="estrelas">★★★★★</span>
-          <span>4,4/5 em mais de 120 avaliações no Google</span>
-        </div>
+    <div class="wrap hero-intro">
+      <p class="rotulo">Évora, desde há mais de 30 anos</p>
+      <h1>Cuidamos do seu animal <em>como se fosse nosso</em>.</h1>
+      <p class="lead">Consultas, cirurgia, diagnóstico por imagem e urgências no Parque Industrial de Évora. E quando não pode vir até nós, somos nós que vamos a sua casa.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/351912505204?text=Ol%C3%A1%2C%20gostaria%20de%20marcar%20uma%20consulta%20na%20Vet%C3%A9vora" class="btn btn-primario" target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
+        <a href="#servicos" class="btn btn-fantasma">Ver serviços</a>
       </div>
-      <div class="foto hero-foto">
-        <img src="images/vetevora-carrinha-vamos-a-sua-casa.jpg" alt="Carrinha Vetévora com o mote Vamos a sua casa, serviço de consulta veterinária ao domicílio em Évora" loading="lazy">
-        <div class="foto-legenda">A carrinha Vetévora<span>Serviço de consulta ao domicílio</span></div>
+      <div class="hero-selo">
+        <span class="estrelas">★★★★★</span>
+        <span>4,4/5 em mais de 120 avaliações no Google</span>
       </div>
+    </div>
+    <div class="hero-capa">
+      <img src="images/vetevora-carrinha-vamos-a-sua-casa.jpg" alt="Carrinha Vetévora com o mote Vamos a sua casa, serviço de consulta veterinária ao domicílio em Évora" loading="lazy">
+      <div class="foto-legenda">A carrinha Vetévora<span>Serviço de consulta ao domicílio</span></div>
     </div>
   </section>
 
@@ -375,7 +383,7 @@
         <div class="foto"><img src="images/vetevora-consulta-cachorro.jpg" alt="Veterinária da Vetévora com cachorro em consulta, Évora" loading="lazy"><div class="foto-legenda">Consulta geral</div></div>
         <div class="foto"><img src="images/vetevora-equipa-grande-porte.jpg" alt="Equipa Vetévora com cão de grande porte na clínica de Évora" loading="lazy"><div class="foto-legenda">A nossa equipa</div></div>
         <div class="foto"><img src="images/vetevora-equipa-cachorros-colo.jpg" alt="Equipa Vetévora com cachorros recém-nascidos ao colo" loading="lazy"><div class="foto-legenda">Cuidado desde os primeiros dias</div></div>
-        <div class="foto"><img src="images/vetevora-especie-producao.jpg" alt="Galinha com tratamento na pata atendida na Vetévora" loading="lazy"><div class="foto-legenda">Também tratamos aves de capoeira e animais de produção</div></div>
+        <div class="foto"><img src="images/vetevora-galinha-tratamento.jpg" alt="Galinha com tratamento na pata atendida na Vetévora" loading="lazy"><div class="foto-legenda">Também tratamos aves de capoeira e animais de produção</div></div>
       </div>
     </div>
   </section>
@@ -463,7 +471,6 @@
         <div class="foto"><img src="images/vetevora-equipa-cachorro-branco.jpg" alt="Membro da equipa Vetévora com cachorro chihuahua ao colo, na clínica em Évora" loading="lazy"></div>
         <div class="foto"><img src="images/vetevora-equipa-resgate-mocho.jpg" alt="Equipa Vetévora com mocho resgatado e tratado na clínica" loading="lazy"></div>
         <div class="foto"><img src="images/vetevora-equipa-cachorros-recem-nascidos.jpg" alt="Equipa Vetévora a alimentar cachorros recém-nascidos" loading="lazy"></div>
-        <div class="foto"><img src="images/vetevora-equipa-cachorros-colo.jpg" alt="Equipa Vetévora com cachorros recém-nascidos ao colo" loading="lazy"></div>
         <div class="foto"><img src="images/vetevora-equipa-resgate-ave.jpg" alt="Equipa Vetévora com ave selvagem resgatada" loading="lazy"></div>
         <div class="foto"><img src="images/vetevora-especie-coelhos.jpg" alt="Coelhos bebés atendidos na Vetévora, Évora" loading="lazy"></div>
         <div class="foto"><img src="images/vetevora-terapia-laser-cocker.jpg" alt="Sessão de laserterapia em cão cocker spaniel na Vetévora" loading="lazy"></div>
