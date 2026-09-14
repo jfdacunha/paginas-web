@@ -112,12 +112,9 @@
     position:relative; min-height:100svh; display:flex; align-items:flex-end;
     background:#151210; overflow:hidden;
   }
-  .hero-blur{
-    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-    filter:blur(55px) brightness(0.55) saturate(1.15); transform:scale(1.2); will-change:transform;
-  }
-  .hero-sharp{
-    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.85;
+  .hero img{
+    position:absolute; inset:0; width:100%; height:112%; object-fit:cover; opacity:0.8;
+    transform:translateY(0); will-change:transform;
   }
   .hero::after{
     content:""; position:absolute; inset:0; z-index:1;
@@ -125,13 +122,6 @@
   }
   .hero-content{ position:relative; z-index:2; width:100%; padding:0 20px 40px; color:#f4ede0; }
   .hero-inner{ max-width:var(--max); margin:0 auto; }
-  @media (min-width:860px){
-    .hero-sharp{
-      inset:auto; top:50%; left:50%; transform:translate(-50%,-50%);
-      width:auto; height:82%; max-width:70%; object-fit:contain; opacity:1;
-      border-radius:6px; box-shadow:0 40px 110px rgba(0,0,0,0.55);
-    }
-  }
   .ember-dot{
     display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--ember-bright);
     margin-right:9px; box-shadow:0 0 0 0 rgba(200,69,46,0.6); animation:pulse 2.4s ease-out infinite;
@@ -239,6 +229,22 @@
   .menu-item .price{ font-family:'Fraunces', serif; color:var(--gold); font-weight:600; white-space:nowrap; }
   .menu-note{ margin-top:32px; font-size:0.85rem; color:var(--stone); border-top:1px solid rgba(244,237,224,0.14); padding-top:18px; }
 
+  .sunset-break{ position:relative; height:70vh; min-height:420px; overflow:hidden; background:#151210; }
+  .sunset-break img{ width:100%; height:100%; object-fit:cover; object-position:center 30%; }
+  .sunset-break::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(21,18,16,0.05) 0%, rgba(21,18,16,0.15) 60%, rgba(21,18,16,0.85) 100%);
+  }
+  .sunset-caption{
+    position:absolute; left:0; right:0; bottom:0; z-index:2; padding:32px 20px;
+    color:#f4ede0;
+  }
+  .sunset-caption p{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500; font-size:clamp(1.1rem, 3vw, 1.5rem);
+    max-width:34ch; margin:0 auto;
+  }
+  @media (min-width:860px){ .sunset-caption{ padding:40px; } .sunset-caption p{ margin:0; } }
+
   .ambience{ background:var(--cream); }
   .ambience-grid{
     display:grid; grid-template-columns:1fr; gap:16px;
@@ -321,8 +327,7 @@
 </div>
 
 <header class="hero">
-  <img id="hero-img" class="hero-blur" src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="" aria-hidden="true">
-  <img class="hero-sharp" src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="Entrada da Casa do Avô ao pôr do sol, casa de granito com placa Aberto, em Sarzeda, Sernancelhe">
+  <img id="hero-img" src="images/casa-do-avo-fachada-sarzeda-sernancelhe.jpg" alt="Fachada em granito da Casa do Avô, com telhado de telha vermelha e trepadeira verde, em Sarzeda, Sernancelhe">
   <div class="hero-content">
     <div class="hero-inner">
       <span class="hero-eyebrow"><span class="ember-dot"></span>Sarzeda, Sernancelhe</span>
@@ -516,6 +521,13 @@
   </div>
 </section>
 
+<section class="sunset-break">
+  <img src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="Entrada da Casa do Avô ao pôr do sol, casa de granito com placa Aberto, em Sarzeda, Sernancelhe">
+  <div class="sunset-caption">
+    <p>Ao fim do dia, com a placa a dizer Aberto, é sempre boa hora para aparecer.</p>
+  </div>
+</section>
+
 <section class="visit">
   <div class="wrap">
     <div class="section-head reveal">
@@ -589,7 +601,7 @@
     window.addEventListener('scroll', function(){
       var y = window.scrollY;
       if(y < window.innerHeight){
-        heroImg.style.transform = 'scale(1.2) translateY(' + (y * 0.08) + 'px)';
+        heroImg.style.transform = 'translateY(' + (y * 0.12) + 'px)';
       }
     }, { passive:true });
   }
