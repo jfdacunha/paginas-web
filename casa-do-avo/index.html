@@ -8,6 +8,47 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Casa do Avô",
+  "image": "https://jfdacunha.github.io/paginas-web/casa-do-avo/images/casa-do-avo-entrada-ao-por-do-sol.jpg",
+  "servesCuisine": ["Portuguesa", "Tradicional Portuguesa", "Churrasco"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua do Cieiro, 22",
+    "addressLocality": "Sarzeda",
+    "addressRegion": "Sernancelhe",
+    "postalCode": "3640-180",
+    "addressCountry": "PT"
+  },
+  "telephone": "+351254594016",
+  "priceRange": "€10-€25",
+  "url": "https://jfdacunha.github.io/paginas-web/casa-do-avo/",
+  "sameAs": ["https://www.facebook.com/casadoavorestaurante"],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "12:00",
+      "closes": "15:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "19:00",
+      "closes": "22:30"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday"],
+      "opens": "12:00",
+      "closes": "15:00"
+    }
+  ]
+}
+</script>
 <style>
   :root{
     --cream:#efe7d8;
@@ -71,16 +112,26 @@
     position:relative; min-height:100svh; display:flex; align-items:flex-end;
     background:#151210; overflow:hidden;
   }
-  .hero img{
-    position:absolute; inset:0; width:100%; height:112%; object-fit:cover; opacity:0.8;
-    transform:translateY(0); will-change:transform;
+  .hero-blur{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    filter:blur(55px) brightness(0.55) saturate(1.15); transform:scale(1.2); will-change:transform;
+  }
+  .hero-sharp{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.85;
   }
   .hero::after{
-    content:""; position:absolute; inset:0;
+    content:""; position:absolute; inset:0; z-index:1;
     background:linear-gradient(180deg, rgba(21,18,16,0.2) 0%, rgba(21,18,16,0.4) 45%, rgba(21,18,16,0.95) 100%);
   }
   .hero-content{ position:relative; z-index:2; width:100%; padding:0 20px 40px; color:#f4ede0; }
   .hero-inner{ max-width:var(--max); margin:0 auto; }
+  @media (min-width:860px){
+    .hero-sharp{
+      inset:auto; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:auto; height:82%; max-width:70%; object-fit:contain; opacity:1;
+      border-radius:6px; box-shadow:0 40px 110px rgba(0,0,0,0.55);
+    }
+  }
   .ember-dot{
     display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--ember-bright);
     margin-right:9px; box-shadow:0 0 0 0 rgba(200,69,46,0.6); animation:pulse 2.4s ease-out infinite;
@@ -155,6 +206,15 @@
   .dish-card-text h3{ font-size:1.4rem; font-weight:600; margin-bottom:6px; }
   .dish-card-text p{ font-size:0.9rem; color:#d9d0bf; max-width:32ch; }
   .scroller-hint{ font-size:0.82rem; color:var(--stone); margin-top:-6px; padding:0 20px 8px; }
+
+  .region{ background:var(--paper); }
+  .region-text{ max-width:66ch; }
+  .region-text p{ font-size:1.02rem; color:#3a332c; }
+  .region-text p + p{ margin-top:16px; }
+  .region-fact{
+    margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
+    font-family:'Fraunces', serif; font-style:italic; color:var(--stone); font-size:1rem;
+  }
 
   .menu-board{ background:var(--charcoal); color:#e6dcc9; }
   .menu-board .section-head .kicker{ color:#d8b98a; }
@@ -261,7 +321,8 @@
 </div>
 
 <header class="hero">
-  <img id="hero-img" src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="Entrada da Casa do Avô ao pôr do sol, casa de granito com placa Aberto, em Sarzeda, Sernancelhe">
+  <img id="hero-img" class="hero-blur" src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="" aria-hidden="true">
+  <img class="hero-sharp" src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="Entrada da Casa do Avô ao pôr do sol, casa de granito com placa Aberto, em Sarzeda, Sernancelhe">
   <div class="hero-content">
     <div class="hero-inner">
       <span class="hero-eyebrow"><span class="ember-dot"></span>Sarzeda, Sernancelhe</span>
@@ -403,6 +464,16 @@
   <p class="scroller-hint wrap">Deslize para ver mais pratos →</p>
 </section>
 
+<section class="region">
+  <div class="wrap region-text reveal">
+    <span class="section-head kicker" style="display:block;">A região</span>
+    <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Sarzeda, terra de castanha e granito</h2>
+    <p>Sarzeda é uma das freguesias do concelho de Sernancelhe, na Beira Alta, distrito de Viseu. É uma terra de paisagens graníticas, atravessada pelo rio Távora, com o planalto da Lapa a marcar o horizonte a mais de 900 metros de altitude. A poucos minutos ficam Penedono e o início da região vinhateira do Douro.</p>
+    <p>Sernancelhe é conhecida em Portugal como a terra da castanha, presente em pratos como a sopa de castanha, ao lado de enchidos tradicionais como o salpicão e a chouriça, do presunto fumado e da bôla de carne. É desta despensa regional que a Casa do Avô parte para os seus assados de forno e de brasa.</p>
+    <p class="region-fact">O concelho é também terra natal do escritor Aquilino Ribeiro, uma das grandes vozes da literatura portuguesa do século XX.</p>
+  </div>
+</section>
+
 <section class="menu-board" id="menu">
   <div class="wrap">
     <div class="section-head reveal">
@@ -518,7 +589,7 @@
     window.addEventListener('scroll', function(){
       var y = window.scrollY;
       if(y < window.innerHeight){
-        heroImg.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+        heroImg.style.transform = 'scale(1.2) translateY(' + (y * 0.08) + 'px)';
       }
     }, { passive:true });
   }
