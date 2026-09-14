@@ -179,8 +179,25 @@
   .menu-item .price{ font-family:'Fraunces', serif; color:var(--gold); font-weight:600; white-space:nowrap; }
   .menu-note{ margin-top:32px; font-size:0.85rem; color:var(--stone); border-top:1px solid rgba(244,237,224,0.14); padding-top:18px; }
 
+  .ambience{ background:var(--cream); }
+  .ambience-grid{
+    display:grid; grid-template-columns:1fr; gap:16px;
+  }
+  .ambience-photo{ margin:0; position:relative; border-radius:8px; overflow:hidden; }
+  .ambience-photo img{ width:100%; height:280px; object-fit:cover; }
+  .ambience-photo.tall img{ height:360px; }
+  .ambience-photo figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:14px 16px;
+    font-size:0.82rem; color:#f4ede0;
+    background:linear-gradient(180deg, rgba(21,18,16,0) 0%, rgba(21,18,16,0.75) 100%);
+  }
+
   .visit{ background:var(--paper); }
   .visit-grid{ display:grid; grid-template-columns:1fr; gap:36px; }
+  .map-embed{
+    grid-column:1 / -1; margin-top:8px; border-radius:12px; overflow:hidden;
+    aspect-ratio:16/9; border:1px solid var(--line);
+  }
   .hours-table{ width:100%; border-collapse:collapse; }
   .hours-table td{ padding:10px 0; border-bottom:1px solid var(--line); font-size:0.95rem; }
   .hours-table td:first-child{ font-weight:600; width:44%; }
@@ -219,7 +236,10 @@
     .mobile-bar{ display:none; }
     section{ padding:110px 0; }
     .story-grid{ grid-template-columns:1.1fr 0.9fr; gap:64px; }
+    .ambience-grid{ grid-template-columns:1.1fr 1fr 1fr; }
+    .ambience-photo img{ height:100%; min-height:340px; }
     .visit-grid{ grid-template-columns:1fr 1fr; gap:64px; }
+    .map-embed{ aspect-ratio:21/8; }
     .dish-scroller{ padding:4px 20px 8px; }
     .dish-card{ flex:0 0 360px; min-height:460px; }
     .reserve-grid{ flex-direction:row; align-items:center; }
@@ -241,7 +261,7 @@
 </div>
 
 <header class="hero">
-  <img id="hero-img" src="images/casa-do-avo-fachada-sarzeda-sernancelhe.jpg" alt="Fachada em granito da Casa do Avô, com telhado de telha vermelha e trepadeira verde, em Sarzeda, Sernancelhe">
+  <img id="hero-img" src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="Entrada da Casa do Avô ao pôr do sol, casa de granito com placa Aberto, em Sarzeda, Sernancelhe">
   <div class="hero-content">
     <div class="hero-inner">
       <span class="hero-eyebrow"><span class="ember-dot"></span>Sarzeda, Sernancelhe</span>
@@ -275,14 +295,37 @@
   <div class="wrap story-grid">
     <div class="story-text reveal">
       <span class="section-head kicker" style="display:block;">A casa</span>
-      <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Uma tasca de aldeia, levada a sério</h2>
-      <p>Na Casa do Avô a brasa está sempre acesa. É aqui que se assam as postas de vitela, o bacalhau e o polvo, com a mesma calma de sempre, numa casa de pedra no centro de Sarzeda.</p>
-      <p>Trabalhamos de perto com produtores da região para trazer o porco Bísaro à mesa em três formas diferentes, do presunto à alheira, e mantemos a ementa curta para que cada prato saia bem feito.</p>
+      <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">A casa que era do avô</h2>
+      <p>Esta era mesmo a casa do avô. Ficou fechada durante anos, foi recuperada pedra a pedra e reaberta como restaurante, sem perder o traço da construção original em granito.</p>
+      <p>A brasa está sempre acesa. É aqui que se assam as postas de vitela, o bacalhau e o polvo, com a mesma calma de sempre. Trabalhamos de perto com produtores da região para trazer o porco Bísaro à mesa em três formas diferentes, do presunto à alheira, e mantemos a ementa curta para que cada prato saia bem feito.</p>
     </div>
     <figure class="story-photo reveal">
       <img src="images/casa-do-avo-equipa-restaurante.jpg" alt="Equipa e amigos da casa, à porta da Casa do Avô em Sarzeda">
       <figcaption>A equipa e amigos da casa, à porta do restaurante.</figcaption>
     </figure>
+  </div>
+</section>
+
+<section class="ambience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Por dentro e por fora</span>
+      <h2>Pedra por fora, lume por dentro</h2>
+    </div>
+    <div class="ambience-grid reveal">
+      <figure class="ambience-photo tall">
+        <img src="images/casa-do-avo-cozinheiro-forno-lenha.jpg" alt="Cozinheiro a preparar carnes no forno de lenha tradicional da Casa do Avô">
+        <figcaption>O forno de lenha, sempre aceso na cozinha.</figcaption>
+      </figure>
+      <figure class="ambience-photo">
+        <img src="images/casa-do-avo-sala-jantar.jpg" alt="Sala de jantar da Casa do Avô, paredes em pedra granítica e mesas postas">
+        <figcaption>A sala de jantar, com as paredes de pedra da casa original.</figcaption>
+      </figure>
+      <figure class="ambience-photo">
+        <img src="images/casa-do-avo-fachada-dia.jpg" alt="Fachada da Casa do Avô durante o dia, em Sarzeda, Sernancelhe">
+        <figcaption>A casa, de dia, no centro de Sarzeda.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -330,6 +373,30 @@
         <span class="tag">No forno de lenha</span>
         <h3>Arroz de polvo</h3>
         <p>Feito no forno, com presunto e o sabor a fumo próprio da lenha.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="images/casa-do-avo-posta-vitela-ervas.jpg" alt="Posta de vitela grelhada com alho, tomilho e louro fresco">
+      <div class="dish-card-text">
+        <span class="tag">Para partilhar · 2 pessoas</span>
+        <h3>Posta de vitela</h3>
+        <p>Grelhada no ponto, finalizada com alho e ervas frescas da horta.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="images/casa-do-avo-bife-batata-frita.jpg" alt="Bife grelhado servido em tábua de madeira, com couve refogada e batata frita">
+      <div class="dish-card-text">
+        <span class="tag">Também na ementa</span>
+        <h3>Bife na tábua</h3>
+        <p>Grelhado na hora, com couve refogada e batata frita bem estaladiça.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="images/casa-do-avo-polvo-batata-esplanada.jpg" alt="Polvo grelhado com batatas a murro, servido na esplanada da Casa do Avô">
+      <div class="dish-card-text">
+        <span class="tag">Na esplanada</span>
+        <h3>Polvo com batata a murro</h3>
+        <p>A outra face do polvo da casa, grelhado e servido com batatas a murro.</p>
       </div>
     </div>
   </div>
@@ -404,6 +471,13 @@
           <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Rua+do+Cieiro+22+Sarzeda+Sernancelhe" target="_blank" rel="noopener">Ver no mapa</a>
         </div>
       </div>
+    </div>
+    <div class="map-embed reveal">
+      <iframe
+        src="https://www.google.com/maps?q=Rua+do+Cieiro+22,+Sarzeda,+3640-180+Sernancelhe&output=embed"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Mapa com a localização da Casa do Avô em Sarzeda, Sernancelhe"></iframe>
     </div>
   </div>
 </section>
