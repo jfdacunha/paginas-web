@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casa do Avô | Restaurante em Sarzeda, Sernancelhe</title>
-<meta name="description" content="Restaurante tradicional em Sarzeda, Sernancelhe. Cozinha ao lume, porco Bísaro, polvo à brasa e bacalhau assado. Rua do Cieiro 22, 3640-180 Sernancelhe.">
+<title>Casa do Avô | Reserve mesa em Sarzeda, Sernancelhe</title>
+<meta name="description" content="Restaurante tradicional em Sarzeda, Sernancelhe. Cozinha ao lume, porco Bísaro, polvo à brasa e bacalhau assado. Reserve por telefone: 254 594 016.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#efe7d8;
@@ -16,11 +16,13 @@
     --charcoal-soft:#2c2620;
     --ember:#a63625;
     --ember-dark:#7d281a;
+    --ember-bright:#c8452e;
     --stone:#8c8474;
     --ivy:#465a3b;
     --gold:#c08a34;
     --line: rgba(33,28,24,0.14);
-    --max: 1120px;
+    --max: 1180px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -29,415 +31,331 @@
     background:var(--cream);
     color:var(--charcoal);
     font-family:'Work Sans', sans-serif;
-    font-size:17px;
+    font-size:16px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    padding-bottom:68px;
   }
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    margin:0;
-    color:var(--charcoal);
-  }
-  a{color:inherit;}
-  img{display:block;max-width:100%;}
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
-  :focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+  h1,h2,h3{ font-family:'Fraunces', serif; margin:0; color:var(--charcoal); }
+  a{ color:inherit; }
+  img{ display:block; max-width:100%; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+  :focus-visible{ outline:3px solid var(--gold); outline-offset:3px; }
 
-  /* ---------- top bar ---------- */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+    html{ scroll-behavior:auto; }
+  }
+
   .topbar{
-    position:fixed; top:0; left:0; right:0; z-index:50;
+    position:fixed; top:0; left:0; right:0; z-index:60;
     display:flex; align-items:center; justify-content:space-between;
-    padding:18px 28px;
-    color:#f4ede0;
-    mix-blend-mode:normal;
+    padding:16px 20px; color:#f4ede0;
+    transition:background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
   }
-  .topbar .brand{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.15rem;
-    letter-spacing:0.01em;
+  .topbar.scrolled{
+    background:rgba(33,28,24,0.94); padding:11px 20px; box-shadow:0 6px 24px rgba(0,0,0,0.25);
   }
+  .topbar .brand{ font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem; }
   .topbar .call{
-    font-family:'Work Sans', sans-serif;
-    font-weight:600;
-    font-size:0.92rem;
-    text-decoration:none;
-    border:1px solid rgba(244,237,224,0.55);
-    padding:9px 18px;
-    border-radius:2px;
-    transition:background 0.2s ease, color 0.2s ease;
+    display:flex; align-items:center; gap:8px;
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.88rem;
+    text-decoration:none; color:var(--charcoal); background:var(--gold);
+    padding:9px 16px; border-radius:999px;
   }
-  .topbar .call:hover{ background:#f4ede0; color:var(--charcoal); }
+  .topbar .call svg{ width:14px; height:14px; flex:none; }
 
-  /* ---------- hero ---------- */
   .hero{
-    position:relative;
-    min-height:100svh;
-    display:flex;
-    align-items:flex-end;
-    background:#151210;
+    position:relative; min-height:100svh; display:flex; align-items:flex-end;
+    background:#151210; overflow:hidden;
   }
   .hero img{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    opacity:0.78;
+    position:absolute; inset:0; width:100%; height:112%; object-fit:cover; opacity:0.8;
+    transform:translateY(0); will-change:transform;
   }
   .hero::after{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(21,18,16,0.15) 0%, rgba(21,18,16,0.35) 45%, rgba(21,18,16,0.92) 100%);
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(21,18,16,0.2) 0%, rgba(21,18,16,0.4) 45%, rgba(21,18,16,0.95) 100%);
   }
-  .hero-content{
-    position:relative;
-    z-index:2;
-    width:100%;
-    padding:0 28px 72px;
-    color:#f4ede0;
-  }
+  .hero-content{ position:relative; z-index:2; width:100%; padding:0 20px 40px; color:#f4ede0; }
   .hero-inner{ max-width:var(--max); margin:0 auto; }
+  .ember-dot{
+    display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--ember-bright);
+    margin-right:9px; box-shadow:0 0 0 0 rgba(200,69,46,0.6); animation:pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(200,69,46,0.55); }
+    70%{ box-shadow:0 0 0 9px rgba(200,69,46,0); }
+    100%{ box-shadow:0 0 0 0 rgba(200,69,46,0); }
+  }
   .hero-eyebrow{
-    font-family:'Fraunces', serif;
-    font-style:italic;
-    font-weight:500;
-    font-size:1.05rem;
-    color:#d8b98a;
-    margin-bottom:14px;
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.85rem; letter-spacing:0.02em;
+    color:#e6dcc9; display:flex; align-items:center; margin-bottom:16px;
   }
-  .hero h1{
-    font-size:clamp(3rem, 8vw, 6rem);
-    font-weight:600;
-    line-height:0.98;
-    max-width:12ch;
-  }
-  .hero p.lead{
-    margin-top:22px;
-    max-width:46ch;
-    font-size:1.15rem;
-    color:#e6dcc9;
-  }
-  .hero-actions{
-    margin-top:34px;
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-  }
+  .hero h1{ font-size:clamp(2.7rem, 12vw, 6.4rem); font-weight:700; line-height:0.94; max-width:13ch; }
+  .hero p.lead{ margin-top:20px; max-width:42ch; font-size:1.08rem; color:#e6dcc9; }
+  .hero-actions{ margin-top:30px; display:flex; gap:12px; flex-wrap:wrap; }
   .btn{
-    display:inline-block;
-    font-family:'Work Sans', sans-serif;
-    font-weight:600;
-    font-size:0.95rem;
-    text-decoration:none;
-    padding:14px 26px;
-    border-radius:2px;
-    border:1px solid transparent;
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.94rem; text-decoration:none;
+    padding:15px 24px; border-radius:999px; border:1px solid transparent;
     transition:transform 0.15s ease, background 0.2s ease, color 0.2s ease;
   }
+  .btn:active{ transform:scale(0.97); }
   .btn-primary{ background:var(--ember); color:#f8f3e8; }
   .btn-primary:hover{ background:var(--ember-dark); }
   .btn-ghost{ border-color:rgba(244,237,224,0.55); color:#f4ede0; }
   .btn-ghost:hover{ background:rgba(244,237,224,0.12); }
+  .btn svg{ width:16px; height:16px; }
 
-  /* ---------- info strip ---------- */
-  .info-strip{
-    background:var(--charcoal);
-    color:#e6dcc9;
-    padding:22px 0;
-    border-bottom:1px solid rgba(244,237,224,0.12);
+  .reserve-strip{ background:var(--charcoal); color:#e6dcc9; padding:34px 0; }
+  .reserve-grid{ display:flex; flex-direction:column; gap:20px; align-items:flex-start; justify-content:space-between; }
+  .status-line{ display:flex; align-items:center; gap:9px; font-size:0.95rem; }
+  .status-dot{ width:9px; height:9px; border-radius:50%; background:var(--ivy); flex:none; }
+  .status-dot.closed{ background:var(--stone); }
+  .status-line strong{ color:#f4ede0; }
+  .reserve-cta{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; width:100%; }
+  .reserve-phone{
+    font-family:'Fraunces', serif; font-weight:700; font-size:clamp(1.6rem, 6vw, 2.2rem);
+    color:#f4ede0; text-decoration:none; white-space:nowrap;
   }
-  .info-strip .wrap{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px 40px;
-    justify-content:space-between;
-    align-items:center;
-    font-size:0.95rem;
-  }
-  .info-strip strong{ color:#f4ede0; font-weight:600; }
-  .info-strip .sep{ color:var(--stone); }
+  .reserve-note{ font-size:0.85rem; color:var(--stone); }
 
-  /* ---------- section basics ---------- */
-  section{ padding:96px 0; }
-  .section-head{ max-width:64ch; margin-bottom:52px; }
+  section{ padding:72px 0; }
+  .section-head{ max-width:60ch; margin-bottom:40px; }
   .section-head .kicker{
-    font-family:'Fraunces', serif;
-    font-style:italic;
-    color:var(--ember);
-    font-size:1.05rem;
-    margin-bottom:8px;
-    display:block;
+    font-family:'Work Sans', sans-serif; font-weight:600; color:var(--ember); font-size:0.85rem;
+    margin-bottom:8px; display:block;
   }
-  .section-head h2{
-    font-size:clamp(2rem, 4vw, 2.75rem);
-    font-weight:600;
-    line-height:1.08;
-  }
+  .section-head h2{ font-size:clamp(1.9rem, 6vw, 2.7rem); font-weight:700; line-height:1.06; }
 
-  /* ---------- story ---------- */
   .story{ background:var(--paper); }
-  .story-grid{
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:64px;
-    align-items:center;
-  }
-  .story-text p{ font-size:1.05rem; color:#3a332c; max-width:52ch; }
-  .story-text p + p{ margin-top:18px; }
-  .story-photo{ position:relative; }
-  .story-photo img{ width:100%; height:auto; border-radius:2px; }
-  .story-photo figcaption{
-    margin-top:14px;
-    font-size:0.88rem;
-    color:var(--stone);
-  }
+  .story-grid{ display:grid; grid-template-columns:1fr; gap:36px; align-items:center; }
+  .story-text p{ font-size:1.02rem; color:#3a332c; max-width:52ch; }
+  .story-text p + p{ margin-top:16px; }
+  .story-photo img{ width:100%; height:auto; border-radius:6px; }
+  .story-photo figcaption{ margin-top:12px; font-size:0.85rem; color:var(--stone); }
 
-  /* ---------- specialties, editorial rows ---------- */
-  .dish-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    min-height:520px;
+  .dish-scroller{
+    display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory;
+    padding:4px 20px 20px; margin:0 -20px;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
   }
-  .dish-row:nth-child(even) .dish-photo{ order:2; }
-  .dish-photo{ position:relative; overflow:hidden; background:#151210; }
-  .dish-photo img{ width:100%; height:100%; object-fit:cover; min-height:340px; }
-  .dish-text{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:64px;
-    background:var(--cream);
+  .dish-scroller::-webkit-scrollbar{ display:none; }
+  .dish-card{
+    flex:0 0 78%; scroll-snap-align:start; background:var(--charcoal); border-radius:10px;
+    overflow:hidden; position:relative; min-height:400px; display:flex; align-items:flex-end;
   }
-  .dish-text .num{
-    font-family:'Fraunces', serif;
-    font-style:italic;
-    color:var(--stone);
-    font-size:0.95rem;
-    margin-bottom:10px;
-  }
-  .dish-text h3{
-    font-size:clamp(1.7rem, 3vw, 2.3rem);
-    font-weight:600;
-    margin-bottom:16px;
-  }
-  .dish-text p{ color:#3a332c; max-width:42ch; font-size:1.02rem; }
+  .dish-card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.9; }
+  .dish-card::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(21,18,16,0) 40%, rgba(21,18,16,0.92) 100%); }
+  .dish-card-text{ position:relative; z-index:2; padding:24px; color:#f4ede0; }
+  .dish-card-text .tag{ font-size:0.78rem; color:#d8b98a; font-weight:600; margin-bottom:6px; display:block; }
+  .dish-card-text h3{ font-size:1.4rem; font-weight:600; margin-bottom:6px; }
+  .dish-card-text p{ font-size:0.9rem; color:#d9d0bf; max-width:32ch; }
+  .scroller-hint{ font-size:0.82rem; color:var(--stone); margin-top:-6px; padding:0 20px 8px; }
 
-  /* ---------- menu, chalkboard ---------- */
-  .menu-board{
-    background:var(--charcoal);
-    color:#e6dcc9;
-  }
+  .menu-board{ background:var(--charcoal); color:#e6dcc9; }
   .menu-board .section-head .kicker{ color:#d8b98a; }
   .menu-board .section-head h2{ color:#f4ede0; }
-  .menu-board .section-head p{ color:var(--stone); margin-top:14px; max-width:52ch; }
-  .menu-columns{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:48px;
+  .menu-board .section-head p{ color:var(--stone); margin-top:12px; max-width:52ch; }
+  .menu-tabs{ display:flex; gap:8px; margin-bottom:28px; flex-wrap:wrap; }
+  .menu-tab{
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.9rem; color:var(--stone);
+    background:transparent; border:1px solid rgba(244,237,224,0.2); padding:10px 18px;
+    border-radius:999px; cursor:pointer; transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
-  .menu-cat h3{
-    font-family:'Fraunces', serif;
-    font-style:italic;
-    font-weight:600;
-    color:var(--ember);
-    font-size:1.4rem;
-    margin-bottom:22px;
-    padding-bottom:14px;
-    border-bottom:1px solid rgba(244,237,224,0.18);
-  }
+  .menu-tab.active{ background:var(--ember); color:#f8f3e8; border-color:var(--ember); }
+  .menu-panel{ display:none; }
+  .menu-panel.active{ display:block; }
   .menu-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    gap:12px;
-    padding:12px 0;
-    border-bottom:1px dashed rgba(244,237,224,0.14);
-    font-size:0.98rem;
+    display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:13px 0;
+    border-bottom:1px dashed rgba(244,237,224,0.14); font-size:0.98rem;
   }
   .menu-item:last-child{ border-bottom:none; }
   .menu-item .name{ color:#f4ede0; }
-  .menu-item .note{ display:block; font-size:0.82rem; color:var(--stone); margin-top:2px; }
-  .menu-item .price{
-    font-family:'Fraunces', serif;
-    color:var(--gold);
-    font-weight:600;
-    white-space:nowrap;
-  }
-  .menu-note{
-    margin-top:44px;
-    font-size:0.88rem;
-    color:var(--stone);
-    border-top:1px solid rgba(244,237,224,0.14);
-    padding-top:22px;
-  }
+  .menu-item .note{ display:block; font-size:0.8rem; color:var(--stone); margin-top:2px; }
+  .menu-item .price{ font-family:'Fraunces', serif; color:var(--gold); font-weight:600; white-space:nowrap; }
+  .menu-note{ margin-top:32px; font-size:0.85rem; color:var(--stone); border-top:1px solid rgba(244,237,224,0.14); padding-top:18px; }
 
-  /* ---------- visit ---------- */
   .visit{ background:var(--paper); }
-  .visit-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:64px;
-  }
+  .visit-grid{ display:grid; grid-template-columns:1fr; gap:36px; }
   .hours-table{ width:100%; border-collapse:collapse; }
-  .hours-table td{
-    padding:11px 0;
-    border-bottom:1px solid var(--line);
-    font-size:0.98rem;
-  }
-  .hours-table td:first-child{ font-weight:600; width:40%; }
+  .hours-table td{ padding:10px 0; border-bottom:1px solid var(--line); font-size:0.95rem; }
+  .hours-table td:first-child{ font-weight:600; width:44%; }
   .hours-table tr.today td{ color:var(--ember); font-weight:600; }
   .hours-table td.closed{ color:var(--stone); }
 
-  .contact-card{
-    background:var(--charcoal);
-    color:#e6dcc9;
-    padding:44px;
-    border-radius:2px;
-  }
-  .contact-card h3{ color:#f4ede0; font-size:1.5rem; margin-bottom:22px; }
-  .contact-line{
-    display:flex;
-    gap:14px;
-    padding:14px 0;
-    border-bottom:1px solid rgba(244,237,224,0.14);
-    font-size:0.98rem;
-  }
+  .contact-card{ background:var(--charcoal); color:#e6dcc9; padding:32px; border-radius:12px; }
+  .contact-card h3{ color:#f4ede0; font-size:1.4rem; margin-bottom:18px; }
+  .contact-line{ display:flex; gap:14px; padding:13px 0; border-bottom:1px solid rgba(244,237,224,0.14); font-size:0.95rem; }
   .contact-line:last-of-type{ border-bottom:none; }
-  .contact-line .label{ color:var(--stone); min-width:96px; }
+  .contact-line .label{ color:var(--stone); min-width:88px; }
   .contact-line a{ color:#f4ede0; text-decoration:none; border-bottom:1px solid rgba(244,237,224,0.4); }
   .contact-line a:hover{ border-color:#f4ede0; }
-  .contact-actions{ margin-top:26px; display:flex; gap:12px; flex-wrap:wrap; }
+  .contact-actions{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
 
-  /* ---------- footer ---------- */
-  footer{
-    background:var(--charcoal);
-    color:var(--stone);
-    padding:36px 0;
-    font-size:0.88rem;
-    border-top:1px solid rgba(244,237,224,0.1);
-  }
-  footer .wrap{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:12px;
-  }
+  footer{ background:var(--charcoal); color:var(--stone); padding:30px 0 24px; font-size:0.85rem; border-top:1px solid rgba(244,237,224,0.1); }
+  footer .wrap{ display:flex; flex-direction:column; gap:10px; }
   footer a{ color:#e6dcc9; text-decoration:none; }
   footer a:hover{ text-decoration:underline; }
 
-  @media (max-width:860px){
-    .story-grid, .visit-grid{ grid-template-columns:1fr; }
-    .dish-row{ grid-template-columns:1fr; min-height:auto; }
-    .dish-row:nth-child(even) .dish-photo{ order:0; }
-    .dish-photo img{ min-height:300px; }
-    .dish-text{ padding:44px 28px; }
-    .menu-columns{ grid-template-columns:1fr; gap:40px; }
-    section{ padding:64px 0; }
-    .topbar{ padding:16px 20px; }
-    .topbar .brand{ font-size:1rem; }
+  .mobile-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:70;
+    display:flex; gap:10px; padding:12px 16px calc(12px + var(--safe-bottom));
+    background:rgba(33,28,24,0.97); backdrop-filter:blur(6px);
+    box-shadow:0 -8px 24px rgba(0,0,0,0.25);
   }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ transition:none !important; }
+  .mobile-bar a{
+    flex:1; text-align:center; font-family:'Work Sans', sans-serif; font-weight:700; font-size:0.95rem;
+    text-decoration:none; padding:13px; border-radius:999px;
+  }
+  .mobile-bar .call{ background:var(--ember); color:#f8f3e8; }
+  .mobile-bar .map{ background:transparent; color:#e6dcc9; border:1px solid rgba(244,237,224,0.3); }
+
+  @media (min-width:860px){
+    body{ padding-bottom:0; }
+    .mobile-bar{ display:none; }
+    section{ padding:110px 0; }
+    .story-grid{ grid-template-columns:1.1fr 0.9fr; gap:64px; }
+    .visit-grid{ grid-template-columns:1fr 1fr; gap:64px; }
+    .dish-scroller{ padding:4px 20px 8px; }
+    .dish-card{ flex:0 0 360px; min-height:460px; }
+    .reserve-grid{ flex-direction:row; align-items:center; }
+    .reserve-cta{ width:auto; justify-content:flex-end; }
+    .menu-columns-desktop{ display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
+    .menu-tabs{ display:none; }
+    .menu-panel{ display:block !important; }
   }
 </style>
 </head>
 <body>
 
-<div class="topbar">
+<div class="topbar" id="topbar">
   <span class="brand">Casa do Avô</span>
-  <a class="call" href="tel:+351254594016">254 594 016</a>
+  <a class="call" href="tel:+351254594016">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Ligar
+  </a>
 </div>
 
 <header class="hero">
-  <img src="images/casa-do-avo-fachada-sarzeda-sernancelhe.jpg" alt="Fachada em granito da Casa do Avô, com telhado de telha vermelha e trepadeira verde, em Sarzeda, Sernancelhe">
+  <img id="hero-img" src="images/casa-do-avo-fachada-sarzeda-sernancelhe.jpg" alt="Fachada em granito da Casa do Avô, com telhado de telha vermelha e trepadeira verde, em Sarzeda, Sernancelhe">
   <div class="hero-content">
     <div class="hero-inner">
-      <span class="hero-eyebrow">Sarzeda, Sernancelhe</span>
+      <span class="hero-eyebrow"><span class="ember-dot"></span>Sarzeda, Sernancelhe</span>
       <h1>Casa do Avô</h1>
       <p class="lead">Cozinha de lume e pedra no interior de Sernancelhe. Porco Bísaro, polvo na brasa e bacalhau assado, como se fazia antigamente.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="tel:+351254594016">Ligar e reservar</a>
+        <a class="btn btn-primary" href="tel:+351254594016">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Reservar mesa
+        </a>
         <a class="btn btn-ghost" href="#menu">Ver a ementa</a>
       </div>
     </div>
   </div>
 </header>
 
-<div class="info-strip">
-  <div class="wrap">
-    <span><strong>Rua do Cieiro, 22</strong>, Sarzeda, 3640-180 Sernancelhe</span>
-    <span class="sep">·</span>
-    <span>Fechado à segunda-feira</span>
-    <span class="sep">·</span>
-    <span>Preço médio: <strong>€10 a €25</strong> por pessoa</span>
+<div class="reserve-strip">
+  <div class="wrap reserve-grid">
+    <div class="status-line" id="status-line">
+      <span class="status-dot" id="status-dot"></span>
+      <span id="status-text">A verificar horário…</span>
+    </div>
+    <div class="reserve-cta">
+      <a class="reserve-phone" href="tel:+351254594016">254 594 016</a>
+      <span class="reserve-note">Ligue para reservar mesa</span>
+    </div>
   </div>
 </div>
 
 <section class="story">
   <div class="wrap story-grid">
-    <div class="story-text">
+    <div class="story-text reveal">
       <span class="section-head kicker" style="display:block;">A casa</span>
-      <h2 style="font-size:clamp(2rem,4vw,2.6rem); font-weight:600; margin-bottom:22px;">Uma tasca de aldeia, levada a sério</h2>
+      <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Uma tasca de aldeia, levada a sério</h2>
       <p>Na Casa do Avô a brasa está sempre acesa. É aqui que se assam as postas de vitela, o bacalhau e o polvo, com a mesma calma de sempre, numa casa de pedra no centro de Sarzeda.</p>
       <p>Trabalhamos de perto com produtores da região para trazer o porco Bísaro à mesa em três formas diferentes, do presunto à alheira, e mantemos a ementa curta para que cada prato saia bem feito.</p>
     </div>
-    <figure class="story-photo">
-      <img src="images/casa-do-avo-equipa-restaurante.jpg" alt="Equipa da Casa do Avô, cozinheiros e sala, à porta do restaurante em Sarzeda">
-      <figcaption>A equipa que está na cozinha e na sala todos os dias.</figcaption>
+    <figure class="story-photo reveal">
+      <img src="images/casa-do-avo-equipa-restaurante.jpg" alt="Equipa e amigos da casa, à porta da Casa do Avô em Sarzeda">
+      <figcaption>A equipa e amigos da casa, à porta do restaurante.</figcaption>
     </figure>
   </div>
 </section>
 
-<div class="dish-row">
-  <div class="dish-photo">
-    <img src="images/casa-do-avo-polvo-brasa.jpg" alt="Polvo assado na brasa, servido sobre arroz de forno, na Casa do Avô">
+<section style="padding-top:0;">
+  <div class="wrap section-head reveal">
+    <span class="kicker">Da brasa para a mesa</span>
+    <h2>As especialidades</h2>
   </div>
-  <div class="dish-text">
-    <span class="num">Especialidade</span>
-    <h3>Polvo à brasa</h3>
-    <p>Braseado até ficar tenro por dentro e a caramelizar por fora, servido sobre arroz de polvo feito no forno. Um dos pratos mais pedidos da casa.</p>
+  <div class="dish-scroller reveal" id="dish-scroller">
+    <div class="dish-card">
+      <img src="images/casa-do-avo-polvo-brasa.jpg" alt="Polvo assado na brasa, servido sobre arroz de forno">
+      <div class="dish-card-text">
+        <span class="tag">Especialidade</span>
+        <h3>Polvo à brasa</h3>
+        <p>Tenro por dentro, caramelizado por fora, sobre arroz de polvo feito no forno.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="images/casa-do-avo-entrecosto-lenha.jpg" alt="Entrecosto grelhado na brasa de lenha, junto a arroz malandrinho">
+      <div class="dish-card-text">
+        <span class="tag">Na brasa de lenha</span>
+        <h3>Grelhados de lenha</h3>
+        <p>Carnes marinadas e grelhadas devagar sobre lenha, ao lado do arroz de chouriço.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="images/casa-do-avo-presunto-porco-bisaro.jpg" alt="Presunto de porco Bísaro em cura, apoiado em suporte de madeira">
+      <div class="dish-card-text">
+        <span class="tag">Produto da casa</span>
+        <h3>Porco Bísaro</h3>
+        <p>Presunto, chouriça e alheira da raça autóctone da região, em três formas.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="images/casa-do-avo-mesa-pratos.jpg" alt="Trilogia de porco Bísaro e petiscos servidos à mesa na Casa do Avô">
+      <div class="dish-card-text">
+        <span class="tag">Para partilhar</span>
+        <h3>Trilogia Bísaro</h3>
+        <p>Costeletas, entrecosto e chouriça, com batata a assar em brasa lenta.</p>
+      </div>
+    </div>
+    <div class="dish-card">
+      <img src="images/casa-do-avo-arroz-polvo-forno.jpg" alt="Arroz de polvo no forno com presunto, servido em travessa de barro">
+      <div class="dish-card-text">
+        <span class="tag">No forno de lenha</span>
+        <h3>Arroz de polvo</h3>
+        <p>Feito no forno, com presunto e o sabor a fumo próprio da lenha.</p>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="dish-row">
-  <div class="dish-photo">
-    <img src="images/casa-do-avo-entrecosto-lenha.jpg" alt="Entrecosto grelhado na brasa de lenha, junto a arroz malandrinho, na Casa do Avô">
-  </div>
-  <div class="dish-text">
-    <span class="num">Especialidade</span>
-    <h3>Grelhados na brasa de lenha</h3>
-    <p>Carnes marinadas e grelhadas devagar sobre lenha, ao lado do arroz de chouriço da casa. É o cheiro que se sente à entrada, vindo direto da lareira.</p>
-  </div>
-</div>
-
-<div class="dish-row">
-  <div class="dish-photo">
-    <img src="images/casa-do-avo-presunto-porco-bisaro.jpg" alt="Presunto de porco Bísaro em cura, apoiado em suporte de madeira">
-  </div>
-  <div class="dish-text">
-    <span class="num">Produto da casa</span>
-    <h3>Porco Bísaro, em três formas</h3>
-    <p>Presunto, chouriça e alheira de porco Bísaro, a raça autóctone da região, servidos como entrada ou reunidos na trilogia da ementa.</p>
-  </div>
-</div>
+  <p class="scroller-hint wrap">Deslize para ver mais pratos →</p>
+</section>
 
 <section class="menu-board" id="menu">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="kicker">A ementa</span>
       <h2>As nossas sugestões</h2>
       <p>Ementa sazonal, sujeita a alterações consoante o mercado. Pratos para 2 pessoas assinalados.</p>
     </div>
-    <div class="menu-columns">
-      <div class="menu-cat">
-        <h3>Entradas</h3>
+    <div class="menu-tabs" id="menu-tabs">
+      <button class="menu-tab active" data-tab="entradas">Entradas</button>
+      <button class="menu-tab" data-tab="pratos">Pratos</button>
+      <button class="menu-tab" data-tab="sobremesas">Sobremesas</button>
+    </div>
+    <div class="menu-columns-desktop">
+      <div class="menu-panel active" data-panel="entradas">
         <div class="menu-item"><span class="name">Sopa do dia</span><span class="price">3,00€</span></div>
         <div class="menu-item"><span class="name">Alheira de porco Bísaro</span><span class="price">8,00€</span></div>
         <div class="menu-item"><span class="name">Chouriça de porco Bísaro</span><span class="price">8,00€</span></div>
         <div class="menu-item"><span class="name">Presunto de porco Bísaro</span><span class="price">8,00€</span></div>
       </div>
-      <div class="menu-cat">
-        <h3>Pratos</h3>
+      <div class="menu-panel" data-panel="pratos">
         <div class="menu-item"><span class="name">Bacalhau assado na brasa<span class="note">2 pessoas</span></span><span class="price">40,00€</span></div>
         <div class="menu-item"><span class="name">Arroz de polvo no forno</span><span class="price">20,50€</span></div>
         <div class="menu-item"><span class="name">Trilogia de porco Bísaro</span><span class="price">18,50€</span></div>
@@ -445,8 +363,7 @@
         <div class="menu-item"><span class="name">Posta de vitela grelhada<span class="note">2 pessoas</span></span><span class="price">39,00€</span></div>
         <div class="menu-item"><span class="name">Naco de vitela, queijo da Serra e ovo bio</span><span class="price">18,50€</span></div>
       </div>
-      <div class="menu-cat">
-        <h3>Sobremesas</h3>
+      <div class="menu-panel" data-panel="sobremesas">
         <div class="menu-item"><span class="name">Pudim de castanhas</span><span class="price">3,50€</span></div>
         <div class="menu-item"><span class="name">Pudim abade de Priscos</span><span class="price">3,50€</span></div>
         <div class="menu-item"><span class="name">Barriga de freira</span><span class="price">3,50€</span></div>
@@ -463,22 +380,22 @@
 
 <section class="visit">
   <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Visitar</span>
+    <div class="section-head reveal">
+      <span class="kicker">Reservar</span>
       <h2>Horário e contactos</h2>
     </div>
     <div class="visit-grid">
-      <table class="hours-table">
-        <tr class="closed"><td>Segunda-feira</td><td class="closed">Encerrado</td></tr>
-        <tr class="today"><td>Terça-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
-        <tr><td>Quarta-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
-        <tr><td>Quinta-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
-        <tr><td>Sexta-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
-        <tr><td>Sábado</td><td>12h00–15h00 · 19h00–22h30</td></tr>
-        <tr><td>Domingo</td><td>12h00–15h00</td></tr>
+      <table class="hours-table" id="hours-table">
+        <tr data-day="1"><td>Segunda-feira</td><td class="closed">Encerrado</td></tr>
+        <tr data-day="2"><td>Terça-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="3"><td>Quarta-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="4"><td>Quinta-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="5"><td>Sexta-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="6"><td>Sábado</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="0"><td>Domingo</td><td>12h00–15h00</td></tr>
       </table>
       <div class="contact-card">
-        <h3>Casa do Avô</h3>
+        <h3>Reserve a sua mesa</h3>
         <div class="contact-line"><span class="label">Morada</span><span>Rua do Cieiro, 22<br>Sarzeda, 3640-180 Sernancelhe</span></div>
         <div class="contact-line"><span class="label">Telefone</span><a href="tel:+351254594016">254 594 016</a></div>
         <div class="contact-line"><span class="label">Facebook</span><a href="https://www.facebook.com/casadoavorestaurante" target="_blank" rel="noopener">casadoavorestaurante</a></div>
@@ -497,6 +414,86 @@
     <span><a href="tel:+351254594016">254 594 016</a> · <a href="https://www.facebook.com/casadoavorestaurante" target="_blank" rel="noopener">Facebook</a></span>
   </div>
 </footer>
+
+<div class="mobile-bar">
+  <a class="call" href="tel:+351254594016">Ligar e reservar</a>
+  <a class="map" href="https://www.google.com/maps/search/?api=1&query=Rua+do+Cieiro+22+Sarzeda+Sernancelhe" target="_blank" rel="noopener">Mapa</a>
+</div>
+
+<script>
+  var topbar = document.getElementById('topbar');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 40){ topbar.classList.add('scrolled'); }
+    else{ topbar.classList.remove('scrolled'); }
+  }, { passive:true });
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold:0.15 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  var heroImg = document.getElementById('hero-img');
+  if(!reduceMotion){
+    window.addEventListener('scroll', function(){
+      var y = window.scrollY;
+      if(y < window.innerHeight){
+        heroImg.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+      }
+    }, { passive:true });
+  }
+
+  var tabs = document.querySelectorAll('.menu-tab');
+  var panels = document.querySelectorAll('.menu-panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.querySelector('.menu-panel[data-panel="' + tab.dataset.tab + '"]').classList.add('active');
+    });
+  });
+
+  (function(){
+    var schedule = {
+      0: [[12,0,15,0]],
+      1: [],
+      2: [[12,0,15,0],[19,0,22,30]],
+      3: [[12,0,15,0],[19,0,22,30]],
+      4: [[12,0,15,0],[19,0,22,30]],
+      5: [[12,0,15,0],[19,0,22,30]],
+      6: [[12,0,15,0],[19,0,22,30]]
+    };
+    var dayNames = ['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
+    var now = new Date();
+    var day = now.getDay();
+    var minutesNow = now.getHours() * 60 + now.getMinutes();
+    var ranges = schedule[day];
+    var open = false;
+    for(var i=0; i<ranges.length; i++){
+      var r = ranges[i];
+      var start = r[0]*60 + r[1];
+      var end = r[2]*60 + r[3];
+      if(minutesNow >= start && minutesNow <= end){ open = true; break; }
+    }
+    var statusDot = document.getElementById('status-dot');
+    var statusText = document.getElementById('status-text');
+    if(open){
+      statusText.innerHTML = '<strong>Aberto agora</strong>';
+    } else {
+      statusDot.classList.add('closed');
+      statusText.innerHTML = 'Fechado agora';
+    }
+    var todayRow = document.querySelector('.hours-table tr[data-day="' + day + '"]');
+    if(todayRow){ todayRow.classList.add('today'); }
+  })();
+</script>
 
 </body>
 </html>
