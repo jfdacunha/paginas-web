@@ -198,12 +198,19 @@
   .scroller-hint{ font-size:0.82rem; color:var(--stone); margin-top:-6px; padding:0 20px 8px; }
 
   .region{ background:var(--paper); }
-  .region-text{ max-width:66ch; }
-  .region-text p{ font-size:1.02rem; color:#3a332c; }
+  .region-grid{ display:grid; grid-template-columns:1fr; gap:32px; align-items:center; }
+  .region-text p{ font-size:1.02rem; color:#3a332c; max-width:52ch; }
   .region-text p + p{ margin-top:16px; }
   .region-fact{
     margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
     font-family:'Fraunces', serif; font-style:italic; color:var(--stone); font-size:1rem;
+  }
+  .region-photo{ margin:0; position:relative; border-radius:8px; overflow:hidden; }
+  .region-photo img{ width:100%; height:340px; object-fit:cover; object-position:center 30%; display:block; }
+  .region-photo figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:16px 18px;
+    font-size:0.85rem; color:#f4ede0;
+    background:linear-gradient(180deg, rgba(21,18,16,0) 0%, rgba(21,18,16,0.75) 100%);
   }
 
   .menu-board{ background:var(--charcoal); color:#e6dcc9; }
@@ -228,22 +235,6 @@
   .menu-item .note{ display:block; font-size:0.8rem; color:var(--stone); margin-top:2px; }
   .menu-item .price{ font-family:'Fraunces', serif; color:var(--gold); font-weight:600; white-space:nowrap; }
   .menu-note{ margin-top:32px; font-size:0.85rem; color:var(--stone); border-top:1px solid rgba(244,237,224,0.14); padding-top:18px; }
-
-  .sunset-break{ position:relative; height:70vh; min-height:420px; overflow:hidden; background:#151210; }
-  .sunset-break img{ width:100%; height:100%; object-fit:cover; object-position:center 30%; }
-  .sunset-break::after{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(21,18,16,0.05) 0%, rgba(21,18,16,0.15) 60%, rgba(21,18,16,0.85) 100%);
-  }
-  .sunset-caption{
-    position:absolute; left:0; right:0; bottom:0; z-index:2; padding:32px 20px;
-    color:#f4ede0;
-  }
-  .sunset-caption p{
-    font-family:'Fraunces', serif; font-style:italic; font-weight:500; font-size:clamp(1.1rem, 3vw, 1.5rem);
-    max-width:34ch; margin:0 auto;
-  }
-  @media (min-width:860px){ .sunset-caption{ padding:40px; } .sunset-caption p{ margin:0; } }
 
   .ambience{ background:var(--cream); }
   .ambience-grid{
@@ -302,6 +293,8 @@
     .mobile-bar{ display:none; }
     section{ padding:110px 0; }
     .story-grid{ grid-template-columns:1.1fr 0.9fr; gap:64px; }
+    .region-grid{ grid-template-columns:1.1fr 0.9fr; gap:64px; }
+    .region-photo img{ height:100%; min-height:380px; }
     .ambience-grid{ grid-template-columns:1.1fr 1fr 1fr; }
     .ambience-photo img{ height:100%; min-height:340px; }
     .visit-grid{ grid-template-columns:1fr 1fr; gap:64px; }
@@ -470,12 +463,18 @@
 </section>
 
 <section class="region">
-  <div class="wrap region-text reveal">
-    <span class="section-head kicker" style="display:block;">A região</span>
-    <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Sarzeda, terra de castanha e granito</h2>
-    <p>Sarzeda é uma das freguesias do concelho de Sernancelhe, na Beira Alta, distrito de Viseu. É uma terra de paisagens graníticas, atravessada pelo rio Távora, com o planalto da Lapa a marcar o horizonte a mais de 900 metros de altitude. A poucos minutos ficam Penedono e o início da região vinhateira do Douro.</p>
-    <p>Sernancelhe é conhecida em Portugal como a terra da castanha, presente em pratos como a sopa de castanha, ao lado de enchidos tradicionais como o salpicão e a chouriça, do presunto fumado e da bôla de carne. É desta despensa regional que a Casa do Avô parte para os seus assados de forno e de brasa.</p>
-    <p class="region-fact">O concelho é também terra natal do escritor Aquilino Ribeiro, uma das grandes vozes da literatura portuguesa do século XX.</p>
+  <div class="wrap region-grid">
+    <div class="region-text reveal">
+      <span class="section-head kicker" style="display:block;">A região</span>
+      <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Sarzeda, terra de castanha e granito</h2>
+      <p>Sarzeda é uma das freguesias do concelho de Sernancelhe, na Beira Alta, distrito de Viseu. É uma terra de paisagens graníticas, atravessada pelo rio Távora, com o planalto da Lapa a marcar o horizonte a mais de 900 metros de altitude. A poucos minutos ficam Penedono e o início da região vinhateira do Douro.</p>
+      <p>Sernancelhe é conhecida em Portugal como a terra da castanha, presente em pratos como a sopa de castanha, ao lado de enchidos tradicionais como o salpicão e a chouriça, do presunto fumado e da bôla de carne. É desta despensa regional que a Casa do Avô parte para os seus assados de forno e de brasa.</p>
+      <p class="region-fact">O concelho é também terra natal do escritor Aquilino Ribeiro, uma das grandes vozes da literatura portuguesa do século XX.</p>
+    </div>
+    <figure class="region-photo reveal">
+      <img src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="Entrada da Casa do Avô ao pôr do sol, casa de granito com placa Aberto, em Sarzeda, Sernancelhe">
+      <figcaption>Ao fim do dia, com a placa a dizer Aberto.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -518,13 +517,6 @@
       </div>
     </div>
     <p class="menu-note">Preço médio reportado pelos clientes: 10€ a 25€ por pessoa.</p>
-  </div>
-</section>
-
-<section class="sunset-break">
-  <img src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="Entrada da Casa do Avô ao pôr do sol, casa de granito com placa Aberto, em Sarzeda, Sernancelhe">
-  <div class="sunset-caption">
-    <p>Ao fim do dia, com a placa a dizer Aberto, é sempre boa hora para aparecer.</p>
   </div>
 </section>
 
