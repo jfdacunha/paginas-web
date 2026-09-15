@@ -89,21 +89,22 @@
 
   .hero{
     position:relative; min-height:100svh; display:flex; align-items:flex-end;
-    background:#151210; overflow:hidden;
+    background:#0f0d0b; overflow:hidden;
   }
   .hero img{
-    position:absolute; inset:0; width:100%; height:112%; object-fit:cover; opacity:0.82;
-    transform:translateY(0); will-change:transform;
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%;
+    opacity:0.75; transform:translateY(0); will-change:transform;
   }
   .hero::after{
     content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg, rgba(20,16,14,0.25) 0%, rgba(20,16,14,0.45) 45%, rgba(20,16,14,0.95) 100%);
+    background:linear-gradient(180deg, rgba(10,8,7,0.35) 0%, rgba(10,8,7,0.5) 40%, rgba(10,8,7,0.97) 100%);
   }
   .hero-content{ position:relative; z-index:2; width:100%; padding:0 20px 40px; color:#f5efe2; }
   .hero-inner{ max-width:var(--max); margin:0 auto; }
   .hero-eyebrow{
-    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.85rem; letter-spacing:0.02em;
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.85rem; letter-spacing:0.03em;
     color:#e9dfca; display:flex; align-items:center; gap:9px; margin-bottom:16px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.7);
   }
   .ember-dot{
     display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--ember);
@@ -114,8 +115,8 @@
     70%{ box-shadow:0 0 0 9px rgba(193,83,31,0); }
     100%{ box-shadow:0 0 0 0 rgba(193,83,31,0); }
   }
-  .hero h1{ font-size:clamp(2.7rem, 12vw, 6.2rem); font-weight:700; line-height:0.96; max-width:14ch; }
-  .hero p.lead{ margin-top:20px; max-width:44ch; font-size:1.08rem; color:#e9dfca; }
+  .hero h1{ font-size:clamp(2.7rem, 12vw, 6.2rem); font-weight:700; line-height:0.96; max-width:14ch; text-shadow:0 4px 24px rgba(0,0,0,0.85), 0 2px 8px rgba(0,0,0,0.6); }
+  .hero p.lead{ margin-top:20px; max-width:44ch; font-size:1.08rem; color:#e9dfca; text-shadow:0 2px 10px rgba(0,0,0,0.7); }
   .hero-actions{ margin-top:30px; display:flex; gap:12px; flex-wrap:wrap; }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
@@ -142,6 +143,13 @@
     color:#f5efe2; text-decoration:none; white-space:nowrap;
   }
   .reserve-note{ font-size:0.85rem; color:var(--stone); }
+
+  .arch-frieze{
+    display:flex; justify-content:center; gap:28px; padding:22px 20px;
+    background:var(--charcoal); border-top:1px solid rgba(245,239,226,0.08);
+  }
+  .arch-frieze svg{ width:22px; height:22px; opacity:0.55; flex:none; }
+  @media (max-width:600px){ .arch-frieze{ gap:18px; } .arch-frieze svg:nth-child(4n){ display:none; } }
 
   section{ padding:72px 0; }
   .section-head{ max-width:60ch; margin-bottom:40px; }
@@ -239,6 +247,18 @@
   .contact-actions{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
   .map-embed{ grid-column:1 / -1; margin-top:8px; border-radius:8px; overflow:hidden; aspect-ratio:16/9; border:1px solid var(--line); }
 
+  .sibling{ background:var(--parchment); }
+  .sibling-card{
+    display:grid; grid-template-columns:1fr; gap:0; background:var(--charcoal);
+    border-radius:8px; overflow:hidden;
+  }
+  .sibling-photo{ position:relative; height:240px; }
+  .sibling-photo img{ width:100%; height:100%; object-fit:cover; opacity:0.85; }
+  .sibling-text{ padding:32px; color:#e9dfca; }
+  .sibling-text .kicker{ color:var(--gold); font-size:0.85rem; font-weight:600; display:block; margin-bottom:10px; }
+  .sibling-text h3{ font-family:'Zilla Slab', serif; color:#f5efe2; font-size:1.7rem; font-weight:700; margin-bottom:12px; }
+  .sibling-text p{ font-size:0.98rem; max-width:48ch; margin-bottom:20px; }
+
   footer{ background:var(--charcoal); color:var(--stone); padding:30px 0 24px; font-size:0.85rem; border-top:1px solid rgba(245,239,226,0.1); }
   footer .wrap{ display:flex; flex-direction:column; gap:14px; }
   footer a{ color:#e9dfca; text-decoration:none; }
@@ -276,6 +296,8 @@
     .menu-columns-desktop{ display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
     .menu-tabs{ display:none; }
     .menu-panel{ display:block !important; }
+    .sibling-card{ grid-template-columns:1fr 1fr; }
+    .sibling-photo{ height:100%; min-height:320px; }
   }
 </style>
 </head>
@@ -290,7 +312,7 @@
 </div>
 
 <header class="hero">
-  <img id="hero-img" src="images/fornos-do-rei-fachada-castelo-penedono.jpg" alt="Fachada da Taberna Fornos do Rei junto ao Castelo de Penedono">
+  <img id="hero-img" src="images/fornos-do-rei-rua-nevoeiro-penedono.jpg" alt="Rua de calçada com nevoeiro em Penedono, com a placa da Fornos do Rei à esquerda">
   <div class="hero-content">
     <div class="hero-inner">
       <span class="hero-eyebrow"><span class="ember-dot"></span>Penedono, à sombra do castelo</span>
@@ -318,6 +340,16 @@
       <span class="reserve-note">Ligue para reservar mesa</span>
     </div>
   </div>
+</div>
+
+<div class="arch-frieze" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
+  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
+  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
+  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
+  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
+  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
+  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
 </div>
 
 <section class="story">
@@ -509,6 +541,22 @@
           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           title="Mapa com a localização da Fornos do Rei em Penedono"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sibling">
+  <div class="wrap">
+    <div class="sibling-card reveal">
+      <div class="sibling-photo">
+        <img src="images/casa-do-avo-fachada-sarzeda-sernancelhe.jpg" alt="Fachada da Casa do Avô em Sarzeda, Sernancelhe">
+      </div>
+      <div class="sibling-text">
+        <span class="kicker">Restaurante irmão</span>
+        <h3>Casa do Avô, em Sarzeda</h3>
+        <p>Na mesma região da Beira Alta, em Sernancelhe, a Casa do Avô serve porco Bísaro, polvo à brasa e bacalhau assado numa antiga casa de família recuperada.</p>
+        <a class="btn btn-primary" href="https://jfdacunha.github.io/paginas-web/casa-do-avo/" target="_blank" rel="noopener">Ver a Casa do Avô</a>
       </div>
     </div>
   </div>
