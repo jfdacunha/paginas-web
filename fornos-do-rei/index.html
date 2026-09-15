@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fornos do Rei | Reserve mesa em Penedono</title>
-<meta name="description" content="Taberna tradicional junto ao Castelo de Penedono. Enchidos de fumeiro, carnes na brasa e cozinha de forno de lenha. Reserve por telefone: 960 071 487.">
+<meta name="description" content="Taberna medieval junto ao Castelo de Penedono. Enchidos de fumeiro, carnes na brasa e cozinha de forno de lenha. Reserve por telefone: 960 071 487.">
 <link rel="icon" type="image/png" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Zilla+Slab:ital,wght@0,400;0,500;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -35,27 +35,30 @@
 </script>
 <style>
   :root{
-    --parchment:#ece4d3;
-    --paper:#f5efe2;
-    --charcoal:#1c1815;
-    --wine:#6b1f2a;
-    --wine-dark:#4f151d;
-    --stone:#7a7268;
-    --gold:#b08d4f;
-    --ember:#c1531f;
-    --line: rgba(28,24,21,0.14);
+    --stone-dark:#1b1714;
+    --stone-mid:#272120;
+    --parchment:#eee5d1;
+    --parchment-card:#f4ecd9;
+    --wine:#6d1f28;
+    --wine-dark:#4c151c;
+    --gold:#b6903f;
+    --gold-bright:#d1ac5f;
+    --ink:#2a221b;
+    --stone-text:#a89d8c;
+    --line-dark: rgba(238,229,209,0.16);
+    --line-light: rgba(42,34,27,0.16);
     --max: 1180px;
     --safe-bottom: env(safe-area-inset-bottom, 0px);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth; overflow-x:hidden; width:100%;}
   body{
-    margin:0; background:var(--parchment); color:var(--charcoal);
+    margin:0; background:var(--stone-dark); color:var(--parchment);
     font-family:'Work Sans', sans-serif; font-size:16px; line-height:1.6;
     -webkit-font-smoothing:antialiased; padding-bottom:68px;
     overflow-x:hidden; width:100%; max-width:100vw;
   }
-  h1,h2,h3{ font-family:'Zilla Slab', serif; margin:0; color:var(--charcoal); }
+  h1,h2,h3{ font-family:'Cinzel', serif; margin:0; }
   a{ color:inherit; }
   img{ display:block; max-width:100%; }
   .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
@@ -68,8 +71,22 @@
     html{ scroll-behavior:auto; }
   }
 
-  /* arch motif, reused across photo frames */
-  .arch-frame{ border-radius:120px 120px 8px 8px; overflow:hidden; }
+  .stone-tex{
+    background-image:
+      repeating-linear-gradient(0deg, rgba(238,229,209,0.028) 0px, rgba(238,229,209,0.028) 1px, transparent 1px, transparent 46px),
+      repeating-linear-gradient(90deg, rgba(238,229,209,0.022) 0px, rgba(238,229,209,0.022) 1px, transparent 1px, transparent 92px);
+  }
+
+  .arch{ position:relative; overflow:hidden; border-radius:50% 50% 6px 6px / 22% 22% 6px 6px; border:1px solid var(--line-dark); }
+  .arch img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .chapter-mark{ display:flex; align-items:baseline; gap:16px; margin-bottom:14px; }
+  .chapter-num{ font-family:'Cinzel', serif; font-weight:700; font-size:2.6rem; color:var(--gold); line-height:1; opacity:0.9; }
+  .chapter-label{ font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.82rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone-text); }
+  .chapter-title{ font-size:clamp(1.8rem, 5.5vw, 2.6rem); font-weight:600; line-height:1.08; }
+
+  section{ padding:76px 0; }
+  .section-head{ max-width:62ch; margin-bottom:44px; }
 
   .topbar{
     position:fixed; top:0; left:0; right:0; z-index:60;
@@ -78,232 +95,170 @@
     transition:padding 0.3s ease, box-shadow 0.3s ease;
   }
   .topbar.scrolled{ padding:8px 20px; box-shadow:0 6px 20px rgba(0,0,0,0.16); }
-  .topbar .brand-badge img{ height:44px; width:auto; display:block; }
+  .topbar .brand-badge img{ height:42px; width:auto; display:block; }
   .topbar .call{
     display:flex; align-items:center; gap:8px;
-    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.88rem;
-    text-decoration:none; color:#f5efe2; background:var(--wine);
-    padding:9px 16px; border-radius:4px;
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.86rem;
+    text-decoration:none; color:var(--parchment); background:var(--wine);
+    padding:9px 16px; border-radius:2px;
   }
   .topbar .call svg{ width:14px; height:14px; flex:none; }
 
-  .hero{
-    position:relative; min-height:100svh; display:flex; align-items:flex-end;
-    background:#0f0d0b; overflow:hidden;
-  }
-  .hero img{
-    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%;
-    opacity:0.75; transform:translateY(0); will-change:transform;
-  }
-  .hero::after{
-    content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(180deg, rgba(10,8,7,0.35) 0%, rgba(10,8,7,0.5) 40%, rgba(10,8,7,0.97) 100%);
-  }
-  .hero-content{ position:relative; z-index:2; width:100%; padding:0 20px 40px; color:#f5efe2; }
-  .hero-inner{ max-width:var(--max); margin:0 auto; }
+  .hero{ display:flex; flex-direction:column; min-height:100svh; background:var(--stone-dark); }
+  .hero-photo{ position:relative; flex:1 1 42%; min-height:38vh; }
+  .hero-photo .arch{ position:absolute; inset:16px 16px 0 16px; border-radius:50% 50% 0 0 / 30% 30% 0 0; }
+  .hero-photo::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(27,23,20,0) 60%, rgba(27,23,20,1) 100%); }
+  .hero-text{ flex:1 1 58%; display:flex; align-items:center; padding:44px 20px 40px; position:relative; z-index:2; }
+  .hero-text-inner{ max-width:var(--max); margin:0 auto; width:100%; }
   .hero-eyebrow{
-    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.85rem; letter-spacing:0.03em;
-    color:#e9dfca; display:flex; align-items:center; gap:9px; margin-bottom:16px;
-    text-shadow:0 2px 10px rgba(0,0,0,0.7);
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.82rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--gold-bright); display:flex; align-items:center; gap:9px; margin-bottom:18px;
   }
-  .ember-dot{
-    display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--ember);
-    box-shadow:0 0 0 0 rgba(193,83,31,0.6); animation:pulse 2.4s ease-out infinite;
-  }
-  @keyframes pulse{
-    0%{ box-shadow:0 0 0 0 rgba(193,83,31,0.55); }
-    70%{ box-shadow:0 0 0 9px rgba(193,83,31,0); }
-    100%{ box-shadow:0 0 0 0 rgba(193,83,31,0); }
-  }
-  .hero h1{ font-size:clamp(2.7rem, 12vw, 6.2rem); font-weight:700; line-height:0.96; max-width:14ch; text-shadow:0 4px 24px rgba(0,0,0,0.85), 0 2px 8px rgba(0,0,0,0.6); }
-  .hero p.lead{ margin-top:20px; max-width:44ch; font-size:1.08rem; color:#e9dfca; text-shadow:0 2px 10px rgba(0,0,0,0.7); }
-  .hero-actions{ margin-top:30px; display:flex; gap:12px; flex-wrap:wrap; }
+  .ember-dot{ display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--wine); box-shadow:0 0 0 0 rgba(109,31,40,0.7); animation:pulse 2.4s ease-out infinite; }
+  @keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(109,31,40,0.6); } 70%{ box-shadow:0 0 0 10px rgba(109,31,40,0); } 100%{ box-shadow:0 0 0 0 rgba(109,31,40,0); } }
+  .hero h1{ font-size:clamp(2.6rem, 10vw, 5rem); font-weight:700; line-height:1; color:var(--parchment); letter-spacing:0.01em; }
+  .hero p.lead{ margin-top:22px; max-width:44ch; font-size:1.06rem; color:#d8cdb8; font-family:'Zilla Slab', serif; font-style:italic; }
+  .hero-actions{ margin-top:32px; display:flex; gap:12px; flex-wrap:wrap; }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
-    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.94rem; text-decoration:none;
-    padding:15px 24px; border-radius:4px; border:1px solid transparent;
+    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.92rem; text-decoration:none;
+    padding:14px 24px; border-radius:2px; border:1px solid transparent;
     transition:transform 0.15s ease, background 0.2s ease, color 0.2s ease;
   }
   .btn:active{ transform:scale(0.97); }
-  .btn-primary{ background:var(--wine); color:#f5efe2; }
+  .btn-primary{ background:var(--wine); color:var(--parchment); }
   .btn-primary:hover{ background:var(--wine-dark); }
-  .btn-ghost{ border-color:rgba(245,239,226,0.55); color:#f5efe2; }
-  .btn-ghost:hover{ background:rgba(245,239,226,0.12); }
+  .btn-ghost{ border-color:rgba(238,229,209,0.4); color:var(--parchment); }
+  .btn-ghost:hover{ background:rgba(238,229,209,0.1); }
   .btn svg{ width:16px; height:16px; }
 
-  .reserve-strip{ background:var(--charcoal); color:#e9dfca; padding:34px 0; }
-  .reserve-grid{ display:flex; flex-direction:column; gap:20px; align-items:flex-start; justify-content:space-between; }
-  .status-line{ display:flex; align-items:center; gap:9px; font-size:0.95rem; }
-  .status-dot{ width:9px; height:9px; border-radius:50%; background:#5f7a52; flex:none; }
-  .status-dot.closed{ background:var(--stone); }
-  .status-line strong{ color:#f5efe2; }
-  .reserve-cta{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; width:100%; }
-  .reserve-phone{
-    font-family:'Zilla Slab', serif; font-weight:700; font-size:clamp(1.6rem, 6vw, 2.2rem);
-    color:#f5efe2; text-decoration:none; white-space:nowrap;
-  }
-  .reserve-note{ font-size:0.85rem; color:var(--stone); }
+  .reserve-strip{ background:var(--wine-dark); color:var(--parchment); padding:20px 0; border-top:1px solid rgba(238,229,209,0.1); border-bottom:1px solid rgba(238,229,209,0.1); }
+  .reserve-grid{ display:flex; flex-direction:column; gap:14px; align-items:flex-start; justify-content:space-between; }
+  .status-line{ display:flex; align-items:center; gap:9px; font-size:0.92rem; }
+  .status-dot{ width:8px; height:8px; border-radius:50%; background:#7d8f5f; flex:none; }
+  .status-dot.closed{ background:var(--stone-text); }
+  .reserve-cta{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; width:100%; }
+  .reserve-phone{ font-family:'Cinzel', serif; font-weight:600; font-size:clamp(1.3rem, 5vw, 1.7rem); color:var(--parchment); text-decoration:none; white-space:nowrap; }
+  .reserve-note{ font-size:0.82rem; color:#cbb9a3; }
 
-  .arch-frieze{
-    display:flex; justify-content:center; gap:28px; padding:22px 20px;
-    background:var(--charcoal); border-top:1px solid rgba(245,239,226,0.08);
-  }
-  .arch-frieze svg{ width:22px; height:22px; opacity:0.55; flex:none; }
-  @media (max-width:600px){ .arch-frieze{ gap:18px; } .arch-frieze svg:nth-child(4n){ display:none; } }
+  .ch-castle{ background:var(--stone-dark); color:var(--parchment); }
+  .ch-castle-grid{ display:grid; grid-template-columns:1fr; gap:36px; align-items:center; }
+  .ch-castle .arch{ aspect-ratio:3/4; }
+  .ch-castle-text p{ font-size:1.02rem; color:#d8cdb8; max-width:54ch; }
+  .ch-castle-text p + p{ margin-top:16px; }
+  .stone-quote{ margin-top:28px; padding:20px 0 0; border-top:1px solid var(--line-dark); font-family:'Zilla Slab', serif; font-style:italic; color:var(--gold-bright); font-size:1.08rem; }
 
-  section{ padding:72px 0; }
-  .section-head{ max-width:60ch; margin-bottom:40px; }
-  .section-head .kicker{
-    font-family:'Work Sans', sans-serif; font-weight:600; color:var(--wine); font-size:0.85rem;
-    margin-bottom:8px; display:flex; align-items:center; gap:8px;
-  }
-  .kicker-arch{ width:14px; height:14px; flex:none; opacity:0.85; }
-  .section-head h2{ font-size:clamp(1.9rem, 6vw, 2.7rem); font-weight:700; line-height:1.06; }
+  .ch-taberna{ background:var(--stone-mid); color:var(--parchment); }
+  .ch-taberna-grid{ display:grid; grid-template-columns:1fr; gap:32px; align-items:start; }
+  .scroll-card{ background:var(--parchment-card); color:var(--ink); padding:38px 32px; border-radius:4px; box-shadow:0 20px 50px rgba(0,0,0,0.35); }
+  .scroll-card p{ font-size:1.02rem; max-width:54ch; }
+  .scroll-card p + p{ margin-top:16px; }
+  .drop-cap::first-letter{ font-family:'Cinzel', serif; font-weight:700; font-size:3.2rem; float:left; line-height:0.78; margin:0.08em 0.1em 0 0; color:var(--wine); }
+  .ch-taberna .arch{ aspect-ratio:4/5; }
 
-  .story{ background:var(--paper); }
-  .story-grid{ display:grid; grid-template-columns:1fr; gap:36px; align-items:center; }
-  .story-text p{ font-size:1.02rem; color:#332e28; max-width:52ch; }
-  .story-text p + p{ margin-top:16px; }
-  .drop-cap::first-letter{
-    font-family:'Zilla Slab', serif; font-weight:700; font-size:3.4rem; float:left;
-    line-height:0.8; margin:0.08em 0.08em 0 0; color:var(--wine);
-  }
-  .story-photo img{ width:100%; height:auto; }
-  .story-photo figcaption{ margin-top:12px; font-size:0.85rem; color:var(--stone); }
-
-  .ambience{ background:var(--parchment); }
-  .ambience-grid{ display:grid; grid-template-columns:1fr; gap:16px; }
-  .ambience-photo{ margin:0; position:relative; overflow:hidden; border-radius:8px; }
-  .ambience-photo img{ width:100%; height:280px; object-fit:cover; }
-  .ambience-photo.tall img{ height:360px; }
-  .ambience-photo figcaption{
-    position:absolute; left:0; right:0; bottom:0; padding:14px 16px;
-    font-size:0.82rem; color:#f5efe2;
-    background:linear-gradient(180deg, rgba(20,16,14,0) 0%, rgba(20,16,14,0.78) 100%);
-  }
+  .ch-ambience{ background:var(--stone-dark); color:var(--parchment); }
+  .triptych{ display:grid; grid-template-columns:1fr; gap:16px; }
+  .triptych .arch.center{ aspect-ratio:3/4; }
+  .triptych .side-stack{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .triptych .arch.side{ aspect-ratio:1/1; }
+  .triptych figcaption{ margin-top:10px; font-size:0.82rem; color:var(--stone-text); text-align:center; }
 
   .dish-scroller{
     display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory;
-    padding:4px 20px 20px; margin:0 -20px;
+    padding:8px 20px 20px; margin:0 -20px;
     -webkit-overflow-scrolling:touch; scrollbar-width:none;
   }
   .dish-scroller::-webkit-scrollbar{ display:none; }
-  .dish-card{
-    flex:0 0 78%; scroll-snap-align:start; background:var(--charcoal); border-radius:10px;
-    overflow:hidden; position:relative; min-height:400px; display:flex; align-items:flex-end;
-  }
-  .dish-card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.9; }
-  .dish-card::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,16,14,0) 40%, rgba(20,16,14,0.92) 100%); }
-  .dish-card-text{ position:relative; z-index:2; padding:24px; color:#f5efe2; }
-  .dish-card-text .tag{ font-size:0.78rem; color:var(--gold); font-weight:600; margin-bottom:6px; display:block; }
-  .dish-card-text h3{ font-size:1.4rem; font-weight:600; margin-bottom:6px; }
-  .dish-card-text p{ font-size:0.9rem; color:#e2d8c4; max-width:32ch; }
-  .scroller-hint{ font-size:0.82rem; color:var(--stone); margin-top:-6px; padding:0 20px 8px; }
+  .dish-card{ flex:0 0 74%; scroll-snap-align:start; }
+  .dish-card .arch{ aspect-ratio:3/4; background:var(--stone-mid); }
+  .dish-card-text{ padding:16px 4px 0; }
+  .dish-card-text .tag{ font-size:0.76rem; color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; display:block; }
+  .dish-card-text h3{ font-size:1.25rem; font-weight:600; margin-bottom:6px; color:var(--parchment); }
+  .dish-card-text p{ font-size:0.9rem; color:var(--stone-text); max-width:32ch; }
+  .scroller-hint{ font-size:0.8rem; color:var(--stone-text); margin-top:-8px; padding:0 20px 8px; }
 
-  .region{ background:var(--paper); }
-  .region-grid{ display:grid; grid-template-columns:1fr; gap:32px; align-items:center; }
-  .region-text p{ font-size:1.02rem; color:#332e28; max-width:52ch; }
-  .region-text p + p{ margin-top:16px; }
-  .region-fact{
-    margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
-    font-family:'Zilla Slab', serif; font-style:italic; color:var(--stone); font-size:1.05rem;
+  .ch-menu{ background:var(--stone-mid); color:var(--parchment); }
+  .wax-seal{
+    width:74px; height:74px; border-radius:50%; margin:0 auto 28px;
+    background:radial-gradient(circle at 32% 28%, var(--gold-bright), var(--wine) 70%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 16px rgba(0,0,0,0.4), inset 0 0 0 3px rgba(238,229,209,0.15);
   }
-  .region-photo{ margin:0; position:relative; overflow:hidden; border-radius:8px; }
-  .region-photo img{ width:100%; height:380px; object-fit:cover; }
-
-  .menu-board{
-    background-color:var(--charcoal); color:#e9dfca;
-    background-image:
-      repeating-linear-gradient(0deg, rgba(245,239,226,0.025) 0px, rgba(245,239,226,0.025) 1px, transparent 1px, transparent 42px),
-      repeating-linear-gradient(90deg, rgba(245,239,226,0.02) 0px, rgba(245,239,226,0.02) 1px, transparent 1px, transparent 84px);
-  }
-  .menu-board .section-head .kicker{ color:var(--gold); }
-  .menu-board .section-head h2{ color:#f5efe2; }
-  .menu-board .section-head p{ color:var(--stone); margin-top:12px; max-width:52ch; }
-  .menu-scroll{ max-width:640px; margin:0 auto; }
-  .menu-group + .menu-group{ margin-top:40px; }
+  .wax-seal svg{ width:30px; height:30px; color:var(--parchment); }
+  .menu-scroll{ max-width:640px; margin:0 auto; background:var(--parchment-card); color:var(--ink); padding:44px 32px; border-radius:4px; box-shadow:0 20px 50px rgba(0,0,0,0.35); }
+  .menu-group + .menu-group{ margin-top:36px; }
   .menu-cat-title{
     display:flex; align-items:center; gap:16px;
-    font-family:'Zilla Slab', serif; font-style:italic; font-weight:600; color:var(--gold);
-    font-size:1.3rem; margin-bottom:20px; text-align:center;
+    font-family:'Cinzel', serif; font-weight:600; color:var(--wine);
+    font-size:1.05rem; letter-spacing:0.04em; margin-bottom:18px; text-align:center; text-transform:uppercase;
   }
-  .menu-cat-title .rule{ flex:1; height:1px; background:linear-gradient(90deg, transparent, rgba(245,239,226,0.3), transparent); }
-  .menu-item{
-    display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:13px 0;
-    border-bottom:1px dashed rgba(245,239,226,0.14); font-size:0.98rem;
-  }
+  .menu-cat-title .rule{ flex:1; height:1px; background:linear-gradient(90deg, transparent, rgba(42,34,27,0.3), transparent); }
+  .menu-item{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:11px 0; border-bottom:1px dashed rgba(42,34,27,0.18); font-size:0.98rem; }
   .menu-item:last-child{ border-bottom:none; }
-  .menu-item .name{ color:#f5efe2; }
-  .menu-item .note{ display:block; font-size:0.8rem; color:var(--stone); margin-top:2px; }
-  .menu-item .price{ font-family:'Zilla Slab', serif; color:var(--gold); font-weight:600; white-space:nowrap; }
-  .menu-note{ margin-top:32px; font-size:0.85rem; color:var(--stone); border-top:1px solid rgba(245,239,226,0.14); padding-top:18px; }
+  .menu-item .name{ color:var(--ink); }
+  .menu-item .note{ display:block; font-size:0.78rem; color:#7a7268; margin-top:2px; }
+  .menu-item .price{ font-family:'Cinzel', serif; color:var(--wine); font-weight:600; white-space:nowrap; }
+  .menu-note{ margin-top:28px; font-size:0.82rem; color:#7a7268; border-top:1px solid rgba(42,34,27,0.18); padding-top:16px; text-align:center; }
 
-  .visit{ background:var(--paper); }
-  .visit-grid{ display:grid; grid-template-columns:1fr; gap:36px; }
-  .hours-table{ width:100%; border-collapse:collapse; }
-  .hours-table td{ padding:10px 0; border-bottom:1px solid var(--line); font-size:0.95rem; }
+  .ch-visit{ background:var(--stone-dark); color:var(--parchment); }
+  .visit-grid{ display:grid; grid-template-columns:1fr; gap:28px; }
+  .crest-card{ background:var(--stone-mid); border:1px solid var(--line-dark); border-radius:4px; padding:32px; }
+  .crest-facts{ display:grid; grid-template-columns:1fr 1fr; gap:22px 20px; margin-bottom:26px; }
+  .crest-fact .label{ font-size:0.76rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--stone-text); margin-bottom:4px; }
+  .crest-fact .value{ font-family:'Cinzel', serif; font-size:1.05rem; color:var(--parchment); }
+  .crest-fact .value a{ color:var(--parchment); text-decoration:none; border-bottom:1px solid rgba(238,229,209,0.4); }
+  .hours-table{ width:100%; border-collapse:collapse; margin-top:6px; }
+  .hours-table td{ padding:9px 0; border-bottom:1px solid var(--line-dark); font-size:0.92rem; }
   .hours-table td:first-child{ font-weight:600; width:44%; }
-  .hours-table tr.today td{ color:var(--wine); font-weight:600; }
-  .hours-table td.closed{ color:var(--stone); }
-
-  .contact-card{ background:var(--charcoal); color:#e9dfca; padding:32px; border-radius:8px; }
-  .contact-card h3{ color:#f5efe2; font-size:1.4rem; margin-bottom:18px; }
-  .contact-line{ display:flex; gap:14px; padding:13px 0; border-bottom:1px solid rgba(245,239,226,0.14); font-size:0.95rem; }
-  .contact-line:last-of-type{ border-bottom:none; }
-  .contact-line .label{ color:var(--stone); min-width:88px; }
-  .contact-line a{ color:#f5efe2; text-decoration:none; border-bottom:1px solid rgba(245,239,226,0.4); }
-  .contact-line a:hover{ border-color:#f5efe2; }
+  .hours-table tr.today td{ color:var(--gold-bright); font-weight:600; }
+  .hours-table td.closed{ color:var(--stone-text); }
   .contact-actions{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
-  .map-embed{ grid-column:1 / -1; margin-top:8px; border-radius:8px; overflow:hidden; aspect-ratio:16/9; border:1px solid var(--line); }
+  .map-embed{ border-radius:4px; overflow:hidden; aspect-ratio:16/9; border:1px solid var(--line-dark); }
 
-  .sibling{ background:var(--parchment); }
-  .sibling-card{
-    display:grid; grid-template-columns:1fr; gap:0; background:var(--charcoal);
-    border-radius:8px; overflow:hidden;
-  }
-  .sibling-photo{ position:relative; height:240px; }
+  .sibling{ background:var(--stone-mid); }
+  .sibling-card{ display:grid; grid-template-columns:1fr; gap:0; background:var(--stone-dark); border:1px solid var(--line-dark); border-radius:4px; overflow:hidden; }
+  .sibling-photo{ position:relative; height:220px; }
   .sibling-photo img{ width:100%; height:100%; object-fit:cover; opacity:0.85; }
-  .sibling-text{ padding:32px; color:#e9dfca; }
-  .sibling-text .kicker{ color:var(--gold); font-size:0.85rem; font-weight:600; display:block; margin-bottom:10px; }
-  .sibling-text h3{ font-family:'Zilla Slab', serif; color:#f5efe2; font-size:1.7rem; font-weight:700; margin-bottom:12px; }
-  .sibling-text p{ font-size:0.98rem; max-width:48ch; margin-bottom:20px; }
+  .sibling-text{ padding:32px; }
+  .sibling-text .chapter-label{ margin-bottom:8px; display:block; }
+  .sibling-text h3{ font-size:1.5rem; font-weight:600; margin-bottom:12px; color:var(--parchment); }
+  .sibling-text p{ font-size:0.96rem; color:var(--stone-text); max-width:48ch; margin-bottom:20px; }
 
-  footer{ background:var(--charcoal); color:var(--stone); padding:30px 0 24px; font-size:0.85rem; border-top:1px solid rgba(245,239,226,0.1); }
+  footer{ background:var(--stone-dark); color:var(--stone-text); padding:30px 0 24px; font-size:0.85rem; border-top:1px solid var(--line-dark); }
   footer .wrap{ display:flex; flex-direction:column; gap:14px; }
-  footer a{ color:#e9dfca; text-decoration:none; }
+  footer a{ color:var(--parchment); text-decoration:none; }
   footer a:hover{ text-decoration:underline; }
-  .footer-logo img{ height:50px; width:auto; display:block; }
+  .footer-logo img{ height:46px; width:auto; display:block; }
 
   .mobile-bar{
     position:fixed; left:0; right:0; bottom:0; z-index:70;
     display:flex; gap:10px; padding:12px 16px calc(12px + var(--safe-bottom));
-    background:rgba(28,24,21,0.97); backdrop-filter:blur(6px);
-    box-shadow:0 -8px 24px rgba(0,0,0,0.25);
+    background:rgba(27,23,20,0.97); backdrop-filter:blur(6px);
+    box-shadow:0 -8px 24px rgba(0,0,0,0.3);
   }
-  .mobile-bar a{
-    flex:1; text-align:center; font-family:'Work Sans', sans-serif; font-weight:700; font-size:0.95rem;
-    text-decoration:none; padding:13px; border-radius:4px;
-  }
-  .mobile-bar .call{ background:var(--wine); color:#f5efe2; }
-  .mobile-bar .map{ background:transparent; color:#e9dfca; border:1px solid rgba(245,239,226,0.3); }
+  .mobile-bar a{ flex:1; text-align:center; font-family:'Work Sans', sans-serif; font-weight:700; font-size:0.94rem; text-decoration:none; padding:13px; border-radius:2px; }
+  .mobile-bar .call{ background:var(--wine); color:var(--parchment); }
+  .mobile-bar .map{ background:transparent; color:var(--parchment); border:1px solid rgba(238,229,209,0.3); }
 
   @media (min-width:860px){
     body{ padding-bottom:0; }
     .mobile-bar{ display:none; }
-    section{ padding:110px 0; }
-    .story-grid{ grid-template-columns:1.1fr 0.9fr; gap:64px; }
-    .region-grid{ grid-template-columns:1.1fr 0.9fr; gap:64px; }
-    .region-photo img{ height:100%; min-height:380px; }
-    .ambience-grid{ grid-template-columns:1.1fr 1fr 1fr; }
-    .ambience-photo img{ height:100%; min-height:340px; }
-    .visit-grid{ grid-template-columns:1fr 1fr; gap:64px; }
-    .map-embed{ aspect-ratio:21/8; }
-    .dish-scroller{ padding:4px 20px 8px; }
-    .dish-card{ flex:0 0 360px; min-height:460px; }
+    section{ padding:120px 0; }
+    .hero{ flex-direction:row; min-height:100svh; }
+    .hero-photo{ flex:0 0 46%; min-height:100svh; }
+    .hero-photo .arch{ inset:40px 0 40px 40px; border-radius:0 50% 0 0 / 0 40% 0 0; }
+    .hero-photo::after{ background:linear-gradient(90deg, rgba(27,23,20,0) 70%, rgba(27,23,20,1) 100%); }
+    .hero-text{ flex:0 0 54%; padding:40px 60px; }
+    .ch-castle-grid{ grid-template-columns:1fr 1fr; gap:64px; }
+    .ch-taberna-grid{ grid-template-columns:1fr 1fr; gap:64px; }
+    .triptych{ grid-template-columns:1fr 1.3fr 1fr; align-items:center; }
+    .triptych .side-stack{ grid-template-columns:1fr; }
+    .dish-card{ flex:0 0 300px; }
+    .visit-grid{ grid-template-columns:1fr 1fr; gap:48px; }
     .reserve-grid{ flex-direction:row; align-items:center; }
     .reserve-cta{ width:auto; justify-content:flex-end; }
     .sibling-card{ grid-template-columns:1fr 1fr; }
-    .sibling-photo{ height:100%; min-height:320px; }
+    .sibling-photo{ height:100%; min-height:300px; }
   }
 </style>
 </head>
@@ -318,11 +273,15 @@
 </div>
 
 <header class="hero">
-  <img id="hero-img" src="images/fornos-do-rei-rua-nevoeiro-penedono.jpg" alt="Rua de calçada com nevoeiro em Penedono, com a placa da Fornos do Rei à esquerda">
-  <div class="hero-content">
-    <div class="hero-inner">
-      <span class="hero-eyebrow"><span class="ember-dot"></span>Penedono, à sombra do castelo</span>
-      <h1>Fornos do Rei</h1>
+  <div class="hero-photo">
+    <div class="arch">
+      <img src="images/fornos-do-rei-rua-nevoeiro-penedono.jpg" alt="Rua de calçada com nevoeiro em Penedono, com a placa da Fornos do Rei à esquerda">
+    </div>
+  </div>
+  <div class="hero-text">
+    <div class="hero-text-inner">
+      <span class="hero-eyebrow"><span class="ember-dot"></span>Penedono &middot; à sombra do castelo</span>
+      <h1>Fornos<br>do Rei</h1>
       <p class="lead">Taberna de pedra junto ao Castelo de Penedono. Enchidos de fumeiro, carnes na brasa e forno de lenha, à moda da Beira Alta.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="tel:+351960071487">
@@ -348,192 +307,183 @@
   </div>
 </div>
 
-<div class="arch-frieze" aria-hidden="true">
-  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
-  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
-  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
-  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
-  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
-  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
-  <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
-</div>
-
-<section class="region">
-  <div class="wrap region-grid">
-    <div class="region-text reveal">
-      <span class="section-head kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>A região</span>
-      <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Penedono, mil anos aos pés do castelo</h2>
-      <p>Penedono é uma vila do distrito de Viseu, na Beira Alta, já perto do Douro Vinhateiro. A vila cresceu à volta do seu castelo medieval, erguido sobre um afloramento de granito, e ainda hoje o centro histórico mantém as construções em pedra e as ruas de calçada de então.</p>
+<section class="ch-castle stone-tex">
+  <div class="wrap ch-castle-grid">
+    <div class="ch-castle-text reveal">
+      <div class="chapter-mark">
+        <span class="chapter-num">I</span>
+        <span class="chapter-label">Capítulo primeiro</span>
+      </div>
+      <h2 class="chapter-title" style="margin-bottom:18px;">O castelo</h2>
+      <p>Penedono é uma vila do distrito de Viseu, na Beira Alta, já perto do Douro Vinhateiro. Cresceu à volta do seu castelo medieval, erguido sobre um afloramento de granito, e o centro histórico ainda guarda as construções em pedra e as ruas de calçada de então.</p>
       <p>O Castelo de Penedono, também chamado Castelo do Magriço, é Monumento Nacional desde 1910 e é apontado como o local de nascimento de D. Álvaro Gonçalves Coutinho, o cavaleiro que Camões celebrizou como "o Magriço". É à sombra dessa história que a Fornos do Rei serve a sua cozinha de fumeiro e brasa.</p>
-      <p class="region-fact">A primeira referência escrita a Penedono, então "Pena de Dono", data do ano de 960.</p>
+      <p class="stone-quote">"A primeira referência escrita a Penedono, então Pena de Dono, data do ano de 960."</p>
     </div>
-    <figure class="region-photo reveal">
+    <figure class="arch reveal">
       <img src="images/fornos-do-rei-castelo-penedono.jpg" alt="Castelo de Penedono, monumento medieval sobre afloramento de granito">
     </figure>
   </div>
 </section>
 
-<section class="story">
-  <div class="wrap story-grid">
-    <div class="story-text reveal">
-      <span class="section-head kicker" style="display:flex; align-items:center; gap:8px;"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>A taberna</span>
-      <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Aos pés do castelo</h2>
-      <p class="drop-cap">A Fornos do Rei fica mesmo junto ao Castelo de Penedono, na vila antiga onde as ruas ainda são de calçada e as casas de granito. O nome vem do que se faz lá dentro: fumeiro curado devagar, carnes na brasa e caldeirões de ferro sempre ao lume.</p>
-      <p>A ementa é curta e vai direta ao que a região tem de melhor: porco Bísaro, enchidos de fumeiro, bacalhau e vitela, servidos numa sala de arcos de pedra que lembra o próprio castelo lá fora.</p>
-    </div>
-    <figure class="story-photo arch-frame reveal">
+<section class="ch-taberna">
+  <div class="wrap ch-taberna-grid">
+    <figure class="arch reveal" style="order:2;">
       <img src="images/fornos-do-rei-sala-jantar-mesa.jpg" alt="Sala de jantar da Fornos do Rei, mesa comprida com toalha aos quadrados vermelhos e lareira ao fundo">
-      <figcaption>A sala de jantar, com a lareira sempre acesa ao fundo.</figcaption>
     </figure>
+    <div class="reveal">
+      <div class="chapter-mark">
+        <span class="chapter-num">II</span>
+        <span class="chapter-label">Capítulo segundo</span>
+      </div>
+      <h2 class="chapter-title" style="margin-bottom:22px; color:var(--parchment);">A taberna</h2>
+      <div class="scroll-card">
+        <p class="drop-cap">A Fornos do Rei fica mesmo junto ao Castelo de Penedono, na vila antiga onde as ruas ainda são de calçada e as casas de granito. O nome vem do que se faz lá dentro: fumeiro curado devagar, carnes na brasa e caldeirões de ferro sempre ao lume.</p>
+        <p>A ementa é curta e vai direta ao que a região tem de melhor: porco Bísaro, enchidos de fumeiro, bacalhau e vitela, servidos numa sala de arcos de pedra que lembra o próprio castelo lá fora.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="ambience">
+<section class="ch-ambience stone-tex">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>Por dentro e por fora</span>
-      <h2>Pedra, arco e lume</h2>
+      <div class="chapter-mark">
+        <span class="chapter-num">III</span>
+        <span class="chapter-label">Capítulo terceiro</span>
+      </div>
+      <h2 class="chapter-title">Pedra, arco e lume</h2>
     </div>
-    <div class="ambience-grid reveal">
-      <figure class="ambience-photo tall">
-        <img src="images/fornos-do-rei-caldeiroes-lume.jpg" alt="Caldeirões de ferro ao lume na cozinha da Fornos do Rei">
-        <figcaption>Os caldeirões de ferro, sempre ao lume.</figcaption>
+    <div class="triptych reveal">
+      <div class="side-stack">
+        <figure>
+          <div class="arch side"><img src="images/fornos-do-rei-sala-arcos-pedra.jpg" alt="Sala interior da Fornos do Rei, com arcos de pedra"></div>
+          <figcaption>Os arcos de pedra da sala</figcaption>
+        </figure>
+        <figure>
+          <div class="arch side"><img src="images/fornos-do-rei-fachada-brasao.jpg" alt="Fachada da Fornos do Rei com o brasão de armas"></div>
+          <figcaption>O brasão à porta</figcaption>
+        </figure>
+      </div>
+      <figure>
+        <div class="arch center"><img src="images/fornos-do-rei-caldeiroes-lume.jpg" alt="Caldeirões de ferro ao lume na cozinha da Fornos do Rei"></div>
+        <figcaption>Os caldeirões, sempre ao lume</figcaption>
       </figure>
-      <figure class="ambience-photo">
-        <img src="images/fornos-do-rei-sala-arcos-pedra.jpg" alt="Sala interior da Fornos do Rei, com arcos de pedra e mesas postas">
-        <figcaption>A sala interior, com os arcos de pedra da casa.</figcaption>
-      </figure>
-      <figure class="ambience-photo">
-        <img src="images/fornos-do-rei-fachada-brasao.jpg" alt="Fachada da Fornos do Rei com o brasão de armas, em Penedono">
-        <figcaption>A fachada, com o brasão à porta.</figcaption>
-      </figure>
+      <div class="side-stack">
+        <figure>
+          <div class="arch side"><img src="images/fornos-do-rei-enchidos-fumeiro.jpg" alt="Enchidos de fumeiro pendurados a curar"></div>
+          <figcaption>O fumeiro a curar</figcaption>
+        </figure>
+        <figure>
+          <div class="arch side"><img src="images/fornos-do-rei-presunto-pao-caseiro.jpg" alt="Presunto inteiro e pão caseiro, com vinho tinto"></div>
+          <figcaption>Presunto e pão caseiro</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
 
-<section style="padding-top:0;">
+<section class="ch-taberna" style="padding-bottom:40px;">
   <div class="wrap section-head reveal">
-    <span class="kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>Da brasa para a mesa</span>
-    <h2>As especialidades</h2>
+    <div class="chapter-mark">
+      <span class="chapter-num">IV</span>
+      <span class="chapter-label">Capítulo quarto</span>
+    </div>
+    <h2 class="chapter-title" style="color:var(--parchment);">Da brasa para a mesa</h2>
   </div>
   <div class="dish-scroller reveal" id="dish-scroller">
     <div class="dish-card">
-      <img src="images/fornos-do-rei-entrecosto-pure-batata.jpg" alt="Entrecosto grelhado com puré de batata com grelos, na Fornos do Rei">
-      <div class="dish-card-text">
-        <span class="tag">Na brasa</span>
-        <h3>Entrecosto grelhado</h3>
-        <p>Grelhado na brasa e servido com puré de batata com grelos.</p>
-      </div>
+      <div class="arch"><img src="images/fornos-do-rei-entrecosto-pure-batata.jpg" alt="Entrecosto grelhado com puré de batata com grelos"></div>
+      <div class="dish-card-text"><span class="tag">Na brasa</span><h3>Entrecosto grelhado</h3><p>Com puré de batata e grelos.</p></div>
     </div>
     <div class="dish-card">
-      <img src="images/fornos-do-rei-carne-chourica-brasa.jpg" alt="Carne e chouriça a grelhar sobre brasas na Fornos do Rei">
-      <div class="dish-card-text">
-        <span class="tag">Direto da brasa</span>
-        <h3>Grelhados de carvão</h3>
-        <p>Carne e chouriça grelhadas devagar sobre brasa viva.</p>
-      </div>
+      <div class="arch"><img src="images/fornos-do-rei-carne-chourica-brasa.jpg" alt="Carne e chouriça a grelhar sobre brasas"></div>
+      <div class="dish-card-text"><span class="tag">Direto da brasa</span><h3>Grelhados de carvão</h3><p>Carne e chouriça sobre brasa viva.</p></div>
     </div>
     <div class="dish-card">
-      <img src="images/fornos-do-rei-enchidos-fumeiro.jpg" alt="Enchidos de fumeiro pendurados a curar, presunto e chouriças">
-      <div class="dish-card-text">
-        <span class="tag">Fumeiro da casa</span>
-        <h3>Enchidos curados</h3>
-        <p>Presunto e chouriças curados devagar, ao estilo da Beira Alta.</p>
-      </div>
+      <div class="arch"><img src="images/fornos-do-rei-posta-vitela-laranja.jpg" alt="Posta de vitela grelhada com laranja e batata frita"></div>
+      <div class="dish-card-text"><span class="tag">2 pessoas</span><h3>Posta de vitela</h3><p>Finalizada com laranja e batata frita.</p></div>
     </div>
     <div class="dish-card">
-      <img src="images/fornos-do-rei-posta-vitela-laranja.jpg" alt="Posta de vitela grelhada com laranja e batata frita, na Fornos do Rei">
-      <div class="dish-card-text">
-        <span class="tag">Para partilhar · 2 pessoas</span>
-        <h3>Posta de vitela</h3>
-        <p>Grelhada na brasa, finalizada com laranja e batata frita da casa.</p>
-      </div>
+      <div class="arch"><img src="images/fornos-do-rei-sopa-peixe-frito.jpg" alt="Sopa de tomate com arroz e peixe frito"></div>
+      <div class="dish-card-text"><span class="tag">Entrada</span><h3>Sopa e peixe frito</h3><p>Sopa de tomate e arroz.</p></div>
     </div>
     <div class="dish-card">
-      <img src="images/fornos-do-rei-sopa-peixe-frito.jpg" alt="Sopa de tomate com arroz e peixe frito, servido na Fornos do Rei">
-      <div class="dish-card-text">
-        <span class="tag">Entrada</span>
-        <h3>Sopa e peixe frito</h3>
-        <p>Sopa de tomate e arroz, com peixe frito na hora ao lado.</p>
-      </div>
-    </div>
-    <div class="dish-card">
-      <img src="images/fornos-do-rei-batatas-ovo-forno-lenha.jpg" alt="Batata frita com ovo e presunto, junto ao forno de lenha da Fornos do Rei">
-      <div class="dish-card-text">
-        <span class="tag">Junto ao forno</span>
-        <h3>Ovos rotos</h3>
-        <p>Batata frita, ovo e presunto, mesmo em frente ao forno de lenha aceso.</p>
-      </div>
-    </div>
-    <div class="dish-card">
-      <img src="images/fornos-do-rei-presunto-pao-caseiro.jpg" alt="Presunto inteiro e pão caseiro, com vinho tinto, na Fornos do Rei">
-      <div class="dish-card-text">
-        <span class="tag">Da casa</span>
-        <h3>Presunto e pão caseiro</h3>
-        <p>Fatiado na hora, ao lado do pão caseiro e de um tinto da região.</p>
-      </div>
+      <div class="arch"><img src="images/fornos-do-rei-batatas-ovo-forno-lenha.jpg" alt="Batata frita com ovo e presunto, junto ao forno de lenha"></div>
+      <div class="dish-card-text"><span class="tag">Junto ao forno</span><h3>Ovos rotos</h3><p>Batata, ovo e presunto.</p></div>
     </div>
   </div>
   <p class="scroller-hint wrap">Deslize para ver mais pratos →</p>
 </section>
 
-<section class="menu-board" id="menu">
+<section class="ch-menu" id="menu">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>A ementa</span>
-      <h2>Entradas, sugestões e sobremesa</h2>
-      <p>Ementa sazonal, sujeita a alterações consoante o mercado. Pratos para 2 pessoas assinalados.</p>
+    <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
+      <div class="chapter-mark" style="justify-content:center;">
+        <span class="chapter-num">V</span>
+        <span class="chapter-label">Capítulo quinto</span>
+      </div>
+      <h2 class="chapter-title" style="color:var(--parchment);">A ementa</h2>
     </div>
-    <div class="menu-scroll reveal">
-      <div class="menu-group">
-        <h3 class="menu-cat-title"><span class="rule"></span>Entradas<span class="rule"></span></h3>
-        <div class="menu-item"><span class="name">Ovos rotos</span><span class="price">8,00€</span></div>
-        <div class="menu-item"><span class="name">Alheira de porco Bísaro</span><span class="price">9,00€</span></div>
-        <div class="menu-item"><span class="name">Chouriça de porco Bísaro</span><span class="price">9,00€</span></div>
-        <div class="menu-item"><span class="name">Queijo da Serra</span><span class="price">5,00€</span></div>
+    <div class="reveal">
+      <div class="wax-seal">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
       </div>
-      <div class="menu-group">
-        <h3 class="menu-cat-title"><span class="rule"></span>Sugestões<span class="rule"></span></h3>
-        <div class="menu-item"><span class="name">Lombo de bacalhau com crosta de broa e alheira</span><span class="price">22,00€</span></div>
-        <div class="menu-item"><span class="name">Costeleta de vitela grelhada</span><span class="price">22,00€</span></div>
-        <div class="menu-item"><span class="name">Posta de vitela<span class="note">2 pessoas</span></span><span class="price">40,00€</span></div>
-        <div class="menu-item"><span class="name">Porco Bísaro com arroz de fumeiro</span><span class="price">18,00€</span></div>
-        <div class="menu-item"><span class="name">Naco de vitela, ovo e presunto</span><span class="price">18,00€</span></div>
-      </div>
-      <div class="menu-group">
-        <h3 class="menu-cat-title"><span class="rule"></span>Sobremesa<span class="rule"></span></h3>
-        <div class="menu-item"><span class="name">Pudim de castanha</span><span class="price">3,50€</span></div>
-        <div class="menu-item"><span class="name">Leite creme</span><span class="price">3,50€</span></div>
-        <div class="menu-item"><span class="name">Pudim de mel</span><span class="price">3,50€</span></div>
-        <div class="menu-item"><span class="name">Natas do céu</span><span class="price">3,50€</span></div>
-        <div class="menu-item"><span class="name">Fruta</span><span class="price">3,50€</span></div>
+      <div class="menu-scroll">
+        <div class="menu-group">
+          <h3 class="menu-cat-title"><span class="rule"></span>Entradas<span class="rule"></span></h3>
+          <div class="menu-item"><span class="name">Ovos rotos</span><span class="price">8,00€</span></div>
+          <div class="menu-item"><span class="name">Alheira de porco Bísaro</span><span class="price">9,00€</span></div>
+          <div class="menu-item"><span class="name">Chouriça de porco Bísaro</span><span class="price">9,00€</span></div>
+          <div class="menu-item"><span class="name">Queijo da Serra</span><span class="price">5,00€</span></div>
+        </div>
+        <div class="menu-group">
+          <h3 class="menu-cat-title"><span class="rule"></span>Sugestões<span class="rule"></span></h3>
+          <div class="menu-item"><span class="name">Lombo de bacalhau com crosta de broa e alheira</span><span class="price">22,00€</span></div>
+          <div class="menu-item"><span class="name">Costeleta de vitela grelhada</span><span class="price">22,00€</span></div>
+          <div class="menu-item"><span class="name">Posta de vitela<span class="note">2 pessoas</span></span><span class="price">40,00€</span></div>
+          <div class="menu-item"><span class="name">Porco Bísaro com arroz de fumeiro</span><span class="price">18,00€</span></div>
+          <div class="menu-item"><span class="name">Naco de vitela, ovo e presunto</span><span class="price">18,00€</span></div>
+        </div>
+        <div class="menu-group">
+          <h3 class="menu-cat-title"><span class="rule"></span>Sobremesa<span class="rule"></span></h3>
+          <div class="menu-item"><span class="name">Pudim de castanha</span><span class="price">3,50€</span></div>
+          <div class="menu-item"><span class="name">Leite creme</span><span class="price">3,50€</span></div>
+          <div class="menu-item"><span class="name">Pudim de mel</span><span class="price">3,50€</span></div>
+          <div class="menu-item"><span class="name">Natas do céu</span><span class="price">3,50€</span></div>
+          <div class="menu-item"><span class="name">Fruta</span><span class="price">3,50€</span></div>
+        </div>
+        <p class="menu-note">Preço médio reportado pelos clientes: 10€ a 25€ por pessoa.</p>
       </div>
     </div>
-    <p class="menu-note">Preço médio reportado pelos clientes: 10€ a 25€ por pessoa.</p>
   </div>
 </section>
 
-<section class="visit">
+<section class="ch-visit stone-tex">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>Reservar</span>
-      <h2>Horário e contactos</h2>
+      <div class="chapter-mark">
+        <span class="chapter-num">VI</span>
+        <span class="chapter-label">Capítulo sexto</span>
+      </div>
+      <h2 class="chapter-title">Reservar</h2>
     </div>
     <div class="visit-grid">
-      <table class="hours-table" id="hours-table">
-        <tr data-day="1"><td>Segunda-feira</td><td class="closed">Encerrado</td></tr>
-        <tr data-day="2"><td>Terça-feira</td><td>12h00–15h00 · 19h00–22h00</td></tr>
-        <tr data-day="3"><td>Quarta-feira</td><td>12h00–15h00 · 19h00–22h00</td></tr>
-        <tr data-day="4"><td>Quinta-feira</td><td>12h00–15h00 · 19h00–22h00</td></tr>
-        <tr data-day="5"><td>Sexta-feira</td><td>12h00–15h00 · 19h00–22h00</td></tr>
-        <tr data-day="6"><td>Sábado</td><td>12h00–15h00 · 19h00–22h00</td></tr>
-        <tr data-day="0"><td>Domingo</td><td>12h00–15h00</td></tr>
-      </table>
-      <div class="contact-card">
-        <h3>Reserve a sua mesa</h3>
-        <div class="contact-line"><span class="label">Morada</span><span>Rua de São Salvador, 13<br>3630-241 Penedono</span></div>
-        <div class="contact-line"><span class="label">Telefone</span><a href="tel:+351960071487">960 071 487</a></div>
-        <div class="contact-line"><span class="label">Facebook</span><a href="https://www.facebook.com/fornosdorei" target="_blank" rel="noopener">fornosdorei</a></div>
+      <div class="crest-card reveal">
+        <div class="crest-facts">
+          <div class="crest-fact"><div class="label">Morada</div><div class="value">Rua de São Salvador, 13<br>3630-241 Penedono</div></div>
+          <div class="crest-fact"><div class="label">Telefone</div><div class="value"><a href="tel:+351960071487">960 071 487</a></div></div>
+          <div class="crest-fact"><div class="label">Facebook</div><div class="value"><a href="https://www.facebook.com/fornosdorei" target="_blank" rel="noopener">fornosdorei</a></div></div>
+          <div class="crest-fact"><div class="label">Preço médio</div><div class="value">10€ – 25€</div></div>
+        </div>
+        <table class="hours-table" id="hours-table">
+          <tr data-day="1"><td>Segunda-feira</td><td class="closed">Encerrado</td></tr>
+          <tr data-day="2"><td>Terça-feira</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="3"><td>Quarta-feira</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="4"><td>Quinta-feira</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="5"><td>Sexta-feira</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="6"><td>Sábado</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="0"><td>Domingo</td><td>12h–15h</td></tr>
+        </table>
         <div class="contact-actions">
           <a class="btn btn-primary" href="tel:+351960071487">Ligar agora</a>
           <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Rua+de+S%C3%A3o+Salvador+13+Penedono" target="_blank" rel="noopener">Ver no mapa</a>
@@ -557,7 +507,7 @@
         <img src="images/casa-do-avo-fachada-sarzeda-sernancelhe.jpg" alt="Fachada da Casa do Avô em Sarzeda, Sernancelhe">
       </div>
       <div class="sibling-text">
-        <span class="kicker">Restaurante irmão</span>
+        <span class="chapter-label">Restaurante irmão</span>
         <h3>Casa do Avô, em Sarzeda</h3>
         <p>Na mesma região da Beira Alta, em Sernancelhe, a Casa do Avô serve porco Bísaro, polvo à brasa e bacalhau assado numa antiga casa de família recuperada.</p>
         <a class="btn btn-primary" href="https://jfdacunha.github.io/paginas-web/casa-do-avo/" target="_blank" rel="noopener">Ver a Casa do Avô</a>
@@ -592,20 +542,10 @@
       entries.forEach(function(e){
         if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
       });
-    }, { threshold:0.15 });
+    }, { threshold:0.12 });
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
-  }
-
-  var heroImg = document.getElementById('hero-img');
-  if(!reduceMotion){
-    window.addEventListener('scroll', function(){
-      var y = window.scrollY;
-      if(y < window.innerHeight){
-        heroImg.style.transform = 'translateY(' + (y * 0.12) + 'px)';
-      }
-    }, { passive:true });
   }
 
   (function(){
