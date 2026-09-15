@@ -155,14 +155,19 @@
   .section-head{ max-width:60ch; margin-bottom:40px; }
   .section-head .kicker{
     font-family:'Work Sans', sans-serif; font-weight:600; color:var(--wine); font-size:0.85rem;
-    margin-bottom:8px; display:block;
+    margin-bottom:8px; display:flex; align-items:center; gap:8px;
   }
+  .kicker-arch{ width:14px; height:14px; flex:none; opacity:0.85; }
   .section-head h2{ font-size:clamp(1.9rem, 6vw, 2.7rem); font-weight:700; line-height:1.06; }
 
   .story{ background:var(--paper); }
   .story-grid{ display:grid; grid-template-columns:1fr; gap:36px; align-items:center; }
   .story-text p{ font-size:1.02rem; color:#332e28; max-width:52ch; }
   .story-text p + p{ margin-top:16px; }
+  .drop-cap::first-letter{
+    font-family:'Zilla Slab', serif; font-weight:700; font-size:3.4rem; float:left;
+    line-height:0.8; margin:0.08em 0.08em 0 0; color:var(--wine);
+  }
   .story-photo img{ width:100%; height:auto; }
   .story-photo figcaption{ margin-top:12px; font-size:0.85rem; color:var(--stone); }
 
@@ -206,19 +211,23 @@
   .region-photo{ margin:0; position:relative; overflow:hidden; border-radius:8px; }
   .region-photo img{ width:100%; height:380px; object-fit:cover; }
 
-  .menu-board{ background:var(--charcoal); color:#e9dfca; }
+  .menu-board{
+    background-color:var(--charcoal); color:#e9dfca;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(245,239,226,0.025) 0px, rgba(245,239,226,0.025) 1px, transparent 1px, transparent 42px),
+      repeating-linear-gradient(90deg, rgba(245,239,226,0.02) 0px, rgba(245,239,226,0.02) 1px, transparent 1px, transparent 84px);
+  }
   .menu-board .section-head .kicker{ color:var(--gold); }
   .menu-board .section-head h2{ color:#f5efe2; }
   .menu-board .section-head p{ color:var(--stone); margin-top:12px; max-width:52ch; }
-  .menu-tabs{ display:flex; gap:8px; margin-bottom:28px; flex-wrap:wrap; }
-  .menu-tab{
-    font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.9rem; color:var(--stone);
-    background:transparent; border:1px solid rgba(245,239,226,0.2); padding:10px 18px;
-    border-radius:4px; cursor:pointer; transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  .menu-scroll{ max-width:640px; margin:0 auto; }
+  .menu-group + .menu-group{ margin-top:40px; }
+  .menu-cat-title{
+    display:flex; align-items:center; gap:16px;
+    font-family:'Zilla Slab', serif; font-style:italic; font-weight:600; color:var(--gold);
+    font-size:1.3rem; margin-bottom:20px; text-align:center;
   }
-  .menu-tab.active{ background:var(--wine); color:#f5efe2; border-color:var(--wine); }
-  .menu-panel{ display:none; }
-  .menu-panel.active{ display:block; }
+  .menu-cat-title .rule{ flex:1; height:1px; background:linear-gradient(90deg, transparent, rgba(245,239,226,0.3), transparent); }
   .menu-item{
     display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:13px 0;
     border-bottom:1px dashed rgba(245,239,226,0.14); font-size:0.98rem;
@@ -293,9 +302,6 @@
     .dish-card{ flex:0 0 360px; min-height:460px; }
     .reserve-grid{ flex-direction:row; align-items:center; }
     .reserve-cta{ width:auto; justify-content:flex-end; }
-    .menu-columns-desktop{ display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
-    .menu-tabs{ display:none; }
-    .menu-panel{ display:block !important; }
     .sibling-card{ grid-template-columns:1fr 1fr; }
     .sibling-photo{ height:100%; min-height:320px; }
   }
@@ -352,12 +358,27 @@
   <svg viewBox="0 0 24 24" fill="currentColor" style="color:#f5efe2"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>
 </div>
 
+<section class="region">
+  <div class="wrap region-grid">
+    <div class="region-text reveal">
+      <span class="section-head kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>A região</span>
+      <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Penedono, mil anos aos pés do castelo</h2>
+      <p>Penedono é uma vila do distrito de Viseu, na Beira Alta, já perto do Douro Vinhateiro. A vila cresceu à volta do seu castelo medieval, erguido sobre um afloramento de granito, e ainda hoje o centro histórico mantém as construções em pedra e as ruas de calçada de então.</p>
+      <p>O Castelo de Penedono, também chamado Castelo do Magriço, é Monumento Nacional desde 1910 e é apontado como o local de nascimento de D. Álvaro Gonçalves Coutinho, o cavaleiro que Camões celebrizou como "o Magriço". É à sombra dessa história que a Fornos do Rei serve a sua cozinha de fumeiro e brasa.</p>
+      <p class="region-fact">A primeira referência escrita a Penedono, então "Pena de Dono", data do ano de 960.</p>
+    </div>
+    <figure class="region-photo reveal">
+      <img src="images/fornos-do-rei-castelo-penedono.jpg" alt="Castelo de Penedono, monumento medieval sobre afloramento de granito">
+    </figure>
+  </div>
+</section>
+
 <section class="story">
   <div class="wrap story-grid">
     <div class="story-text reveal">
-      <span class="section-head kicker" style="display:block;">A taberna</span>
+      <span class="section-head kicker" style="display:flex; align-items:center; gap:8px;"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>A taberna</span>
       <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Aos pés do castelo</h2>
-      <p>A Fornos do Rei fica mesmo junto ao Castelo de Penedono, na vila antiga onde as ruas ainda são de calçada e as casas de granito. O nome vem do que se faz lá dentro: fumeiro curado devagar, carnes na brasa e caldeirões de ferro sempre ao lume.</p>
+      <p class="drop-cap">A Fornos do Rei fica mesmo junto ao Castelo de Penedono, na vila antiga onde as ruas ainda são de calçada e as casas de granito. O nome vem do que se faz lá dentro: fumeiro curado devagar, carnes na brasa e caldeirões de ferro sempre ao lume.</p>
       <p>A ementa é curta e vai direta ao que a região tem de melhor: porco Bísaro, enchidos de fumeiro, bacalhau e vitela, servidos numa sala de arcos de pedra que lembra o próprio castelo lá fora.</p>
     </div>
     <figure class="story-photo arch-frame reveal">
@@ -370,7 +391,7 @@
 <section class="ambience">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">Por dentro e por fora</span>
+      <span class="kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>Por dentro e por fora</span>
       <h2>Pedra, arco e lume</h2>
     </div>
     <div class="ambience-grid reveal">
@@ -392,7 +413,7 @@
 
 <section style="padding-top:0;">
   <div class="wrap section-head reveal">
-    <span class="kicker">Da brasa para a mesa</span>
+    <span class="kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>Da brasa para a mesa</span>
     <h2>As especialidades</h2>
   </div>
   <div class="dish-scroller reveal" id="dish-scroller">
@@ -456,48 +477,31 @@
   <p class="scroller-hint wrap">Deslize para ver mais pratos →</p>
 </section>
 
-<section class="region">
-  <div class="wrap region-grid">
-    <div class="region-text reveal">
-      <span class="section-head kicker" style="display:block;">A região</span>
-      <h2 style="font-size:clamp(1.9rem,6vw,2.6rem); font-weight:700; margin-bottom:18px;">Penedono, mil anos aos pés do castelo</h2>
-      <p>Penedono é uma vila do distrito de Viseu, na Beira Alta, já perto do Douro Vinhateiro. A vila cresceu à volta do seu castelo medieval, erguido sobre um afloramento de granito, e ainda hoje o centro histórico mantém as construções em pedra e as ruas de calçada de então.</p>
-      <p>O Castelo de Penedono, também chamado Castelo do Magriço, é Monumento Nacional desde 1910 e é apontado como o local de nascimento de D. Álvaro Gonçalves Coutinho, o cavaleiro que Camões celebrizou como "o Magriço". É à sombra dessa história que a Fornos do Rei serve a sua cozinha de fumeiro e brasa.</p>
-      <p class="region-fact">A primeira referência escrita a Penedono, então "Pena de Dono", data do ano de 960.</p>
-    </div>
-    <figure class="region-photo reveal">
-      <img src="images/fornos-do-rei-castelo-penedono.jpg" alt="Castelo de Penedono, monumento medieval sobre afloramento de granito">
-    </figure>
-  </div>
-</section>
-
 <section class="menu-board" id="menu">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">A ementa</span>
+      <span class="kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>A ementa</span>
       <h2>Entradas, sugestões e sobremesa</h2>
       <p>Ementa sazonal, sujeita a alterações consoante o mercado. Pratos para 2 pessoas assinalados.</p>
     </div>
-    <div class="menu-tabs" id="menu-tabs">
-      <button class="menu-tab active" data-tab="entradas">Entradas</button>
-      <button class="menu-tab" data-tab="sugestoes">Sugestões</button>
-      <button class="menu-tab" data-tab="sobremesa">Sobremesa</button>
-    </div>
-    <div class="menu-columns-desktop">
-      <div class="menu-panel active" data-panel="entradas">
+    <div class="menu-scroll reveal">
+      <div class="menu-group">
+        <h3 class="menu-cat-title"><span class="rule"></span>Entradas<span class="rule"></span></h3>
         <div class="menu-item"><span class="name">Ovos rotos</span><span class="price">8,00€</span></div>
         <div class="menu-item"><span class="name">Alheira de porco Bísaro</span><span class="price">9,00€</span></div>
         <div class="menu-item"><span class="name">Chouriça de porco Bísaro</span><span class="price">9,00€</span></div>
         <div class="menu-item"><span class="name">Queijo da Serra</span><span class="price">5,00€</span></div>
       </div>
-      <div class="menu-panel" data-panel="sugestoes">
+      <div class="menu-group">
+        <h3 class="menu-cat-title"><span class="rule"></span>Sugestões<span class="rule"></span></h3>
         <div class="menu-item"><span class="name">Lombo de bacalhau com crosta de broa e alheira</span><span class="price">22,00€</span></div>
         <div class="menu-item"><span class="name">Costeleta de vitela grelhada</span><span class="price">22,00€</span></div>
         <div class="menu-item"><span class="name">Posta de vitela<span class="note">2 pessoas</span></span><span class="price">40,00€</span></div>
         <div class="menu-item"><span class="name">Porco Bísaro com arroz de fumeiro</span><span class="price">18,00€</span></div>
         <div class="menu-item"><span class="name">Naco de vitela, ovo e presunto</span><span class="price">18,00€</span></div>
       </div>
-      <div class="menu-panel" data-panel="sobremesa">
+      <div class="menu-group">
+        <h3 class="menu-cat-title"><span class="rule"></span>Sobremesa<span class="rule"></span></h3>
         <div class="menu-item"><span class="name">Pudim de castanha</span><span class="price">3,50€</span></div>
         <div class="menu-item"><span class="name">Leite creme</span><span class="price">3,50€</span></div>
         <div class="menu-item"><span class="name">Pudim de mel</span><span class="price">3,50€</span></div>
@@ -512,7 +516,7 @@
 <section class="visit">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kicker">Reservar</span>
+      <span class="kicker"><svg class="kicker-arch" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg>Reservar</span>
       <h2>Horário e contactos</h2>
     </div>
     <div class="visit-grid">
@@ -603,17 +607,6 @@
       }
     }, { passive:true });
   }
-
-  var tabs = document.querySelectorAll('.menu-tab');
-  var panels = document.querySelectorAll('.menu-panel');
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      tabs.forEach(function(t){ t.classList.remove('active'); });
-      panels.forEach(function(p){ p.classList.remove('active'); });
-      tab.classList.add('active');
-      document.querySelector('.menu-panel[data-panel="' + tab.dataset.tab + '"]').classList.add('active');
-    });
-  });
 
   (function(){
     var schedule = {
