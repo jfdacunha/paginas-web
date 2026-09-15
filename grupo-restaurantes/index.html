@@ -4,108 +4,230 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casa do Avô &amp; Fornos do Rei | Restaurantes da Beira Alta</title>
-<meta name="description" content="Dois restaurantes tradicionais da Beira Alta: Casa do Avô em Sarzeda, Sernancelhe, e Fornos do Rei junto ao Castelo de Penedono.">
+<meta name="description" content="Dois restaurantes tradicionais da Beira Alta: Casa do Avô em Sarzeda, Sernancelhe, e Fornos do Rei junto ao Castelo de Penedono. Ementas, horários e moradas completas.">
 <link rel="icon" type="image/png" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Cinzel:wght@400;500;600;700&family=Zilla+Slab:ital,wght@0,400;0,500;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#f1ead9; --paper:#f8f3e8; --charcoal:#211c18;
-    --ember:#a63625; --ember-dark:#7d281a;
-    --wine:#6d1f28; --wine-dark:#4c151c;
-    --stone:#8c8474; --gold:#b6903f;
+    --ember:#a63625; --ember-dark:#7d281a; --gold-ca:#c08a34; --stone-ca:#8c8474;
+    --stone-dark:#1b1714; --stone-mid:#272120; --parchment:#eee5d1; --parchment-card:#f4ecd9;
+    --wine:#6d1f28; --wine-dark:#4c151c; --gold-fr:#b6903f; --gold-fr-bright:#d1ac5f; --ink:#2a221b; --stone-fr:#a89d8c;
     --line: rgba(33,28,24,0.14); --max:1180px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth; overflow-x:hidden; width:100%;}
   body{ margin:0; background:var(--cream); color:var(--charcoal); font-family:'Work Sans', sans-serif; font-size:16px; line-height:1.6; overflow-x:hidden; width:100%; max-width:100vw; }
-  h1,h2,h3{ font-family:'Fraunces', serif; margin:0; }
   a{ color:inherit; }
   img{ display:block; max-width:100%; }
   .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
-  :focus-visible{ outline:3px solid var(--gold); outline-offset:3px; }
-
+  :focus-visible{ outline:3px solid var(--gold-ca); outline-offset:3px; }
   .reveal{ opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
   .reveal.is-visible{ opacity:1; transform:translateY(0); }
   @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1 !important; transform:none !important; } html{ scroll-behavior:auto; } }
+  section{ padding:72px 0; }
 
-  .topbar{
-    position:fixed; top:0; left:0; right:0; z-index:60; background:#fff;
-    box-shadow:0 2px 14px rgba(0,0,0,0.1); padding:14px 20px;
-  }
+  /* ---------- shared topbar ---------- */
+  .topbar{ position:fixed; top:0; left:0; right:0; z-index:60; background:#fff; box-shadow:0 2px 14px rgba(0,0,0,0.1); padding:14px 20px; }
   .topbar-inner{ max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-  .group-title{ font-family:'Fraunces', serif; font-weight:700; font-size:1.1rem; }
+  .group-title{ font-family:'Fraunces', serif; font-weight:700; font-size:1.05rem; }
   .topbar-nav{ display:flex; gap:10px; }
-  .topbar-nav a{
-    font-size:0.85rem; font-weight:600; text-decoration:none; padding:8px 14px; border-radius:999px;
-    border:1px solid var(--line);
-  }
+  .topbar-nav a{ font-size:0.82rem; font-weight:600; text-decoration:none; padding:8px 14px; border-radius:999px; border:1px solid var(--line); }
   .topbar-nav a.ca{ color:var(--ember); border-color:rgba(166,54,37,0.3); }
   .topbar-nav a.fr{ color:var(--wine); border-color:rgba(109,31,40,0.3); }
 
-  .hero{ padding-top:120px; padding-bottom:60px; background:var(--paper); }
-  .hero-eyebrow{ font-family:'Work Sans', sans-serif; font-weight:600; font-size:0.85rem; color:var(--stone); letter-spacing:0.04em; text-transform:uppercase; margin-bottom:14px; }
-  .hero h1{ font-size:clamp(2.2rem, 6vw, 3.6rem); font-weight:700; line-height:1.05; max-width:16ch; }
-  .hero p.lead{ margin-top:18px; max-width:56ch; font-size:1.08rem; color:#3a332c; }
-  .hero-split{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:36px; }
-  .hero-card{ position:relative; border-radius:8px; overflow:hidden; min-height:220px; display:flex; align-items:flex-end; }
-  .hero-card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .hero-card::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%); }
-  .hero-card-text{ position:relative; z-index:2; padding:22px; color:#fff; }
-  .hero-card-text span{ font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:6px; }
-  .hero-card-text h3{ font-size:1.5rem; font-weight:700; margin-bottom:4px; }
-  .hero-card-text p{ font-size:0.88rem; opacity:0.9; }
-  .hero-card.ca .hero-card-text span{ color:#f2c9a0; }
-  .hero-card.fr .hero-card-text span{ color:#e5b98a; }
+  /* ---------- shared intro ---------- */
+  .intro{ padding-top:120px; padding-bottom:56px; background:var(--paper); }
+  .intro .eyebrow{ font-weight:600; font-size:0.85rem; color:var(--stone-ca); letter-spacing:0.04em; text-transform:uppercase; margin-bottom:14px; }
+  .intro h1{ font-family:'Fraunces', serif; font-size:clamp(2rem, 5.5vw, 3.2rem); font-weight:700; line-height:1.06; max-width:18ch; }
+  .intro p.lead{ margin-top:16px; max-width:58ch; font-size:1.05rem; color:#3a332c; }
+  .intro-split{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:32px; }
+  .intro-card{ position:relative; border-radius:8px; overflow:hidden; min-height:180px; display:flex; align-items:flex-end; text-decoration:none; }
+  .intro-card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .intro-card::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.82) 100%); }
+  .intro-card-text{ position:relative; z-index:2; padding:20px; color:#fff; }
+  .intro-card-text span{ font-size:0.76rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:4px; }
+  .intro-card-text h3{ font-family:'Fraunces', serif; font-size:1.35rem; font-weight:700; }
+  @media (min-width:760px){ .intro-split{ grid-template-columns:1fr 1fr; } }
 
-  section{ padding:72px 0; }
-  .rest-section .section-head{ max-width:60ch; margin-bottom:36px; }
-  .rest-section .kicker{ font-weight:600; font-size:0.85rem; display:block; margin-bottom:8px; }
-  .rest-section h2{ font-size:clamp(1.9rem, 5.5vw, 2.5rem); font-weight:700; }
-  .rest-grid{ display:grid; grid-template-columns:1fr; gap:32px; align-items:center; }
-  .rest-text p{ font-size:1.02rem; max-width:52ch; }
-  .rest-photos{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  .rest-photos img{ width:100%; height:160px; object-fit:cover; border-radius:6px; }
-  .rest-photos .full{ grid-column:1 / -1; height:220px; }
-  .rest-facts{ display:flex; flex-wrap:wrap; gap:20px; margin:22px 0; font-size:0.92rem; }
-  .rest-facts div{ min-width:140px; }
-  .rest-facts .label{ font-size:0.76rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--stone); margin-bottom:2px; }
-  .rest-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
-  .btn{ display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:0.92rem; text-decoration:none; padding:13px 22px; border-radius:999px; }
-  .btn-outline{ border:1px solid currentColor; }
+  /* ================= CASA DO AVÔ CHAPTER ================= */
+  #casa-do-avo{ background:var(--cream); color:var(--charcoal); }
+  #casa-do-avo h1, #casa-do-avo h2, #casa-do-avo h3{ font-family:'Fraunces', serif; margin:0; }
+  .ca-banner{ position:relative; min-height:60vh; display:flex; align-items:flex-end; background:#151210; }
+  .ca-banner img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.82; }
+  .ca-banner::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(21,18,16,0.15) 0%, rgba(21,18,16,0.4) 55%, rgba(21,18,16,0.95) 100%); }
+  .ca-banner-content{ position:relative; z-index:2; padding:0 20px 44px; color:#f4ede0; width:100%; }
+  .ca-banner-inner{ max-width:var(--max); margin:0 auto; }
+  .ca-eyebrow{ display:flex; align-items:center; gap:9px; font-weight:600; font-size:0.85rem; color:#e6dcc9; margin-bottom:14px; }
+  .ca-dot{ width:8px; height:8px; border-radius:50%; background:var(--ember); }
+  .ca-banner h2{ font-size:clamp(2.4rem, 9vw, 4.6rem); font-weight:700; line-height:0.98; }
+  .ca-banner p{ margin-top:16px; max-width:44ch; font-size:1.05rem; color:#e6dcc9; }
+  .ca-actions{ margin-top:26px; display:flex; gap:12px; flex-wrap:wrap; }
 
-  #casa-do-avo{ background:var(--paper); }
-  #casa-do-avo .kicker, #casa-do-avo .btn-solid{ color:var(--ember); }
-  #casa-do-avo .btn-solid{ background:var(--ember); color:#fff; }
-  #casa-do-avo .btn-outline{ color:var(--ember); }
+  .btn{ display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:0.92rem; text-decoration:none; padding:14px 24px; border-radius:999px; border:1px solid transparent; }
+  .ca-btn-primary{ background:var(--ember); color:#fff; }
+  .ca-btn-primary:hover{ background:var(--ember-dark); }
+  .ca-btn-ghost{ border-color:rgba(244,237,224,0.55); color:#f4ede0; }
 
-  #fornos-do-rei{ background:var(--charcoal); color:#e9dfca; }
-  #fornos-do-rei .rest-text p{ color:#d8cdb8; }
-  #fornos-do-rei .kicker{ color:var(--gold); }
-  #fornos-do-rei .btn-solid{ background:var(--wine); color:#f5efe2; }
-  #fornos-do-rei .btn-outline{ color:#e9dfca; border-color:rgba(233,223,202,0.4); }
-  #fornos-do-rei .rest-facts .label{ color:#a89d8c; }
+  .ca-reserve{ background:var(--charcoal); color:#e6dcc9; padding:26px 0; }
+  .ca-reserve-grid{ display:flex; flex-direction:column; gap:14px; align-items:flex-start; justify-content:space-between; }
+  .status-line{ display:flex; align-items:center; gap:9px; font-size:0.92rem; }
+  .status-dot{ width:8px; height:8px; border-radius:50%; background:#5f7a52; }
+  .status-dot.closed{ background:var(--stone-ca); }
+  .reserve-cta{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .ca-phone{ font-family:'Fraunces', serif; font-weight:700; font-size:1.6rem; color:#f4ede0; text-decoration:none; }
 
-  .compare-note{ background:var(--cream); text-align:center; }
-  .compare-note p{ max-width:60ch; margin:0 auto; font-size:1rem; color:#3a332c; }
-  .compare-note .logos{ display:flex; justify-content:center; align-items:center; gap:32px; margin-bottom:28px; flex-wrap:wrap; }
-  .compare-note .logos img{ height:44px; width:auto; }
+  .ca-story{ background:var(--paper); }
+  .ca-story-grid{ display:grid; grid-template-columns:1fr; gap:32px; align-items:center; }
+  .kicker{ font-weight:600; font-size:0.85rem; display:block; margin-bottom:8px; }
+  .ca-kicker{ color:var(--ember); }
+  .ca-story h3{ font-size:clamp(1.7rem,5vw,2.3rem); font-weight:700; margin-bottom:16px; }
+  .ca-story p{ font-size:1.02rem; color:#3a332c; max-width:52ch; }
+  .ca-story p + p{ margin-top:14px; }
+  .ca-story img{ width:100%; border-radius:6px; }
 
-  footer{ background:var(--charcoal); color:var(--stone); padding:32px 0; font-size:0.85rem; }
+  .ca-ambience{ background:var(--cream); }
+  .ca-amb-grid{ display:grid; grid-template-columns:1fr; gap:14px; }
+  .ca-amb-grid figure{ margin:0; position:relative; border-radius:8px; overflow:hidden; }
+  .ca-amb-grid img{ width:100%; height:230px; object-fit:cover; }
+  .ca-amb-grid figcaption{ position:absolute; left:0; right:0; bottom:0; padding:12px 14px; font-size:0.8rem; color:#f4ede0; background:linear-gradient(180deg, rgba(21,18,16,0) 0%, rgba(21,18,16,0.75) 100%); }
+
+  .ca-dishes{ padding-top:0; }
+  .dish-scroller{ display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; padding:6px 20px 16px; margin:0 -20px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .dish-scroller::-webkit-scrollbar{ display:none; }
+  .ca-dish-card{ flex:0 0 74%; scroll-snap-align:start; background:var(--charcoal); border-radius:10px; overflow:hidden; position:relative; min-height:340px; display:flex; align-items:flex-end; }
+  .ca-dish-card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.9; }
+  .ca-dish-card::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(21,18,16,0) 40%, rgba(21,18,16,0.92) 100%); }
+  .dish-card-text{ position:relative; z-index:2; padding:20px; color:#f4ede0; }
+  .dish-card-text .tag{ font-size:0.74rem; color:#d8b98a; font-weight:600; margin-bottom:5px; display:block; }
+  .dish-card-text h4{ font-family:'Fraunces',serif; font-size:1.2rem; font-weight:600; margin:0 0 4px; }
+  .dish-card-text p{ font-size:0.86rem; color:#d9d0bf; margin:0; }
+
+  .ca-menu{ background:var(--charcoal); color:#e6dcc9; }
+  .ca-menu .kicker{ color:#d8b98a; }
+  .ca-menu h3{ color:#f4ede0; font-size:clamp(1.7rem,5vw,2.3rem); font-weight:700; }
+  .ca-menu-cols{ display:grid; grid-template-columns:1fr; gap:32px; margin-top:32px; }
+  .ca-menu-cat h4{ font-family:'Fraunces', serif; font-style:italic; font-weight:600; color:var(--ember); font-size:1.25rem; margin:0 0 14px; padding-bottom:10px; border-bottom:1px solid rgba(244,237,224,0.18); }
+  .menu-item{ display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px dashed rgba(244,237,224,0.14); font-size:0.95rem; }
+  .menu-item:last-child{ border-bottom:none; }
+  .menu-item .note{ display:block; font-size:0.78rem; color:var(--stone-ca); }
+  .menu-item .price{ font-family:'Fraunces', serif; color:var(--gold-ca); font-weight:600; white-space:nowrap; }
+  .menu-note{ margin-top:24px; font-size:0.82rem; color:var(--stone-ca); border-top:1px solid rgba(244,237,224,0.14); padding-top:16px; }
+
+  .ca-visit{ background:var(--paper); }
+  .ca-visit-grid{ display:grid; grid-template-columns:1fr; gap:28px; }
+  .hours-table{ width:100%; border-collapse:collapse; }
+  .hours-table td{ padding:9px 0; border-bottom:1px solid var(--line); font-size:0.92rem; }
+  .hours-table td:first-child{ font-weight:600; width:44%; }
+  .hours-table tr.today td{ font-weight:600; }
+  .hours-table td.closed{ color:var(--stone-ca); }
+  .ca-contact-card{ background:var(--charcoal); color:#e6dcc9; padding:28px; border-radius:10px; }
+  .ca-contact-card h4{ font-family:'Fraunces', serif; color:#f4ede0; font-size:1.3rem; margin:0 0 16px; }
+  .contact-line{ display:flex; gap:12px; padding:11px 0; border-bottom:1px solid rgba(244,237,224,0.14); font-size:0.92rem; }
+  .contact-line:last-of-type{ border-bottom:none; }
+  .contact-line .label{ color:var(--stone-ca); min-width:80px; }
+  .contact-line a{ color:#f4ede0; }
+  .contact-actions{ margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
+  .map-embed{ border-radius:8px; overflow:hidden; aspect-ratio:16/9; border:1px solid var(--line); }
+
+  /* ================= FORNOS DO REI CHAPTER ================= */
+  #fornos-do-rei{ background:var(--stone-dark); color:var(--parchment); }
+  #fornos-do-rei h1,#fornos-do-rei h2,#fornos-do-rei h3{ font-family:'Cinzel', serif; margin:0; }
+  .fr-banner{ position:relative; min-height:60vh; display:flex; align-items:flex-end; background:#0f0d0b; }
+  .fr-banner img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; opacity:0.78; }
+  .fr-banner::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,8,7,0.3) 0%, rgba(10,8,7,0.55) 55%, rgba(10,8,7,0.97) 100%); }
+  .fr-banner-content{ position:relative; z-index:2; padding:0 20px 44px; width:100%; }
+  .fr-banner-inner{ max-width:var(--max); margin:0 auto; }
+  .fr-eyebrow{ display:flex; align-items:center; gap:9px; font-weight:600; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold-fr-bright); margin-bottom:14px; }
+  .fr-dot{ width:7px; height:7px; border-radius:50%; background:var(--wine); }
+  .fr-banner h2{ font-size:clamp(2.3rem, 8vw, 4.2rem); font-weight:700; line-height:1; text-shadow:0 4px 20px rgba(0,0,0,0.8); }
+  .fr-banner p{ margin-top:16px; max-width:44ch; font-size:1.02rem; color:#d8cdb8; font-family:'Zilla Slab', serif; font-style:italic; text-shadow:0 2px 8px rgba(0,0,0,0.7); }
+  .fr-actions{ margin-top:26px; display:flex; gap:12px; flex-wrap:wrap; }
+  .fr-btn-primary{ background:var(--wine); color:var(--parchment); }
+  .fr-btn-primary:hover{ background:var(--wine-dark); }
+  .fr-btn-ghost{ border-color:rgba(238,229,209,0.4); color:var(--parchment); }
+
+  .fr-reserve{ background:var(--wine-dark); color:var(--parchment); padding:22px 0; border-top:1px solid rgba(238,229,209,0.1); border-bottom:1px solid rgba(238,229,209,0.1); }
+  .fr-reserve-grid{ display:flex; flex-direction:column; gap:14px; align-items:flex-start; justify-content:space-between; }
+  .fr-phone{ font-family:'Cinzel', serif; font-weight:600; font-size:1.4rem; color:var(--parchment); text-decoration:none; }
+
+  .fr-region{ background:var(--stone-dark); }
+  .fr-region-grid{ display:grid; grid-template-columns:1fr; gap:32px; align-items:center; }
+  .fr-kicker{ color:var(--gold-fr); }
+  .fr-region h3{ font-size:clamp(1.7rem,5vw,2.3rem); font-weight:600; margin-bottom:16px; }
+  .fr-region p{ font-size:1.02rem; color:#d8cdb8; max-width:54ch; }
+  .fr-region p + p{ margin-top:14px; }
+  .fr-quote{ margin-top:24px; padding-top:20px; border-top:1px solid rgba(238,229,209,0.16); font-family:'Zilla Slab', serif; font-style:italic; color:var(--gold-fr-bright); font-size:1.02rem; }
+  .arch{ border-radius:50% 50% 6px 6px / 22% 22% 6px 6px; overflow:hidden; border:1px solid rgba(238,229,209,0.16); }
+  .arch img{ width:100%; height:100%; object-fit:cover; }
+  .fr-region .arch{ aspect-ratio:3/4; }
+
+  .fr-story{ background:var(--stone-mid); }
+  .fr-story-grid{ display:grid; grid-template-columns:1fr; gap:28px; align-items:start; }
+  .fr-story .arch{ aspect-ratio:4/5; }
+  .fr-scroll-card{ background:var(--parchment-card); color:var(--ink); padding:32px 26px; border-radius:4px; box-shadow:0 16px 40px rgba(0,0,0,0.35); }
+  .fr-scroll-card p{ font-size:1rem; max-width:54ch; }
+  .fr-drop::first-letter{ font-family:'Cinzel', serif; font-weight:700; font-size:2.8rem; float:left; line-height:0.78; margin:0.08em 0.1em 0 0; color:var(--wine); }
+
+  .fr-ambience{ background:var(--stone-dark); }
+  .fr-amb-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .fr-amb-grid .arch{ aspect-ratio:1/1; }
+  .fr-amb-grid figcaption{ margin-top:8px; font-size:0.78rem; color:var(--stone-fr); text-align:center; }
+
+  .fr-dishes{ padding-top:0; }
+  .fr-dish-card{ flex:0 0 70%; scroll-snap-align:start; }
+  .fr-dish-card .arch{ aspect-ratio:3/4; background:var(--stone-mid); }
+  .fr-dish-text{ padding:14px 4px 0; }
+  .fr-dish-text .tag{ font-size:0.72rem; color:var(--gold-fr); font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:5px; display:block; }
+  .fr-dish-text h4{ font-family:'Cinzel', serif; font-size:1.1rem; font-weight:600; margin:0 0 4px; color:var(--parchment); }
+  .fr-dish-text p{ font-size:0.85rem; color:var(--stone-fr); margin:0; }
+
+  .fr-menu{ background:var(--stone-mid); text-align:center; }
+  .fr-menu h3{ color:var(--parchment); font-size:clamp(1.7rem,5vw,2.3rem); font-weight:600; }
+  .wax-seal{ width:64px; height:64px; border-radius:50%; margin:26px auto 0; background:radial-gradient(circle at 32% 28%, var(--gold-fr-bright), var(--wine) 70%); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 16px rgba(0,0,0,0.4); }
+  .wax-seal svg{ width:26px; height:26px; color:var(--parchment); }
+  .fr-menu-scroll{ max-width:600px; margin:24px auto 0; background:var(--parchment-card); color:var(--ink); padding:36px 26px; border-radius:4px; box-shadow:0 16px 40px rgba(0,0,0,0.35); text-align:left; }
+  .fr-menu-group + .fr-menu-group{ margin-top:30px; }
+  .fr-menu-cat-title{ display:flex; align-items:center; gap:14px; font-family:'Cinzel', serif; font-weight:600; color:var(--wine); font-size:0.98rem; letter-spacing:0.04em; margin-bottom:16px; text-align:center; text-transform:uppercase; }
+  .fr-menu-cat-title .rule{ flex:1; height:1px; background:linear-gradient(90deg, transparent, rgba(42,34,27,0.3), transparent); }
+  .fr-menu-item{ display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px dashed rgba(42,34,27,0.18); font-size:0.95rem; }
+  .fr-menu-item:last-child{ border-bottom:none; }
+  .fr-menu-item .note{ display:block; font-size:0.76rem; color:#7a7268; }
+  .fr-menu-item .price{ font-family:'Cinzel', serif; color:var(--wine); font-weight:600; white-space:nowrap; }
+  .fr-menu-note{ margin-top:22px; font-size:0.8rem; color:#7a7268; border-top:1px solid rgba(42,34,27,0.18); padding-top:14px; text-align:center; }
+
+  .fr-visit{ background:var(--stone-dark); }
+  .fr-visit-grid{ display:grid; grid-template-columns:1fr; gap:26px; }
+  .fr-crest{ background:var(--stone-mid); border:1px solid rgba(238,229,209,0.16); border-radius:4px; padding:28px; }
+  .fr-facts{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:22px; }
+  .fr-facts .label{ font-size:0.74rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--stone-fr); margin-bottom:3px; }
+  .fr-facts .value{ font-family:'Cinzel', serif; font-size:0.98rem; }
+  .fr-facts .value a{ color:var(--parchment); }
+  .fr-hours td{ padding:8px 0; border-bottom:1px solid rgba(238,229,209,0.16); font-size:0.9rem; }
+  .fr-hours td:first-child{ font-weight:600; width:44%; }
+  .fr-hours tr.today td{ color:var(--gold-fr-bright); font-weight:600; }
+  .fr-hours td.closed{ color:var(--stone-fr); }
+
+  /* ---------- shared footer ---------- */
+  footer{ background:var(--stone-dark); color:var(--stone-fr); padding:32px 0; font-size:0.85rem; }
   footer .wrap{ display:flex; flex-direction:column; gap:14px; }
-  footer a{ color:#e6dcc9; text-decoration:none; }
+  footer a{ color:var(--parchment); text-decoration:none; }
   footer .cols{ display:flex; flex-wrap:wrap; gap:32px; }
+  footer strong{ color:var(--parchment); }
 
   @media (min-width:860px){
     section{ padding:100px 0; }
-    .hero-split{ grid-template-columns:1fr 1fr; }
-    .hero-card{ min-height:320px; }
-    .rest-grid{ grid-template-columns:1fr 1fr; gap:56px; }
-    #fornos-do-rei .rest-grid > *:first-child{ order:2; }
-    .rest-photos img{ height:180px; }
-    .rest-photos .full{ height:180px; }
+    .ca-story-grid, .ca-visit-grid, .fr-region-grid, .fr-story-grid{ grid-template-columns:1fr 1fr; gap:56px; }
+    .ca-amb-grid{ grid-template-columns:1fr 1fr 1fr; }
+    .ca-amb-grid img{ height:260px; }
+    .ca-dish-card{ flex:0 0 300px; }
+    .fr-dish-card{ flex:0 0 280px; }
+    .ca-menu-cols{ grid-template-columns:1fr 1fr 1fr; }
+    .ca-reserve-grid, .fr-reserve-grid{ flex-direction:row; align-items:center; }
+    .reserve-cta{ width:auto; }
     footer .cols{ flex-wrap:nowrap; justify-content:space-between; }
   }
 </style>
@@ -122,113 +244,328 @@
   </div>
 </div>
 
-<section class="hero">
+<section class="intro">
   <div class="wrap">
-    <span class="hero-eyebrow">Beira Alta, distrito de Viseu</span>
+    <span class="eyebrow">Beira Alta, distrito de Viseu</span>
     <h1>Duas casas, uma tradição de lume e pedra</h1>
-    <p class="lead">Dois restaurantes de família, a poucos minutos um do outro na Beira Alta: a Casa do Avô, em Sarzeda, Sernancelhe, e a Fornos do Rei, junto ao Castelo de Penedono. Escolha um para ver mais, ou visite os dois.</p>
-    <div class="hero-split">
-      <a class="hero-card ca reveal" href="#casa-do-avo">
+    <p class="lead">Dois restaurantes de família, a poucos minutos um do outro: a Casa do Avô, em Sarzeda, Sernancelhe, e a Fornos do Rei, junto ao Castelo de Penedono. Toda a informação de ambos está reunida aqui nesta página.</p>
+    <div class="intro-split">
+      <a class="intro-card reveal" href="#casa-do-avo">
         <img src="images/casa-do-avo-fachada-sarzeda-sernancelhe.jpg" alt="Fachada da Casa do Avô em Sarzeda, Sernancelhe">
-        <div class="hero-card-text">
-          <span>Sarzeda, Sernancelhe</span>
-          <h3>Casa do Avô</h3>
-          <p>Porco Bísaro, polvo à brasa e bacalhau assado</p>
-        </div>
+        <div class="intro-card-text"><span>Sarzeda, Sernancelhe</span><h3>Casa do Avô</h3></div>
       </a>
-      <a class="hero-card fr reveal" href="#fornos-do-rei">
+      <a class="intro-card reveal" href="#fornos-do-rei">
         <img src="images/fornos-do-rei-fachada-castelo-penedono.jpg" alt="Fachada da Fornos do Rei junto ao Castelo de Penedono">
-        <div class="hero-card-text">
-          <span>Penedono</span>
-          <h3>Fornos do Rei</h3>
-          <p>Fumeiro, carnes na brasa e forno de lenha</p>
-        </div>
+        <div class="intro-card-text"><span>Penedono</span><h3>Fornos do Rei</h3></div>
       </a>
     </div>
   </div>
 </section>
 
-<section id="casa-do-avo" class="rest-section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Sarzeda, Sernancelhe</span>
+<!-- ================= CASA DO AVÔ ================= -->
+<div id="casa-do-avo">
+
+<header class="ca-banner">
+  <img src="images/casa-do-avo-entrada-ao-por-do-sol.jpg" alt="Entrada da Casa do Avô ao pôr do sol, casa de granito com placa Aberto, em Sarzeda, Sernancelhe">
+  <div class="ca-banner-content">
+    <div class="ca-banner-inner">
+      <span class="ca-eyebrow"><span class="ca-dot"></span>Sarzeda, Sernancelhe</span>
       <h2>Casa do Avô</h2>
-    </div>
-    <div class="rest-grid">
-      <div class="rest-text reveal">
-        <p>Esta era a casa do avô do proprietário. Ficou fechada durante anos, foi recuperada pedra a pedra e reaberta como restaurante, sem perder o traço da construção original em granito.</p>
-        <p>A brasa está sempre acesa: postas de vitela, bacalhau e polvo, e o porco Bísaro em três formas diferentes, do presunto à alheira.</p>
-        <div class="rest-facts">
-          <div><div class="label">Morada</div>Rua do Cieiro, 22<br>Sarzeda, Sernancelhe</div>
-          <div><div class="label">Telefone</div><a href="tel:+351254594016">254 594 016</a></div>
-          <div><div class="label">Preço médio</div>10€ – 25€</div>
-        </div>
-        <div class="rest-actions">
-          <a class="btn btn-solid" href="tel:+351254594016">Ligar agora</a>
-          <a class="btn btn-outline" href="https://jfdacunha.github.io/paginas-web/casa-do-avo/" target="_blank" rel="noopener">Ver site completo</a>
-        </div>
-      </div>
-      <div class="rest-photos reveal">
-        <img class="full" src="images/casa-do-avo-polvo-brasa.jpg" alt="Polvo à brasa na Casa do Avô">
-        <img src="images/casa-do-avo-entrecosto-lenha.jpg" alt="Entrecosto na brasa de lenha">
-        <img src="images/casa-do-avo-presunto-porco-bisaro.jpg" alt="Presunto de porco Bísaro em cura">
+      <p>Cozinha de lume e pedra no interior de Sernancelhe. Porco Bísaro, polvo na brasa e bacalhau assado, como se fazia antigamente.</p>
+      <div class="ca-actions">
+        <a class="btn ca-btn-primary" href="tel:+351254594016">Reservar mesa</a>
+        <a class="btn ca-btn-ghost" href="#ca-menu">Ver a ementa</a>
       </div>
     </div>
   </div>
+</header>
+
+<div class="ca-reserve">
+  <div class="wrap ca-reserve-grid">
+    <div class="status-line" id="ca-status-line">
+      <span class="status-dot" id="ca-status-dot"></span>
+      <span id="ca-status-text">A verificar horário…</span>
+    </div>
+    <div class="reserve-cta">
+      <a class="ca-phone" href="tel:+351254594016">254 594 016</a>
+      <span style="font-size:0.85rem; color:var(--stone-ca);">Ligue para reservar mesa</span>
+    </div>
+  </div>
+</div>
+
+<section class="ca-story">
+  <div class="wrap ca-story-grid">
+    <div class="reveal">
+      <span class="kicker ca-kicker">A casa</span>
+      <h3>A casa que era do avô</h3>
+      <p>Esta era mesmo a casa do avô. Ficou fechada durante anos, foi recuperada pedra a pedra e reaberta como restaurante, sem perder o traço da construção original em granito.</p>
+      <p>A brasa está sempre acesa. É aqui que se assam as postas de vitela, o bacalhau e o polvo, com a mesma calma de sempre. Trabalhamos de perto com produtores da região para trazer o porco Bísaro à mesa em três formas diferentes, do presunto à alheira.</p>
+    </div>
+    <figure class="reveal" style="margin:0;">
+      <img src="images/casa-do-avo-equipa-restaurante.jpg" alt="Equipa e amigos da casa, à porta da Casa do Avô em Sarzeda">
+    </figure>
+  </div>
 </section>
 
-<section id="fornos-do-rei" class="rest-section">
+<section class="ca-ambience">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="kicker">Penedono</span>
-      <h2>Fornos do Rei</h2>
+    <span class="kicker ca-kicker">Por dentro e por fora</span>
+    <h3 style="font-size:clamp(1.7rem,5vw,2.3rem); font-weight:700; margin-bottom:24px;">Pedra, arco e lume</h3>
+    <div class="ca-amb-grid reveal">
+      <figure><img src="images/casa-do-avo-cozinheiro-forno-lenha.jpg" alt="Cozinheiro a preparar carnes no forno de lenha"><figcaption>O forno de lenha, sempre aceso</figcaption></figure>
+      <figure><img src="images/casa-do-avo-sala-jantar.jpg" alt="Sala de jantar da Casa do Avô"><figcaption>A sala de jantar, em pedra</figcaption></figure>
+      <figure><img src="images/casa-do-avo-fachada-dia.jpg" alt="Fachada da Casa do Avô durante o dia"><figcaption>A casa, de dia</figcaption></figure>
     </div>
-    <div class="rest-grid">
-      <div class="rest-photos reveal">
-        <img class="full" src="images/fornos-do-rei-castelo-penedono.jpg" alt="Castelo de Penedono">
-        <img src="images/fornos-do-rei-entrecosto-pure-batata.jpg" alt="Entrecosto grelhado com puré de batata">
-        <img src="images/fornos-do-rei-enchidos-fumeiro.jpg" alt="Enchidos de fumeiro a curar">
+  </div>
+</section>
+
+<section class="ca-dishes">
+  <div class="wrap">
+    <span class="kicker ca-kicker">Da brasa para a mesa</span>
+    <h3 style="font-size:clamp(1.7rem,5vw,2.3rem); font-weight:700; margin-bottom:24px;">As especialidades</h3>
+  </div>
+  <div class="dish-scroller reveal">
+    <div class="ca-dish-card"><img src="images/casa-do-avo-polvo-brasa.jpg" alt="Polvo assado na brasa"><div class="dish-card-text"><span class="tag">Especialidade</span><h4>Polvo à brasa</h4><p>Sobre arroz de polvo feito no forno.</p></div></div>
+    <div class="ca-dish-card"><img src="images/casa-do-avo-entrecosto-lenha.jpg" alt="Entrecosto grelhado na brasa de lenha"><div class="dish-card-text"><span class="tag">Na brasa de lenha</span><h4>Grelhados de lenha</h4><p>Ao lado do arroz de chouriço.</p></div></div>
+    <div class="ca-dish-card"><img src="images/casa-do-avo-presunto-porco-bisaro.jpg" alt="Presunto de porco Bísaro em cura"><div class="dish-card-text"><span class="tag">Produto da casa</span><h4>Porco Bísaro</h4><p>Presunto, chouriça e alheira.</p></div></div>
+    <div class="ca-dish-card"><img src="images/casa-do-avo-posta-vitela-ervas.jpg" alt="Posta de vitela grelhada com ervas"><div class="dish-card-text"><span class="tag">2 pessoas</span><h4>Posta de vitela</h4><p>Com alho e ervas frescas.</p></div></div>
+    <div class="ca-dish-card"><img src="images/casa-do-avo-arroz-polvo-forno.jpg" alt="Arroz de polvo no forno com presunto"><div class="dish-card-text"><span class="tag">No forno de lenha</span><h4>Arroz de polvo</h4><p>Com presunto e sabor a fumo.</p></div></div>
+  </div>
+</section>
+
+<section class="ca-menu" id="ca-menu">
+  <div class="wrap">
+    <span class="kicker">A ementa</span>
+    <h3>As nossas sugestões</h3>
+    <p style="color:var(--stone-ca); margin-top:10px; max-width:52ch;">Ementa sazonal, sujeita a alterações consoante o mercado. Pratos para 2 pessoas assinalados.</p>
+    <div class="ca-menu-cols">
+      <div class="ca-menu-cat">
+        <h4>Entradas</h4>
+        <div class="menu-item"><span>Sopa do dia</span><span class="price">3,00€</span></div>
+        <div class="menu-item"><span>Alheira de porco Bísaro</span><span class="price">8,00€</span></div>
+        <div class="menu-item"><span>Chouriça de porco Bísaro</span><span class="price">8,00€</span></div>
+        <div class="menu-item"><span>Presunto de porco Bísaro</span><span class="price">8,00€</span></div>
       </div>
-      <div class="rest-text reveal">
-        <p>Uma taberna de pedra mesmo junto ao Castelo de Penedono, Monumento Nacional e local de nascimento lendário do cavaleiro "o Magriço", celebrizado por Camões.</p>
-        <p>Fumeiro curado devagar, carnes na brasa e caldeirões de ferro sempre ao lume, numa sala de arcos de pedra que lembra o próprio castelo lá fora.</p>
-        <div class="rest-facts">
-          <div><div class="label">Morada</div>Rua de São Salvador, 13<br>Penedono</div>
-          <div><div class="label">Telefone</div><a href="tel:+351960071487">960 071 487</a></div>
-          <div><div class="label">Preço médio</div>10€ – 25€</div>
+      <div class="ca-menu-cat">
+        <h4>Pratos</h4>
+        <div class="menu-item"><span>Bacalhau assado na brasa<span class="note">2 pessoas</span></span><span class="price">40,00€</span></div>
+        <div class="menu-item"><span>Arroz de polvo no forno</span><span class="price">20,50€</span></div>
+        <div class="menu-item"><span>Trilogia de porco Bísaro</span><span class="price">18,50€</span></div>
+        <div class="menu-item"><span>Costeleta de vitela grelhada</span><span class="price">18,50€</span></div>
+        <div class="menu-item"><span>Posta de vitela grelhada<span class="note">2 pessoas</span></span><span class="price">39,00€</span></div>
+        <div class="menu-item"><span>Naco de vitela, queijo da Serra e ovo bio</span><span class="price">18,50€</span></div>
+      </div>
+      <div class="ca-menu-cat">
+        <h4>Sobremesas</h4>
+        <div class="menu-item"><span>Pudim de castanhas</span><span class="price">3,50€</span></div>
+        <div class="menu-item"><span>Pudim abade de Priscos</span><span class="price">3,50€</span></div>
+        <div class="menu-item"><span>Barriga de freira</span><span class="price">3,50€</span></div>
+        <div class="menu-item"><span>Leite creme</span><span class="price">3,50€</span></div>
+        <div class="menu-item"><span>Gelado de bolacha de chocolate</span><span class="price">3,50€</span></div>
+        <div class="menu-item"><span>Gelado de amêndoa</span><span class="price">3,50€</span></div>
+        <div class="menu-item"><span>Arroz doce</span><span class="price">3,50€</span></div>
+        <div class="menu-item"><span>Fruta</span><span class="price">3,50€</span></div>
+      </div>
+    </div>
+    <p class="menu-note">Preço médio reportado pelos clientes: 10€ a 25€ por pessoa.</p>
+  </div>
+</section>
+
+<section class="ca-visit">
+  <div class="wrap">
+    <span class="kicker ca-kicker">Reservar</span>
+    <h3 style="font-size:clamp(1.7rem,5vw,2.3rem); font-weight:700; margin-bottom:24px;">Horário e contactos</h3>
+    <div class="ca-visit-grid">
+      <table class="hours-table" id="ca-hours-table">
+        <tr data-day="1"><td>Segunda-feira</td><td class="closed">Encerrado</td></tr>
+        <tr data-day="2"><td>Terça-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="3"><td>Quarta-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="4"><td>Quinta-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="5"><td>Sexta-feira</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="6"><td>Sábado</td><td>12h00–15h00 · 19h00–22h30</td></tr>
+        <tr data-day="0"><td>Domingo</td><td>12h00–15h00</td></tr>
+      </table>
+      <div class="ca-contact-card">
+        <h4>Casa do Avô</h4>
+        <div class="contact-line"><span class="label">Morada</span><span>Rua do Cieiro, 22<br>Sarzeda, 3640-180 Sernancelhe</span></div>
+        <div class="contact-line"><span class="label">Telefone</span><a href="tel:+351254594016">254 594 016</a></div>
+        <div class="contact-line"><span class="label">Facebook</span><a href="https://www.facebook.com/casadoavorestaurante" target="_blank" rel="noopener">casadoavorestaurante</a></div>
+        <div class="contact-actions">
+          <a class="btn ca-btn-primary" href="tel:+351254594016">Ligar agora</a>
+          <a class="btn" style="border:1px solid var(--charcoal); color:var(--charcoal);" href="https://www.google.com/maps/search/?api=1&query=Rua+do+Cieiro+22+Sarzeda+Sernancelhe" target="_blank" rel="noopener">Ver no mapa</a>
         </div>
-        <div class="rest-actions">
-          <a class="btn btn-solid" href="tel:+351960071487">Ligar agora</a>
-          <a class="btn btn-outline" href="https://jfdacunha.github.io/paginas-web/fornos-do-rei/" target="_blank" rel="noopener">Ver site completo</a>
-        </div>
+      </div>
+      <div class="map-embed reveal" style="grid-column:1/-1;">
+        <iframe src="https://www.google.com/maps?q=Rua+do+Cieiro+22,+Sarzeda,+3640-180+Sernancelhe&output=embed" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa da Casa do Avô em Sarzeda"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<section class="compare-note">
-  <div class="wrap reveal">
-    <div class="logos">
-      <img src="images/casa-do-avo-logo.png" alt="Casa do Avô">
-      <img src="images/fornos-do-rei-logo-full-dark.png" alt="Fornos do Rei">
+</div>
+
+<!-- ================= FORNOS DO REI ================= -->
+<div id="fornos-do-rei">
+
+<header class="fr-banner">
+  <img src="images/fornos-do-rei-rua-nevoeiro-penedono.jpg" alt="Rua de calçada com nevoeiro em Penedono, com a placa da Fornos do Rei">
+  <div class="fr-banner-content">
+    <div class="fr-banner-inner">
+      <span class="fr-eyebrow"><span class="fr-dot"></span>Penedono &middot; à sombra do castelo</span>
+      <h2>Fornos do Rei</h2>
+      <p>Taberna de pedra junto ao Castelo de Penedono. Enchidos de fumeiro, carnes na brasa e forno de lenha, à moda da Beira Alta.</p>
+      <div class="fr-actions">
+        <a class="btn fr-btn-primary" href="tel:+351960071487">Reservar mesa</a>
+        <a class="btn fr-btn-ghost" href="#fr-menu">Ver a ementa</a>
+      </div>
     </div>
-    <p>Esta página junta as duas casas num só lugar, para comparação. Cada restaurante tem também o seu próprio site completo, com ementa, horário e mapa dedicados — use os botões "Ver site completo" acima para os visitar.</p>
+  </div>
+</header>
+
+<div class="fr-reserve">
+  <div class="wrap fr-reserve-grid">
+    <div class="status-line" id="fr-status-line">
+      <span class="status-dot" id="fr-status-dot"></span>
+      <span id="fr-status-text">A verificar horário…</span>
+    </div>
+    <div class="reserve-cta">
+      <a class="fr-phone" href="tel:+351960071487">960 071 487</a>
+      <span style="font-size:0.82rem; color:#cbb9a3;">Ligue para reservar mesa</span>
+    </div>
+  </div>
+</div>
+
+<section class="fr-region">
+  <div class="wrap fr-region-grid">
+    <div class="reveal">
+      <span class="kicker fr-kicker">A região</span>
+      <h3>Penedono, mil anos aos pés do castelo</h3>
+      <p>Penedono é uma vila do distrito de Viseu, na Beira Alta, já perto do Douro Vinhateiro. Cresceu à volta do seu castelo medieval, erguido sobre um afloramento de granito, e o centro histórico ainda guarda as construções em pedra e as ruas de calçada de então.</p>
+      <p>O Castelo de Penedono, também chamado Castelo do Magriço, é Monumento Nacional desde 1910 e é apontado como o local de nascimento de D. Álvaro Gonçalves Coutinho, o cavaleiro que Camões celebrizou como "o Magriço".</p>
+      <p class="fr-quote">"A primeira referência escrita a Penedono, então Pena de Dono, data do ano de 960."</p>
+    </div>
+    <figure class="arch reveal" style="margin:0;">
+      <img src="images/fornos-do-rei-castelo-penedono.jpg" alt="Castelo de Penedono, monumento medieval sobre afloramento de granito">
+    </figure>
   </div>
 </section>
+
+<section class="fr-story">
+  <div class="wrap fr-story-grid">
+    <figure class="arch reveal" style="margin:0; order:2;">
+      <img src="images/fornos-do-rei-sala-jantar-mesa.jpg" alt="Sala de jantar da Fornos do Rei">
+    </figure>
+    <div class="reveal">
+      <span class="kicker fr-kicker">A taberna</span>
+      <h3 style="margin-bottom:18px;">Aos pés do castelo</h3>
+      <div class="fr-scroll-card">
+        <p class="fr-drop">A Fornos do Rei fica mesmo junto ao Castelo de Penedono, na vila antiga onde as ruas ainda são de calçada e as casas de granito. O nome vem do que se faz lá dentro: fumeiro curado devagar, carnes na brasa e caldeirões de ferro sempre ao lume.</p>
+        <p>A ementa é curta e vai direta ao que a região tem de melhor: porco Bísaro, enchidos de fumeiro, bacalhau e vitela, servidos numa sala de arcos de pedra.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fr-ambience">
+  <div class="wrap">
+    <span class="kicker fr-kicker">Por dentro e por fora</span>
+    <h3 style="font-size:clamp(1.7rem,5vw,2.3rem); font-weight:600; margin-bottom:24px;">Pedra, arco e lume</h3>
+    <div class="fr-amb-grid reveal">
+      <figure><div class="arch"><img src="images/fornos-do-rei-caldeiroes-lume.jpg" alt="Caldeirões de ferro ao lume"></div><figcaption>Os caldeirões, sempre ao lume</figcaption></figure>
+      <figure><div class="arch"><img src="images/fornos-do-rei-sala-arcos-pedra.jpg" alt="Sala interior com arcos de pedra"></div><figcaption>Os arcos de pedra da sala</figcaption></figure>
+      <figure><div class="arch"><img src="images/fornos-do-rei-enchidos-fumeiro.jpg" alt="Enchidos de fumeiro a curar"></div><figcaption>O fumeiro a curar</figcaption></figure>
+      <figure><div class="arch"><img src="images/fornos-do-rei-fachada-brasao.jpg" alt="Fachada com o brasão de armas"></div><figcaption>O brasão à porta</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="fr-dishes">
+  <div class="wrap">
+    <span class="kicker fr-kicker">Da brasa para a mesa</span>
+    <h3 style="font-size:clamp(1.7rem,5vw,2.3rem); font-weight:600; margin-bottom:24px;">As especialidades</h3>
+  </div>
+  <div class="dish-scroller reveal">
+    <div class="fr-dish-card"><div class="arch"><img src="images/fornos-do-rei-entrecosto-pure-batata.jpg" alt="Entrecosto grelhado com puré de batata"></div><div class="fr-dish-text"><span class="tag">Na brasa</span><h4>Entrecosto grelhado</h4><p>Com puré de batata e grelos.</p></div></div>
+    <div class="fr-dish-card"><div class="arch"><img src="images/fornos-do-rei-carne-chourica-brasa.jpg" alt="Carne e chouriça a grelhar sobre brasas"></div><div class="fr-dish-text"><span class="tag">Direto da brasa</span><h4>Grelhados de carvão</h4><p>Carne e chouriça em brasa viva.</p></div></div>
+    <div class="fr-dish-card"><div class="arch"><img src="images/fornos-do-rei-posta-vitela-laranja.jpg" alt="Posta de vitela grelhada com laranja"></div><div class="fr-dish-text"><span class="tag">2 pessoas</span><h4>Posta de vitela</h4><p>Com laranja e batata frita.</p></div></div>
+    <div class="fr-dish-card"><div class="arch"><img src="images/fornos-do-rei-presunto-pao-caseiro.jpg" alt="Presunto inteiro e pão caseiro"></div><div class="fr-dish-text"><span class="tag">Da casa</span><h4>Presunto e pão</h4><p>Com vinho tinto da região.</p></div></div>
+  </div>
+</section>
+
+<section class="fr-menu" id="fr-menu">
+  <div class="wrap">
+    <span class="kicker fr-kicker" style="justify-content:center; display:flex;">A ementa</span>
+    <h3>Entradas, sugestões e sobremesa</h3>
+    <div class="wax-seal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 2 4 6 4 11v9h4v-9c0-3 1.5-5 4-5s4 2 4 5v9h4v-9c0-5-3-9-8-9z"/></svg></div>
+    <div class="fr-menu-scroll">
+      <div class="fr-menu-group">
+        <h4 class="fr-menu-cat-title"><span class="rule"></span>Entradas<span class="rule"></span></h4>
+        <div class="fr-menu-item"><span>Ovos rotos</span><span class="price">8,00€</span></div>
+        <div class="fr-menu-item"><span>Alheira de porco Bísaro</span><span class="price">9,00€</span></div>
+        <div class="fr-menu-item"><span>Chouriça de porco Bísaro</span><span class="price">9,00€</span></div>
+        <div class="fr-menu-item"><span>Queijo da Serra</span><span class="price">5,00€</span></div>
+      </div>
+      <div class="fr-menu-group">
+        <h4 class="fr-menu-cat-title"><span class="rule"></span>Sugestões<span class="rule"></span></h4>
+        <div class="fr-menu-item"><span>Lombo de bacalhau com crosta de broa e alheira</span><span class="price">22,00€</span></div>
+        <div class="fr-menu-item"><span>Costeleta de vitela grelhada</span><span class="price">22,00€</span></div>
+        <div class="fr-menu-item"><span>Posta de vitela<span class="note">2 pessoas</span></span><span class="price">40,00€</span></div>
+        <div class="fr-menu-item"><span>Porco Bísaro com arroz de fumeiro</span><span class="price">18,00€</span></div>
+        <div class="fr-menu-item"><span>Naco de vitela, ovo e presunto</span><span class="price">18,00€</span></div>
+      </div>
+      <div class="fr-menu-group">
+        <h4 class="fr-menu-cat-title"><span class="rule"></span>Sobremesa<span class="rule"></span></h4>
+        <div class="fr-menu-item"><span>Pudim de castanha</span><span class="price">3,50€</span></div>
+        <div class="fr-menu-item"><span>Leite creme</span><span class="price">3,50€</span></div>
+        <div class="fr-menu-item"><span>Pudim de mel</span><span class="price">3,50€</span></div>
+        <div class="fr-menu-item"><span>Natas do céu</span><span class="price">3,50€</span></div>
+        <div class="fr-menu-item"><span>Fruta</span><span class="price">3,50€</span></div>
+      </div>
+      <p class="fr-menu-note">Preço médio reportado pelos clientes: 10€ a 25€ por pessoa.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fr-visit">
+  <div class="wrap">
+    <span class="kicker fr-kicker">Reservar</span>
+    <h3 style="font-size:clamp(1.7rem,5vw,2.3rem); font-weight:600; margin-bottom:24px;">Horário e contactos</h3>
+    <div class="fr-visit-grid">
+      <div class="fr-crest reveal">
+        <div class="fr-facts">
+          <div><div class="label">Morada</div><div class="value">Rua de São Salvador, 13<br>3630-241 Penedono</div></div>
+          <div><div class="label">Telefone</div><div class="value"><a href="tel:+351960071487">960 071 487</a></div></div>
+          <div><div class="label">Facebook</div><div class="value"><a href="https://www.facebook.com/fornosdorei" target="_blank" rel="noopener">fornosdorei</a></div></div>
+          <div><div class="label">Preço médio</div><div class="value">10€ – 25€</div></div>
+        </div>
+        <table class="hours-table fr-hours" id="fr-hours-table">
+          <tr data-day="1"><td>Segunda-feira</td><td class="closed">Encerrado</td></tr>
+          <tr data-day="2"><td>Terça-feira</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="3"><td>Quarta-feira</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="4"><td>Quinta-feira</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="5"><td>Sexta-feira</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="6"><td>Sábado</td><td>12h–15h · 19h–22h</td></tr>
+          <tr data-day="0"><td>Domingo</td><td>12h–15h</td></tr>
+        </table>
+        <div class="contact-actions">
+          <a class="btn fr-btn-primary" href="tel:+351960071487">Ligar agora</a>
+          <a class="btn fr-btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Rua+de+S%C3%A3o+Salvador+13+Penedono" target="_blank" rel="noopener">Ver no mapa</a>
+        </div>
+      </div>
+      <div class="map-embed reveal">
+        <iframe src="https://www.google.com/maps?q=Rua+de+S%C3%A3o+Salvador+13,+3630-241+Penedono&output=embed" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa da Fornos do Rei em Penedono"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
 
 <footer>
   <div class="wrap">
     <div class="cols">
-      <div>
-        <strong style="color:#e6dcc9;">Casa do Avô</strong><br>
-        Rua do Cieiro, 22, Sarzeda, 3640-180 Sernancelhe<br>
-        <a href="tel:+351254594016">254 594 016</a>
-      </div>
-      <div>
-        <strong style="color:#e6dcc9;">Fornos do Rei</strong><br>
-        Rua de São Salvador, 13, 3630-241 Penedono<br>
-        <a href="tel:+351960071487">960 071 487</a>
-      </div>
+      <div><strong>Casa do Avô</strong><br>Rua do Cieiro, 22, Sarzeda, 3640-180 Sernancelhe<br><a href="tel:+351254594016">254 594 016</a></div>
+      <div><strong>Fornos do Rei</strong><br>Rua de São Salvador, 13, 3630-241 Penedono<br><a href="tel:+351960071487">960 071 487</a></div>
     </div>
   </div>
 </footer>
@@ -243,6 +580,36 @@
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
   }
+
+  function setupStatus(scheduleObj, dotId, textId, tableId){
+    var now = new Date();
+    var day = now.getDay();
+    var minutesNow = now.getHours() * 60 + now.getMinutes();
+    var ranges = scheduleObj[day];
+    var open = false;
+    for(var i=0; i<ranges.length; i++){
+      var r = ranges[i];
+      var start = r[0]*60 + r[1];
+      var end = r[2]*60 + r[3];
+      if(minutesNow >= start && minutesNow <= end){ open = true; break; }
+    }
+    var dot = document.getElementById(dotId);
+    var text = document.getElementById(textId);
+    if(open){ text.innerHTML = '<strong>Aberto agora</strong>'; }
+    else { dot.classList.add('closed'); text.innerHTML = 'Fechado agora'; }
+    var row = document.querySelector('#' + tableId + ' tr[data-day="' + day + '"]');
+    if(row){ row.classList.add('today'); }
+  }
+
+  setupStatus({
+    0:[[12,0,15,0]], 1:[], 2:[[12,0,15,0],[19,0,22,30]], 3:[[12,0,15,0],[19,0,22,30]],
+    4:[[12,0,15,0],[19,0,22,30]], 5:[[12,0,15,0],[19,0,22,30]], 6:[[12,0,15,0],[19,0,22,30]]
+  }, 'ca-status-dot', 'ca-status-text', 'ca-hours-table');
+
+  setupStatus({
+    0:[[12,0,15,0]], 1:[], 2:[[12,0,15,0],[19,0,22,0]], 3:[[12,0,15,0],[19,0,22,0]],
+    4:[[12,0,15,0],[19,0,22,0]], 5:[[12,0,15,0],[19,0,22,0]], 6:[[12,0,15,0],[19,0,22,0]]
+  }, 'fr-status-dot', 'fr-status-text', 'fr-hours-table');
 </script>
 
 </body>
