@@ -280,6 +280,18 @@
   .contact-line a:hover{ border-color:#f4ede0; }
   .contact-actions{ margin-top:22px; display:flex; gap:10px; flex-wrap:wrap; }
 
+  .sibling{ background:var(--paper); }
+  .sibling-card{
+    display:grid; grid-template-columns:1fr; gap:0; background:var(--charcoal);
+    border-radius:8px; overflow:hidden;
+  }
+  .sibling-photo{ position:relative; height:240px; }
+  .sibling-photo img{ width:100%; height:100%; object-fit:cover; opacity:0.85; }
+  .sibling-text{ padding:32px; color:#e6dcc9; }
+  .sibling-text .kicker{ color:#d8b98a; font-size:0.85rem; font-weight:600; display:block; margin-bottom:10px; }
+  .sibling-text h3{ font-family:'Fraunces', serif; color:#f4ede0; font-size:1.7rem; font-weight:700; margin-bottom:12px; }
+  .sibling-text p{ font-size:0.98rem; max-width:48ch; margin-bottom:20px; }
+
   footer{ background:var(--charcoal); color:var(--stone); padding:30px 0 24px; font-size:0.85rem; border-top:1px solid rgba(244,237,224,0.1); }
   footer .wrap{ display:flex; flex-direction:column; gap:10px; }
   footer a{ color:#e6dcc9; text-decoration:none; }
@@ -318,6 +330,8 @@
     .menu-columns-desktop{ display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
     .menu-tabs{ display:none; }
     .menu-panel{ display:block !important; }
+    .sibling-card{ grid-template-columns:1fr 1fr; }
+    .sibling-photo{ height:100%; min-height:320px; }
   }
 </style>
 </head>
@@ -567,6 +581,22 @@
         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         title="Mapa com a localização da Casa do Avô em Sarzeda, Sernancelhe"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="sibling">
+  <div class="wrap">
+    <div class="sibling-card reveal">
+      <div class="sibling-photo">
+        <img src="images/fornos-do-rei-fachada-castelo-penedono.jpg" alt="Fachada da Fornos do Rei junto ao Castelo de Penedono">
+      </div>
+      <div class="sibling-text">
+        <span class="kicker">Restaurante irmão</span>
+        <h3>Fornos do Rei, em Penedono</h3>
+        <p>A poucos minutos de Sarzeda, junto ao Castelo de Penedono, a Fornos do Rei serve fumeiro curado, carnes na brasa e cozinha de forno de lenha numa taberna de pedra.</p>
+        <a class="btn btn-primary" href="https://jfdacunha.github.io/paginas-web/fornos-do-rei/" target="_blank" rel="noopener">Ver a Fornos do Rei</a>
+      </div>
     </div>
   </div>
 </section>
