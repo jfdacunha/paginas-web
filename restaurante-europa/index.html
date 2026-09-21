@@ -264,6 +264,9 @@ section { padding: 6.5rem 0; }
 /* Gallery */
 .gallery { background: var(--paper); }
 .grid { columns: 3; column-gap: 1.1rem; }
+.grid.few { columns: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+.grid.few button { margin: 0; }
+.grid.few img { height: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .grid button {
   display: block; width: 100%; margin: 0 0 1.1rem; padding: 0; border: 0; background: none; cursor: zoom-in;
   border-radius: 12px; overflow: hidden; break-inside: avoid;
@@ -344,6 +347,7 @@ footer { background: var(--green-deep); color: #cfe0d5; padding: 4.5rem 0 2.2rem
   .cards { grid-template-columns: repeat(2, 1fr); }
   .tiles { grid-template-columns: repeat(2, 1fr); }
   .grid { columns: 2; }
+  .grid.few { grid-template-columns: repeat(2, 1fr); }
   .about-photo { max-width: 560px; }
   .reviews-fallback { grid-template-columns: 1fr; text-align: center; gap: 1.4rem; }
   .foot { grid-template-columns: 1fr; text-align: center; justify-items: center; }
@@ -715,28 +719,17 @@ footer { background: var(--green-deep); color: #cfe0d5; padding: 4.5rem 0 2.2rem
         <h2 data-i18n="gal_title">Um lugar para ficar</h2>
         <p data-i18n="gal_lead">Do primeiro prato à sobremesa, com o mar sempre à vista.</p>
       </div>
-      <div class="grid reveal">
-        <button type="button" data-full="images/restaurante-europa-foz-do-arelho-exterior-noite.webp"><img src="images/restaurante-europa-foz-do-arelho-exterior-noite.webp" alt="Esplanada do Restaurante Europa iluminada ao anoitecer, Foz do Arelho" loading="lazy" width="1360" height="765"></button>
-        <button type="button" data-full="images/choco-grelhado-alho-restaurante-europa.webp"><img src="images/choco-grelhado-alho-restaurante-europa.webp" alt="Choco grelhado com alho e salsa" loading="lazy" width="765" height="1020"></button>
-        <button type="button" data-full="images/sala-interior-vista-mar-restaurante-europa-foz-do-arelho.webp"><img src="images/sala-interior-vista-mar-restaurante-europa-foz-do-arelho.webp" alt="Sala interior com vista para o mar ao fim da tarde" loading="lazy" width="1800" height="1201"></button>
-        <button type="button" data-full="images/sobremesa-profiteroles-bolo-chocolate-europa.webp"><img src="images/sobremesa-profiteroles-bolo-chocolate-europa.webp" alt="Sobremesa de bolo de chocolate com profiteroles, chantilly e morango" loading="lazy" width="1360" height="1020"></button>
+      <div class="grid few reveal">
         <button type="button" data-full="images/peixe-grelhado-vista-praia-foz-do-arelho.webp"><img src="images/peixe-grelhado-vista-praia-foz-do-arelho.webp" alt="Peixe grelhado com vista para a praia da Foz do Arelho" loading="lazy" width="1360" height="766"></button>
-        <button type="button" data-full="images/gambas-grelhadas-alho-salada-restaurante-europa.webp"><img src="images/gambas-grelhadas-alho-salada-restaurante-europa.webp" alt="Três pratos de gambas grelhadas com alho sobre salada" loading="lazy" width="1050" height="1400"></button>
-        <button type="button" data-full="images/camarao-ao-alho-restaurante-europa.webp"><img src="images/camarao-ao-alho-restaurante-europa.webp" alt="Camarão ao alho na esplanada do Restaurante Europa" loading="lazy" width="765" height="720"></button>
+        <button type="button" data-full="images/ameijoas-bulhao-pato-lagoa-obidos-detalhe.webp"><img src="images/ameijoas-bulhao-pato-lagoa-obidos-detalhe.webp" alt="Pormenor de amêijoas frescas da Lagoa de Óbidos com azeite, alho e coentros" loading="lazy" width="765" height="1020"></button>
+        <button type="button" data-full="images/sobremesa-profiteroles-bolo-chocolate-europa.webp"><img src="images/sobremesa-profiteroles-bolo-chocolate-europa.webp" alt="Sobremesa de bolo de chocolate com profiteroles, chantilly e morango" loading="lazy" width="1360" height="1020"></button>
         <button type="button" data-full="images/cerveja-por-do-sol-praia-foz-do-arelho-restaurante-europa.webp"><img src="images/cerveja-por-do-sol-praia-foz-do-arelho-restaurante-europa.webp" alt="Balde com cervejas geladas ao pôr do sol na praia da Foz do Arelho" loading="lazy" width="1440" height="1151"></button>
-        <button type="button" data-full="images/marisco-tigela-lavagante-gambas-restaurante-europa.webp"><img src="images/marisco-tigela-lavagante-gambas-restaurante-europa.webp" alt="Tigela de marisco com gambas e crustáceos" loading="lazy" width="1050" height="1400"></button>
-        <button type="button" data-full="images/ameijoas-bulhao-pato-foz-do-arelho.webp"><img src="images/ameijoas-bulhao-pato-foz-do-arelho.webp" alt="Amêijoas à Bulhão Pato numa taça com o selo do Restaurante Europa" loading="lazy" width="765" height="1020"></button>
-        <button type="button" data-full="images/sobremesa-bolo-amendoa-morangos-restaurante-europa.webp"><img src="images/sobremesa-bolo-amendoa-morangos-restaurante-europa.webp" alt="Sobremesa de bolo de bolacha com amêndoa caramelizada e morangos" loading="lazy" width="1200" height="1200"></button>
-        <button type="button" data-full="images/pregado-grelhado-legumes-batata-restaurante-europa.webp"><img src="images/pregado-grelhado-legumes-batata-restaurante-europa.webp" alt="Pregado grelhado com legumes e batata" loading="lazy" width="1120" height="1400"></button>
-        <button type="button" data-full="images/bitoque-restaurante-europa-foz-do-arelho.webp"><img src="images/bitoque-restaurante-europa-foz-do-arelho.webp" alt="Bitoque com ovo estrelado e batata frita" loading="lazy" width="765" height="1020"></button>
-        <button type="button" data-full="images/sardinhas-frescas-sal-grosso-restaurante-europa.webp"><img src="images/sardinhas-frescas-sal-grosso-restaurante-europa.webp" alt="Sardinhas frescas com sal grosso em travessas" loading="lazy" width="720" height="960"></button>
-        <button type="button" data-full="images/restaurante-europa-praia-foz-do-arelho-vista-aerea.webp"><img src="images/restaurante-europa-praia-foz-do-arelho-vista-aerea.webp" alt="Restaurante Europa visto de cima, junto à praia" loading="lazy" width="1360" height="765"></button>
       </div>
     </div>
   </section>
   <dialog class="lightbox" id="lightbox" aria-label="Fotografia ampliada">
     <button class="close" type="button" id="lbClose" aria-label="Fechar">&times;</button>
-    <img id="lbImg" src="" alt="">
+    <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
   </dialog>
 
   <!-- REVIEWS -->
