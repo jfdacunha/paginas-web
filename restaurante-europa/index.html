@@ -509,6 +509,22 @@ footer { background: var(--green-deep); color: #cfe0d5; padding: 4.5rem 0 2.2rem
 .dots i.on { background: var(--green); transform: scale(1.25); }
 @media (max-width: 980px) { .rev { flex-basis: calc((100% - 1.4rem) / 2); } .rev-actions { margin-left: 0; } }
 @media (max-width: 640px) { .rev { flex-basis: 86%; min-height: 0; } .rev-score b { font-size: 2.8rem; } }
+
+/* Menu rows with prices */
+.menu-cat .row { display: flex; justify-content: space-between; align-items: baseline; gap: 1.2rem; padding: .6rem 0; border-bottom: 1px dotted rgba(12,104,54,.32); }
+.menu-cat .row:last-child { border-bottom: 0; padding-bottom: 0; }
+.menu-cat .n { font-weight: 600; line-height: 1.35; }
+.menu-cat .n small { display: block; font-weight: 400; color: var(--muted); font-size: .9rem; }
+.menu-cat .p { font-family: var(--font-label); font-weight: 600; letter-spacing: .04em; color: var(--green-deep); white-space: nowrap; font-size: 1.12rem; }
+.menu-cat.wide { grid-column: 1 / -1; flex-direction: row; align-items: stretch; }
+.menu-cat.wide img { width: 42%; aspect-ratio: auto; height: auto; min-height: 260px; }
+.menu-cat.wide .txt { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 2rem 2.6rem; }
+@media (max-width: 640px) {
+  .menu-cat.wide { flex-direction: column; }
+  .menu-cat.wide img { width: 100%; min-height: 0; aspect-ratio: 16 / 10; }
+  .menu-cat.wide .txt { padding: 1.5rem 1.4rem 1.7rem; }
+  .menu-cat .p { font-size: 1.02rem; }
+}
 </style>
 </head>
 <body>
@@ -615,24 +631,24 @@ footer { background: var(--green-deep); color: #cfe0d5; padding: 4.5rem 0 2.2rem
           <div class="body"><h3 data-i18n="c4_t">Camarão ao alho</h3><p data-i18n="c4_p">Camarão salteado em alho, com molho de sobra para molhar o pão.</p></div>
         </article>
         <article class="card reveal">
-          <div class="img"><img src="images/gambas-grelhadas-alho-salada-restaurante-europa.webp" alt="Gambas grandes grelhadas com alho e ervas sobre salada, servidas no Restaurante Europa" width="1050" height="1400" loading="lazy"></div>
-          <div class="body"><h3 data-i18n="c5_t">Gambas grelhadas</h3><p data-i18n="c5_p">Gambas grandes abertas ao meio, grelhadas com alho e ervas, sobre salada fresca.</p></div>
+          <div class="img"><img src="images/camarao-tigre-grelhado-alho-salada-restaurante-europa.webp" alt="Camarão tigre grelhado com alho e ervas sobre salada, servido no Restaurante Europa" width="1050" height="1400" loading="lazy"></div>
+          <div class="body"><h3 data-i18n="c5_t">Camarão tigre</h3><p data-i18n="c5_p">Camarão tigre grande, aberto ao meio e grelhado com alho e ervas, sobre salada fresca.</p></div>
         </article>
         <article class="card reveal">
-          <div class="img"><img src="images/choco-grelhado-alho-restaurante-europa.webp" alt="Choco grelhado com alho laminado e salsa, acompanhado de legumes e batata" width="765" height="1020" loading="lazy"></div>
-          <div class="body"><h3 data-i18n="c6_t">Choco grelhado</h3><p data-i18n="c6_p">Choco na brasa com alho laminado e salsa, acompanhado de legumes e batata.</p></div>
+          <div class="img"><img src="images/lulas-lagareiro-alho-restaurante-europa.webp" alt="Lulas à lagareiro com alho laminado e salsa, acompanhadas de legumes e batata" width="765" height="1020" loading="lazy"></div>
+          <div class="body"><h3 data-i18n="c6_t">Lulas à lagareiro</h3><p data-i18n="c6_p">Lulas grelhadas com alho laminado e salsa, acompanhadas de legumes e batata.</p></div>
         </article>
         <article class="card reveal">
           <div class="img"><img src="images/sardinhas-frescas-sal-grosso-restaurante-europa.webp" alt="Sardinhas frescas com sal grosso, prontas para grelhar no Restaurante Europa" width="720" height="960" loading="lazy"></div>
           <div class="body"><h3 data-i18n="c7_t">Sardinhas</h3><p data-i18n="c7_p">Sardinhas frescas com sal grosso, no ponto certo para a brasa.</p></div>
         </article>
         <article class="card reveal">
-          <div class="img"><img src="images/marisco-tigela-lavagante-gambas-restaurante-europa.webp" alt="Tigela de marisco com gambas e crustáceos, com o selo do Restaurante Europa na loiça" width="1050" height="1400" loading="lazy"></div>
-          <div class="body"><h3 data-i18n="c8_t">Arroz de marisco</h3><p data-i18n="c8_p">Gambas e crustáceos num arroz bem temperado, servido em tigela para partilhar.</p></div>
+          <div class="img"><img src="images/arroz-gambas-crustaceos-tigela-restaurante-europa.webp" alt="Tigela de arroz de gambas e crustáceos, com o selo do Restaurante Europa na loiça" width="1050" height="1400" loading="lazy"></div>
+          <div class="body"><h3 data-i18n="c8_t">Arroz de gambas</h3><p data-i18n="c8_p">Gambas e crustáceos num arroz bem temperado, servido em tigela para dois.</p></div>
         </article>
         <article class="card reveal">
           <div class="img"><img src="images/bitoque-restaurante-europa-foz-do-arelho.webp" alt="Bitoque com ovo estrelado, batata frita e salada no Restaurante Europa" width="765" height="1020" loading="lazy"></div>
-          <div class="body"><h3 data-i18n="c9_t">Bitoque da casa</h3><p data-i18n="c9_p">O clássico português com ovo estrelado e batata frita, para quem prefere a terra ao mar.</p></div>
+          <div class="body"><h3 data-i18n="c9_t">Bitoque da casa</h3><p data-i18n="c9_p">O clássico português com ovo estrelado e batata frita, de vaca ou de peru.</p></div>
         </article>
       </div>
     </div>
@@ -649,42 +665,58 @@ footer { background: var(--green-deep); color: #cfe0d5; padding: 4.5rem 0 2.2rem
       <div class="menu-grid">
         <div class="menu-cat reveal">
           <h3 data-i18n="m1_t">Entradas</h3>
-          <dl>
-            <dt data-i18n="m1_a">Amêijoas à Bulhão Pato</dt><dd data-i18n="m1_a_d">Da lagoa, com alho, coentros e azeite</dd>
-            <dt data-i18n="m1_b">Camarão ao alho</dt><dd data-i18n="m1_b_d">Salteado em alho, para molhar o pão</dd>
-            <dt data-i18n="m1_c">Lulas grelhadas</dt><dd data-i18n="m1_c_d">Grelhadas, com sabor a mar</dd>
-            <dt data-i18n="m1_d">Sopa de legumes</dt><dd data-i18n="m1_d_d">Para começar com calma</dd>
-          </dl>
+          <div class="row"><span class="n"><span data-i18n="m1_a">Creme de legumes</span></span><span class="p">2,70</span></div>
+          <div class="row"><span class="n"><span data-i18n="m1_b">Sopa de peixe</span></span><span class="p">4,50</span></div>
+          <div class="row"><span class="n"><span data-i18n="m1_c">Camarão com alho</span></span><span class="p">14,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m1_d">Amêijoa à Bulhão Pato</span></span><span class="p">14,00 / 21,00</span></div>
         </div>
         <div class="menu-cat reveal">
-          <h3 data-i18n="m2_t">Do mar</h3>
-          <dl>
-            <dt data-i18n="m2_a">Peixe do dia grelhado no carvão</dt><dd data-i18n="m2_a_d">Robalo, dourada, pregado e outros, conforme a pesca</dd>
-            <dt data-i18n="m2_b">Polvo à lagareiro</dt><dd data-i18n="m2_b_d">Com azeite, alho e batata</dd>
-            <dt data-i18n="m2_c">Arroz de tamboril</dt><dd data-i18n="m2_c_d">Para partilhar, com o sabor do mar</dd>
-            <dt data-i18n="m2_d">Arroz de gambas</dt><dd data-i18n="m2_d_d">Com o sabor do marisco fresco</dd>
-            <dt data-i18n="m2_e">Caril de gambas</dt><dd data-i18n="m2_e_d">Com especiarias e gambas frescas</dd>
-            <dt data-i18n="m2_f">Bife de atum</dt><dd data-i18n="m2_f_d">Grelhado no ponto</dd>
-          </dl>
+          <h3 data-i18n="m2_t">Para dois</h3>
+          <div class="row"><span class="n"><span data-i18n="m2_a">Arroz de gambas</span></span><span class="p">40,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m2_b">Arroz de polvo</span></span><span class="p">40,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m2_c">Arroz de tamboril</span></span><span class="p">45,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m2_d">Caril de gambas</span></span><span class="p">46,00</span></div>
         </div>
         <div class="menu-cat reveal">
-          <h3 data-i18n="m3_t">Da terra e da horta</h3>
-          <dl>
-            <dt data-i18n="m3_a">Bitoque</dt><dd data-i18n="m3_a_d">Com ovo estrelado e batata frita</dd>
-            <dt data-i18n="m3_b">Bife grelhado</dt><dd data-i18n="m3_b_d">Uma boa escolha para os mais pequenos</dd>
-            <dt data-i18n="m3_c">Hambúrguer</dt><dd data-i18n="m3_c_d">Para uma refeição mais descontraída</dd>
-            <dt data-i18n="m3_d">Saladas</dt><dd data-i18n="m3_d_d">De frango, de camarão ou de atum</dd>
-          </dl>
+          <h3 data-i18n="m3_t">Especialidades</h3>
+          <div class="row"><span class="n"><span data-i18n="m3_a">Camarão à casa</span></span><span class="p">18,50</span></div>
+          <div class="row"><span class="n"><span data-i18n="m3_b">Lulas grelhadas</span></span><span class="p">16,50</span></div>
+          <div class="row"><span class="n"><span data-i18n="m3_c">Lulas à lagareiro</span></span><span class="p">17,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m3_d">Polvo à lagareiro</span></span><span class="p">18,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m3_e">Camarão tigre</span><small data-i18n="m3_e_s">preço por unidade</small></span><span class="p">35,00</span></div>
         </div>
-        <div class="menu-cat with-photo reveal">
+        <div class="menu-cat reveal">
+          <h3 data-i18n="m4_t">Carne</h3>
+          <div class="row"><span class="n"><span data-i18n="m4_a">Bitoque</span><small data-i18n="m4_a_s">vaca ou peru</small></span><span class="p">13,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m4_b">Bife de peru grelhado</span></span><span class="p">12,50</span></div>
+          <div class="row"><span class="n"><span data-i18n="m4_c">Bifinhos de peru com natas</span></span><span class="p">13,50</span></div>
+          <div class="row"><span class="n"><span data-i18n="m4_d">Bife grelhado na brasa</span></span><span class="p">17,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m4_e">Bife com pimenta</span><small data-i18n="m4_e_s">vazia</small></span><span class="p">18,00</span></div>
+        </div>
+        <div class="menu-cat reveal">
+          <h3 data-i18n="m5_t">Vegan e omeletes</h3>
+          <div class="row"><span class="n"><span data-i18n="m5_a">Hambúrguer vegano no prato</span></span><span class="p">13,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m5_b">Omelete simples</span></span><span class="p">11,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m5_c">Omelete mista</span><small data-i18n="m5_c_s">fiambre e queijo</small></span><span class="p">13,00</span></div>
+        </div>
+        <div class="menu-cat reveal">
+          <h3 data-i18n="m6_t">Acompanhamentos</h3>
+          <div class="row"><span class="n"><span data-i18n="m6_a">Salada mista</span></span><span class="p">3,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m6_b">Salada de tomate</span></span><span class="p">2,50</span></div>
+          <div class="row"><span class="n"><span data-i18n="m6_c">Batatas fritas</span></span><span class="p">3,50</span></div>
+          <div class="row"><span class="n"><span data-i18n="m6_d">Legumes</span></span><span class="p">3,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m6_e">Arroz branco</span></span><span class="p">2,00</span></div>
+          <div class="row"><span class="n"><span data-i18n="m6_f">Pão, couvert e queijo seco</span></span><span class="p">2,00 / 6,50 / 5,00</span></div>
+        </div>
+        <div class="menu-cat with-photo wide reveal">
           <img src="images/sobremesa-bolo-amendoa-morangos-restaurante-europa.webp" alt="Fatias de bolo com camadas de bolacha, creme e amêndoa caramelizada, com morangos, no Restaurante Europa" width="1200" height="1200" loading="lazy">
           <div class="txt">
-            <h3 data-i18n="m4_t">Sobremesas</h3>
-            <p data-i18n="m4_p">Cheesecake, parfait e bolos, conforme o dia. Uma boa maneira de prolongar a vista.</p>
+            <h3 data-i18n="m7_t">Sobremesas</h3>
+            <p data-i18n="m7_p">As sobremesas do dia, para fechar a refeição com a vista. Pergunte à equipa o que há hoje.</p>
           </div>
         </div>
       </div>
-      <p class="menu-note reveal" data-i18n="menu_note">Ementa ilustrativa. Os pratos e a disponibilidade variam com a pesca e a estação. Consulte os preços no restaurante.</p>
+      <p class="menu-note reveal" data-i18n="menu_note">Valores em euros, com IVA à taxa legal em vigor, segundo a ementa de maio de 2026 e sujeitos a alteração. O peixe do dia tem preço indicado no expositor. Para alergénios, fale com a nossa equipa.</p>
     </div>
   </section>
 
@@ -698,9 +730,9 @@ footer { background: var(--green-deep); color: #cfe0d5; padding: 4.5rem 0 2.2rem
         <div class="chips" aria-label="Exemplos de peixe do dia">
           <span data-i18n="f1">Dourada</span><span data-i18n="f2">Robalo</span><span data-i18n="f3">Pregado</span>
           <span data-i18n="f4">Salmonete</span><span data-i18n="f5">Carapau</span><span data-i18n="f6">Sardinhas</span>
-          <span data-i18n="f7">Chocos</span><span data-i18n="f8">Polvo</span><span data-i18n="f9">Salmão</span>
+          <span data-i18n="f7">Chocos</span><span data-i18n="f8">Pampo</span><span data-i18n="f9">Salmão</span>
         </div>
-        <p class="note" data-i18n="fish_note">Exemplos da escolha habitual. A disponibilidade depende da pesca do dia. Em dias de maior movimento, aconselhamos reserva.</p>
+        <p class="note" data-i18n="fish_note">Exemplos da escolha habitual, com os preços indicados no expositor. A disponibilidade depende da pesca do dia. Em dias de maior movimento, aconselhamos reserva.</p>
         <a class="btn btn-light" href="tel:+351910404122" data-i18n="cta_book">Reservar mesa</a>
       </div>
       <div class="fish-photos reveal">
@@ -882,7 +914,7 @@ footer { background: var(--green-deep); color: #cfe0d5; padding: 4.5rem 0 2.2rem
         <div class="tile reveal"><h3 data-i18n="t1_t">Esplanada com vista</h3><p data-i18n="t1_p">Mesas ao ar livre e sala interior, de frente para a praia.</p></div>
         <div class="tile reveal"><h3 data-i18n="t2_t">Em família</h3><p data-i18n="t2_p">Cadeiras de bebé e um ambiente descontraído para todas as idades.</p></div>
         <div class="tile reveal"><h3 data-i18n="t3_t">Cães bem-vindos</h3><p data-i18n="t3_p">Aceitamos animais de companhia.</p></div>
-        <div class="tile reveal"><h3 data-i18n="t4_t">Opções vegetarianas</h3><p data-i18n="t4_p">Pratos adequados a quem não come carne ou peixe.</p></div>
+        <div class="tile reveal"><h3 data-i18n="t4_t">Opções vegetarianas</h3><p data-i18n="t4_p">Hambúrguer vegano, omeletes e creme de legumes.</p></div>
         <div class="tile reveal"><h3 data-i18n="t5_t">Pagamentos</h3><p data-i18n="t5_p">Aceitamos Visa e Mastercard.</p></div>
         <div class="tile reveal"><h3 data-i18n="t6_t">Estacionamento e Wi-Fi</h3><p data-i18n="t6_p">Estacionamento junto à praia e Wi-Fi gratuito.</p></div>
       </div>
@@ -1053,33 +1085,57 @@ footer { background: var(--green-deep); color: #cfe0d5; padding: 4.5rem 0 2.2rem
     c2_t: 'Turbot over the embers', c2_p: 'Firm fleshed sea fish, grilled whole and served to share.',
     c3_t: 'Clams Bulhão Pato', c3_p: 'Clams from the lagoon with garlic, coriander and olive oil. One of the starters our guests praise the most.',
     c4_t: 'Garlic prawns', c4_p: 'Prawns sautéed in garlic, with plenty of sauce left for dipping bread.',
-    c5_t: 'Grilled prawns', c5_p: 'Large prawns split open and grilled with garlic and herbs, on a fresh salad.',
-    c6_t: 'Grilled cuttlefish', c6_p: 'Cuttlefish over the embers with sliced garlic and parsley, served with vegetables and potatoes.',
+    c5_t: 'Tiger prawn', c5_p: 'Large tiger prawn split open and grilled with garlic and herbs, on a fresh salad.',
+    c6_t: 'Squid à lagareiro', c6_p: 'Grilled squid with sliced garlic and parsley, served with vegetables and potatoes.',
     c7_t: 'Sardines', c7_p: 'Fresh sardines with coarse salt, ready for the grill.',
-    c8_t: 'Seafood rice', c8_p: 'Prawns and shellfish in a well seasoned rice, served in a bowl to share.',
-    c9_t: 'House bitoque', c9_p: 'The Portuguese classic with a fried egg and chips, for those who prefer land to sea.',
+    c8_t: 'Prawn rice', c8_p: 'Prawns and shellfish in a well seasoned rice, served in a bowl for two.',
+    c9_t: 'House bitoque', c9_p: 'The Portuguese classic with a fried egg and chips, of beef or turkey.',
     menu_label: 'The Menu', menu_title: 'What to expect at our table',
     menu_lead: 'A short menu true to the sea, with options for those who prefer the land and for the little ones.',
-    m1_t: 'Starters', m1_a: 'Clams Bulhão Pato', m1_a_d: 'From the lagoon, with garlic, coriander and olive oil',
-    m1_b: 'Garlic prawns', m1_b_d: 'Sautéed in garlic, for dipping bread',
-    m1_c: 'Grilled squid', m1_c_d: 'Grilled, with the taste of the sea',
-    m1_d: 'Vegetable soup', m1_d_d: 'A gentle way to begin',
-    m2_t: 'From the sea', m2_a: 'Fish of the day, charcoal grilled', m2_a_d: 'Sea bass, bream, turbot and others, depending on the catch',
-    m2_b: 'Octopus à lagareiro', m2_b_d: 'With olive oil, garlic and potatoes',
-    m2_c: 'Monkfish rice', m2_c_d: 'To share, with the flavour of the sea',
-    m2_d: 'Prawn rice', m2_d_d: 'With the flavour of fresh shellfish',
-    m2_e: 'Prawn curry', m2_e_d: 'With spices and fresh prawns',
-    m2_f: 'Tuna steak', m2_f_d: 'Grilled just right',
-    m3_t: 'From the land and the garden', m3_a: 'Bitoque', m3_a_d: 'With a fried egg and chips',
-    m3_b: 'Grilled steak', m3_b_d: 'A good choice for the little ones',
-    m3_c: 'Burger', m3_c_d: 'For a more relaxed meal',
-    m3_d: 'Salads', m3_d_d: 'Chicken, prawn or tuna',
-    m4_t: 'Desserts', m4_p: 'Cheesecake, parfait and cakes, depending on the day. A good way to prolong the view.',
-    menu_note: 'Illustrative menu. Dishes and availability vary with the catch and the season. Please check prices at the restaurant.',
+    m1_t: 'Starters',
+    m1_a: 'Vegetable cream soup',
+    m1_b: 'Fish soup',
+    m1_c: 'Prawns in garlic sauce',
+    m1_d: 'Clams in garlic sauce',
+    m2_t: 'For two',
+    m2_a: 'Prawn rice',
+    m2_b: 'Octopus rice',
+    m2_c: 'Monkfish rice',
+    m2_d: 'Prawn curry',
+    m3_t: 'Specials',
+    m3_a: 'Fried prawns in garlic sauce, house style',
+    m3_b: 'Grilled squid',
+    m3_c: 'Squid à lagareiro',
+    m3_d: 'Octopus à lagareiro',
+    m3_e: 'Tiger prawn',
+    m3_e_s: 'price per unit',
+    m4_t: 'Meat',
+    m4_a: 'Bitoque, beef or turkey, with fried egg',
+    m4_a_s: 'beef or turkey',
+    m4_b: 'Grilled turkey steak',
+    m4_c: 'Turkey tenders with cream sauce',
+    m4_d: 'Charcoal grilled steak',
+    m4_e: 'Peppercorn steak',
+    m4_e_s: 'flank cut',
+    m5_t: 'Vegan and omelettes',
+    m5_a: 'Vegan burger',
+    m5_b: 'Plain omelette',
+    m5_c: 'Ham and cheese omelette',
+    m5_c_s: 'ham and cheese',
+    m6_t: 'Extra sides',
+    m6_a: 'Mixed salad',
+    m6_b: 'Tomato salad',
+    m6_c: 'French fries',
+    m6_d: 'Vegetables',
+    m6_e: 'Rice',
+    m6_f: 'Bread, cover charge and dry cheese',
+    m7_t: 'Desserts',
+    m7_p: 'The desserts of the day, to close the meal with the view. Ask the team what is available today.',
+    menu_note: 'Prices in euros, with VAT at the legal rate, according to the May 2026 menu and subject to change. The fish of the day is priced on the display board. For allergens, please ask our team.',
     fish_label: 'Daily fish', fish_title: 'The menu follows the fish market',
     fish_p1: 'Fresh fish is available every day, on display so you can see and choose. The selection changes with the catch and everything goes over the embers, cooked just right, so the taste of the sea speaks for itself.',
-    f1: 'Bream', f2: 'Sea bass', f3: 'Turbot', f4: 'Red mullet', f5: 'Mackerel', f6: 'Sardines', f7: 'Cuttlefish', f8: 'Octopus', f9: 'Salmon',
-    fish_note: 'Examples of our usual selection. Availability depends on the day\'s catch. On busier days we recommend booking.',
+    f1: 'Bream', f2: 'Sea bass', f3: 'Turbot', f4: 'Red mullet', f5: 'Mackerel', f6: 'Sardines', f7: 'Cuttlefish', f8: 'Pompano', f9: 'Salmon',
+    fish_note: 'Examples of our usual selection, with prices shown on the display board. Availability depends on the day\'s catch. On busier days we recommend booking.',
     amb_label: 'The Space', amb_title: 'From lunch to sunset, the sea always at your table',
     amb_p1: 'The glazed dining room and the terrace open onto the Atlantic, so every table has the sea for company, in the midday sun or in the colours of the evening.',
     amb_p2: 'It is a space made for families and groups of friends, with high chairs, room for those travelling with their dog, and wines and beers to go with the meal.',
@@ -1105,7 +1161,7 @@ footer { background: var(--green-deep); color: #cfe0d5; padding: 4.5rem 0 2.2rem
     t1_t: 'Terrace with a view', t1_p: 'Outdoor tables and an indoor room, facing the beach.',
     t2_t: 'Family friendly', t2_p: 'High chairs and a relaxed atmosphere for all ages.',
     t3_t: 'Dogs welcome', t3_p: 'We welcome pets.',
-    t4_t: 'Vegetarian options', t4_p: 'Dishes suitable for those who do not eat meat or fish.',
+    t4_t: 'Vegetarian options', t4_p: 'Vegan burger, omelettes and vegetable cream soup.',
     t5_t: 'Payments', t5_p: 'We accept Visa and Mastercard.',
     t6_t: 'Parking and Wi-Fi', t6_p: 'Parking by the beach and free Wi-Fi.',
     visit_label: 'Visit', visit_title: 'Book your table',
