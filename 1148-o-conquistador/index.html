@@ -211,11 +211,23 @@
 
   /* galeria */
   .galeria-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:6px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:280px 200px 200px;
+    grid-template-areas:
+      "a b c"
+      "a d d"
+      "e g f";
+    gap:6px;
   }
-  .galeria-grid img{width:100%;height:100%;object-fit:cover;}
-  .g-tall{grid-row:span 2;}
-  .g-wide{grid-column:span 2;}
+  .galeria-grid img{width:100%;height:100%;object-fit:cover;display:block;}
+  .ga-1{grid-area:a;}
+  .ga-2{grid-area:b;}
+  .ga-3{grid-area:c;}
+  .ga-4{grid-area:d;}
+  .ga-5{grid-area:e;}
+  .ga-6{grid-area:g;}
+  .ga-7{grid-area:f;}
 
   /* localizacao */
   .local{background:var(--parchment-dark);}
@@ -247,7 +259,16 @@
     .menutoggle{display:block;}
     .sobre-grid, .local-grid, .cardapio, .quotes{grid-template-columns:1fr;gap:36px;}
     .pratos-grid{grid-template-columns:repeat(2,1fr);}
-    .galeria-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
+    .galeria-grid{
+      grid-template-columns:repeat(2,1fr);
+      grid-template-rows:220px 170px 170px 170px 170px;
+      grid-template-areas:
+        "a a"
+        "b c"
+        "d d"
+        "e g"
+        "f f";
+    }
     .rating-row{gap:36px;}
     section{padding:60px 0;}
     .hero{min-height:78vh;}
@@ -389,13 +410,13 @@
     <h2 class="section-title" style="margin-bottom:40px;">Um pouco da casa e da cozinha</h2>
   </div>
   <div class="galeria-grid">
-    <img class="g-tall" src="images/sala-interior-1148-o-conquistador-obidos.jpg" alt="Sala interior do restaurante 1148 O Conquistador com mesas postas" loading="lazy">
-    <img src="images/bolinhos-bacalhau-1148-o-conquistador.jpg" alt="Bolinhos de bacalhau servidos com maionese de alho" loading="lazy">
-    <img src="images/camarao-pao-1148-o-conquistador.jpg" alt="Camarão salteado servido com cesto de pão" loading="lazy">
-    <img class="g-wide" src="images/polvo-grelhado-legumes-1148-o-conquistador.jpg" alt="Polvo grelhado com legumes e batata a murro em prato escuro" loading="lazy">
-    <img src="images/chourico-assado-flambeado-1148-o-conquistador.jpg" alt="Chouriço assado flambeado à mesa" loading="lazy">
-    <img src="images/entrecosto-costeletas-1148-o-conquistador.jpg" alt="Costeletas de entrecosto grelhadas com molho e laranja" loading="lazy">
-    <img class="g-tall" src="images/fachada-restaurante-1148-o-conquistador-obidos-dia.jpg" alt="Fachada do restaurante 1148 O Conquistador em Óbidos" loading="lazy">
+    <img class="ga-1" src="images/sala-interior-1148-o-conquistador-obidos.jpg" alt="Sala interior do restaurante 1148 O Conquistador com mesas postas" loading="lazy">
+    <img class="ga-2" src="images/bolinhos-bacalhau-1148-o-conquistador.jpg" alt="Bolinhos de bacalhau servidos com maionese de alho" loading="lazy">
+    <img class="ga-3" src="images/camarao-pao-1148-o-conquistador.jpg" alt="Camarão salteado servido com cesto de pão" loading="lazy">
+    <img class="ga-4" src="images/polvo-grelhado-legumes-1148-o-conquistador.jpg" alt="Polvo grelhado com legumes e batata a murro em prato escuro" loading="lazy">
+    <img class="ga-5" src="images/chourico-assado-flambeado-1148-o-conquistador.jpg" alt="Chouriço assado flambeado à mesa" loading="lazy">
+    <img class="ga-6" src="images/entrecosto-costeletas-1148-o-conquistador.jpg" alt="Costeletas de entrecosto grelhadas com molho e laranja" loading="lazy">
+    <img class="ga-7" src="images/fachada-restaurante-1148-o-conquistador-obidos-dia.jpg" alt="Fachada do restaurante 1148 O Conquistador em Óbidos" loading="lazy">
   </div>
 </section>
 
