@@ -220,7 +220,40 @@
       "e g f";
     gap:6px;
   }
-  .galeria-grid img{width:100%;height:100%;object-fit:cover;display:block;}
+  .galeria-grid img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;transition:transform .35s, filter .35s;}
+  .galeria-grid img:hover{transform:scale(1.03);filter:brightness(1.04);}
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(20,13,9,0.94);
+    display:none;align-items:center;justify-content:center;
+    padding:60px 24px;
+  }
+  .lightbox.is-open{display:flex;}
+  .lightbox-inner{position:relative;max-width:min(920px, 90vw);width:100%;}
+  .lightbox-inner img{width:100%;max-height:78vh;object-fit:contain;border:1px solid rgba(214,174,92,0.35);background:#0e0a07;}
+  .lightbox-caption{
+    text-align:center;color:#E7DAB8;font-family:'Lora',serif;font-style:italic;
+    font-size:0.95rem;margin-top:16px;
+  }
+  .lightbox-close, .lightbox-prev, .lightbox-next{
+    position:absolute;background:none;border:1px solid var(--gold-light);color:#F5EEDC;
+    font-family:'Cinzel',serif;cursor:pointer;line-height:1;
+    border-radius:2px;
+  }
+  .lightbox-close{top:-46px;right:0;padding:8px 13px;font-size:1rem;}
+  .lightbox-prev, .lightbox-next{
+    top:50%;transform:translateY(-50%);
+    padding:12px 15px;font-size:1.3rem;
+  }
+  .lightbox-prev{left:-58px;}
+  .lightbox-next{right:-58px;}
+  @media (max-width:880px){
+    .lightbox-prev{left:0;}
+    .lightbox-next{right:0;}
+    .lightbox-close{top:-40px;}
+  }
   .ga-1{grid-area:a;}
   .ga-2{grid-area:b;}
   .ga-3{grid-area:c;}
@@ -410,15 +443,68 @@
     <h2 class="section-title" style="margin-bottom:40px;">Um pouco da casa e da cozinha</h2>
   </div>
   <div class="galeria-grid">
-    <img class="ga-1" src="images/sala-interior-1148-o-conquistador-obidos.jpg" alt="Sala interior do restaurante 1148 O Conquistador com mesas postas" loading="lazy">
-    <img class="ga-2" src="images/bolinhos-bacalhau-1148-o-conquistador.jpg" alt="Bolinhos de bacalhau servidos com maionese de alho" loading="lazy">
-    <img class="ga-3" src="images/camarao-pao-1148-o-conquistador.jpg" alt="Camarão salteado servido com cesto de pão" loading="lazy">
-    <img class="ga-4" src="images/polvo-grelhado-legumes-1148-o-conquistador.jpg" alt="Polvo grelhado com legumes e batata a murro em prato escuro" loading="lazy">
-    <img class="ga-5" src="images/chourico-assado-flambeado-1148-o-conquistador.jpg" alt="Chouriço assado flambeado à mesa" loading="lazy">
-    <img class="ga-6" src="images/entrecosto-costeletas-1148-o-conquistador.jpg" alt="Costeletas de entrecosto grelhadas com molho e laranja" loading="lazy">
-    <img class="ga-7" src="images/fachada-restaurante-1148-o-conquistador-obidos-dia.jpg" alt="Fachada do restaurante 1148 O Conquistador em Óbidos" loading="lazy">
+    <img class="ga-1" src="images/sala-interior-1148-o-conquistador-obidos.jpg" alt="Sala interior do restaurante 1148 O Conquistador com mesas postas" loading="lazy" onclick="openLightbox(0)">
+    <img class="ga-2" src="images/bolinhos-bacalhau-1148-o-conquistador.jpg" alt="Bolinhos de bacalhau servidos com maionese de alho" loading="lazy" onclick="openLightbox(1)">
+    <img class="ga-3" src="images/camarao-pao-1148-o-conquistador.jpg" alt="Camarão salteado servido com cesto de pão" loading="lazy" onclick="openLightbox(2)">
+    <img class="ga-4" src="images/polvo-grelhado-legumes-1148-o-conquistador.jpg" alt="Polvo grelhado com legumes e batata a murro em prato escuro" loading="lazy" onclick="openLightbox(3)">
+    <img class="ga-5" src="images/chourico-assado-flambeado-1148-o-conquistador.jpg" alt="Chouriço assado flambeado à mesa" loading="lazy" onclick="openLightbox(4)">
+    <img class="ga-6" src="images/entrecosto-costeletas-1148-o-conquistador.jpg" alt="Costeletas de entrecosto grelhadas com molho e laranja" loading="lazy" onclick="openLightbox(5)">
+    <img class="ga-7" src="images/fachada-restaurante-1148-o-conquistador-obidos-dia.jpg" alt="Fachada do restaurante 1148 O Conquistador em Óbidos" loading="lazy" onclick="openLightbox(6)">
   </div>
 </section>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">Fechar</button>
+    <button class="lightbox-prev" onclick="stepLightbox(-1)" aria-label="Imagem anterior">&#8249;</button>
+    <button class="lightbox-next" onclick="stepLightbox(1)" aria-label="Imagem seguinte">&#8250;</button>
+    <img id="lightbox-img" src="" alt="">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+</div>
+
+<script>
+  var galeriaFotos = [
+    {src:"images/sala-interior-1148-o-conquistador-obidos.jpg", legenda:"Sala interior do restaurante"},
+    {src:"images/bolinhos-bacalhau-1148-o-conquistador.jpg", legenda:"Bolinhos de bacalhau"},
+    {src:"images/camarao-pao-1148-o-conquistador.jpg", legenda:"Camarão salteado com pão"},
+    {src:"images/polvo-grelhado-legumes-1148-o-conquistador.jpg", legenda:"Polvo grelhado com legumes"},
+    {src:"images/chourico-assado-flambeado-1148-o-conquistador.jpg", legenda:"Chouriço assado flambeado"},
+    {src:"images/entrecosto-costeletas-1148-o-conquistador.jpg", legenda:"Costeletas de entrecosto grelhadas"},
+    {src:"images/fachada-restaurante-1148-o-conquistador-obidos-dia.jpg", legenda:"Fachada do restaurante em Óbidos"}
+  ];
+  var lightboxIndex = 0;
+
+  function openLightbox(i){
+    lightboxIndex = i;
+    renderLightbox();
+    document.getElementById('lightbox').classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  function stepLightbox(delta){
+    lightboxIndex = (lightboxIndex + delta + galeriaFotos.length) % galeriaFotos.length;
+    renderLightbox();
+  }
+  function renderLightbox(){
+    var foto = galeriaFotos[lightboxIndex];
+    document.getElementById('lightbox-img').src = foto.src;
+    document.getElementById('lightbox-img').alt = foto.legenda;
+    document.getElementById('lightbox-caption').textContent = foto.legenda;
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e){
+    if(e.target === this) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e){
+    if(!document.getElementById('lightbox').classList.contains('is-open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') stepLightbox(-1);
+    if(e.key === 'ArrowRight') stepLightbox(1);
+  });
+</script>
 
 <section class="local" id="local">
   <div class="wrap local-grid">
