@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atelier da Paula | Retrosaria e Artesanato em Carnaxide</title>
+<meta name="description" content="Retrosaria e artesanato em Carnaxide. Lãs, linhas, tecidos e aviamentos, aulas de tricot e crochê, workshops de macramé e Arraiolos, arranjos de costura. Rua 5 de Outubro 17B.">
+<meta property="og:title" content="Atelier da Paula | Retrosaria e Artesanato em Carnaxide">
+<meta property="og:description" content="Um espaço para criar, aprender e partilhar entre fios e agulhas.">
+<meta property="og:image" content="img/fachada-atelier-da-paula-retrosaria-carnaxide.webp">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/atelier-da-paula-logotipo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Atelier da Paula",
+  "description": "Retrosaria e artesanato em Carnaxide com aulas de tricot e crochê, workshops de macramé e Arraiolos e arranjos de costura.",
+  "image": "img/fachada-atelier-da-paula-retrosaria-carnaxide.webp",
+  "telephone": "+351964167217",
+  "email": "atelierdapaula19@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua 5 de Outubro 17B, Loja",
+    "postalCode": "2790-049",
+    "addressLocality": "Carnaxide",
+    "addressCountry": "PT"
+  },
+  "sameAs": [
+    "https://www.instagram.com/atelier_da_paula/",
+    "https://www.facebook.com/p/atelier_da_paula-100067944429730/"
+  ]
+}
+</script>
+<style>
+:root{
+  --berry:#B0305C;
+  --berry-deep:#86224A;
+  --blush:#F7DDE5;
+  --cream:#FCF7F1;
+  --paper:#F4EADF;
+  --ink:#1E2640;
+  --ink-soft:#4A5068;
+  --sage:#5F6E43;
+  --ochre:#C08A36;
+  --line:rgba(30,38,64,.14);
+  --radius:22px;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Mulish","Segoe UI",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:calc(84px + env(safe-area-inset-top,0px))}
+body{
+  font-family:var(--sans);color:var(--ink);background:var(--cream);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip;
+}
+body::before{ /* linen texture */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(176,48,92,.025) 0 1px,transparent 1px 4px),
+    repeating-linear-gradient(90deg,rgba(30,38,64,.02) 0 1px,transparent 1px 5px);
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto;position:relative;z-index:1}
+
+/* ---------- labels & headings ---------- */
+.eyebrow{
+  font-family:var(--sans);font-weight:800;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--berry);display:inline-flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";width:28px;height:0;border-top:2px dashed currentColor}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.4vw,3.3rem);margin:.4em 0 .35em}
+h2 em,h1 em{font-style:italic;color:var(--berry)}
+.lead{font-size:1.12rem;color:var(--ink-soft);max-width:36em}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;
+  font-weight:800;font-size:.95rem;text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s;
+  border:2px solid transparent;cursor:pointer;
+}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-berry{background:var(--berry);color:#fff;box-shadow:0 10px 24px -10px rgba(176,48,92,.7)}
+.btn-berry:hover{background:var(--berry-deep);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
+  background:rgba(252,247,241,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
+.brand img{height:62px;width:auto}
+.nav ul{display:flex;gap:30px;list-style:none}
+.nav ul a{text-decoration:none;font-weight:700;font-size:.93rem;position:relative;padding:6px 0}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:0;border-bottom:2px dashed var(--berry);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav ul a:hover::after{transform:scaleX(1)}
+.nav .btn{padding:11px 20px;font-size:.88rem}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;position:relative}
+.burger span{position:absolute;left:10px;right:10px;height:2px;background:var(--ink);transition:.3s}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.menu-open .burger span:nth-child(1){top:21px;transform:rotate(45deg)}
+.menu-open .burger span:nth-child(2){opacity:0}
+.menu-open .burger span:nth-child(3){top:21px;transform:rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{padding:70px 0 90px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,6.2vw,5rem);margin:18px 0 22px}
+.hero h1 .script{font-style:italic;color:var(--berry);display:block}
+.hero .lead{margin-bottom:34px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:40px;padding-top:26px;border-top:2px dashed var(--line);font-size:.92rem;color:var(--ink-soft)}
+.hero-facts strong{color:var(--ink);display:block;font-family:var(--serif);font-size:1.25rem;font-weight:600}
+
+.collage{position:relative;aspect-ratio:1/1.02}
+.collage figure{position:absolute;overflow:hidden;border-radius:var(--radius);box-shadow:0 30px 60px -30px rgba(30,38,64,.45);background:var(--paper)}
+.collage img{width:100%;height:100%;object-fit:cover}
+.c1{inset:0 18% 22% 0;transform:rotate(-2deg)}
+.c2{width:46%;aspect-ratio:3/4;right:0;bottom:0;transform:rotate(3.5deg);border:8px solid #fff}
+.c3{width:34%;aspect-ratio:1;left:4%;bottom:-4%;transform:rotate(-5deg);border:8px solid #fff}
+.stamp{
+  position:absolute;top:-22px;right:4%;width:128px;height:128px;z-index:3;
+  border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;
+  animation:spin 26s linear infinite;
+}
+.stamp svg{width:100%;height:100%}
+.stamp .heart svg{width:34px;height:34px}
+.stamp .heart{position:absolute;inset:0;display:grid;place-items:center;animation:spin 26s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* yarn thread divider */
+.thread{display:block;width:100%;height:60px;color:var(--berry);opacity:.9}
+
+/* ---------- marquee ---------- */
+.ticker{background:var(--berry);color:#fff;overflow:hidden;padding:16px 0;position:relative;z-index:1;transform:rotate(-1deg);margin:0 -20px}
+.ticker-track{display:flex;gap:44px;width:max-content;animation:tick 38s linear infinite;font-family:var(--serif);font-style:italic;font-size:1.35rem;white-space:nowrap}
+.ticker-track span::after{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--blush);margin-left:44px;vertical-align:middle}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- pillars ---------- */
+section{position:relative;z-index:1}
+.pillars{padding:110px 0 40px}
+.pillars-head{max-width:720px}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
+.patch{
+  background:#fff;border-radius:var(--radius);padding:34px 30px 36px;position:relative;
+  outline:2px dashed rgba(176,48,92,.35);outline-offset:-12px;transition:transform .35s,box-shadow .35s;
+}
+.patch:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 26px 50px -30px rgba(30,38,64,.5)}
+.patch .ico{width:58px;height:58px;border-radius:50%;background:var(--blush);display:grid;place-items:center;margin-bottom:22px;color:var(--berry)}
+.patch .ico svg{width:30px;height:30px}
+.patch h3{font-size:1.5rem;margin-bottom:10px}
+.patch p{color:var(--ink-soft);font-size:.98rem}
+.patch a{display:inline-block;margin-top:16px;font-weight:800;font-size:.9rem;color:var(--berry);text-decoration:none}
+.patch a:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- loja ---------- */
+.loja{padding:100px 0}
+.loja-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.loja-photos{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+.loja-photos img{border-radius:var(--radius);width:100%;height:100%;object-fit:cover}
+.loja-photos .tall{grid-row:span 2;aspect-ratio:3/4.3}
+.loja-photos .sq{aspect-ratio:1}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 30px}
+.tags span{padding:9px 16px;border-radius:999px;background:var(--paper);font-weight:700;font-size:.88rem;border:1px solid var(--line)}
+.quote-mini{border-left:3px solid var(--berry);padding:4px 0 4px 20px;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--ink)}
+
+/* ---------- aulas ---------- */
+.aulas{background:var(--ink);color:var(--cream);padding:110px 0;overflow:hidden}
+.aulas .eyebrow{color:var(--blush)}
+.aulas h2 em{color:#F2A5BD}
+.aulas .lead{color:rgba(252,247,241,.75)}
+.aulas-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+.teacher{position:relative;max-width:440px}
+.teacher .ring{border-radius:50%;overflow:hidden;aspect-ratio:1;border:10px solid var(--berry);box-shadow:0 0 0 12px rgba(247,221,229,.08)}
+.teacher .ring img{width:100%;height:100%;object-fit:cover}
+.teacher .name{position:absolute;bottom:6%;right:-6%;background:var(--cream);color:var(--ink);padding:14px 22px;border-radius:16px;transform:rotate(-3deg);box-shadow:0 20px 40px -20px #000}
+.teacher .name strong{font-family:var(--serif);font-size:1.2rem;font-weight:600;display:block}
+.teacher .name small{font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.68rem;color:var(--berry)}
+.class-card{margin-top:34px;border:2px dashed rgba(247,221,229,.35);border-radius:var(--radius);padding:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.class-card div small{display:block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#F2A5BD;font-weight:800;margin-bottom:6px}
+.class-card div strong{font-family:var(--serif);font-weight:400;font-size:1.35rem;line-height:1.2}
+.aulas .btn-ghost{border-color:var(--cream);color:var(--cream)}
+.aulas .btn-ghost:hover{background:var(--cream);color:var(--ink)}
+.aulas-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+
+/* ---------- workshops ---------- */
+.workshops{padding:110px 0 90px}
+.ws-top{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.ws-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px}
+.ws{border-radius:var(--radius);overflow:hidden;background:#fff;display:flex;flex-direction:column;border:1px solid var(--line);transition:transform .35s}
+.ws:hover{transform:translateY(-6px)}
+.ws .ph{aspect-ratio:4/4.4;overflow:hidden}
+.ws .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.ws:hover .ph img{transform:scale(1.06)}
+.ws .tx{padding:22px 22px 26px}
+.ws h3{font-size:1.45rem;margin-bottom:6px}
+.ws p{font-size:.93rem;color:var(--ink-soft)}
+.ws .num{font-family:var(--serif);font-style:italic;color:var(--berry);font-size:.95rem}
+
+.featured{margin-top:60px;display:grid;grid-template-columns:.8fr 1.2fr;gap:0;background:var(--paper);border-radius:28px;overflow:hidden}
+.featured .poster{background:var(--ink);padding:30px;display:grid;place-items:center}
+.featured .poster img{border-radius:12px;max-height:520px;width:auto;box-shadow:0 30px 50px -25px #000;transform:rotate(-2deg)}
+.featured .body{padding:50px 50px 54px;align-self:center}
+.featured h3{font-size:clamp(1.8rem,3.2vw,2.5rem);margin:14px 0 16px}
+.featured ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin:26px 0 32px}
+.featured li{display:flex;gap:12px;align-items:flex-start;font-weight:600;font-size:.97rem}
+.featured li svg{width:22px;height:22px;flex:none;color:var(--berry);margin-top:2px}
+.price-tag{display:inline-flex;align-items:baseline;gap:8px;background:var(--berry);color:#fff;padding:8px 18px;border-radius:999px;font-weight:800}
+.price-tag b{font-family:var(--serif);font-size:1.5rem;font-weight:600}
+
+/* ---------- trabalhos gallery ---------- */
+.trabalhos{padding:90px 0 110px;background:linear-gradient(var(--cream),var(--paper))}
+.gallery{columns:3 280px;column-gap:20px;margin-top:46px}
+.gallery figure{break-inside:avoid;margin-bottom:20px;position:relative;border-radius:18px;overflow:hidden;background:#fff}
+.gallery img{width:100%;height:auto;transition:transform .8s}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{position:absolute;left:14px;bottom:14px;right:14px;background:rgba(252,247,241,.94);padding:10px 16px;border-radius:12px;font-weight:700;font-size:.88rem;transform:translateY(8px);opacity:0;transition:.35s}
+.gallery figure:hover figcaption{opacity:1;transform:none}
+
+/* ---------- arranjos ---------- */
+.arranjos{padding:0 0 110px;background:var(--paper)}
+.arr-box{background:var(--berry);color:#fff;border-radius:28px;padding:60px;display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:center;position:relative;overflow:hidden}
+.arr-box::after{content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;border:2px dashed rgba(255,255,255,.35)}
+.arr-box .eyebrow{color:var(--blush)}
+.arr-box h2 em{color:var(--blush)}
+.arr-box p{color:rgba(255,255,255,.88)}
+.arr-box .btn{background:#fff;color:var(--berry)}
+.arr-box .btn:hover{background:var(--ink);color:#fff}
+.arr-steps{display:grid;gap:16px;position:relative;z-index:1}
+.arr-steps div{background:rgba(255,255,255,.12);border-radius:16px;padding:18px 22px;display:flex;gap:16px;align-items:center;font-weight:700}
+.arr-steps b{font-family:var(--serif);font-style:italic;font-size:1.8rem;font-weight:400;color:var(--blush);line-height:1;min-width:30px}
+
+/* ---------- review ---------- */
+.review{padding:110px 0;text-align:center}
+.stars{color:var(--ochre);display:flex;justify-content:center;gap:6px;margin-bottom:26px}
+.stars svg{width:24px;height:24px}
+blockquote{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.35rem);line-height:1.3;max-width:900px;margin:0 auto;font-style:italic}
+.review cite{display:block;margin-top:24px;font-style:normal;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;color:var(--ink-soft)}
+.review .gscore{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:10px 20px;border-radius:999px;border:1px solid var(--line);font-weight:700;font-size:.9rem;text-decoration:none}
+.review .gscore:hover{border-color:var(--berry);color:var(--berry)}
+
+/* ---------- visitar ---------- */
+.visitar{padding:0 0 110px}
+.visit-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:0;border-radius:28px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.visit-info{padding:54px 50px}
+.visit-list{list-style:none;margin:30px 0 34px;display:grid;gap:20px}
+.visit-list li{display:flex;gap:16px;align-items:flex-start}
+.visit-list .ic{width:44px;height:44px;border-radius:50%;background:var(--blush);color:var(--berry);display:grid;place-items:center;flex:none}
+.visit-list .ic svg{width:20px;height:20px}
+.visit-list small{display:block;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.7rem;color:var(--ink-soft)}
+.visit-list a,.visit-list span{font-weight:700;text-decoration:none;font-size:1.02rem}
+.visit-list a:hover{color:var(--berry)}
+.placeholder{background:#FFF4CC;border:1px dashed #C9A33B;padding:2px 8px;border-radius:6px;font-weight:700;font-size:.9rem}
+.visit-media{display:grid;grid-template-rows:1fr 1fr;min-height:560px}
+.visit-media iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.85)}
+.visit-media img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(252,247,241,.8);padding:70px 0 40px;position:relative;z-index:1}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+.foot img{height:88px;width:auto;margin-bottom:18px}
+.foot h4{font-family:var(--sans);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.74rem;color:#F2A5BD;margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:10px}
+.foot a{text-decoration:none}
+.foot a:hover{color:#fff}
+.social{display:flex;gap:12px;margin-top:18px}
+.social a{width:44px;height:44px;border-radius:50%;border:1px solid rgba(252,247,241,.25);display:grid;place-items:center;transition:.3s}
+.social a:hover{background:var(--berry);border-color:var(--berry)}
+.social svg{width:20px;height:20px}
+.foot-bottom{margin-top:54px;padding-top:24px;border-top:1px dashed rgba(252,247,241,.2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem}
+
+/* ---------- whatsapp fab ---------- */
+.fab{
+  position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;
+  width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;
+  box-shadow:0 14px 30px -10px rgba(0,0,0,.45);transition:transform .3s;
+}
+.fab:hover{transform:scale(1.08)}
+.fab svg{width:32px;height:32px}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+.hero .reveal{transition-delay:calc(var(--d,0) * 120ms)}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .ticker-track,.stamp,.stamp .heart svg{width:34px;height:34px}
+.stamp .heart{animation:none}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .ws-grid{grid-template-columns:repeat(2,1fr)}
+  .featured{grid-template-columns:1fr}
+  .featured .poster img{max-height:420px}
+}
+@media (max-width:900px){
+  body{font-size:16px}
+  .nav ul,.nav .nav-cta{display:none}
+  .burger{display:block}
+  .menu-open .nav ul{
+    display:flex;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;
+    background:var(--cream);border-bottom:1px solid var(--line);padding:10px 20px 24px;
+  }
+  .menu-open .nav ul a{display:block;padding:14px 0;border-bottom:1px dashed var(--line);font-size:1.05rem}
+  .hero{padding:40px 0 70px}
+  .hero-grid,.loja-grid,.aulas-grid,.arr-box,.visit-grid{grid-template-columns:1fr}
+  .hero-grid{gap:50px}
+  .collage{max-width:520px;width:100%;margin:0 auto}
+  .stamp{width:100px;height:100px;top:-16px}
+  .pillar-grid{grid-template-columns:1fr}
+  .pillars{padding:80px 0 20px}
+  .loja,.aulas,.workshops,.review{padding:80px 0}
+  .loja-grid,.aulas-grid{gap:50px}
+  .teacher{margin:0 auto;width:82%}
+  .teacher .name{right:-4%}
+  .arr-box{padding:40px 28px}
+  .visit-info{padding:40px 28px}
+  .visit-media{min-height:0;grid-template-rows:320px 260px}
+  .foot{grid-template-columns:1fr}
+  .featured .body{padding:36px 28px 40px}
+}
+@media (max-width:560px){
+  .wrap{width:calc(100% - 32px)}
+  .brand img{height:44px}
+  .ws-grid{grid-template-columns:1fr}
+  .ws .ph{aspect-ratio:4/3}
+  .class-card{grid-template-columns:1fr;padding:24px}
+  .featured ul{grid-template-columns:1fr}
+  .hero-ctas .btn,.aulas-ctas .btn{width:100%;justify-content:center}
+  .gallery{columns:2 150px;column-gap:12px}
+  .gallery figure{margin-bottom:12px}
+  .gallery figcaption{display:none}
+  .c3{width:38%}
+  .hero-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:.8rem;line-height:1.35}
+  .hero-facts strong{font-size:1.02rem;margin-bottom:4px}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <nav class="wrap nav" aria-label="Navegação principal">
+    <a href="#top" class="brand" aria-label="Atelier da Paula, início">
+      <img src="img/atelier-da-paula-logotipo.png" alt="Atelier da Paula, retrosaria e artesanato" width="888" height="432">
+    </a>
+    <ul>
+      <li><a href="#loja">Loja</a></li>
+      <li><a href="#aulas">Aulas</a></li>
+      <li><a href="#workshops">Workshops</a></li>
+      <li><a href="#trabalhos">Trabalhos</a></li>
+      <li><a href="#visitar">Visitar</a></li>
+    </ul>
+    <a class="btn btn-berry nav-cta" href="https://wa.me/351964167217?text=Ol%C3%A1%20Paula%2C%20vi%20o%20vosso%20site%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg>
+      Falar connosco
+    </a>
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow reveal" style="--d:0">Retrosaria e artesanato em Carnaxide</span>
+      <h1 class="reveal" style="--d:1">Entre fios e agulhas, <span class="script">criamos juntos.</span></h1>
+      <p class="lead reveal" style="--d:2">Um espaço para criar, aprender e partilhar. Lãs, linhas, tecidos e aviamentos escolhidos com cuidado, aulas semanais de tricot e crochê e workshops para quem quer aprender uma arte feita à mão.</p>
+      <div class="hero-ctas reveal" style="--d:3">
+        <a class="btn btn-berry" href="#aulas">Conhecer as aulas</a>
+        <a class="btn btn-ghost" href="#visitar">Visitar a loja</a>
+      </div>
+      <div class="hero-facts reveal" style="--d:4">
+        <div><strong>Segundas, 18h</strong>Aulas de tricot e crochê</div>
+        <div><strong>4 artes</strong>Crochê, tricot, macramé e Arraiolos</div>
+        <div><strong>5 estrelas</strong>Avaliação no Google</div>
+      </div>
+    </div>
+
+    <div class="collage reveal" style="--d:2">
+      <div class="stamp" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+          <text font-family="Mulish, sans-serif" font-weight="800" font-size="10.5" letter-spacing="3.2" fill="#FCF7F1"><textPath href="#circ">FEITO À MÃO • COM CORAÇÃO •</textPath></text>
+        </svg>
+        <div class="heart"><svg width="30" height="30" viewBox="0 0 24 24" fill="#F2A5BD"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 5.3 3.1 1.7-1.9 3.2-3.1 5.3-3.1 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+      </div>
+      <figure class="c1"><img src="img/montra-atelier-da-paula-artesanato-carnaxide.webp" alt="Interior e montra do Atelier da Paula com macramé, bordados e novelos de lã" width="1360" height="1020"></figure>
+      <figure class="c2"><img src="img/novelos-rosarios-4-retrosaria-carnaxide.webp" alt="Prateleiras com novelos de lã Rosários 4 em várias cores" width="1000" height="1334"></figure>
+      <figure class="c3"><img src="img/cachecol-croche-la-rosarios-4-cachico.webp" alt="Cachecol de crochê feito com lã Rosários 4 Cachico" width="1400" height="1400"></figure>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Lãs e fios</span><span>Linhas DMC</span><span>Tecidos de algodão</span><span>Aviamentos</span><span>Aulas de tricot e crochê</span><span>Macramé</span><span>Arraiolos</span><span>Arranjos de costura</span>
+    <span>Lãs e fios</span><span>Linhas DMC</span><span>Tecidos de algodão</span><span>Aviamentos</span><span>Aulas de tricot e crochê</span><span>Macramé</span><span>Arraiolos</span><span>Arranjos de costura</span>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="wrap">
+    <div class="pillars-head reveal">
+      <span class="eyebrow">O que encontra no atelier</span>
+      <h2>Uma retrosaria de bairro <em>com alma de atelier</em></h2>
+      <p class="lead">Aqui compra o material, aprende a usá-lo e, se precisar, deixa a peça nas mãos de quem sabe.</p>
+    </div>
+    <div class="pillar-grid">
+      <article class="patch reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="12" r="7.5"/><path d="M4.5 9.5c3 1 7 1 13 0M4 13c4 1.5 9 1.5 14.5 0M6.5 17.5c3-1 6.5-1 9.5 0M9 4.8c2 3 2.5 10 0 14.5"/><path d="M17 6l5-4M18.5 8l4.5-3.5"/></svg></div>
+        <h3>Materiais de costura e artesanato</h3>
+        <p>Lãs para todas as estações, linhas de bordar, tecidos, agulhas, botões e tudo o que um projeto pede do início ao fim.</p>
+        <a href="#loja">Ver a loja</a>
+      </article>
+      <article class="patch reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 8l9-4 9 4-9 4-9-4z"/><path d="M7 10v5c0 1.5 2.5 3 5 3s5-1.5 5-3v-5"/><path d="M21 8v6"/></svg></div>
+        <h3>Cursos e workshops criativos</h3>
+        <p>Aulas semanais de tricot e crochê e workshops de macramé e Arraiolos, em grupos pequenos e ambiente descontraído.</p>
+        <a href="#aulas">Ver aulas e workshops</a>
+      </article>
+      <article class="patch reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8 7.5L20 18M8 16.5L20 6"/></svg></div>
+        <h3>Arranjos e trabalhos personalizados</h3>
+        <p>Arranjos de costura e peças feitas à medida. Traga a peça ou a ideia e combinamos o resto consigo.</p>
+        <a href="#arranjos">Saber mais</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<svg class="thread" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C 150 0, 250 60, 400 30 S 650 0, 800 30 S 1050 60, 1200 30" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="8 7"/></svg>
+
+<!-- LOJA -->
+<section class="loja" id="loja">
+  <div class="wrap loja-grid">
+    <div class="loja-photos reveal">
+      <img class="tall" src="img/parede-de-las-coloridas-atelier-da-paula.webp" alt="Parede de lãs coloridas organizadas por tons no Atelier da Paula" width="765" height="1020" loading="lazy">
+      <img class="sq" src="img/novelos-rosarios-4-retrosaria-carnaxide.webp" alt="Novelos Rosários 4 Invicta e Cachico em tons degradê" width="1000" height="1334" loading="lazy">
+      <img class="sq" src="img/saquinhos-feltro-presentes-atelier-da-paula.webp" alt="Saquinhos de feltro com urso e cão, com novelo e agulha de crochê, ideais para oferecer" width="1400" height="1047" loading="lazy">
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">A loja</span>
+      <h2>Paredes de cor, <em>conselhos de quem sabe</em></h2>
+      <p class="lead">Trabalhamos com marcas de confiança como a Rosários 4 e a DMC, e temos lãs, algodões e fios em dezenas de cores. Se não sabe qual escolher para o seu projeto, diga-nos o que quer fazer e ajudamos a encontrar o fio, a agulha e o padrão certos.</p>
+      <div class="tags">
+        <span>Lãs e algodões</span><span>Linhas de bordar</span><span>Tecidos</span><span>Agulhas de tricot e crochê</span><span>Cordão de macramé</span><span>Botões e aviamentos</span><span>Ideias para oferecer</span>
+      </div>
+      <a class="btn btn-ghost" href="#visitar">Como chegar à loja</a>
+    </div>
+  </div>
+</section>
+
+<!-- AULAS -->
+<section class="aulas" id="aulas">
+  <div class="wrap aulas-grid">
+    <div class="teacher reveal">
+      <div class="ring"><img src="img/ana-paula-oliveira-formadora.webp" alt="Ana Paula Oliveira, formadora de tricot e crochê no Atelier da Paula" width="500" height="500" loading="lazy"></div>
+      <div class="name"><small>Formadora</small><strong>Ana Paula Oliveira</strong></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Aulas semanais</span>
+      <h2>Aulas de tricot e crochê, <em>todas as segundas</em></h2>
+      <p class="lead">Venha aprender do zero ou dar o próximo passo nos seus projetos. As aulas são dadas pela Ana Paula Oliveira na própria loja, com acompanhamento próximo e o material sempre à mão.</p>
+      <div class="class-card">
+        <div><small>Dia</small><strong>Segundas-feiras</strong></div>
+        <div><small>Horário</small><strong>18h00 às 20h00</strong></div>
+        <div><small>Local</small><strong>No atelier, em Carnaxide</strong></div>
+      </div>
+      <div class="aulas-ctas">
+        <a class="btn btn-berry" href="https://wa.me/351964167217?text=Ol%C3%A1%20Paula%2C%20gostaria%20de%20me%20inscrever%20nas%20aulas%20de%20tricot%20e%20croch%C3%AA." target="_blank" rel="noopener">Inscrever por WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+351964167217">Ligar 964 167 217</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section class="workshops" id="workshops">
+  <div class="wrap">
+    <div class="ws-top reveal">
+      <div>
+        <span class="eyebrow">Workshops</span>
+        <h2>Uma tarde, <em>uma peça feita por si</em></h2>
+      </div>
+      <p class="lead" style="max-width:30em">Workshops pontuais com material incluído e vagas limitadas. Para saber das próximas datas, envie-nos mensagem.</p>
+    </div>
+    <div class="ws-grid">
+      <article class="ws reveal">
+        <div class="ph"><img src="img/saco-croche-granny-amor-perfeito.webp" alt="Saco de crochê granny em verde e mostarda com lã Rosários 4 Amor Perfeito" width="1050" height="1400" loading="lazy"></div>
+        <div class="tx"><span class="num">01</span><h3>Crochê</h3><p>Pontos base, leitura de gráficos e peças práticas como sacos, cachecóis e mantas.</p></div>
+      </article>
+      <article class="ws reveal">
+        <div class="ph"><img src="img/casaco-bebe-tricot-merino-4-us.webp" alt="Casaco e sapatinhos de bebé em tricot rosa com lã Merino 4 Us" width="1128" height="1400" loading="lazy"></div>
+        <div class="tx"><span class="num">02</span><h3>Tricot</h3><p>Do primeiro ponto à primeira peça, com atenção a acabamentos e remates.</p></div>
+      </article>
+      <article class="ws reveal">
+        <div class="ph"><img src="img/suporte-vaso-macrame-laranja.webp" alt="Suporte de vaso em macramé laranja com franjas" width="1050" height="1400" loading="lazy"></div>
+        <div class="tx"><span class="num">03</span><h3>Macramé</h3><p>Nós essenciais para suportes de vasos, painéis de parede e peças decorativas.</p></div>
+      </article>
+      <article class="ws reveal">
+        <div class="ph"><img src="img/tapete-arraiolos-bordado-tradicional.webp" alt="Tapete de Arraiolos com bordado tradicional em azul, ocre e creme" width="510" height="750" loading="lazy"></div>
+        <div class="tx"><span class="num">04</span><h3>Arraiolos</h3><p>A tradição do bordado alentejano, ponto a ponto, com história e técnica.</p></div>
+      </article>
+    </div>
+
+    <div class="featured reveal">
+      <div class="poster"><img src="img/workshop-arraiolos-atelier-da-paula.webp" alt="Cartaz do workshop de Arraiolos no Atelier da Paula, 30 euros com material incluído" width="1120" height="1400" loading="lazy"></div>
+      <div class="body">
+        <span class="eyebrow">Como são os workshops</span>
+        <h3>Aprende uma tradição. <em style="color:var(--berry)">Cria algo único.</em></h3>
+        <p class="lead">No último workshop de Arraiolos, cada participante descobriu a história deste bordado e construiu o seu próprio motivo, numa tarde de três horas no atelier.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>Material incluído</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>Pequeno lanche incluído</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>Vagas limitadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10"/></svg>Três horas no atelier</li>
+        </ul>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+          <span class="price-tag"><b>30€</b> com material</span>
+          <a class="btn btn-berry" href="https://wa.me/351964167217?text=Ol%C3%A1%20Paula%2C%20gostaria%20de%20ser%20avisada%20do%20pr%C3%B3ximo%20workshop." target="_blank" rel="noopener">Avisem-me do próximo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRABALHOS -->
+<section class="trabalhos" id="trabalhos">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <span class="eyebrow">Feito no atelier</span>
+      <h2>Trabalhos que <em>saem das nossas mãos</em></h2>
+      <p class="lead">Peças feitas no atelier com os fios que vendemos na loja. Inspire-se e venha aprender a fazer a sua.</p>
+    </div>
+    <div class="gallery">
+      <figure class="reveal"><img src="img/painel-macrame-flor-de-lotus.webp" alt="Painel de parede em macramé com flor de lótus em madeira" width="1120" height="1400" loading="lazy"><figcaption>Painel de macramé flor de lótus</figcaption></figure>
+      <figure class="reveal"><img src="img/cachecol-croche-la-rosarios-4-cachico.webp" alt="Cachecol rendado em crochê com lã degradê" width="1400" height="1400" loading="lazy"><figcaption>Cachecol em crochê, lã Cachico</figcaption></figure>
+      <figure class="reveal"><img src="img/casaco-bebe-tricot-merino-4-us.webp" alt="Conjunto de bebé em tricot rosa com botões de flor" width="1128" height="1400" loading="lazy"><figcaption>Conjunto de bebé em tricot</figcaption></figure>
+      <figure class="reveal"><img src="img/saquinhos-feltro-presentes-atelier-da-paula.webp" alt="Saquinhos de feltro decorados com urso e cão" width="1400" height="1047" loading="lazy"><figcaption>Saquinhos de feltro para oferecer</figcaption></figure>
+      <figure class="reveal"><img src="img/saco-croche-granny-amor-perfeito.webp" alt="Saco em crochê granny verde e mostarda" width="1050" height="1400" loading="lazy"><figcaption>Saco granny em crochê</figcaption></figure>
+      <figure class="reveal"><img src="img/suporte-vaso-macrame-laranja.webp" alt="Suporte de vaso em macramé laranja" width="1050" height="1400" loading="lazy"><figcaption>Suporte de vaso em macramé</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ARRANJOS -->
+<section class="arranjos" id="arranjos">
+  <div class="wrap">
+    <div class="arr-box reveal">
+      <div style="position:relative;z-index:1">
+        <span class="eyebrow">Serviços</span>
+        <h2>Arranjos de costura e <em>trabalhos por medida</em></h2>
+        <p>Tem uma peça que precisa de um arranjo, ou uma ideia que gostava de ver feita à mão? Fale connosco, vemos a peça consigo e combinamos o trabalho e o prazo.</p>
+        <a class="btn" style="margin-top:26px" href="https://wa.me/351964167217?text=Ol%C3%A1%20Paula%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20um%20arranjo." target="_blank" rel="noopener">Pedir orçamento</a>
+      </div>
+      <div class="arr-steps">
+        <div><b>1</b>Traga a peça ou envie uma fotografia</div>
+        <div><b>2</b>Combinamos o trabalho e o prazo</div>
+        <div><b>3</b>Levanta a peça pronta na loja</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW -->
+<section class="review">
+  <div class="wrap reveal">
+    <div class="stars" aria-label="5 em 5 estrelas">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg>
+    </div>
+    <blockquote>“Fui muito bem atendida hoje! Além de informações sobre lãs, agulhas e curiosidades sobre costura, percebe-se que gostam mesmo do que fazem! Voltarei mais vezes!”</blockquote>
+    <cite>Gabriela Heusi, cliente</cite>
+    <a class="gscore" href="https://www.google.com/maps/search/?api=1&amp;query=Atelier+da+Paula+Carnaxide" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.6 13.2l7.8 6C12.3 13.5 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.2 5.5-4.7 7.2l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.6z"/><path fill="#FBBC05" d="M10.4 28.8c-.5-1.5-.8-3.1-.8-4.8s.3-3.3.8-4.8l-7.8-6C.9 16.5 0 20.1 0 24s.9 7.5 2.6 10.8l7.8-6z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.7-4-13.6-9.7l-7.8 6C6.6 42.6 14.6 48 24 48z"/></svg>
+      5 em 5 no Google
+    </a>
+  </div>
+</section>
+
+<!-- VISITAR -->
+<section class="visitar" id="visitar">
+  <div class="wrap">
+    <div class="visit-grid reveal">
+      <div class="visit-info">
+        <span class="eyebrow">Visite-nos</span>
+        <h2>Esperamos por si <em>em Carnaxide</em></h2>
+        <ul class="visit-list">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <div><small>Morada</small><a href="https://www.google.com/maps/dir/?api=1&destination=Rua+5+de+Outubro+17B+2790-049+Carnaxide" target="_blank" rel="noopener">Rua 5 de Outubro, 17B, Loja<br>2790-049 Carnaxide</a></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span>
+            <div><small>Telefone e WhatsApp</small><a href="tel:+351964167217">964 167 217</a></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span>
+            <div><small>Email</small><a href="mailto:atelierdapaula19@gmail.com">atelierdapaula19@gmail.com</a></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><small>Horário da loja</small><span class="placeholder">A confirmar com a Paula</span></div></li>
+        </ul>
+        <a class="btn btn-berry" href="https://www.google.com/maps/dir/?api=1&destination=Rua+5+de+Outubro+17B+2790-049+Carnaxide" target="_blank" rel="noopener">Obter direções</a>
+      </div>
+      <div class="visit-media">
+        <iframe title="Mapa do Atelier da Paula em Carnaxide" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Rua+5+de+Outubro+17B,+2790-049+Carnaxide&output=embed"></iframe>
+        <img src="img/fachada-atelier-da-paula-retrosaria-carnaxide.webp" alt="Fachada do Atelier da Paula, retrosaria e artesanato na Rua 5 de Outubro em Carnaxide" width="1360" height="1020" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="img/atelier-da-paula-logotipo-branco.png" alt="Atelier da Paula" width="888" height="432" loading="lazy">
+        <p>Retrosaria, artesanato e serviços em Carnaxide. Criar, partilhar, inspirar.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/atelier_da_paula/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://www.facebook.com/p/atelier_da_paula-100067944429730/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.2H8V12h2.6v9.8H14V12h2.7l.4-3.5H14z"/></svg></a>
+          <a href="https://wa.me/351964167217" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Atelier</h4>
+        <ul>
+          <li><a href="#loja">A loja</a></li>
+          <li><a href="#aulas">Aulas de tricot e crochê</a></li>
+          <li><a href="#workshops">Workshops</a></li>
+          <li><a href="#arranjos">Arranjos de costura</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contactos</h4>
+        <ul>
+          <li>Rua 5 de Outubro, 17B<br>2790-049 Carnaxide</li>
+          <li><a href="tel:+351964167217">964 167 217</a></li>
+          <li><a href="mailto:atelierdapaula19@gmail.com">atelierdapaula19@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Atelier da Paula. Todos os direitos reservados.</span>
+      <span>Feito à mão, com coração.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/351964167217?text=Ol%C3%A1%20Paula%2C%20vi%20o%20vosso%20site%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener" aria-label="Enviar mensagem por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg>
+</a>
+
+<script>
+(function(){
+  var header=document.querySelector('header'),burger=document.querySelector('.burger');
+  burger.addEventListener('click',function(){
+    var open=header.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded',open);
+  });
+  document.querySelectorAll('.nav ul a').forEach(function(a){
+    a.addEventListener('click',function(){header.classList.remove('menu-open');burger.setAttribute('aria-expanded',false);});
+  });
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
