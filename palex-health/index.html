@@ -11,7 +11,7 @@
             --palex-accent: #00D2FF;
             --danger: #FF334B;
             --success: #00E676;
-            --panel-bg: rgba(10, 34, 64, 0.92);
+            --panel-bg: rgba(10, 34, 64, 0.95);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; }
         body {
@@ -25,50 +25,50 @@
             flex-direction: column;
         }
         header {
-            height: 52px;
+            height: 50px;
             background: var(--panel-bg);
             border-bottom: 2px solid var(--palex-blue);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 12px;
-            z-index: 10;
+            padding: 0 10px;
+            z-index: 20;
             flex-shrink: 0;
         }
         .brand {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .logo-box {
             background: #FFF;
             color: var(--palex-dark);
             font-weight: 900;
-            padding: 3px 8px;
+            padding: 2px 6px;
             border-radius: 4px;
-            font-size: 15px;
+            font-size: 14px;
             letter-spacing: -0.5px;
         }
         .vitals {
             display: flex;
-            gap: 8px;
-            font-size: 11px;
+            gap: 6px;
+            font-size: 10px;
         }
         .vital-badge {
             background: rgba(0, 159, 227, 0.15);
             border: 1px solid var(--palex-blue);
-            padding: 3px 6px;
+            padding: 2px 5px;
             border-radius: 4px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .vital-val { font-weight: bold; color: var(--palex-accent); font-size: 12px; }
+        .vital-val { font-weight: bold; color: var(--palex-accent); font-size: 11px; }
         
         #game-container {
             flex: 1;
             position: relative;
-            background: radial-gradient(circle at center, #112B4C 0%, #040A14 100%);
+            background: radial-gradient(circle at center, #112B4C 0%, #030812 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -81,67 +81,67 @@
         }
         .hud-overlay {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            background: rgba(10, 34, 64, 0.88);
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            background: rgba(10, 34, 64, 0.85);
             border: 1px solid var(--palex-blue);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 12px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 11px;
             pointer-events: none;
-            max-width: 320px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            max-width: 340px;
+            z-index: 10;
         }
-        .hud-overlay h3 { color: var(--palex-accent); margin-bottom: 2px; font-size: 13px; }
+        .hud-overlay h3 { color: var(--palex-accent); margin-bottom: 2px; font-size: 12px; }
         
         .mode-selector {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             display: flex;
             gap: 4px;
-            z-index: 5;
+            z-index: 25;
         }
         .mode-btn {
-            background: rgba(10, 34, 64, 0.85);
+            background: rgba(10, 34, 64, 0.9);
             border: 1px solid var(--palex-blue);
             color: #fff;
-            padding: 5px 8px;
+            padding: 4px 6px;
             border-radius: 4px;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: bold;
             cursor: pointer;
         }
         .mode-btn.active { background: var(--palex-blue); }
 
         .controls-bar {
-            height: 100px;
+            height: 90px;
             background: var(--panel-bg);
             border-top: 1px solid rgba(0, 159, 227, 0.4);
             display: flex;
             align-items: center;
             justify-content: space-around;
-            padding: 0 12px;
-            z-index: 10;
+            padding: 0 10px;
+            z-index: 20;
             flex-shrink: 0;
         }
         .btn-action {
             background: var(--palex-blue);
             color: #fff;
             border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 15px;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,159,227,0.4);
+            box-shadow: 0 4px 10px rgba(0,159,227,0.4);
         }
         .btn-action:active { transform: scale(0.96); }
         
         .joystick-pad {
-            width: 75px;
-            height: 75px;
+            width: 65px;
+            height: 65px;
             background: rgba(0, 159, 227, 0.15);
             border: 2px solid var(--palex-blue);
             border-radius: 50%;
@@ -151,18 +151,18 @@
             align-items: center;
         }
         .joystick-knob {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: var(--palex-accent);
             border-radius: 50%;
             position: absolute;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
         }
 
         .screen-modal {
             position: absolute;
             inset: 0;
-            background: rgba(4, 10, 20, 0.94);
+            background: rgba(3, 8, 16, 0.95);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -171,8 +171,8 @@
             padding: 20px;
             text-align: center;
         }
-        .screen-modal h1 { color: var(--palex-accent); font-size: 24px; margin-bottom: 10px; }
-        .screen-modal p { max-width: 380px; margin-bottom: 18px; font-size: 13px; line-height: 1.4; color: #B0BEC5; }
+        .screen-modal h1 { color: var(--palex-accent); font-size: 22px; margin-bottom: 8px; }
+        .screen-modal p { max-width: 360px; margin-bottom: 16px; font-size: 12px; line-height: 1.4; color: #B0BEC5; }
     </style>
 </head>
 <body>
@@ -180,7 +180,7 @@
     <header>
         <div class="brand">
             <div class="logo-box">PALEX</div>
-            <div style="font-size: 11px; line-height: 1.1;">
+            <div style="font-size: 10px; line-height: 1.1;">
                 <strong style="color:var(--palex-accent)">HEALTH</strong><br>
                 <span>Simulador 3D</span>
             </div>
@@ -199,10 +199,10 @@
     </div>
 
     <div id="game-container">
-        <div class="hud-overlay">
+        <div class="hud-overlay" style="top: 54px;">
             <h3 id="hud-title">Fase 1: Impella CP® SmartAssist</h3>
             <p id="hud-desc">Navegue pela aorta até ao VE. Evite tocar nas paredes vasculares!</p>
-            <div style="margin-top: 4px; font-weight: bold; color: var(--success);" id="hud-status">Progresso: 0% | Estabilidade: 100%</div>
+            <div style="margin-top: 3px; font-weight: bold; color: var(--success);" id="hud-status">Progresso: 0% | Estabilidade: 100%</div>
         </div>
         
         <canvas id="simCanvas"></canvas>
@@ -216,14 +216,14 @@
 
     <div class="controls-bar">
         <div style="display:flex; flex-direction:column; align-items:center;">
-            <span style="font-size:10px; color:var(--palex-accent); margin-bottom:2px;">DIREÇÃO</span>
+            <span style="font-size:9px; color:var(--palex-accent); margin-bottom:2px;">DIREÇÃO</span>
             <div class="joystick-pad" id="joyPad">
                 <div class="joystick-knob" id="joyKnob"></div>
             </div>
         </div>
-        <div style="display:flex; gap:10px;">
-            <button class="btn-action" id="btnBackward" style="background:#455A64; padding: 12px 16px;">RECUAR</button>
-            <button class="btn-action" id="btnForward" style="padding: 12px 20px;">AVANÇAR</button>
+        <div style="display:flex; gap:8px;">
+            <button class="btn-action" id="btnBackward" style="background:#455A64; padding: 10px 14px;">RECUAR</button>
+            <button class="btn-action" id="btnForward" style="padding: 10px 18px;">AVANÇAR</button>
         </div>
     </div>
 
@@ -249,6 +249,7 @@
         let stability = 100;
         let valveTimer = 0;
         let valveOpen = false;
+        let protectionTimer = 2.0; // Grace period on start
         
         let movingForward = false;
         let movingBackward = false;
@@ -263,6 +264,7 @@
         function startGame() {
             document.getElementById('startModal').style.display = 'none';
             gameState = 'PLAYING';
+            protectionTimer = 2.0;
         }
 
         // Joystick
@@ -277,7 +279,7 @@
             let dx = clientX - cx;
             let dy = clientY - cy;
             const dist = Math.sqrt(dx*dx + dy*dy);
-            const maxR = 25;
+            const maxR = 22;
             if (dist > maxR) {
                 dx = (dx / dist) * maxR;
                 dy = (dy / dist) * maxR;
@@ -289,7 +291,7 @@
 
         joyPad.addEventListener('pointerdown', e => { joyActive = true; handleJoyMove(e.clientX, e.clientY); });
         window.addEventListener('pointermove', e => { if (joyActive) handleJoyMove(e.clientX, e.clientY); });
-        window.addEventListener('pointerup', () => { joyActive = false; joyKnob.style.transform = 'translate(0px, 0px)'; steeringOffset = {x:0, y:0}; });
+        window.addEventListener('pointerup', () => { joyActive = false; joyKnob.style.transform = 'translate(0px, 0px);'; steeringOffset = {x:0, y:0}; });
 
         document.getElementById('btnForward').addEventListener('pointerdown', () => { movingForward = true; });
         document.getElementById('btnForward').addEventListener('pointerup', () => { movingForward = false; });
@@ -309,17 +311,19 @@
         function update(dt) {
             if (gameState !== 'PLAYING') return;
 
+            if (protectionTimer > 0) protectionTimer -= dt;
+
             valveTimer += dt;
             if (valveTimer > 1.33) valveTimer = 0;
             valveOpen = (valveTimer > 0.35 && valveTimer < 0.95);
 
             if (progress < 85) {
-                if (movingForward) progress += dt * 14;
-                if (movingBackward) progress -= dt * 18;
+                if (movingForward) progress += dt * 12;
+                if (movingBackward) progress -= dt * 15;
                 progress = Math.max(0, Math.min(85, progress));
 
-                if (Math.abs(steeringOffset.x) > 0.65 || Math.abs(steeringOffset.y) > 0.65) {
-                    stability -= dt * 12;
+                if (protectionTimer <= 0 && (Math.abs(steeringOffset.x) > 0.8 || Math.abs(steeringOffset.y) > 0.8)) {
+                    stability -= dt * 10;
                     if (stability <= 0) {
                         stability = 0;
                         gameState = 'FAIL';
@@ -355,7 +359,7 @@
             modal.innerHTML = `
                 <h1>Consola SmartAssist®</h1>
                 <p>Posicionado no Ventrículo Esquerdo. Ajuste o nível de suporte P-8 para otimizar o débito cardíaco.</p>
-                <div style="display:flex; gap:8px; margin-bottom:18px;">
+                <div style="display:flex; gap:8px; margin-bottom:16px;">
                     <button class="mode-btn" onclick="selectP('P-4')" style="padding:10px 14px;">P-4</button>
                     <button class="mode-btn" onclick="selectP('P-6')" style="padding:10px 14px;">P-6</button>
                     <button class="mode-btn active" id="p8btn" onclick="selectP('P-8')" style="padding:10px 14px;">P-8 (Ideal)</button>
@@ -376,6 +380,7 @@
             currentDevice = 'FLOWTRIEVER';
             progress = 0;
             stability = 100;
+            protectionTimer = 2.0;
             document.getElementById('hud-title').innerText = 'Fase 2: FlowTriever® (Inari)';
             document.getElementById('hud-desc').innerText = 'Avance para a artéria pulmonar e aspire o trombo com os discos de nitinol.';
             gameState = 'PLAYING';
@@ -409,7 +414,6 @@
         function render() {
             ctx.clearRect(0, 0, width, height);
 
-            // Background theme based on mode
             if (cameraMode === 'xray') {
                 ctx.fillStyle = '#030D1A';
                 ctx.fillRect(0, 0, width, height);
@@ -424,76 +428,79 @@
                 ctx.strokeStyle = 'rgba(0, 159, 227, 0.12)';
             }
 
-            // Grid lines
             ctx.lineWidth = 1;
-            for (let x = 0; x < width; x += 45) {
+            for (let x = 0; x < width; x += 40) {
                 ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
             }
-            for (let y = 0; y < height; y += 45) {
+            for (let y = 0; y < height; y += 40) {
                 ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
             }
 
             const cx = width / 2;
-            const cy = height / 2 + 10;
+            const cy = height / 2;
 
-            // Realistic 3D Torso / Heart Silhouette & Aorta S-Curve
+            // Thoracic cavity & Heart anatomical structure
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(0, 159, 227, 0.04)';
+            ctx.strokeStyle = 'rgba(0, 159, 227, 0.25)';
+            ctx.lineWidth = 2;
+            ctx.ellipse(cx, cy - 10, 90, 120, 0, 0, Math.PI * 2);
+            ctx.fill(); ctx.stroke();
+
+            // Aorta S-Curve
             ctx.beginPath();
             ctx.strokeStyle = cameraMode === 'xray' ? 'rgba(0,210,255,0.4)' : 'rgba(0,159,227,0.3)';
-            ctx.lineWidth = 36;
+            ctx.lineWidth = 32;
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
-            ctx.moveTo(cx - 110, cy + 130);
-            ctx.bezierCurveTo(cx - 110, cy - 60, cx + 90, cy - 90, cx + 70, cy + 50);
+            ctx.moveTo(cx - 90, cy + 110);
+            ctx.bezierCurveTo(cx - 90, cy - 50, cx + 80, cy - 70, cx + 60, cy + 40);
             ctx.stroke();
 
-            // Inner lumen vessel core
             ctx.beginPath();
             ctx.strokeStyle = cameraMode === 'xray' ? '#00D2FF' : '#009FE3';
-            ctx.lineWidth = 20;
-            ctx.moveTo(cx - 110, cy + 130);
-            ctx.bezierCurveTo(cx - 110, cy - 60, cx + 90, cy - 90, cx + 70, cy + 50);
+            ctx.lineWidth = 18;
+            ctx.moveTo(cx - 90, cy + 110);
+            ctx.bezierCurveTo(cx - 90, cy - 50, cx + 80, cy - 70, cx + 60, cy + 40);
             ctx.stroke();
 
-            // Valve structure with dynamic opening
-            const vx = cx + 25;
-            const vy = cy - 25;
+            // Valve structure
+            const vx = cx + 20;
+            const vy = cy - 20;
             ctx.beginPath();
-            ctx.arc(vx, vy, 32, 0, Math.PI * 2);
-            ctx.fillStyle = valveOpen ? 'rgba(0, 230, 118, 0.2)' : 'rgba(255, 51, 75, 0.25)';
+            ctx.arc(vx, vy, 26, 0, Math.PI * 2);
+            ctx.fillStyle = valveOpen ? 'rgba(0, 230, 118, 0.25)' : 'rgba(255, 51, 75, 0.3)';
             ctx.fill();
             ctx.strokeStyle = valveOpen ? 'var(--success)' : 'var(--danger)';
             ctx.lineWidth = 3;
             ctx.stroke();
 
-            // Valve leaflets graphic representation
             if (!valveOpen) {
                 ctx.beginPath();
-                ctx.moveTo(vx - 20, vy - 15); ctx.lineTo(vx, vy); ctx.lineTo(vx - 20, vy + 15);
-                ctx.moveTo(vx + 20, vy - 15); ctx.lineTo(vx, vy); ctx.lineTo(vx + 20, vy + 15);
+                ctx.moveTo(vx - 16, vy - 12); ctx.lineTo(vx, vy); ctx.lineTo(vx - 16, vy + 12);
+                ctx.moveTo(vx + 16, vy - 12); ctx.lineTo(vx, vy); ctx.lineTo(vx + 16, vy + 12);
                 ctx.strokeStyle = '#FF334B'; ctx.lineWidth = 2; ctx.stroke();
             }
 
-            // Catheter position calculation along S-curve
+            // Catheter position
             const t = progress / 85;
-            const catX = (1-t)*(cx - 110) + t*(cx + 70) + steeringOffset.x * 18;
-            const catY = (1-t)*(cy + 130) + t*(cy + 50) + steeringOffset.y * 18;
+            const catX = (1-t)*(cx - 90) + t*(cx + 60) + steeringOffset.x * 15;
+            const catY = (1-t)*(cy + 110) + t*(cy + 40) + steeringOffset.y * 15;
 
-            // Catheter line from entry point
             ctx.beginPath();
             ctx.strokeStyle = '#FFFFFF';
             ctx.lineWidth = 4;
-            ctx.moveTo(cx - 110, cy + 130);
+            ctx.moveTo(cx - 90, cy + 110);
             ctx.lineTo(catX, catY);
             ctx.stroke();
 
-            // Device tip (Impella / FlowTriever)
             ctx.beginPath();
-            ctx.arc(catX, catY, currentDevice === 'IMPELLA' ? 10 : 12, 0, Math.PI * 2);
+            ctx.arc(catX, catY, currentDevice === 'IMPELLA' ? 9 : 11, 0, Math.PI * 2);
             ctx.fillStyle = currentDevice === 'IMPELLA' ? 'var(--palex-accent)' : '#FFD700';
             ctx.shadowColor = currentDevice === 'IMPELLA' ? '#00D2FF' : '#FFD700';
-            ctx.shadowBlur = 12;
+            ctx.shadowBlur = 10;
             ctx.fill();
-            ctx.shadowBlur = 0; // reset
+            ctx.shadowBlur = 0;
         }
 
         requestAnimationFrame(loop);
