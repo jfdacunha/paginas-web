@@ -11,8 +11,9 @@
             --palex-accent: #00D2FF;
             --danger: #FF334B;
             --success: #00E676;
+            --panel-bg: rgba(10, 34, 64, 0.92);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; }
         body {
             background-color: var(--palex-dark);
             color: #FFFFFF;
@@ -24,49 +25,50 @@
             flex-direction: column;
         }
         header {
-            height: 55px;
-            background: rgba(10, 34, 64, 0.95);
+            height: 52px;
+            background: var(--panel-bg);
             border-bottom: 2px solid var(--palex-blue);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 16px;
+            padding: 0 12px;
             z-index: 10;
+            flex-shrink: 0;
         }
         .brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
         .logo-box {
             background: #FFF;
             color: var(--palex-dark);
             font-weight: 900;
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 15px;
             letter-spacing: -0.5px;
         }
         .vitals {
             display: flex;
-            gap: 12px;
-            font-size: 13px;
+            gap: 8px;
+            font-size: 11px;
         }
         .vital-badge {
             background: rgba(0, 159, 227, 0.15);
             border: 1px solid var(--palex-blue);
-            padding: 4px 8px;
+            padding: 3px 6px;
             border-radius: 4px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .vital-val { font-weight: bold; color: var(--palex-accent); }
+        .vital-val { font-weight: bold; color: var(--palex-accent); font-size: 12px; }
         
         #game-container {
             flex: 1;
             position: relative;
-            background: radial-gradient(circle at center, #112B4C 0%, #050E1A 100%);
+            background: radial-gradient(circle at center, #112B4C 0%, #040A14 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -79,55 +81,58 @@
         }
         .hud-overlay {
             position: absolute;
-            top: 12px;
-            left: 12px;
-            background: rgba(10, 34, 64, 0.85);
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(10, 34, 64, 0.88);
             border: 1px solid var(--palex-blue);
-            padding: 10px;
+            padding: 8px 12px;
             border-radius: 8px;
             font-size: 12px;
             pointer-events: none;
-            max-width: 260px;
+            max-width: 320px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
-        .hud-overlay h3 { color: var(--palex-accent); margin-bottom: 4px; font-size: 14px; }
+        .hud-overlay h3 { color: var(--palex-accent); margin-bottom: 2px; font-size: 13px; }
         
         .mode-selector {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 10px;
+            right: 10px;
             display: flex;
-            gap: 6px;
+            gap: 4px;
             z-index: 5;
         }
         .mode-btn {
-            background: rgba(10, 34, 64, 0.8);
+            background: rgba(10, 34, 64, 0.85);
             border: 1px solid var(--palex-blue);
             color: #fff;
-            padding: 6px 10px;
+            padding: 5px 8px;
             border-radius: 4px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
             cursor: pointer;
         }
         .mode-btn.active { background: var(--palex-blue); }
 
         .controls-bar {
-            height: 110px;
-            background: rgba(10, 34, 64, 0.95);
-            border-top: 1px solid rgba(0, 159, 227, 0.3);
+            height: 100px;
+            background: var(--panel-bg);
+            border-top: 1px solid rgba(0, 159, 227, 0.4);
             display: flex;
             align-items: center;
             justify-content: space-around;
-            padding: 0 16px;
+            padding: 0 12px;
             z-index: 10;
+            flex-shrink: 0;
         }
         .btn-action {
             background: var(--palex-blue);
             color: #fff;
             border: none;
-            padding: 14px 24px;
+            padding: 12px 20px;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,159,227,0.4);
@@ -135,8 +140,8 @@
         .btn-action:active { transform: scale(0.96); }
         
         .joystick-pad {
-            width: 90px;
-            height: 90px;
+            width: 75px;
+            height: 75px;
             background: rgba(0, 159, 227, 0.15);
             border: 2px solid var(--palex-blue);
             border-radius: 50%;
@@ -146,29 +151,28 @@
             align-items: center;
         }
         .joystick-knob {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             background: var(--palex-accent);
             border-radius: 50%;
             position: absolute;
             box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            transition: transform 0.1s ease;
         }
 
         .screen-modal {
             position: absolute;
             inset: 0;
-            background: rgba(5, 14, 26, 0.92);
+            background: rgba(4, 10, 20, 0.94);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 100;
-            padding: 24px;
+            padding: 20px;
             text-align: center;
         }
-        .screen-modal h1 { color: var(--palex-accent); font-size: 26px; margin-bottom: 12px; }
-        .screen-modal p { max-width: 400px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; color: #B0BEC5; }
+        .screen-modal h1 { color: var(--palex-accent); font-size: 24px; margin-bottom: 10px; }
+        .screen-modal p { max-width: 380px; margin-bottom: 18px; font-size: 13px; line-height: 1.4; color: #B0BEC5; }
     </style>
 </head>
 <body>
@@ -176,9 +180,9 @@
     <header>
         <div class="brand">
             <div class="logo-box">PALEX</div>
-            <div style="font-size: 12px; line-height: 1.2;">
+            <div style="font-size: 11px; line-height: 1.1;">
                 <strong style="color:var(--palex-accent)">HEALTH</strong><br>
-                <span>Simulador Endovascular</span>
+                <span>Simulador 3D</span>
             </div>
         </div>
         <div class="vitals">
@@ -189,37 +193,37 @@
     </header>
 
     <div class="mode-selector">
-        <button class="mode-btn active" onclick="setMode('3d')">Tórax 3D</button>
-        <button class="mode-btn" onclick="setMode('endo')">Endovascular</button>
+        <button class="mode-btn active" onclick="setMode('3d')">3D</button>
+        <button class="mode-btn" onclick="setMode('endo')">Endo</button>
         <button class="mode-btn" onclick="setMode('xray')">Raio-X</button>
     </div>
 
     <div id="game-container">
         <div class="hud-overlay">
-            <h3 id="hud-title">Fase 1: Impella CP®</h3>
-            <p id="hud-desc">Avance o cateter pelo arco aórtico. Evite tocar nas paredes vasculares!</p>
-            <div style="margin-top: 6px; font-weight: bold; color: var(--success);" id="hud-status">Progresso: 0%</div>
+            <h3 id="hud-title">Fase 1: Impella CP® SmartAssist</h3>
+            <p id="hud-desc">Navegue pela aorta até ao VE. Evite tocar nas paredes vasculares!</p>
+            <div style="margin-top: 4px; font-weight: bold; color: var(--success);" id="hud-status">Progresso: 0% | Estabilidade: 100%</div>
         </div>
         
         <canvas id="simCanvas"></canvas>
 
         <div id="startModal" class="screen-modal">
-            <h1>Simulador Cirúrgico Palex</h1>
-            <p>Teste o seu desempenho com o <strong>Impella CP® SmartAssist</strong> e o sistema <strong>FlowTriever® (Inari)</strong>. Controlo tátil otimizado para desktop e telemóvel.</p>
-            <button class="btn-action" onclick="startGame()">INICIAR CIRURGIA</button>
+            <h1>Simulador Cirúrgico Palex Health</h1>
+            <p>Demonstração clínica interativa do <strong>Impella CP® SmartAssist</strong> e do sistema <strong>FlowTriever® (Inari)</strong>. Otimizado para Desktop e Telemóvel.</p>
+            <button class="btn-action" onclick="startGame()">INICIAR SIMULAÇÃO</button>
         </div>
     </div>
 
     <div class="controls-bar">
         <div style="display:flex; flex-direction:column; align-items:center;">
-            <span style="font-size:11px; color:var(--palex-accent); margin-bottom:4px;">DIREÇÃO / LÚMEN</span>
+            <span style="font-size:10px; color:var(--palex-accent); margin-bottom:2px;">DIREÇÃO</span>
             <div class="joystick-pad" id="joyPad">
                 <div class="joystick-knob" id="joyKnob"></div>
             </div>
         </div>
-        <div style="display:flex; gap:12px;">
-            <button class="btn-action" id="btnBackward" style="background:#455A64;">RECUAR</button>
-            <button class="btn-action" id="btnForward">AVANÇAR</button>
+        <div style="display:flex; gap:10px;">
+            <button class="btn-action" id="btnBackward" style="background:#455A64; padding: 12px 16px;">RECUAR</button>
+            <button class="btn-action" id="btnForward" style="padding: 12px 20px;">AVANÇAR</button>
         </div>
     </div>
 
@@ -238,16 +242,14 @@
         window.addEventListener('resize', resize);
         resize();
 
-        let gameState = 'START'; // START, PLAYING, CONSOLE, WIN, FAIL
-        let currentDevice = 'IMPELLA'; // IMPELLA, FLOWTRIEVER
-        let cameraMode = '3d'; // 3d, endo, xray
-        let progress = 0; // 0 to 100
+        let gameState = 'START';
+        let currentDevice = 'IMPELLA';
+        let cameraMode = '3d';
+        let progress = 0;
         let stability = 100;
-        let hits = 0;
-        let valveOpen = false;
         let valveTimer = 0;
+        let valveOpen = false;
         
-        // Control state
         let movingForward = false;
         let movingBackward = false;
         let steeringOffset = { x: 0, y: 0 };
@@ -263,7 +265,7 @@
             gameState = 'PLAYING';
         }
 
-        // Joystick interaction
+        // Joystick
         const joyPad = document.getElementById('joyPad');
         const joyKnob = document.getElementById('joyKnob');
         let joyActive = false;
@@ -275,7 +277,7 @@
             let dx = clientX - cx;
             let dy = clientY - cy;
             const dist = Math.sqrt(dx*dx + dy*dy);
-            const maxR = 30;
+            const maxR = 25;
             if (dist > maxR) {
                 dx = (dx / dist) * maxR;
                 dy = (dy / dist) * maxR;
@@ -294,7 +296,6 @@
         document.getElementById('btnBackward').addEventListener('pointerdown', () => { movingBackward = true; });
         document.getElementById('btnBackward').addEventListener('pointerup', () => { movingBackward = false; });
 
-        // Game Loop
         let lastTime = performance.now();
         function loop(timestamp) {
             const dt = (timestamp - lastTime) / 1000;
@@ -302,139 +303,197 @@
 
             update(dt);
             render();
-
             requestAnimationFrame(loop);
         }
 
         function update(dt) {
             if (gameState !== 'PLAYING') return;
 
-            // Valve timing cycle (~45 BPM = 1.33s per cycle)
             valveTimer += dt;
             if (valveTimer > 1.33) valveTimer = 0;
-            valveOpen = (valveTimer > 0.3 && valveTimer < 1.0); // Wide open window
+            valveOpen = (valveTimer > 0.35 && valveTimer < 0.95);
 
-            // Movement
-            if (progress < 88) {
-                if (movingForward) progress += dt * 15;
-                if (movingBackward) progress -= dt * 20;
-                progress = Math.max(0, Math.min(88, progress));
+            if (progress < 85) {
+                if (movingForward) progress += dt * 14;
+                if (movingBackward) progress -= dt * 18;
+                progress = Math.max(0, Math.min(85, progress));
 
-                // Check wall collision based on steering offset
-                if (Math.abs(steeringOffset.x) > 0.7 || Math.abs(steeringOffset.y) > 0.7) {
-                    stability -= dt * 15;
-                    hits++;
+                if (Math.abs(steeringOffset.x) > 0.65 || Math.abs(steeringOffset.y) > 0.65) {
+                    stability -= dt * 12;
                     if (stability <= 0) {
+                        stability = 0;
                         gameState = 'FAIL';
+                        showFailModal();
                     }
                 }
             } else {
-                // Auto lock at target
                 gameState = 'CONSOLE';
-                showConsoleModal();
+                if (currentDevice === 'IMPELLA') showImpellaConsole();
+                else showFlowTrieverConsole();
             }
 
-            // HUD update
             document.getElementById('hud-status').innerText = `Progresso: ${Math.round(progress)}% | Estabilidade: ${Math.round(stability)}%`;
         }
 
-        function showConsoleModal() {
+        function showFailModal() {
+            const modal = document.createElement('div');
+            modal.id = 'failModal';
+            modal.className = 'screen-modal';
+            modal.innerHTML = `
+                <h1 style="color:var(--danger)">Estabilidade Crítica</h1>
+                <p>O contacto excessivo com a parede vascular causou instabilidade hemodinâmica.</p>
+                <button class="btn-action" onclick="location.reload()">TENTAR NOVAMENTE</button>
+            `;
+            document.getElementById('game-container').appendChild(modal);
+        }
+
+        function showImpellaConsole() {
             if (document.getElementById('consoleModal')) return;
             const modal = document.createElement('div');
             modal.id = 'consoleModal';
             modal.className = 'screen-modal';
             modal.innerHTML = `
-                <h1>Consola SmartAssist® Ativa</h1>
-                <p>Cateter posicionado com sucesso no Ventrículo Esquerdo. Selecione o nível de suporte P-8 para otimizar o débito cardíaco.</p>
-                <div style="display:flex; gap:10px; margin-bottom:20px;">
-                    <button class="mode-btn" onclick="setPower('P-4')">P-4</button>
-                    <button class="mode-btn" onclick="setPower('P-6')">P-6</button>
-                    <button class="mode-btn active" onclick="setPower('P-8')">P-8 (Ideal)</button>
-                    <button class="mode-btn" onclick="setPower('P-9')">P-9</button>
+                <h1>Consola SmartAssist®</h1>
+                <p>Posicionado no Ventrículo Esquerdo. Ajuste o nível de suporte P-8 para otimizar o débito cardíaco.</p>
+                <div style="display:flex; gap:8px; margin-bottom:18px;">
+                    <button class="mode-btn" onclick="selectP('P-4')" style="padding:10px 14px;">P-4</button>
+                    <button class="mode-btn" onclick="selectP('P-6')" style="padding:10px 14px;">P-6</button>
+                    <button class="mode-btn active" id="p8btn" onclick="selectP('P-8')" style="padding:10px 14px;">P-8 (Ideal)</button>
+                    <button class="mode-btn" onclick="selectP('P-9')" style="padding:10px 14px;">P-9</button>
                 </div>
-                <button class="btn-action" onclick="finishImpella()">CONFIRMAR SUPORTE</button>
+                <button class="btn-action" onclick="nextPhase()">INICIAR FLOWTRIEVER®</button>
             `;
             document.getElementById('game-container').appendChild(modal);
         }
 
-        window.setPower = function(p) {
+        window.selectP = function(lvl) {
             document.querySelectorAll('#consoleModal .mode-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
-        };
+        }
 
-        window.finishImpella = function() {
+        window.nextPhase = function() {
             document.getElementById('consoleModal').remove();
             currentDevice = 'FLOWTRIEVER';
             progress = 0;
             stability = 100;
             document.getElementById('hud-title').innerText = 'Fase 2: FlowTriever® (Inari)';
-            document.getElementById('hud-desc').innerText = 'Avance para a artéria pulmonar e expanda os discos de nitinol.';
+            document.getElementById('hud-desc').innerText = 'Avance para a artéria pulmonar e aspire o trombo com os discos de nitinol.';
             gameState = 'PLAYING';
-        };
+        }
+
+        function showFlowTrieverConsole() {
+            if (document.getElementById('consoleModal')) return;
+            const modal = document.createElement('div');
+            modal.id = 'consoleModal';
+            modal.className = 'screen-modal';
+            modal.innerHTML = `
+                <h1>Sistema FlowTriever®</h1>
+                <p>Discos de nitinol expandidos com sucesso. Acione a seringa de vácuo de 60cc para extração do trombo.</p>
+                <button class="btn-action" onclick="victory()">CONCLUIR PROCEDIMENTO</button>
+            `;
+            document.getElementById('game-container').appendChild(modal);
+        }
+
+        window.victory = function() {
+            document.getElementById('consoleModal').remove();
+            const modal = document.createElement('div');
+            modal.className = 'screen-modal';
+            modal.innerHTML = `
+                <h1 style="color:var(--success)">Procedimento Bem-Sucedido!</h1>
+                <p>Suporte hemodinâmico com Impella CP® e trombectomia FlowTriever® executados com sucesso perfeito.</p>
+                <button class="btn-action" onclick="location.reload()">NOVA CIRURGIA</button>
+            `;
+            document.getElementById('game-container').appendChild(modal);
+        }
 
         function render() {
             ctx.clearRect(0, 0, width, height);
 
-            // Background grid / X-Ray / 3D Torso simulation
+            // Background theme based on mode
             if (cameraMode === 'xray') {
-                ctx.fillStyle = '#050E1A';
+                ctx.fillStyle = '#030D1A';
                 ctx.fillRect(0, 0, width, height);
-                ctx.strokeStyle = 'rgba(0, 210, 255, 0.15)';
+                ctx.strokeStyle = 'rgba(0, 210, 255, 0.12)';
             } else if (cameraMode === 'endo') {
-                ctx.fillStyle = '#1A0505';
+                ctx.fillStyle = '#1C0608';
                 ctx.fillRect(0, 0, width, height);
-                ctx.strokeStyle = 'rgba(255, 51, 75, 0.2)';
+                ctx.strokeStyle = 'rgba(255, 51, 75, 0.15)';
             } else {
-                ctx.fillStyle = '#081628';
+                ctx.fillStyle = '#071526';
                 ctx.fillRect(0, 0, width, height);
-                ctx.strokeStyle = 'rgba(0, 159, 227, 0.2)';
+                ctx.strokeStyle = 'rgba(0, 159, 227, 0.12)';
             }
 
-            // Draw grid lines
+            // Grid lines
             ctx.lineWidth = 1;
-            for (let x = 0; x < width; x += 40) {
+            for (let x = 0; x < width; x += 45) {
                 ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
             }
-            for (let y = 0; y < height; y += 40) {
+            for (let y = 0; y < height; y += 45) {
                 ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
             }
 
-            // Draw Heart & Aorta S-Curve
             const cx = width / 2;
-            const cy = height / 2;
+            const cy = height / 2 + 10;
 
+            // Realistic 3D Torso / Heart Silhouette & Aorta S-Curve
             ctx.beginPath();
-            ctx.strokeStyle = cameraMode === 'xray' ? '#00D2FF' : '#009FE3';
-            ctx.lineWidth = 24;
+            ctx.strokeStyle = cameraMode === 'xray' ? 'rgba(0,210,255,0.4)' : 'rgba(0,159,227,0.3)';
+            ctx.lineWidth = 36;
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
-            ctx.moveTo(cx - 100, cy + 120);
-            ctx.bezierCurveTo(cx - 100, cy - 40, cx + 80, cy - 80, cx + 60, cy + 40);
+            ctx.moveTo(cx - 110, cy + 130);
+            ctx.bezierCurveTo(cx - 110, cy - 60, cx + 90, cy - 90, cx + 70, cy + 50);
             ctx.stroke();
 
-            // Draw Valve Indicator
+            // Inner lumen vessel core
             ctx.beginPath();
-            ctx.arc(cx + 20, cy - 20, 28, 0, Math.PI * 2);
-            ctx.fillStyle = valveOpen ? 'rgba(0, 230, 118, 0.25)' : 'rgba(255, 51, 75, 0.25)';
+            ctx.strokeStyle = cameraMode === 'xray' ? '#00D2FF' : '#009FE3';
+            ctx.lineWidth = 20;
+            ctx.moveTo(cx - 110, cy + 130);
+            ctx.bezierCurveTo(cx - 110, cy - 60, cx + 90, cy - 90, cx + 70, cy + 50);
+            ctx.stroke();
+
+            // Valve structure with dynamic opening
+            const vx = cx + 25;
+            const vy = cy - 25;
+            ctx.beginPath();
+            ctx.arc(vx, vy, 32, 0, Math.PI * 2);
+            ctx.fillStyle = valveOpen ? 'rgba(0, 230, 118, 0.2)' : 'rgba(255, 51, 75, 0.25)';
             ctx.fill();
             ctx.strokeStyle = valveOpen ? 'var(--success)' : 'var(--danger)';
             ctx.lineWidth = 3;
             ctx.stroke();
 
-            // Draw Cateter / Dispositivo
-            const catheterLengthFactor = progress / 88;
+            // Valve leaflets graphic representation
+            if (!valveOpen) {
+                ctx.beginPath();
+                ctx.moveTo(vx - 20, vy - 15); ctx.lineTo(vx, vy); ctx.lineTo(vx - 20, vy + 15);
+                ctx.moveTo(vx + 20, vy - 15); ctx.lineTo(vx, vy); ctx.lineTo(vx + 20, vy + 15);
+                ctx.strokeStyle = '#FF334B'; ctx.lineWidth = 2; ctx.stroke();
+            }
+
+            // Catheter position calculation along S-curve
+            const t = progress / 85;
+            const catX = (1-t)*(cx - 110) + t*(cx + 70) + steeringOffset.x * 18;
+            const catY = (1-t)*(cy + 130) + t*(cy + 50) + steeringOffset.y * 18;
+
+            // Catheter line from entry point
             ctx.beginPath();
             ctx.strokeStyle = '#FFFFFF';
             ctx.lineWidth = 4;
-            ctx.moveTo(cx - 100, cy + 120 + steeringOffset.y * 15);
-            ctx.lineTo(cx + (catheterLengthFactor * 120) + steeringOffset.x * 15, cy + (catheterLengthFactor * -40));
+            ctx.moveTo(cx - 110, cy + 130);
+            ctx.lineTo(catX, catY);
             ctx.stroke();
 
-            // Tip indicator
+            // Device tip (Impella / FlowTriever)
             ctx.beginPath();
-            ctx.arc(cx + (catheterLengthFactor * 120) + steeringOffset.x * 15, cy + (catheterLengthFactor * -40), 8, 0, Math.PI*2);
+            ctx.arc(catX, catY, currentDevice === 'IMPELLA' ? 10 : 12, 0, Math.PI * 2);
             ctx.fillStyle = currentDevice === 'IMPELLA' ? 'var(--palex-accent)' : '#FFD700';
+            ctx.shadowColor = currentDevice === 'IMPELLA' ? '#00D2FF' : '#FFD700';
+            ctx.shadowBlur = 12;
             ctx.fill();
+            ctx.shadowBlur = 0; // reset
         }
 
         requestAnimationFrame(loop);
