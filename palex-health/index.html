@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Palex Health · Simulador Cirúrgico 3D Realista</title>
+  <title>Palex Health · Simulador Cirúrgico Cardíaco 3D</title>
   <style>
     :root {
-      --palex-dark: #050B14;
+      --palex-dark: #040914;
       --palex-navy: #0A1E3F;
       --palex-blue: #009FE3;
       --palex-cyan: #00D2FF;
@@ -37,7 +37,7 @@
       justify-content: space-between;
       gap: 6px;
       padding: 6px 10px;
-      background: linear-gradient(180deg, #0A1E3F 0%, #050B14 100%);
+      background: linear-gradient(180deg, #0A1E3F 0%, #040914 100%);
       border-bottom: 2px solid var(--palex-blue);
       z-index: 20;
     }
@@ -72,7 +72,7 @@
       justify-content: space-between;
       gap: 4px;
       padding: 5px 10px;
-      background: rgba(5, 11, 20, 0.95);
+      background: rgba(4, 9, 20, 0.95);
       border-bottom: 1px solid rgba(0, 159, 227, 0.2);
       z-index: 15;
     }
@@ -102,7 +102,7 @@
 
     .stage-banner {
       position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
-      background: rgba(5, 11, 20, 0.9); border: 1px solid var(--palex-blue);
+      background: rgba(4, 9, 20, 0.9); border: 1px solid var(--palex-blue);
       padding: 3px 10px; border-radius: 999px; font-size: 10px; font-weight: 600;
       color: #E0F2FE; white-space: nowrap; pointer-events: none; z-index: 10;
     }
@@ -118,7 +118,7 @@
     /* CONTROLS FOOTER */
     footer {
       flex-shrink: 0;
-      background: linear-gradient(0deg, #030812 0%, #0A1E3F 100%);
+      background: linear-gradient(0deg, #02050D 0%, #0A1E3F 100%);
       border-top: 1px solid rgba(0, 159, 227, 0.4);
       padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
       z-index: 20;
@@ -135,7 +135,7 @@
     .joy-wrap { display: flex; flex-direction: column; align-items: center; gap: 2px; }
     .joy-pad {
       width: 62px; height: 62px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,159,227,0.25) 0%, rgba(5,11,20,0.9) 100%);
+      background: radial-gradient(circle, rgba(0,159,227,0.25) 0%, rgba(4,9,20,0.9) 100%);
       border: 2px solid var(--palex-blue);
       position: relative; display: flex; align-items: center; justify-content: center;
       touch-action: none;
@@ -159,7 +159,7 @@
     .btn-back { background: #1E293B; border: 1px solid #475569; }
     .btn-back:active, .btn-back.pressed { background: #334155; transform: scale(0.97); }
     .btn-fwd { background: linear-gradient(135deg, var(--palex-blue) 0%, #0284C7 100%); box-shadow: 0 4px 12px rgba(0,159,227,0.4); }
-    .btn-fwd:active, .btn-fwd.pressed { background: var(--palex-cyan); color: #050B14; transform: scale(0.97); }
+    .btn-fwd:active, .btn-fwd.pressed { background: var(--palex-cyan); color: #040914; transform: scale(0.97); }
 
     /* CONSOLE */
     .console-box {
@@ -173,20 +173,20 @@
       padding: 7px 10px; border-radius: 6px; border: 1px solid var(--palex-blue);
       background: rgba(0,159,227,0.15); color: #FFF; font-weight: 800; font-size: 11px; cursor: pointer;
     }
-    .p-btn.selected { background: var(--success); color: #050B14; border-color: var(--success); }
+    .p-btn.selected { background: var(--success); color: #040914; border-color: var(--success); }
     .confirm-btn {
       width: 100%; max-width: 260px; padding: 9px; border-radius: 8px; border: none;
-      background: var(--success); color: #050B14; font-weight: 900; font-size: 12px; cursor: pointer;
+      background: var(--success); color: #040914; font-weight: 900; font-size: 12px; cursor: pointer;
     }
 
     /* MODALS */
     .modal {
-      position: fixed; inset: 0; background: rgba(5, 11, 20, 0.95);
+      position: fixed; inset: 0; background: rgba(4, 9, 20, 0.95);
       display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 100;
     }
     .modal.hidden { display: none; }
     .card {
-      background: linear-gradient(180deg, #0A1E3F 0%, #050B14 100%);
+      background: linear-gradient(180deg, #0A1E3F 0%, #040914 100%);
       border: 1px solid var(--palex-blue); border-radius: 14px; padding: 20px;
       max-width: 380px; width: 100%; text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.8);
@@ -198,13 +198,12 @@
     .primary-btn {
       width: 100%; padding: 12px; border-radius: 8px; border: none;
       background: linear-gradient(135deg, var(--palex-blue), var(--palex-cyan));
-      color: #050B14; font-weight: 900; font-size: 13px; cursor: pointer;
+      color: #040914; font-weight: 900; font-size: 13px; cursor: pointer;
     }
   </style>
 </head>
 <body>
 <div id="app">
-  <!-- HEADER -->
   <header>
     <div class="brand">
       <div class="logo-badge">PALEX</div>
@@ -221,7 +220,6 @@
     </div>
   </header>
 
-  <!-- SUB-BAR -->
   <div class="sub-bar">
     <div class="cam-group">
       <button class="cam-btn active" data-cam="3d">🫀 Tórax 3D</button>
@@ -231,14 +229,12 @@
     <div class="valve-pill open" id="valvePill">VÁLVULA: ABERTA ✓</div>
   </div>
 
-  <!-- STAGE -->
   <div id="stage">
-    <div class="stage-banner" id="stageBanner">1/2 · Navegue pelo Arco Aórtico até ao Ventrículo Esquerdo (0%)</div>
+    <div class="stage-banner" id="stageBanner">1/2 · Navegue pela Aorta até ao Ventrículo Esquerdo (0%)</div>
     <div class="alert-toast" id="alertToast">⚠️ Contacto com a parede vascular!</div>
     <canvas id="canvas"></canvas>
   </div>
 
-  <!-- CONTROLS -->
   <footer>
     <div class="ctrl-grid" id="navControls">
       <div class="joy-wrap">
@@ -252,27 +248,25 @@
     </div>
 
     <div class="console-box" id="consoleControls">
-      <div class="console-title" id="consoleTitle">Consola SmartAssist® · Selecione o nível de suporte (P-8)</div>
+      <div class="console-title" id="consoleTitle">Consola SmartAssist® · Selecione o nível P-8</div>
       <div class="p-row" id="consoleButtons"></div>
-      <button class="confirm-btn" id="consoleConfirm">ATIVAR SUPORTE E AVANÇAR</button>
+      <button class="confirm-btn" id="consoleConfirm">ATIVAR SUPORTE E SEGUIR</button>
     </div>
   </footer>
 </div>
 
-<!-- START MODAL -->
 <div class="modal" id="startModal">
   <div class="card">
     <div class="card-badges">
       <span class="tag">PALEX HEALTH PORTUGAL</span>
-      <span class="tag">SIMULADOR 3D REALISTA</span>
+      <span class="tag">ANATOMIA CARDÍACA REAL 3D</span>
     </div>
-    <h1>Impella CP® & FlowTriever®</h1>
-    <p>Simulação cirúrgica imersiva de alta precisão para congresso médico. Conduza o cateter pelo sistema cardiovascular evitando trauma vascular.</p>
-    <button class="primary-btn" id="btnStart">INICIAR CIRURGIA 3D</button>
+    <h1>Simulador Impella CP®</h1>
+    <p>Simulação clínica avançada com modelo cardíaco e aórtico anatómicamente realista. Conduza o dispositivo sem lesar o miocárdio.</p>
+    <button class="primary-btn" id="btnStart">INICIAR CIRURGIA</button>
   </div>
 </div>
 
-<!-- END MODAL -->
 <div class="modal hidden" id="endModal">
   <div class="card">
     <div class="card-badges"><span class="tag" id="endTag">RELATÓRIO CLÍNICO</span></div>
@@ -314,12 +308,12 @@
   let alertTimeout = null;
   let wallCooldown = 0;
 
-  const cells = Array.from({ length: 48 }, () => ({
+  const cells = Array.from({ length: 50 }, () => ({
     t: Math.random(),
-    radial: (Math.random() - 0.5) * 1.3,
+    radial: (Math.random() - 0.5) * 1.2,
     angle: Math.random() * Math.PI * 2,
-    speed: 0.15 + Math.random() * 0.12,
-    size: 2 + Math.random() * 3
+    speed: 0.18 + Math.random() * 0.1,
+    size: 2 + Math.random() * 2.5
   }));
 
   function triggerAlert(msg) {
@@ -330,24 +324,42 @@
     alertTimeout = setTimeout(() => el.classList.remove('show'), 1100);
   }
 
+  // ANATOMIA REALISTA: Curva suave e proporcional do sistema circulatório e coração
   function getVesselPoint(t) {
     const cx = W * 0.5;
-    const cy = H * 0.52;
-    const scale = Math.min(W, H) * 0.0024;
+    const cy = H * 0.5;
+    const sc = Math.min(W, H) * 0.0028;
 
     if (stageIdx === 0) {
-      const x = cx + (Math.sin(t * Math.PI * 1.35) * -95 + (t < 0.45 ? 38 : -22 * (t - 0.45))) * scale;
-      const y = cy + (155 - t * 290 + Math.sin(Math.max(0, t - 0.42) * Math.PI * 1.75) * 155) * scale;
-      let radius = 28 * scale;
-      if (t > 0.74) {
-        const lv = Math.sin(((t - 0.74) / 0.26) * Math.PI);
-        radius = (28 + lv * 38) * scale;
+      // Trajeto anatómico: Aorta ascendente, arco aórtico, aorta descendente e câmara do Ventrículo Esquerdo
+      let x, y, radius;
+      if (t < 0.3) {
+        // Aorta Descendente / Abdominal (Início inferior)
+        const subT = t / 0.3;
+        x = cx + 55 * sc;
+        y = cy + (120 - subT * 70) * sc;
+        radius = 22 * sc;
+      } else if (t < 0.7) {
+        // Arco Aórtico (Curva superior natural)
+        const subT = (t - 0.3) / 0.4;
+        const angle = subT * Math.PI;
+        x = cx + (15 - Math.cos(angle) * 40) * sc;
+        y = cy + (-50 - Math.sin(angle) * 35) * sc;
+        radius = 24 * sc;
+      } else {
+        // Aorta descendente para a Válvula e Ventrículo Esquerdo
+        const subT = (t - 0.7) / 0.3;
+        x = cx + (-25 - subT * 15) * sc;
+        y = cy + (-15 + subT * 125) * sc;
+        radius = (24 + subT * 26) * sc; // Dilatação do VE
       }
       return { x, y, radius };
     } else {
-      const x = cx + (-45 + Math.sin(t * Math.PI * 1.2) * 85) * scale;
-      const y = cy + (160 - t * 285 + Math.sin(Math.max(0, t - 0.5) * Math.PI * 1.4) * 90) * scale;
-      const radius = (30 + (t > 0.35 && t < 0.65 ? 16 : 0)) * scale;
+      // FlowTriever: Veia Cava / AD / VD / Artéria Pulmonar
+      const subT = t;
+      const x = cx + (Math.sin(subT * Math.PI * 1.1) * -35) * sc;
+      const y = cy + (110 - subT * 230) * sc;
+      const radius = (25 + (subT > 0.4 && subT < 0.7 ? 18 : 0)) * sc;
       return { x, y, radius };
     }
   }
@@ -514,7 +526,7 @@
 
       if (moveDir !== 0) {
         const nextProg = Math.max(0, Math.min(90, progress + moveDir * dt * 18));
-        if (progress < 72 && nextProg >= 72 && !valveOpen) {
+        if (progress < 78 && nextProg >= 78 && !valveOpen) {
           triggerAlert('⚠️ Válvula fechada! Aguarde abertura.');
           if (wallCooldown <= 0) { stability -= 15; wallCooldown = 0.6; }
         } else {
@@ -526,10 +538,10 @@
       offset.y += (steerY * 1.5 - offset.y * 2) * dt * 3;
 
       const radialDist = Math.hypot(offset.x, offset.y);
-      if (radialDist > 0.88) {
+      if (radialDist > 0.85) {
         const angle = Math.atan2(offset.y, offset.x);
-        offset.x = Math.cos(angle) * 0.88;
-        offset.y = Math.sin(angle) * 0.88;
+        offset.x = Math.cos(angle) * 0.85;
+        offset.y = Math.sin(angle) * 0.85;
         if (wallCooldown <= 0 && moveDir !== 0) {
           stability = Math.max(0, stability - 10);
           wallCooldown = 0.5;
@@ -564,93 +576,85 @@
     }
 
     const cx = W * 0.5;
-    const cy = H * 0.52;
-    const scale = Math.min(W, H) * 0.0024;
+    const cy = H * 0.5;
+    const sc = Math.min(W, H) * 0.0028;
 
-    // Desenho anatómico realista do Miocárdio e Caixa Torácica
+    // 1. DESENHO ANATÓMICO REALISTA DO CORAÇÃO (Miocárdio em Gradiente Volumétrico)
     ctx.save();
-    ctx.strokeStyle = camMode === 'xray' ? 'rgba(0, 210, 255, 0.18)' : 'rgba(0, 159, 227, 0.15)';
-    ctx.lineWidth = 1.5;
-    for (let i = -3; i <= 3; i++) {
-      ctx.beginPath();
-      ctx.arc(cx, cy + i * 45 * scale, 140 * scale, 0.25 * Math.PI, 0.75 * Math.PI);
-      ctx.stroke();
-    }
-    ctx.restore();
-
-    // Silhueta volumétrica do Coração / Ventrículo
-    const heartGrad = ctx.createRadialGradient(cx - 20 * scale, cy + 30 * scale, 20, cx - 20 * scale, cy + 30 * scale, 130 * scale);
-    heartGrad.addColorStop(0, camMode === 'xray' ? 'rgba(0,210,255,0.12)' : 'rgba(190, 24, 93, 0.28)');
+    const heartGrad = ctx.createRadialGradient(cx - 15 * sc, cy + 35 * sc, 10, cx - 15 * sc, cy + 35 * sc, 110 * sc);
+    heartGrad.addColorStop(0, camMode === 'xray' ? 'rgba(0,210,255,0.18)' : 'rgba(159, 18, 57, 0.45)');
+    heartGrad.addColorStop(0.7, camMode === 'xray' ? 'rgba(0,150,200,0.08)' : 'rgba(136, 19, 55, 0.25)');
     heartGrad.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = heartGrad;
     ctx.beginPath();
-    ctx.ellipse(cx - 20 * scale, cy + 20 * scale, 85 * scale, 110 * scale, -0.2, 0, Math.PI * 2);
+    // Forma orgânica do miocárdio humano (ventrículos e aurículas)
+    ctx.moveTo(cx - 10 * sc, cy - 25 * sc);
+    ctx.bezierCurveTo(cx + 60 * sc, cy - 40 * sc, cx + 80 * sc, cy + 50 * sc, cx + 10 * sc, cy + 110 * sc);
+    ctx.bezierCurveTo(cx - 50 * sc, cy + 120 * sc, cx - 85 * sc, cy + 40 * sc, cx - 45 * sc, cy - 10 * sc);
+    ctx.closePath();
     ctx.fill();
+    ctx.restore();
 
-    // Vaso Sanguíneo em Camadas Anatómicas Realistas (Parede externa + lúmen)
+    // 2. PAREDE AORTICA ANATÓMICA (Duplo contorno com relevo clínico)
     ctx.beginPath();
     const pStart = getVesselPoint(0);
-    ctx.moveTo(pStart.x - pStart.radius * 1.2, pStart.y);
+    ctx.moveTo(pStart.x - pStart.radius * 1.15, pStart.y);
     for (let i = 0; i <= 60; i++) {
       const p = getVesselPoint(i / 60);
-      ctx.lineTo(p.x - p.radius * 1.2, p.y);
+      ctx.lineTo(p.x - p.radius * 1.15, p.y);
     }
     for (let i = 60; i >= 0; i--) {
       const p = getVesselPoint(i / 60);
-      ctx.lineTo(p.x + p.radius * 1.2, p.y);
+      ctx.lineTo(p.x + p.radius * 1.15, p.y);
     }
     ctx.closePath();
-    ctx.fillStyle = camMode === 'xray' ? 'rgba(0, 210, 255, 0.08)' : 'rgba(127, 29, 29, 0.35)';
+    ctx.fillStyle = camMode === 'xray' ? 'rgba(0, 210, 255, 0.08)' : 'rgba(127, 29, 29, 0.38)';
     ctx.fill();
-    ctx.strokeStyle = camMode === 'xray' ? 'rgba(125, 211, 252, 0.4)' : 'rgba(248, 113, 113, 0.5)';
+    ctx.strokeStyle = camMode === 'xray' ? 'rgba(125, 211, 252, 0.45)' : 'rgba(248, 113, 113, 0.6)';
     ctx.lineWidth = 2.5;
     ctx.stroke();
 
-    // Glóbulos vermelhos detalhados
+    // 3. GLÓBULOS VERMELHOS A FLUXO DINÂMICO
     cells.forEach(c => {
       c.t = (c.t + dt * c.speed) % 1;
       const p = getVesselPoint(c.t);
-      const bx = p.x + Math.cos(c.angle) * p.radius * 0.6 * c.radial;
-      const by = p.y + Math.sin(c.angle) * p.radius * 0.6 * c.radial;
+      const bx = p.x + Math.cos(c.angle) * p.radius * 0.55 * c.radial;
+      const by = p.y + Math.sin(c.angle) * p.radius * 0.55 * c.radial;
       ctx.beginPath();
-      ctx.arc(bx, by, c.size * scale, 0, Math.PI * 2);
-      ctx.fillStyle = camMode === 'xray' ? 'rgba(186,230,253,0.6)' : 'rgba(252, 165, 165, 0.7)';
+      ctx.arc(bx, by, c.size * sc, 0, Math.PI * 2);
+      ctx.fillStyle = camMode === 'xray' ? 'rgba(186,230,253,0.65)' : 'rgba(252, 165, 165, 0.75)';
       ctx.fill();
     });
 
-    // Válvula Aórtica Realista
-    const vp = getVesselPoint(0.72);
+    // 4. VÁLVULA AÓRTICA (t = 0.78)
+    const vp = getVesselPoint(0.78);
     ctx.beginPath();
-    ctx.arc(vp.x, vp.y, vp.radius * 0.95, 0, Math.PI * 2);
+    ctx.arc(vp.x, vp.y, vp.radius * 0.92, 0, Math.PI * 2);
     ctx.strokeStyle = valveOpen ? '#00E676' : '#FF334B';
-    ctx.lineWidth = 4;
+    ctx.lineWidth = 3.5;
     ctx.stroke();
 
     if (!valveOpen) {
       ctx.beginPath();
-      ctx.moveTo(vp.x - vp.radius * 0.8, vp.y - 4);
+      ctx.moveTo(vp.x - vp.radius * 0.7, vp.y - 3);
       ctx.lineTo(vp.x, vp.y + 4);
-      ctx.lineTo(vp.x + vp.radius * 0.8, vp.y - 4);
+      ctx.lineTo(vp.x + vp.radius * 0.7, vp.y - 3);
       ctx.strokeStyle = '#FF334B';
       ctx.lineWidth = 3;
       ctx.stroke();
     }
 
-    // Zona Alvo (VE ou Pulmonar)
+    // 5. ZONA ALVO (Ventrículo Esquerdo)
     const tp = getVesselPoint(0.88);
     ctx.beginPath();
-    ctx.arc(tp.x, tp.y, tp.radius * 0.5, 0, Math.PI * 2);
-    if (stageIdx === 1 && state === 'NAV') {
-      ctx.fillStyle = 'rgba(80, 10, 10, 0.9)';
-      ctx.fill();
-    }
-    ctx.setLineDash([5, 5]);
+    ctx.arc(tp.x, tp.y, tp.radius * 0.45, 0, Math.PI * 2);
+    ctx.setLineDash([4, 4]);
     ctx.strokeStyle = '#00E676';
     ctx.lineWidth = 2;
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // Cateter e Dispositivo Realista (Impella CP / FlowTriever)
+    // 6. CATETER E DISPOSITIVO (Impella CP / FlowTriever)
     const maxT = progress / 100;
     const catSteps = Math.max(2, Math.floor(maxT * 60));
     ctx.beginPath();
@@ -658,44 +662,42 @@
       const t = (i / catSteps) * maxT;
       const p = getVesselPoint(t);
       const localRatio = i / catSteps;
-      const cxPos = p.x + offset.x * p.radius * 0.7 * localRatio;
-      const cyPos = p.y + offset.y * p.radius * 0.7 * localRatio;
+      const cxPos = p.x + offset.x * p.radius * 0.65 * localRatio;
+      const cyPos = p.y + offset.y * p.radius * 0.65 * localRatio;
       if (i === 0) ctx.moveTo(cxPos, cyPos);
       else ctx.lineTo(cxPos, cyPos);
     }
-    ctx.strokeStyle = '#F8FAFC';
-    ctx.lineWidth = 4.5;
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.lineWidth = 4;
     ctx.lineCap = 'round';
     ctx.stroke();
 
-    // Ponta Realista do Dispositivo
+    // Ponta Realista do Impella CP (Motor + Pigtail)
     const tipP = getVesselPoint(maxT);
-    const tipX = tipP.x + offset.x * tipP.radius * 0.7;
-    const tipY = tipP.y + offset.y * tipP.radius * 0.7;
+    const tipX = tipP.x + offset.x * tipP.radius * 0.65;
+    const tipY = tipP.y + offset.y * tipP.radius * 0.65;
 
     if (stageIdx === 0) {
-      // Impella CP com pigtail detalhado e motor
       ctx.beginPath();
-      ctx.arc(tipX, tipY, 9, 0, Math.PI * 2);
+      ctx.arc(tipX, tipY, 8, 0, Math.PI * 2);
       ctx.fillStyle = '#F59E0B';
       ctx.shadowColor = '#F59E0B';
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 12;
       ctx.fill();
       ctx.shadowBlur = 0;
 
       ctx.beginPath();
-      ctx.arc(tipX - 6, tipY - 6, 6, 0.2 * Math.PI, 1.6 * Math.PI);
+      ctx.arc(tipX - 5, tipY - 5, 5, 0.2 * Math.PI, 1.6 * Math.PI);
       ctx.strokeStyle = '#00D2FF';
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 2.5;
       ctx.stroke();
     } else {
-      // FlowTriever com discos de Nitinol 3D expandidos
       ctx.beginPath();
-      ctx.arc(tipX, tipY, state === 'CONSOLE' ? 18 : 8, 0, Math.PI * 2);
+      ctx.arc(tipX, tipY, state === 'CONSOLE' ? 16 : 8, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(0, 210, 255, 0.4)';
       ctx.fill();
       ctx.strokeStyle = '#00D2FF';
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 2.5;
       ctx.stroke();
     }
   }
@@ -706,8 +708,8 @@
 
     for (let i = 7; i >= 1; i--) {
       const ringR = r * (i / 7);
-      const shiftX = -offset.x * 50 * (1 - i / 7);
-      const shiftY = -offset.y * 50 * (1 - i / 7);
+      const shiftX = -offset.x * 45 * (1 - i / 7);
+      const shiftY = -offset.y * 45 * (1 - i / 7);
       ctx.beginPath();
       ctx.arc(cx + shiftX, cy + shiftY, ringR, 0, Math.PI * 2);
       ctx.fillStyle = i % 2 === 0 ? 'rgba(127, 29, 29, 0.4)' : 'rgba(185, 28, 28, 0.3)';
