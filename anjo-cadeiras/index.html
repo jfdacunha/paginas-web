@@ -371,7 +371,8 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 @media (max-width:900px){
   .hero-copy{left:5vw;right:5vw;width:auto;top:auto;bottom:96px;transform:none}
   .hero-copy h1{font-size:2.35rem;margin:10px 0 12px}
-  .hero-copy .eyebrow,.hero-copy .btn-ghost,.scroll-hint{display:none}
+  .hero-copy .eyebrow,.hero-copy .btn-ghost,.hero-copy .scroll-hint{display:none}
+  .statement p{font-size:2.1rem}
   .lead{font-size:1rem}
   .steps{left:4vw;right:4vw;width:auto;top:auto;bottom:88px;height:auto}
   .card{position:absolute;top:auto;bottom:0;transform:translateY(40px);background:rgba(251,248,242,.96);backdrop-filter:blur(8px);border-radius:20px;padding:22px 22px 24px;box-shadow:0 20px 40px -20px rgba(0,0,0,.35)}
@@ -832,7 +833,7 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
   const measure = () => { W = stage.clientWidth; H = stage.clientHeight; mobile = innerWidth <= 900; };
   // region shapes: [x0,y0,x1,y1, stairK]
   const regions = () => mobile ? {
-    card: [W * .05, H * .1, W * .95, H * .52, 1], full: [0, 0, W, H, 0], panel: [0, 0, W, H, 0]
+    card: [W * .05, H * .11, W * .95, H * .44, 1], full: [0, 0, W, H, 0], panel: [0, 0, W, H, 0]
   } : {
     card: [W * .5, H * .14, W * .95, H * .88, 1], full: [0, 0, W, H, 0], panel: [W * .44, 0, W, H, 0]
   };
