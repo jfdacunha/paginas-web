@@ -158,10 +158,11 @@ h2{font-size:clamp(2rem,4.2vw,3.4rem)}
 .ready .intro .ln{animation:up 1s cubic-bezier(.2,.7,.2,1) forwards}
 .ready .intro .ln:nth-child(2){animation-delay:.12s}.ready .intro .ln:nth-child(3){animation-delay:.24s}.ready .intro .ln:nth-child(4){animation-delay:.36s}.ready .intro .ln:nth-child(5){animation-delay:.48s}
 @keyframes up{to{opacity:1;transform:none}}
+.intro-done .intro .ln{animation:none;opacity:1;transform:none}
 
 /* big statement over full-bleed image */
 .statement{position:absolute;inset:0;z-index:2;display:grid;place-items:center;text-align:center;pointer-events:none;padding:0 6vw}
-.statement p{font-family:var(--serif);color:#fff;font-size:clamp(2.6rem,7.4vw,7rem);line-height:1.02;letter-spacing:-.02em}
+.statement p{font-family:var(--serif);color:#fff;font-size:clamp(2.4rem,5.8vw,5.8rem);line-height:1.02;letter-spacing:-.02em}
 .statement p span{display:inline-block;opacity:0;transform:translateY(.4em) rotate(2deg);filter:blur(8px);transition:opacity .5s,transform .7s cubic-bezier(.2,.7,.2,1),filter .6s}
 .statement p span.lit{opacity:1;transform:none;filter:none}
 .statement p span.hl{color:var(--leaf)}
@@ -765,6 +766,7 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
   const $ = s => document.querySelector(s);
   const header = $('#top');
   requestAnimationFrame(() => document.body.classList.add('ready'));
+  setTimeout(() => { document.body.classList.add('intro-done'); window.dispatchEvent(new Event('scroll')); }, 1700);
 
   /* split headings into masked words */
   document.querySelectorAll('.split').forEach(el => {
@@ -868,7 +870,7 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
     // hero copy exits with stagger
     const out = range(u, .05, .8);
     heroLines.forEach((ln, i) => {
-      if (!document.body.classList.contains('ready')) return;
+      if (!document.body.classList.contains('intro-done')) return;
       const o = clamp(out * (1 + i * .35));
       ln.style.transform = o ? `translate3d(${(-o * (120 + i * 60)).toFixed(1)}px,${(-o * 20).toFixed(1)}px,0)` : '';
       ln.style.opacity = o ? (1 - o).toFixed(3) : '';
